@@ -1738,3 +1738,172 @@ button {
     overflow-x: auto;
   }
 }
+
+/* ==========================================================================
+   8 WORKSPACE PILLARS: WHATSAPP, INBOX, CONTACTS, CAMPAIGNS, BOTS, AI, CALLING, CRM & SALES
+   ========================================================================== */
+.workspace-pillars-showcase {
+  background: radial-gradient(at 50% 0%, rgba(37, 211, 102, 0.1) 0px, rgba(13, 17, 39, 0.96) 75%);
+  border: 1px solid rgba(37, 211, 102, 0.28);
+  border-radius: var(--radius-lg);
+  padding: 36px 28px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 35px rgba(37, 211, 102, 0.08);
+}
+
+.pillars-pipeline-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 26px;
+  padding: 12px 16px;
+  background: rgba(7, 9, 21, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-full);
+}
+
+.pipeline-step-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #cbd5e1;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  transition: var(--transition);
+}
+
+.pipeline-step-chip .pipe-num {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--indigo);
+  color: #fff;
+  font-size: 9.5px;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pipeline-step-chip.active .pipe-num {
+  background: var(--wa-green);
+}
+
+.pipe-arrow {
+  color: var(--text-dim);
+  font-size: 11px;
+}
+
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+@media (max-width: 1120px) {
+  .pillars-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .pillars-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pillar-card {
+  background: linear-gradient(165deg, rgba(14, 18, 42, 0.9), rgba(9, 12, 30, 0.97));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.pillar-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(37, 211, 102, 0.45);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.45), 0 0 25px rgba(37, 211, 102, 0.1);
+}
+
+.pillar-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.pillar-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pillar-icon.wa-bg { background: rgba(37, 211, 102, 0.14); }
+.pillar-icon.inbox-bg { background: rgba(99, 102, 241, 0.14); color: var(--indigo-light); }
+.pillar-icon.crm-bg { background: rgba(56, 189, 248, 0.14); color: #38bdf8; }
+.pillar-icon.campaign-bg { background: rgba(245, 158, 11, 0.14); color: var(--amber); }
+.pillar-icon.bot-bg { background: rgba(16, 185, 129, 0.14); color: var(--green-light); }
+.pillar-icon.ai-bg { background: rgba(168, 85, 247, 0.14); color: #c084fc; }
+.pillar-icon.voice-bg { background: rgba(52, 211, 153, 0.14); color: var(--green-light); }
+.pillar-icon.sales-bg { background: rgba(244, 63, 94, 0.14); color: #fb7185; }
+
+.pillar-badge-tag {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.pillar-badge-tag.wa { background: rgba(37, 211, 102, 0.14); color: var(--wa-green); }
+.pillar-badge-tag.indigo { background: rgba(99, 102, 241, 0.14); color: var(--indigo-light); }
+.pillar-badge-tag.sky { background: rgba(56, 189, 248, 0.14); color: #38bdf8; }
+.pillar-badge-tag.amber { background: rgba(245, 158, 11, 0.14); color: #fbbf24; }
+.pillar-badge-tag.green { background: rgba(16, 185, 129, 0.14); color: var(--green-light); }
+.pillar-badge-tag.purple { background: rgba(168, 85, 247, 0.14); color: #c084fc; }
+.pillar-badge-tag.emerald { background: rgba(52, 211, 153, 0.14); color: #34d399; }
+.pillar-badge-tag.rose { background: rgba(244, 63, 94, 0.14); color: #fb7185; }
+
+.pillar-h3 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 16.5px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 6px;
+}
+
+.pillar-p {
+  font-size: 12.5px;
+  color: #cbd5e1;
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+
+.pillar-visual-chip {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  padding: 6px 10px;
+  font-size: 11px;
+  color: #e2e8f0;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-weight: 600;
+}
+
