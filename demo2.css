@@ -180,7 +180,7 @@ a {
 /* MAIN CONTENT LAYOUT */
 .schedule-main {
   flex: 1;
-  padding: 30px 0 50px;
+  padding: 40px 0 50px;
 }
 
 /* EXACT SAME 2-COLUMN GRID TO PLACE FORM PRECISELY ON THE RIGHT SIDE */
@@ -196,12 +196,92 @@ a {
   min-height: 10px;
 }
 
-/* RIGHT COLUMN: COMPACT HEIGHT (HALF OF CURRENT) */
+/* RIGHT COLUMN: ROBOT MASCOT & FORM CARD */
 .form-col {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ROBOT COMPANION MASCOT (HOLDING TOP OF FORM) */
+.robot-mascot-wrap {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: -18px; /* Hands hook down onto top edge of card */
+  position: relative;
+  z-index: 25;
+  pointer-events: none;
+}
+
+.robot-svg {
+  width: 220px;
+  height: 124px;
+  overflow: visible;
+  filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.5));
+}
+
+.robot-head-group {
+  transform-origin: 120px 105px;
+  transition: transform 0.22s cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+
+.robot-pupil {
+  transform-origin: center;
+  transition: transform 0.16s cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+
+.robot-eyelid {
+  transform-origin: top;
+  transform: scaleY(0);
+  transition: transform 0.08s ease;
+}
+
+.robot-eyelid.auto-blink {
+  animation: robotNaturalBlink 4.2s infinite;
+}
+
+@keyframes robotNaturalBlink {
+  0%, 93%, 97%, 100% { transform: scaleY(0); }
+  95% { transform: scaleY(1); }
+}
+
+@keyframes beaconBreathe {
+  0%, 100% { fill: #10b981; filter: drop-shadow(0 0 2px #10b981); }
+  50% { fill: #34d399; filter: drop-shadow(0 0 7px #34d399); }
+}
+
+@keyframes beaconTyping {
+  0%, 100% { fill: #38bdf8; filter: drop-shadow(0 0 4px #38bdf8); }
+  50% { fill: #818cf8; filter: drop-shadow(0 0 9px #818cf8); }
+}
+
+#robotBeacon {
+  animation: beaconBreathe 2.5s ease-in-out infinite;
+  transition: fill 0.3s;
+}
+
+#robotBeacon.typing-active {
+  animation: beaconTyping 0.5s ease-in-out infinite alternate !important;
+}
+
+.robot-hand {
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.65));
+}
+
+/* CELEBRATION ON SUCCESS */
+@keyframes robotHappyBounce {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-7px); }
+}
+
+.robot-mascot-wrap.celebrating .robot-head-group {
+  animation: robotHappyBounce 0.35s ease infinite alternate !important;
 }
 
 .form-wrapper-card {
+  width: 100%;
   background: linear-gradient(160deg, rgba(17, 20, 53, 0.95), rgba(13, 16, 36, 0.98));
   border: 1px solid var(--border);
   border-radius: 16px;
@@ -209,6 +289,7 @@ a {
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55), 0 0 40px rgba(99, 102, 241, 0.1);
   position: relative;
   overflow: hidden;
+  z-index: 10;
 }
 
 .form-wrapper-card::before {
@@ -491,6 +572,15 @@ a {
 @media (max-width: 600px) {
   .schedule-main {
     padding: 20px 0 40px;
+  }
+
+  .robot-svg {
+    width: 190px;
+    height: 108px;
+  }
+
+  .robot-mascot-wrap {
+    margin-bottom: -15px;
   }
 
   .form-wrapper-card {

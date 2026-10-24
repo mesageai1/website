@@ -184,8 +184,143 @@ document.addEventListener("DOMContentLoaded", () => {
     form.style.display = "none";
     successCard.style.display = "block";
 
+    triggerRobotCelebration();
+
     // Scroll to success card
     formWrapper.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+
+  // ==========================================
+  // ROBOT COMPANION INTERACTION
+  // Tracks active input, looks down into form while typing
+  // ==========================================
+  const robotHead = document.getElementById("robotHead");
+  const robotFace = document.getElementById("robotFace");
+  const pupilLeft = document.getElementById("pupilLeft");
+  const pupilRight = document.getElementById("pupilRight");
+  const robotBeacon = document.getElementById("robotBeacon");
+  const happyEyes = document.getElementById("happyEyes");
+  const robotWrap = document.getElementById("robotMascotWrap");
+  const eyelids = document.querySelectorAll(".robot-eyelid");
+
+  let typingTimer = null;
+  let isFormSuccess = false;
+
+  // Turn on natural blinking
+  eyelids.forEach((lid) => lid.classList.add("auto-blink"));
+
+  function trackElement(el, isTyping = false) {
+    if (!el || !robotFace || !pupilLeft || !pupilRight || isFormSuccess) return;
+
+    const faceRect = robotFace.getBoundingClientRect();
+    const targetRect = el.getBoundingClientRect();
+
+    const faceCenterX = faceRect.left + faceRect.width / 2;
+    const faceCenterY = faceRect.top + faceRect.height / 2;
+    const targetCenterX = targetRect.left + targetRect.width / 2;
+    const targetCenterY = targetRect.top + targetRect.height / 2;
+
+    const deltaX = targetCenterX - faceCenterX;
+    const deltaY = targetCenterY - faceCenterY;
+
+    // Normalize horizontal and vertical tracking
+    const maxPupilX = 4.8;
+    const maxPupilY = 8.5;
+
+    // Normalizing ratio
+    const normX = Math.max(-1, Math.min(1, deltaX / (faceRect.width * 1.8)));
+    const pupilX = normX * maxPupilX;
+
+    // Since the form is below the robot, deltaY is positive
+    const normY = Math.max(0.4, Math.min(1, deltaY / 420));
+    const pupilY = normY * maxPupilY;
+
+    // Subtle micro-movement / jitter while actively typing
+    const jitterX = isTyping ? (Math.random() * 0.8 - 0.4) : 0;
+    const jitterY = isTyping ? (Math.random() * 0.6 - 0.3) : 0;
+
+    const finalX = pupilX + jitterX;
+    const finalY = pupilY + jitterY;
+
+    pupilLeft.style.transform = `translate(${finalX.toFixed(2)}px, ${finalY.toFixed(2)}px)`;
+    pupilRight.style.transform = `translate(${finalX.toFixed(2)}px, ${finalY.toFixed(2)}px)`;
+
+    // Tilt head towards field being filled
+    const headTilt = normX * 3.5;
+    const headNod = normY * 3.2 + (isTyping ? 0.8 : 0);
+    if (robotHead) {
+      robotHead.style.transform = `rotate(${headTilt.toFixed(2)}deg) translateY(${headNod.toFixed(2)}px)`;
+    }
+
+    if (robotBeacon) {
+      if (isTyping) {
+        robotBeacon.classList.add("typing-active");
+      }
+    }
+  }
+
+  function resetRobotGaze() {
+    if (isFormSuccess) return;
+    if (pupilLeft) pupilLeft.style.transform = "translate(0, 0)";
+    if (pupilRight) pupilRight.style.transform = "translate(0, 0)";
+    if (robotHead) robotHead.style.transform = "rotate(0deg) translateY(0px)";
+    if (robotBeacon) robotBeacon.classList.remove("typing-active");
+  }
+
+  // Attach focus and input listeners to form elements
+  const allInputs = form.querySelectorAll("input, textarea, button");
+  allInputs.forEach((input) => {
+    input.addEventListener("focus", () => {
+      trackElement(input, false);
+    });
+
+    input.addEventListener("input", () => {
+      trackElement(input, true);
+
+      clearTimeout(typingTimer);
+      typingTimer = setTimeout(() => {
+        if (robotBeacon) robotBeacon.classList.remove("typing-active");
+        if (document.activeElement === input) {
+          trackElement(input, false);
+        }
+      }, 350);
+    });
+
+    input.addEventListener("blur", () => {
+      setTimeout(() => {
+        if (!form.contains(document.activeElement)) {
+          resetRobotGaze();
+        }
+      }, 150);
+    });
+  });
+
+  // Hover over fields also makes robot look
+  allInputs.forEach((input) => {
+    input.addEventListener("mouseenter", () => {
+      if (!document.activeElement || !form.contains(document.activeElement)) {
+        trackElement(input, false);
+      }
+    });
+    input.addEventListener("mouseleave", () => {
+      if (!document.activeElement || !form.contains(document.activeElement)) {
+        resetRobotGaze();
+      }
+    });
+  });
+
+  // Success Celebration
+  function triggerRobotCelebration() {
+    isFormSuccess = true;
+    if (pupilLeft) pupilLeft.style.display = "none";
+    if (pupilRight) pupilRight.style.display = "none";
+    if (happyEyes) happyEyes.style.display = "block";
+    if (robotBeacon) {
+      robotBeacon.setAttribute("fill", "#10b981");
+      robotBeacon.classList.remove("typing-active");
+    }
+    if (robotWrap) robotWrap.classList.add("celebrating");
+    if (robotHead) robotHead.style.transform = "rotate(0deg) translateY(-2px)";
   }
 
   function saveLeadLocally(lead) {
