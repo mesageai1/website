@@ -21,13 +21,8 @@ const orbWhiteBackward = document.getElementById('orbWhiteBackward');
 // In-Between Agent Elements (Slides in between on Price)
 const colAgentInbetween = document.getElementById('colAgentInbetween');
 const colConn2 = document.getElementById('colConn2');
-const agentStatusPill = document.getElementById('agentStatusPill');
-const agentContextTitle = document.getElementById('agentContextTitle');
-const agentContextQuote = document.getElementById('agentContextQuote');
-const composerTitle = document.getElementById('composerTitle');
-const compReadyTag = document.getElementById('compReadyTag');
-const composerTextBox = document.getElementById('composerTextBox');
-const agentDispatchStatus = document.getElementById('agentDispatchStatus');
+const crmChatCanvas = document.getElementById('crmChatCanvas');
+const crmChatStream = document.getElementById('crmChatStream');
 
 // AI Automation Elements (Right Side - Clean Logo & Soundwave)
 const colAiBot = document.getElementById('colAiBot');
@@ -164,6 +159,88 @@ function hideTyping() {
   }
 }
 
+// Helper: Scroll CRM Canvas
+function scrollCrmCanvas() {
+  if (crmChatCanvas) {
+    crmChatCanvas.scrollTop = crmChatCanvas.scrollHeight;
+  }
+}
+
+// Helper: Render CRM Inbox Messages (Live Synced with WhatsApp)
+function addCrmUserMessage(text, time = '14:15') {
+  if (!crmChatStream) return;
+  const item = document.createElement('div');
+  item.className = 'crm-msg-item customer';
+  item.innerHTML = `
+    <div class="crm-msg-meta">
+      <span class="crm-msg-sender">Alex Turner</span>
+      <span class="crm-msg-time">${time}</span>
+    </div>
+    <div class="crm-msg-bubble">${text}</div>
+  `;
+  crmChatStream.appendChild(item);
+  scrollCrmCanvas();
+}
+
+function addCrmBotMessage(text, time = '14:15') {
+  if (!crmChatStream) return;
+  const item = document.createElement('div');
+  item.className = 'crm-msg-item bot';
+  const formatted = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+  item.innerHTML = `
+    <div class="crm-msg-meta right">
+      <span class="crm-msg-sender indigo">🤖 MeSage AI (Bot Flow)</span>
+      <span class="crm-msg-time">${time}</span>
+    </div>
+    <div class="crm-msg-bubble bot-bubble">${formatted}</div>
+  `;
+  crmChatStream.appendChild(item);
+  scrollCrmCanvas();
+}
+
+function addCrmBrochureMessage(text, fileTitle, time = '14:17') {
+  if (!crmChatStream) return;
+  const item = document.createElement('div');
+  item.className = 'crm-msg-item bot';
+  item.innerHTML = `
+    <div class="crm-msg-meta right">
+      <span class="crm-msg-sender indigo">🤖 MeSage AI (Brochure Auto-Sent)</span>
+      <span class="crm-msg-time">${time}</span>
+    </div>
+    <div class="crm-msg-bubble bot-bubble">
+      ${text}
+      <div class="crm-doc-chip">
+        <span>📄 ${fileTitle}</span>
+        <small>✓ Sent to WhatsApp</small>
+      </div>
+    </div>
+  `;
+  crmChatStream.appendChild(item);
+  scrollCrmCanvas();
+}
+
+function addCrmAgentMessage(text, time = '14:19') {
+  if (!crmChatStream) return;
+  const item = document.createElement('div');
+  item.className = 'crm-msg-item agent';
+  const formatted = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+  item.innerHTML = `
+    <div class="crm-msg-meta right">
+      <span class="crm-msg-sender agent-tag">🧑‍💼 Sarah Mitchell (Property Advisor)</span>
+      <span class="crm-msg-time">${time}</span>
+    </div>
+    <div class="crm-msg-bubble agent-bubble">
+      ${formatted}
+      <div class="crm-delivery-tag">
+        <svg viewBox="0 0 16 16" width="10" height="10" fill="currentColor"><path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/></svg>
+        <span>Delivered to WhatsApp</span>
+      </div>
+    </div>
+  `;
+  crmChatStream.appendChild(item);
+  scrollCrmCanvas();
+}
+
 // Helper: Render WhatsApp Messages
 function addWaUserMessage(text, time = '14:15') {
   if (!waChatStream) return;
@@ -179,6 +256,9 @@ function addWaUserMessage(text, time = '14:15') {
   waChatStream.appendChild(item);
   scrollWaCanvas();
   updateSignalLevel(true);
+
+  // Sync to CRM Live Inbox Screen
+  addCrmUserMessage(text, time);
 }
 
 function addWaBotMessage(text, time = '14:15') {
@@ -195,6 +275,9 @@ function addWaBotMessage(text, time = '14:15') {
   waChatStream.appendChild(item);
   scrollWaCanvas();
   updateSignalLevel(true);
+
+  // Sync to CRM Live Inbox Screen
+  addCrmBotMessage(text, time);
 }
 
 function addWaBrochureMessage(text, fileTitle, fileSize, promptText, time = '14:17') {
@@ -225,6 +308,9 @@ function addWaBrochureMessage(text, fileTitle, fileSize, promptText, time = '14:
   waChatStream.appendChild(item);
   scrollWaCanvas();
   updateSignalLevel(true);
+
+  // Sync to CRM Live Inbox Screen
+  addCrmBrochureMessage(text, fileTitle, time);
 }
 
 function addWaAgentMessage(text, time = '14:19') {
@@ -246,6 +332,9 @@ function addWaAgentMessage(text, time = '14:19') {
   waChatStream.appendChild(item);
   scrollWaCanvas();
   updateSignalLevel(true);
+
+  // Sync to CRM Live Inbox Screen
+  addCrmAgentMessage(text, time);
 }
 
 function addWaHandoffBanner(html) {
@@ -446,6 +535,7 @@ function executeStage(stageNumber) {
 
       // Update signal level to align with handoff banner
       updateSignalLevel(true);
+      scrollCrmCanvas();
 
       // Agent prepares & dispatches property pricing quote
       scheduleNext(() => {
@@ -614,6 +704,7 @@ window.restartSimulation = function() {
 
   // Clear chat
   if (waChatStream) waChatStream.innerHTML = '';
+  if (crmChatStream) crmChatStream.innerHTML = '';
   clearButtons();
   hideTyping();
 
@@ -624,17 +715,6 @@ window.restartSimulation = function() {
   if (colAgentInbetween) colAgentInbetween.classList.remove('active-inbetween');
   if (colConn2) colConn2.classList.remove('active-inbetween');
   if (colConn1) colConn1.classList.remove('narrowed');
-
-  // Reset Agent status pill and composer
-  if (agentStatusPill) {
-    agentStatusPill.textContent = "🟢 Live in Chat";
-    agentStatusPill.style.background = "#dcfce7";
-    agentStatusPill.style.color = "#15803d";
-    agentStatusPill.style.borderColor = "#86efac";
-  }
-  if (agentDispatchStatus) {
-    agentDispatchStatus.textContent = "✓ Sent to WhatsApp chat";
-  }
 
   // Reset Signal Orbs
   if (orbGreenForward) orbGreenForward.classList.remove('shooting-right');

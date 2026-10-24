@@ -870,10 +870,26 @@ h1, h2, h3, p { margin-top: 0; }
               opacity 0.4s ease,
               margin 0.5s ease;
 }
+/* 3. IN-BETWEEN: Agent Closer Inbox (AUTHENTIC PRODUCTION CRM UI - INDIGO THEME) */
+.col-agent-inbetween {
+  width: 0;
+  min-width: 0;
+  max-width: 0;
+  opacity: 0;
+  margin: 0;
+  overflow: hidden;
+  pointer-events: none;
+  visibility: hidden;
+  transition: width 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              max-width 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              min-width 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.4s ease,
+              margin 0.5s ease;
+}
 .col-agent-inbetween.active-inbetween {
-  width: 315px;
-  min-width: 315px;
-  max-width: 315px;
+  width: 330px;
+  min-width: 330px;
+  max-width: 330px;
   opacity: 1;
   margin: 0 8px;
   pointer-events: auto;
@@ -881,18 +897,18 @@ h1, h2, h3, p { margin-top: 0; }
 }
 
 .agent-inbox-card {
-  width: 315px;
+  width: 330px;
   height: 485px;
   box-sizing: border-box;
-  background: #ffffff; /* PURE WHITE COLOR */
+  background: #ffffff;
   color: #0f172a;
-  border: 2px solid #ffffff;
-  border-radius: 24px;
-  padding: 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 22px;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5), 0 0 35px rgba(255, 255, 255, 0.35);
+  overflow: hidden;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.6), 0 0 35px rgba(99, 102, 241, 0.25);
   animation: slideInBetween 0.5s ease forwards;
 }
 @keyframes slideInBetween {
@@ -900,130 +916,407 @@ h1, h2, h3, p { margin-top: 0; }
   to { transform: scale(1); opacity: 1; }
 }
 
-.inbox-card-header {
+/* 1. Top Bar: Prospect Profile & CRM Utilities */
+.crm-top-bar {
+  background: #ffffff;
+  padding: 8px 10px 6px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid #f1f5f9;
 }
-.inbox-agent-profile { display: flex; align-items: center; gap: 8px; }
-.inbox-avatar-circle {
-  width: 34px;
-  height: 34px;
+.crm-user-profile {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.crm-avatar-circle {
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #ec4899, #be185d);
+  background: #6366f1; /* INDIGO THEME */
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 12px;
   display: grid;
   place-items: center;
-  font-weight: 800;
-  font-size: 11px;
-  color: white;
-  position: relative;
+  box-shadow: 0 2px 6px rgba(99, 102, 241, 0.3);
 }
-.inbox-dot-green {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--green);
-  border: 1.5px solid #ffffff;
+.crm-user-meta {
+  display: flex;
+  flex-direction: column;
 }
-.inbox-name-row { display: flex; align-items: center; gap: 5px; }
-.inbox-name-row strong { font-size: 12.5px; color: #0f172a; font-weight: 800; }
-.inbox-role-chip {
-  font-size: 7.5px;
-  font-weight: 800;
-  padding: 1.5px 5px;
-  border-radius: 3px;
-  background: #fce7f3;
-  color: #be185d;
-}
-.inbox-sub { font-size: 8.5px; color: #64748b; display: block; }
-.inbox-status-pill {
-  font-size: 8px;
-  font-weight: 700;
-  padding: 2.5px 7px;
-  border-radius: 10px;
-  background: #dcfce7;
-  color: #15803d;
-  border: 1px solid #86efac;
-}
-
-.inbox-context-card {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: 11px;
-  padding: 9px 12px;
-  text-align: left;
-}
-.ctx-header-row {
+.crm-name-row {
   display: flex;
   align-items: center;
   gap: 5px;
-  margin-bottom: 4px;
 }
-.ctx-alert-icon { font-size: 12px; }
-.ctx-header-row strong { font-size: 8.5px; color: #b45309; letter-spacing: 0.5px; }
-.ctx-lead-info {
-  display: flex;
-  justify-content: space-between;
-  font-size: 9px;
-  color: #334155;
-  margin-bottom: 5px;
-}
-.ctx-user-quote {
-  background: #f1f5f9;
-  border-left: 3px solid #f59e0b;
-  padding: 5px 8px;
-  font-size: 9.5px;
-  color: #1e293b;
-  border-radius: 3px;
-}
-
-.inbox-composer-card {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: 11px;
-  padding: 10px 12px;
-  text-align: left;
-}
-.composer-top-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 8px;
-  color: #64748b;
-  margin-bottom: 5px;
-}
-.comp-ready-tag {
-  font-size: 7.5px;
-  font-weight: 700;
-  color: #166534;
-  background: #dcfce7;
-  padding: 1.5px 5px;
-  border-radius: 3px;
-}
-.composer-text-box {
-  background: #ffffff;
-  border: 1px solid #cbd5e1;
-  border-radius: 8px;
-  padding: 8px 10px;
-  font-size: 9.5px;
+.crm-name-row strong {
+  font-size: 11px;
   color: #0f172a;
-  line-height: 1.4;
-  margin: 0 0 8px;
+  font-weight: 700;
+  line-height: 1.2;
 }
-.agent-dispatch-status {
+.crm-active-badge {
   background: #dcfce7;
   color: #15803d;
-  border: 1px solid #86efac;
-  border-radius: 6px;
-  padding: 5px 8px;
-  font-size: 9px;
+  font-size: 8px;
   font-weight: 700;
-  text-align: center;
+  padding: 1px 5px;
+  border-radius: 8px;
+  text-transform: lowercase;
+}
+.crm-phone-text {
+  font-size: 8.5px;
+  color: #64748b;
+  line-height: 1.2;
+}
+.crm-top-icons {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.crm-icon-btn {
+  background: none;
+  border: none;
+  padding: 3px;
+  margin: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  border-radius: 50%;
+  transition: all 0.15s;
+}
+.crm-icon-btn:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+.crm-agent-badge-circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #4f46e5;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 9.5px;
+  display: grid;
+  place-items: center;
+  margin-left: 2px;
+}
+
+/* 2. Action Icons Bar */
+.crm-action-icons-bar {
+  background: #ffffff;
+  padding: 3px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #f1f5f9;
+}
+.crm-action-group-left {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.crm-mini-icon-btn {
+  background: none;
+  border: none;
+  padding: 2px;
+  color: #64748b;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: color 0.15s;
+}
+.crm-mini-icon-btn:hover {
+  color: #4f46e5;
+}
+.crm-currency-symbol {
+  font-weight: 700;
+  font-size: 10px;
+  line-height: 1;
+}
+.crm-action-divider {
+  width: 1px;
+  height: 12px;
+  background: #e2e8f0;
+  margin: 0 4px;
+}
+.crm-action-group-right {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.crm-phone-call-btn {
+  background: none;
+  border: none;
+  padding: 2px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.crm-phone-call-btn.active-call {
+  color: #6366f1; /* INDIGO THEME */
+}
+.crm-phone-call-btn.muted-call {
+  color: #94a3b8;
+}
+
+/* 3. AI Toggles Bar */
+.crm-ai-toggles-bar {
+  background: #ffffff;
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border-bottom: 1px solid #f1f5f9;
+}
+.crm-toggle-pill {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 2px 6px;
+  border-radius: 12px;
+  font-size: 7.5px;
+  font-weight: 600;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  color: #64748b;
+}
+.crm-toggle-pill.on-indigo {
+  border-color: #c7d2fe;
+  background: #eef2ff;
+  color: #4338ca;
+}
+.pill-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+}
+.pill-dot.gray-dot { background: #94a3b8; }
+.pill-dot.indigo-dot { background: #6366f1; box-shadow: 0 0 5px #6366f1; }
+
+/* 4. Action Tools Bar */
+.crm-action-tools-bar {
+  background: #ffffff;
+  padding: 3px 8px 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  border-bottom: 1px solid #f1f5f9;
+}
+.crm-tools-scroll {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.crm-tools-scroll::-webkit-scrollbar { display: none; }
+.crm-tool-chip {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 2px 5px;
+  font-size: 7.5px;
+  font-weight: 600;
+  color: #475569;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s;
+}
+.crm-tool-chip:hover {
+  border-color: #6366f1;
+  color: #4338ca;
+}
+.crm-resolve-btn {
+  background: #6366f1; /* INDIGO THEME COLOR INSTEAD OF ORANGE */
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 3px 9px;
+  font-size: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(99, 102, 241, 0.35);
+  transition: background 0.15s;
+  flex-shrink: 0;
+}
+.crm-resolve-btn:hover {
+  background: #4f46e5;
+}
+
+/* 5. Live Dotted Grid Chat Stream (Synced with WhatsApp!) */
+.crm-chat-canvas {
+  flex: 1 1 0;
+  min-height: 0;
+  height: 0;
+  background-color: #f8fafc;
+  background-image: radial-gradient(#cbd5e1 0.95px, transparent 0.95px);
+  background-size: 13px 13px;
+  padding: 8px 10px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+.crm-chat-canvas::-webkit-scrollbar { width: 4px; }
+.crm-chat-canvas::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+
+.crm-chat-stream {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.crm-msg-item {
+  display: flex;
+  flex-direction: column;
+  max-width: 86%;
+  animation: bubblePop 0.22s ease forwards;
+}
+.crm-msg-item.customer {
+  align-self: flex-start;
+  margin-right: auto;
+}
+.crm-msg-item.bot,
+.crm-msg-item.agent {
+  align-self: flex-end;
+  margin-left: auto;
+}
+
+.crm-msg-meta {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 7.5px;
+  color: #64748b;
+  margin-bottom: 2px;
+}
+.crm-msg-meta.right {
+  justify-content: flex-end;
+}
+.crm-msg-sender {
+  font-weight: 700;
+}
+.crm-msg-sender.indigo {
+  color: #6366f1;
+}
+.crm-msg-sender.agent-tag {
+  color: #4338ca;
+  font-weight: 800;
+}
+
+.crm-msg-bubble {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 5px 8px;
+  font-size: 8.5px;
+  line-height: 1.35;
+  color: #1e293b;
+  word-break: break-word;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+.crm-msg-bubble.bot-bubble {
+  background: #eef2ff;
+  border-color: #c7d2fe;
+  color: #1e1b4b;
+}
+.crm-msg-bubble.agent-bubble {
+  background: #ffffff;
+  border: 1.5px solid #818cf8;
+  color: #0f172a;
+  box-shadow: 0 2px 6px rgba(99, 102, 241, 0.15);
+}
+
+.crm-doc-chip {
+  background: #ffffff;
+  border: 1px solid #c7d2fe;
+  border-radius: 6px;
+  padding: 3px 6px;
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 8px;
+  color: #4338ca;
+}
+.crm-doc-chip small {
+  color: #15803d;
+  font-weight: 700;
+}
+
+.crm-delivery-tag {
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 3px;
+  font-size: 7.5px;
+  font-weight: 700;
+  color: #15803d;
+}
+
+/* 6. Footer Composer */
+.crm-footer-composer {
+  background: #ffffff;
+  padding: 5px 8px 6px;
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex-shrink: 0;
+}
+.crm-input-box {
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  padding: 5px 8px;
+}
+.crm-input-placeholder {
+  font-size: 8px;
+  color: #94a3b8;
+  user-select: none;
+}
+.crm-composer-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.crm-composer-icons-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.crm-comp-icon {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 10px;
+  cursor: pointer;
+  color: #64748b;
+  transition: transform 0.15s;
+}
+.crm-comp-icon:hover { transform: scale(1.15); }
+.crm-help-fab {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #6366f1; /* INDIGO FLOATING ACTION BUTTON */
+  color: #ffffff;
+  border: none;
+  font-size: 10px;
+  font-weight: 800;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(99, 102, 241, 0.4);
 }
 
 /* 4. CONNECTOR 2: Open transit space */

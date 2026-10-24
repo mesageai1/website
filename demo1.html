@@ -198,50 +198,131 @@
           </div>
           
           <div class="agent-inbox-card" id="agentInboxCard">
-            <!-- Header -->
-            <div class="inbox-card-header">
-              <div class="inbox-agent-profile">
-                <div class="inbox-avatar-circle">
-                  <span>SM</span>
-                  <span class="inbox-dot-green"></span>
+            <!-- 1. Top Bar: Prospect Profile & CRM Utilities -->
+            <div class="crm-top-bar">
+              <div class="crm-user-profile">
+                <div class="crm-avatar-circle" id="crmUserAvatar">
+                  <span>A</span>
                 </div>
-                <div>
-                  <div class="inbox-name-row">
-                    <strong id="agentDisplayName">Sarah Mitchell</strong>
-                    <span class="inbox-role-chip">Property Advisor</span>
+                <div class="crm-user-meta">
+                  <div class="crm-name-row">
+                    <strong id="crmUserName">Alex Turner</strong>
+                    <span class="crm-active-badge">active</span>
                   </div>
-                  <small class="inbox-sub">Joined in-between from Live Inbox</small>
+                  <small class="crm-phone-text" id="crmUserPhone">+91 91789 05105</small>
                 </div>
               </div>
-              <span class="inbox-status-pill" id="agentStatusPill">🟢 Live in Chat</span>
+              <div class="crm-top-icons">
+                <button type="button" class="crm-icon-btn" title="Download">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                </button>
+                <button type="button" class="crm-icon-btn" title="Theme">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                </button>
+                <button type="button" class="crm-icon-btn" title="Language">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                </button>
+                <button type="button" class="crm-icon-btn" title="Company">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><line x1="9" y1="22" x2="9" y2="22.01"/><line x1="15" y1="22" x2="15" y2="22.01"/><line x1="9" y1="6" x2="9" y2="6.01"/><line x1="15" y1="6" x2="15" y2="6.01"/></svg>
+                </button>
+                <button type="button" class="crm-icon-btn" title="Notifications">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                </button>
+                <div class="crm-agent-badge-circle" title="Sarah Mitchell (Sales Closer)">
+                  <span>S</span>
+                </div>
+              </div>
             </div>
 
-            <!-- Escalated Context Banner -->
-            <div class="inbox-context-card" id="agentContextCard">
-              <div class="ctx-header-row">
-                <span class="ctx-alert-icon">⚡</span>
-                <strong id="agentContextTitle">HIGH-INTENT PROPERTY LEAD</strong>
+            <!-- 2. Row 2: Action Icons Bar -->
+            <div class="crm-action-icons-bar">
+              <div class="crm-action-group-left">
+                <button type="button" class="crm-mini-icon-btn" title="Bot Flow">
+                  <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M6 9v6"/><path d="M18 15v-3a3 3 0 0 0-3-3H6"/></svg>
+                </button>
+                <button type="button" class="crm-mini-icon-btn" title="Tags">
+                  <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+                </button>
+                <button type="button" class="crm-mini-icon-btn" title="Deals / Pricing">
+                  <span class="crm-currency-symbol">₹</span>
+                </button>
+                <button type="button" class="crm-mini-icon-btn" title="Schedule Appointment">
+                  <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                </button>
+                <button type="button" class="crm-mini-icon-btn" title="Customer Notes">
+                  <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                </button>
+                <button type="button" class="crm-mini-icon-btn" title="Search History">
+                  <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                </button>
+                <button type="button" class="crm-mini-icon-btn" title="Export">
+                  <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                </button>
               </div>
-              <div class="ctx-lead-info">
-                <span>Prospect: <strong>Alex Turner</strong></span>
-                <span>Unit: <strong>3 BHK Luxury (1,850 sq.ft)</strong></span>
-              </div>
-              <div class="ctx-user-quote" id="agentContextQuote">
-                <em>"I want to know the exact price and available payment schemes."</em>
+              <div class="crm-action-divider"></div>
+              <div class="crm-action-group-right">
+                <button type="button" class="crm-phone-call-btn active-call" title="Click to Call (VoIP)">
+                  <svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.35-5.43-3.9-6.8-6.8l1.97-1.57c.28-.28.37-.69.25-1.02A11.36 11.36 0 0 1 8.76 4c0-.55-.45-1-1-1H4.16c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.62c0-.55-.45-1-.99-1z"/></svg>
+                </button>
+                <button type="button" class="crm-phone-call-btn muted-call" title="Secondary Line">
+                  <svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.35-5.43-3.9-6.8-6.8l1.97-1.57c.28-.28.37-.69.25-1.02A11.36 11.36 0 0 1 8.76 4c0-.55-.45-1-1-1H4.16c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.62c0-.55-.45-1-.99-1z"/></svg>
+                </button>
               </div>
             </div>
 
-            <!-- Agent Composer -->
-            <div class="inbox-composer-card">
-              <div class="composer-top-row">
-                <span id="composerTitle">Live Property Closer Quote:</span>
-                <span class="comp-ready-tag" id="compReadyTag">Dispatched</span>
+            <!-- 3. Row 3: AI Engine Toggles (Indigo Theme) -->
+            <div class="crm-ai-toggles-bar">
+              <div class="crm-toggle-pill off">
+                <span class="pill-dot gray-dot"></span>
+                <span>🤖 Chat AI</span>
+                <strong>OFF</strong>
               </div>
-              <p class="composer-text-box" id="composerTextBox">
-                "Our 3 BHK luxury residences start at <strong>₹2.45 Cr all-inclusive</strong> with an exclusive <strong>10:90 festive payment scheme</strong> and zero pre-EMI until possession. Would you like to schedule a private VIP site visit?"
-              </p>
-              <div class="agent-dispatch-status" id="agentDispatchStatus">
-                <span>✓ Sent to WhatsApp chat</span>
+              <div class="crm-toggle-pill on-indigo">
+                <span class="pill-dot indigo-dot"></span>
+                <span>🔀 Bot Flow</span>
+                <strong>ON</strong>
+              </div>
+              <div class="crm-toggle-pill off">
+                <span class="pill-dot gray-dot"></span>
+                <span>📞 Call AI</span>
+                <strong>OFF</strong>
+              </div>
+            </div>
+
+            <!-- 4. Row 4: Action Tools & Indigo Resolve Button -->
+            <div class="crm-action-tools-bar">
+              <div class="crm-tools-scroll">
+                <button type="button" class="crm-tool-chip">▤ Template</button>
+                <button type="button" class="crm-tool-chip">💬 Preset</button>
+                <button type="button" class="crm-tool-chip">👤+ Assign</button>
+                <button type="button" class="crm-tool-chip">🧾 Invoice</button>
+                <button type="button" class="crm-tool-chip">✨ Summary</button>
+              </div>
+              <button type="button" class="crm-resolve-btn" id="crmResolveBtn">Resolve</button>
+            </div>
+
+            <!-- 5. Row 5: Live Dotted Grid Chat Stream (Synced with WhatsApp!) -->
+            <div class="crm-chat-canvas" id="crmChatCanvas">
+              <div class="crm-chat-stream" id="crmChatStream">
+                <!-- Real-time synced messages populated dynamically by demo1.js -->
+              </div>
+            </div>
+
+            <!-- 6. Row 6: CRM Composer & Quick Replies -->
+            <div class="crm-footer-composer">
+              <div class="crm-input-box">
+                <span class="crm-input-placeholder">Type a message... ( / for quick replies )</span>
+              </div>
+              <div class="crm-composer-toolbar">
+                <div class="crm-composer-icons-left">
+                  <button type="button" class="crm-comp-icon" title="Attachment">📎</button>
+                  <button type="button" class="crm-comp-icon" title="AI Polish">✨</button>
+                  <button type="button" class="crm-comp-icon" title="Emoji">😊</button>
+                  <button type="button" class="crm-comp-icon" title="Stickers / Snippets">📄</button>
+                  <button type="button" class="crm-comp-icon" title="Calendar">📅</button>
+                  <button type="button" class="crm-comp-icon" title="Voice">🎤</button>
+                </div>
+                <button type="button" class="crm-help-fab" title="Help &amp; Support">?</button>
               </div>
             </div>
           </div>

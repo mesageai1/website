@@ -13,43 +13,30 @@ function initSearchAndFilter() {
   const searchInput = document.getElementById('featuresSearch');
   const filterPills = document.querySelectorAll('.filter-pill');
   const cards = document.querySelectorAll('.feat-card');
-  const countLabel = document.getElementById('visibleFeatCount');
 
   let currentCategory = 'all';
   let searchQuery = '';
 
   function applyFilters() {
-    let visibleCount = 0;
-
     cards.forEach(card => {
       const cardCategory = card.dataset.category || '';
       const cardTitle = (card.querySelector('.feat-title')?.textContent || '').toLowerCase();
       const cardDesc = (card.querySelector('.feat-desc')?.textContent || '').toLowerCase();
-      const cardTags = (card.dataset.keywords || '').toLowerCase();
-      const cardNum = card.dataset.featnum || '';
+      const cardKeywords = (card.dataset.keywords || '').toLowerCase();
 
-      const matchesCat = (currentCategory === 'all') || 
-                         (cardCategory.includes(currentCategory)) ||
-                         (currentCategory === 'top6' && card.dataset.top6 === 'true');
+      const matchesCat = (currentCategory === 'all') || cardCategory.includes(currentCategory);
 
       const matchesSearch = !searchQuery || 
                             cardTitle.includes(searchQuery) || 
                             cardDesc.includes(searchQuery) || 
-                            cardTags.includes(searchQuery) ||
-                            cardNum.includes(searchQuery);
+                            cardKeywords.includes(searchQuery);
 
       if (matchesCat && matchesSearch) {
         card.style.display = 'flex';
-        card.style.animation = 'fadeInCard 0.3s ease forwards';
-        visibleCount++;
       } else {
         card.style.display = 'none';
       }
     });
-
-    if (countLabel) {
-      countLabel.textContent = visibleCount;
-    }
   }
 
   // Filter Pill Click Events
@@ -59,14 +46,6 @@ function initSearchAndFilter() {
       pill.classList.add('active');
       currentCategory = pill.dataset.filter;
       applyFilters();
-
-      // If user clicked Top 6 filter, smoothly bring top 6 or matrix into view
-      if (currentCategory === 'top6') {
-        const top6Sec = document.getElementById('top6Section');
-        if (top6Sec) {
-          top6Sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }
     });
   });
 
@@ -81,7 +60,7 @@ function initSearchAndFilter() {
 
 // 2. MICRO INTERACTIONS INSIDE THE VISUAL MOCKUPS
 function initMicroInteractions() {
-  // A. Feature 12: Interactive AI Response Tester
+  // A. Interactive AI Response Tester
   const sampleQuestions = document.querySelectorAll('.ai-sample-q');
   const answerDisplay = document.getElementById('aiSampleAnswer');
 
@@ -95,17 +74,17 @@ function initMicroInteractions() {
     btn.addEventListener('click', () => {
       const qKey = btn.dataset.q;
       if (answerDisplay && answersMap[qKey]) {
-        answerDisplay.style.opacity = '0.3';
+        answerDisplay.style.opacity = '0.4';
         answerDisplay.textContent = 'Generating instant AI response...';
         setTimeout(() => {
-          answerDisplay.textContent = answersMap[qKey];
+          answerDisplay.innerHTML = answersMap[qKey];
           answerDisplay.style.opacity = '1';
-        }, 300);
+        }, 250);
       }
     });
   });
 
-  // B. Feature 08: Human Agent Takeover Switcher
+  // B. Human Agent Takeover Switcher
   const takeoverBtn = document.getElementById('btnToggleTakeover');
   const takeoverStatus = document.getElementById('takeoverStatusLabel');
   const takeoverBubble = document.getElementById('takeoverChatBubble');
@@ -115,7 +94,7 @@ function initMicroInteractions() {
     takeoverBtn.addEventListener('click', () => {
       isAgentActive = !isAgentActive;
       if (isAgentActive) {
-        takeoverBtn.textContent = 'Agent Mode Active';
+        takeoverBtn.textContent = 'Agent Active';
         takeoverBtn.style.background = '#10b981';
         takeoverStatus.textContent = '🟢 Closer Priya Sharma entered chat';
         takeoverStatus.style.color = '#34d399';
@@ -132,20 +111,18 @@ function initMicroInteractions() {
     });
   }
 
-  // C. Feature 07: Unified Inbox Channel Selector
+  // C. Unified Inbox Channel Selector
   const inboxTabs = document.querySelectorAll('.if-tab');
   const inboxName = document.getElementById('inboxSelectedName');
   const inboxMsg = document.getElementById('inboxSelectedMsg');
   const inboxChannelDot = document.getElementById('inboxChannelDot');
 
   const channelPreviewData = {
-    'all': { name: 'Priya Sharma (WhatsApp)', msg: 'What are the pricing details?', color: '#25d366' },
+    'all': { name: 'Priya Sharma (WhatsApp API)', msg: 'What are the pricing details?', color: '#25d366' },
     'wa': { name: 'Priya Sharma (WhatsApp API)', msg: 'Shared brochure for 3 BHK luxury.', color: '#25d366' },
-    'ig': { name: 'Arjun Kumar (@arjun_k)', msg: 'Sent DM: Is 2 BHK available?', color: '#f43f5e' },
-    'fb': { name: 'Sara Mehta (Messenger)', msg: 'Thank you, booking our walkthrough!', color: '#1877f2' },
+    'ig': { name: 'Arjun Kumar (@arjun_design)', msg: 'Sent DM: Is this unit available for weekend visits?', color: '#f43f5e' },
     'web': { name: 'Website Visitor #409', msg: 'Checking amenities & floor plans.', color: '#818cf8' },
-    'tg': { name: 'Rahul K. (@rahulk_tg)', msg: 'Requested callback on pricing.', color: '#29b6f6' },
-    'mail': { name: 'support@prospect.com', msg: 'Enterprise commercial quote request.', color: '#f59e0b' }
+    'mail': { name: 'director@investments.com', msg: 'Re: Commercial Unit Proposal', color: '#f59e0b' }
   };
 
   inboxTabs.forEach(tab => {

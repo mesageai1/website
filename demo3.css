@@ -1,6 +1,6 @@
 /* ==========================================================================
-   MeSage AI — Demo 3: All 16 Features + Top 6 Client Matrix
-   Design: Clean, Modern, Dark Glassmorphism, Zero Clutter
+   MeSage AI — Demo 3: Visual Omnichannel Platform Showcase
+   Style: Clean, Modern, Dark Glassmorphism, Zero Clutter, High Visual Impact
    ========================================================================== */
 
 :root {
@@ -14,10 +14,8 @@
   --text-dim: #64748b;
   --indigo: #6366f1;
   --indigo-light: #818cf8;
-  --indigo-glow: rgba(99, 102, 241, 0.2);
   --green: #10b981;
   --green-light: #34d399;
-  --green-glow: rgba(16, 185, 129, 0.2);
   --wa-green: #25d366;
   --ig-grad: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
   --fb-blue: #1877f2;
@@ -119,7 +117,7 @@ button {
   font-size: 11px;
 }
 
-.pulse-dot {
+.pulse-dot, .live-dot-pulse {
   width: 7px;
   height: 7px;
   border-radius: 50%;
@@ -137,7 +135,7 @@ button {
 .topbar-right {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
 }
 
 .topbar-link {
@@ -152,10 +150,6 @@ button {
 
 .topbar-link:hover {
   color: var(--text-main);
-}
-
-.topbar-link.active-link {
-  color: var(--green-light);
 }
 
 /* ==========================================================================
@@ -273,10 +267,10 @@ button {
 }
 
 /* ==========================================================================
-   HERO INTRO SECTION
+   HERO SECTION & VISUAL CHANNEL RIBBON
    ========================================================================== */
 .hero-section {
-  padding: 60px 0 40px;
+  padding: 50px 0 32px;
   text-align: center;
 }
 
@@ -293,17 +287,17 @@ button {
   color: var(--indigo-light);
   letter-spacing: 0.5px;
   text-transform: uppercase;
-  margin-bottom: 22px;
+  margin-bottom: 20px;
 }
 
 .hero-title {
   font-family: "Space Grotesk", sans-serif;
-  font-size: clamp(32px, 4.8vw, 56px);
+  font-size: clamp(32px, 4.5vw, 54px);
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: -1px;
   max-width: 900px;
-  margin: 0 auto 20px;
+  margin: 0 auto 18px;
 }
 
 .gradient-text {
@@ -313,313 +307,48 @@ button {
 }
 
 .hero-sub {
-  font-size: clamp(15px, 1.4vw, 18px);
+  font-size: clamp(15px, 1.3vw, 17px);
   color: var(--text-muted);
-  max-width: 760px;
-  margin: 0 auto 36px;
+  max-width: 780px;
+  margin: 0 auto 30px;
   line-height: 1.65;
 }
 
-/* Hero Stats Bar */
-.hero-stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-  gap: 16px;
-  max-width: 1040px;
-  margin: 0 auto 20px;
-}
-
-.hero-stat-card {
-  background: rgba(13, 17, 39, 0.75);
-  border: 1px solid var(--border);
-  padding: 18px 20px;
-  border-radius: var(--radius-md);
-  text-align: left;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  backdrop-filter: blur(10px);
-  transition: var(--transition);
-}
-
-.hero-stat-card:hover {
-  transform: translateY(-3px);
-  border-color: var(--indigo-light);
-  box-shadow: 0 10px 24px rgba(99, 102, 241, 0.12);
-}
-
-.stat-icon-wrap {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  background: rgba(99, 102, 241, 0.14);
-  color: var(--indigo-light);
+/* Hero Channels Ribbon */
+.hero-channels-ribbon {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
-  flex-shrink: 0;
+  flex-wrap: wrap;
+  gap: 12px;
+  max-width: 980px;
+  margin: 0 auto;
 }
 
-.stat-icon-wrap.green-bg {
-  background: rgba(16, 185, 129, 0.14);
-  color: var(--green-light);
-}
-
-.stat-icon-wrap.amber-bg {
-  background: rgba(245, 158, 11, 0.14);
-  color: var(--amber);
-}
-
-.stat-icon-wrap.pink-bg {
-  background: rgba(244, 63, 94, 0.14);
-  color: var(--mail-pink);
-}
-
-.stat-metric {
-  font-family: "Space Grotesk", sans-serif;
-  font-size: 22px;
-  font-weight: 800;
-  color: var(--text-main);
-  line-height: 1.2;
-}
-
-.stat-label {
-  font-size: 12px;
-  color: var(--text-muted);
-  font-weight: 500;
-}
-
-/* ==========================================================================
-   SECTION HEADINGS & LAYOUT
-   ========================================================================== */
-.section-wrapper {
-  padding: 50px 0;
-}
-
-.section-head {
-  margin-bottom: 34px;
-}
-
-.section-head.center {
-  text-align: center;
-  max-width: 820px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.section-badge {
+.channel-pill-item {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  font-size: 11px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
-  color: var(--green-light);
-  margin-bottom: 10px;
-}
-
-.section-badge.purple-badge {
-  color: var(--indigo-light);
-}
-
-.section-h2 {
-  font-family: "Space Grotesk", sans-serif;
-  font-size: clamp(24px, 3.2vw, 36px);
-  font-weight: 800;
-  letter-spacing: -0.5px;
-  margin-bottom: 12px;
-  line-height: 1.25;
-}
-
-.section-desc {
-  font-size: 15px;
-  color: var(--text-muted);
-  line-height: 1.6;
-}
-
-/* ==========================================================================
-   TOP 6 CLIENT PRIORITIES (EXECUTIVE SHOWCASE)
-   ========================================================================== */
-.top6-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-  gap: 22px;
-}
-
-.top6-card {
-  background: linear-gradient(170deg, rgba(16, 20, 48, 0.9), rgba(11, 14, 34, 0.95));
+  gap: 8px;
+  background: rgba(13, 17, 39, 0.85);
   border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 26px 24px;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-shadow: var(--shadow-card);
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-main);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
   transition: var(--transition);
 }
 
-.top6-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(99, 102, 241, 0.4);
-  box-shadow: var(--shadow-hover);
+.channel-pill-item:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
-.top6-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--indigo-light), var(--green-light));
-  opacity: 0.7;
-}
-
-.top6-card-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  margin-bottom: 16px;
-  gap: 12px;
-}
-
-.top6-icon-box {
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
-  background: rgba(99, 102, 241, 0.15);
-  border: 1px solid rgba(99, 102, 241, 0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-  color: var(--indigo-light);
+.ch-svg {
+  width: 18px;
+  height: 18px;
   flex-shrink: 0;
-}
-
-.top6-icon-box.green-theme {
-  background: rgba(16, 185, 129, 0.15);
-  border-color: rgba(16, 185, 129, 0.3);
-  color: var(--green-light);
-}
-
-.top6-icon-box.amber-theme {
-  background: rgba(245, 158, 11, 0.15);
-  border-color: rgba(245, 158, 11, 0.3);
-  color: var(--amber);
-}
-
-.top6-badge-rank {
-  font-size: 11px;
-  font-weight: 800;
-  padding: 4px 10px;
-  border-radius: var(--radius-full);
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid var(--border-subtle);
-  color: #cbd5e1;
-  letter-spacing: 0.5px;
-}
-
-.top6-title {
-  font-family: "Space Grotesk", sans-serif;
-  font-size: 19px;
-  font-weight: 700;
-  margin-bottom: 6px;
-  color: var(--text-main);
-}
-
-.top6-subtitle {
-  font-size: 12.5px;
-  color: var(--green-light);
-  font-weight: 700;
-  margin-bottom: 12px;
-}
-
-.top6-body-copy {
-  font-size: 13.5px;
-  color: var(--text-muted);
-  line-height: 1.6;
-  margin-bottom: 18px;
-}
-
-/* Top 6 Visual Mini Previews */
-.top6-visual-box {
-  background: rgba(7, 9, 21, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  border-radius: var(--radius-md);
-  padding: 14px 16px;
-  margin-bottom: 18px;
-}
-
-.mini-chat-line {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  margin-bottom: 10px;
-  font-size: 12px;
-}
-
-.mini-chat-line:last-child {
-  margin-bottom: 0;
-}
-
-.mini-avatar-dot {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 11px;
-  font-weight: 700;
-  flex-shrink: 0;
-}
-
-.mini-bubble-text {
-  background: rgba(255, 255, 255, 0.06);
-  border-radius: 10px;
-  padding: 6px 12px;
-  color: #e2e8f0;
-  flex: 1;
-}
-
-.mini-bubble-text.ai-glow {
-  background: rgba(99, 102, 241, 0.16);
-  border: 1px solid rgba(99, 102, 241, 0.3);
-  color: #fff;
-}
-
-.mini-bubble-text.closer-glow {
-  background: rgba(16, 185, 129, 0.16);
-  border: 1px solid rgba(16, 185, 129, 0.3);
-  color: #fff;
-}
-
-.top6-roi-pill {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(16, 185, 129, 0.1);
-  border: 1px solid rgba(16, 185, 129, 0.22);
-  border-radius: var(--radius-sm);
-  padding: 8px 12px;
-  font-size: 12px;
-  font-weight: 600;
-  color: #e2e8f0;
-}
-
-.roi-tag {
-  color: var(--green-light);
-  font-weight: 800;
-  text-transform: uppercase;
-  font-size: 10px;
-  background: rgba(16, 185, 129, 0.2);
-  padding: 2px 6px;
-  border-radius: 4px;
 }
 
 /* ==========================================================================
@@ -633,7 +362,7 @@ button {
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 18px 22px;
-  margin-bottom: 34px;
+  margin-bottom: 30px;
   backdrop-filter: blur(14px);
 }
 
@@ -678,17 +407,19 @@ button {
   box-shadow: 0 0 14px rgba(99, 102, 241, 0.25);
 }
 
-.features-count-label {
-  font-size: 13px;
-  color: var(--text-muted);
+.features-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  color: var(--green-light);
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
   font-weight: 600;
 }
 
-.features-count-label strong {
-  color: var(--green-light);
-}
-
-/* Filter pills row */
 .filter-pills-row {
   display: flex;
   align-items: center;
@@ -721,7 +452,7 @@ button {
 }
 
 /* ==========================================================================
-   ALL 16 FEATURES GRID & CARDS
+   CARDS GRID & CARDS
    ========================================================================== */
 .features-matrix-grid {
   display: grid;
@@ -744,7 +475,7 @@ button {
 
 .feat-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(99, 102, 241, 0.38);
+  border-color: rgba(99, 102, 241, 0.4);
   box-shadow: var(--shadow-hover);
 }
 
@@ -755,15 +486,106 @@ button {
   margin-bottom: 14px;
 }
 
-.feat-number-pill {
-  font-family: "Space Grotesk", sans-serif;
-  font-size: 11.5px;
+.channel-brand-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
   font-weight: 800;
-  color: var(--indigo-light);
-  background: rgba(99, 102, 241, 0.12);
-  border: 1px solid rgba(99, 102, 241, 0.25);
-  padding: 3px 9px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 4px 10px;
   border-radius: var(--radius-full);
+}
+
+.channel-brand-badge.wa-theme {
+  background: rgba(37, 211, 102, 0.12);
+  border: 1px solid rgba(37, 211, 102, 0.28);
+  color: var(--wa-green);
+}
+
+.channel-brand-badge.ig-theme {
+  background: rgba(220, 39, 67, 0.12);
+  border: 1px solid rgba(220, 39, 67, 0.28);
+  color: #f472b6;
+}
+
+.channel-brand-badge.fb-theme {
+  background: rgba(24, 119, 242, 0.12);
+  border: 1px solid rgba(24, 119, 242, 0.28);
+  color: #60a5fa;
+}
+
+.channel-brand-badge.web-theme {
+  background: rgba(129, 140, 248, 0.12);
+  border: 1px solid rgba(129, 140, 248, 0.28);
+  color: var(--indigo-light);
+}
+
+.channel-brand-badge.tg-theme {
+  background: rgba(41, 182, 246, 0.12);
+  border: 1px solid rgba(41, 182, 246, 0.28);
+  color: #38bdf8;
+}
+
+.channel-brand-badge.mail-theme {
+  background: rgba(244, 63, 94, 0.12);
+  border: 1px solid rgba(244, 63, 94, 0.28);
+  color: #fb7185;
+}
+
+.channel-brand-badge.inbox-theme {
+  background: rgba(99, 102, 241, 0.12);
+  border: 1px solid rgba(99, 102, 241, 0.28);
+  color: var(--indigo-light);
+}
+
+.channel-brand-badge.takeover-theme {
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.28);
+  color: var(--green-light);
+}
+
+.channel-brand-badge.analytics-theme {
+  background: rgba(168, 85, 247, 0.12);
+  border: 1px solid rgba(168, 85, 247, 0.28);
+  color: #c084fc;
+}
+
+.channel-brand-badge.campaign-theme {
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.28);
+  color: #fbbf24;
+}
+
+.channel-brand-badge.ai-theme {
+  background: rgba(99, 102, 241, 0.14);
+  border: 1px solid rgba(99, 102, 241, 0.32);
+  color: #a5b4fc;
+}
+
+.channel-brand-badge.flow-theme {
+  background: rgba(16, 185, 129, 0.14);
+  border: 1px solid rgba(16, 185, 129, 0.32);
+  color: var(--green-light);
+}
+
+.channel-brand-badge.followup-theme {
+  background: rgba(245, 158, 11, 0.14);
+  border: 1px solid rgba(245, 158, 11, 0.32);
+  color: var(--amber);
+}
+
+.channel-brand-badge.crm-theme {
+  background: rgba(56, 189, 248, 0.14);
+  border: 1px solid rgba(56, 189, 248, 0.32);
+  color: #7dd3fc;
+}
+
+.channel-brand-badge.voice-theme {
+  background: rgba(52, 211, 153, 0.14);
+  border: 1px solid rgba(52, 211, 153, 0.32);
+  color: var(--green-light);
 }
 
 .feat-tag {
@@ -781,50 +603,13 @@ button {
   color: var(--green-light);
 }
 
-.feat-tag.channel {
-  background: rgba(99, 102, 241, 0.14);
-  border: 1px solid rgba(99, 102, 241, 0.25);
-  color: var(--indigo-light);
-}
-
-.feat-tag.automation {
-  background: rgba(245, 158, 11, 0.14);
-  border: 1px solid rgba(245, 158, 11, 0.28);
-  color: var(--amber);
-}
-
-.feat-main-info {
-  display: flex;
-  gap: 14px;
-  margin-bottom: 12px;
-}
-
-.feat-icon-box {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  flex-shrink: 0;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--border-subtle);
-}
-
 .feat-title {
   font-family: "Space Grotesk", sans-serif;
   font-size: 18px;
   font-weight: 700;
   color: var(--text-main);
-  margin-bottom: 4px;
+  margin-bottom: 6px;
   line-height: 1.3;
-}
-
-.feat-category-sub {
-  font-size: 12px;
-  color: var(--text-dim);
-  font-weight: 600;
 }
 
 .feat-desc {
@@ -835,191 +620,336 @@ button {
 }
 
 /* ==========================================================================
-   BESPOKE VISUAL MOCKUPS FOR EACH FEATURE CARD
+   VISUAL STAGE CONTAINER & MOCKUPS
    ========================================================================== */
 .feat-visual-stage {
   background: rgba(6, 8, 20, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-md);
   padding: 14px 16px;
   margin-bottom: 16px;
-  min-height: 110px;
+  min-height: 125px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-/* 01. WhatsApp Business Visual */
-.wa-mock-box {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.wa-mock-header {
+/* Mockup Header Bars */
+.mockup-header-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  padding-bottom: 7px;
+  margin-bottom: 8px;
   font-size: 11px;
-  color: #94a3b8;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  padding-bottom: 5px;
-}
-.wa-verified-pill {
-  color: var(--wa-green);
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-.wa-msg-bubble {
-  background: #005c4b;
-  color: #fff;
-  border-radius: 8px;
-  padding: 8px 10px;
-  font-size: 12px;
-  line-height: 1.4;
-  position: relative;
-}
-.wa-quick-btns {
-  display: flex;
-  gap: 6px;
-  margin-top: 4px;
-}
-.wa-btn-chip {
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
-  font-size: 11px;
-  padding: 4px 8px;
-  border-radius: 4px;
-  cursor: pointer;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  transition: var(--transition);
-}
-.wa-btn-chip:hover {
-  background: rgba(37, 211, 102, 0.3);
-  border-color: var(--wa-green);
 }
 
-/* 02. Instagram Visual */
-.ig-mock-box {
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-}
-.ig-story-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 11px;
-  color: #f472b6;
-  background: rgba(244, 114, 182, 0.12);
-  padding: 3px 8px;
-  border-radius: 4px;
-  width: fit-content;
-}
-.ig-msg-bubble {
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  padding: 7px 11px;
-  font-size: 12px;
-}
-
-/* 03. Facebook Visual */
-.fb-mock-box {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-}
-.fb-sender-info {
+.user-meta-left {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 12px;
 }
-.fb-dot {
-  width: 28px;
-  height: 28px;
+
+.user-meta-left strong {
+  display: block;
+  font-size: 12px;
+  color: var(--text-main);
+  line-height: 1.2;
+}
+
+.user-meta-left small {
+  color: var(--text-muted);
+  font-size: 10px;
+}
+
+.user-avatar-circle {
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
-  background: #1877f2;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 800;
-  font-size: 13px;
+  font-size: 11px;
+  flex-shrink: 0;
 }
 
-/* 04. Web Bot Visual */
-.web-mock-box {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  background: rgba(13, 17, 39, 0.9);
-  padding: 8px 12px;
-  border-radius: 10px;
-  border: 1px solid rgba(99, 102, 241, 0.25);
+.wa-check-verified {
+  color: var(--wa-green);
+  font-weight: 700;
+  font-size: 11px;
 }
-.web-bot-avatar {
+
+/* Chat Body & Bubbles */
+.mockup-chat-body {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.chat-bubble {
+  border-radius: 9px;
+  padding: 7px 11px;
+  font-size: 11.5px;
+  line-height: 1.45;
+}
+
+.chat-bubble.incoming {
+  background: rgba(255, 255, 255, 0.06);
+  color: #e2e8f0;
+  align-self: flex-start;
+  max-width: 90%;
+}
+
+.chat-bubble.outgoing-wa {
+  background: #005c4b;
+  color: #fff;
+  align-self: flex-start;
+  border: 1px solid rgba(37, 211, 102, 0.3);
+}
+
+.chat-bubble.outgoing-ig {
+  background: rgba(220, 39, 67, 0.18);
+  border: 1px solid rgba(220, 39, 67, 0.35);
+  color: #fff;
+}
+
+.chat-bubble.outgoing-fb {
+  background: rgba(24, 119, 242, 0.18);
+  border: 1px solid rgba(24, 119, 242, 0.35);
+  color: #fff;
+}
+
+.chat-bubble.outgoing-tg {
+  background: rgba(41, 182, 246, 0.15);
+  border: 1px solid rgba(41, 182, 246, 0.3);
+  color: #fff;
+}
+
+/* Interactive Buttons inside WhatsApp */
+.wa-interactive-btns {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.wa-interactive-btn {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 10.5px;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+/* Instagram Story Ring */
+.story-gradient-ring {
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: var(--indigo);
+  background: var(--ig-grad);
+  padding: 2px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
 }
 
-/* 05. Telegram Visual */
-.tg-mock-box {
+.avatar-inner {
+  width: 100%;
+  height: 100%;
+  background: #0d1127;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 800;
+  color: #fff;
+}
+
+.story-context-preview {
+  font-size: 10.5px;
+  color: #f472b6;
+  background: rgba(244, 114, 182, 0.1);
+  padding: 2px 7px;
+  border-radius: 4px;
+  width: fit-content;
+}
+
+.status-live-text {
+  color: var(--green-light);
+  font-size: 10.5px;
+  font-weight: 600;
+}
+
+.ad-source-pill {
+  font-size: 10px;
+  background: rgba(24, 119, 242, 0.2);
+  color: #60a5fa;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+/* Website Bot Mockup */
+.website-sim-card {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
-.tg-btn-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6px;
-}
-.tg-inline-btn {
-  background: rgba(41, 182, 246, 0.15);
-  border: 1px solid rgba(41, 182, 246, 0.3);
-  color: #81d4fa;
-  font-size: 11px;
-  padding: 5px;
-  text-align: center;
+
+.browser-fake-bar {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 4px 8px;
   border-radius: 6px;
+  font-size: 10px;
 }
 
-/* 06. Email Visual */
-.mail-mock-box {
-  font-size: 12px;
+.browser-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
 }
-.mail-subject-row {
+
+.browser-url {
+  color: var(--text-dim);
+  margin-left: 4px;
+}
+
+.web-widget-popup {
+  background: rgba(19, 24, 53, 0.95);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+.widget-bot-head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  margin-bottom: 6px;
+}
+
+.bot-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+}
+
+.widget-form-row {
+  display: flex;
+  gap: 6px;
+}
+
+.sim-input {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-subtle);
+  border-radius: 5px;
+  padding: 4px 8px;
+  font-size: 10.5px;
+  color: #cbd5e1;
+  flex: 1;
+}
+
+.sim-btn-go {
+  background: var(--wa-green);
+  color: #fff;
+  border-radius: 5px;
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 4px 8px;
+}
+
+/* Telegram Buttons */
+.tg-inline-status {
+  font-size: 10px;
+  color: #38bdf8;
+  font-weight: 700;
+}
+
+.tg-keyboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+  margin-top: 6px;
+}
+
+.tg-btn {
+  background: rgba(41, 182, 246, 0.18);
+  border: 1px solid rgba(41, 182, 246, 0.35);
+  color: #bae6fd;
+  font-size: 10.5px;
+  text-align: center;
+  padding: 4px;
+  border-radius: 5px;
+}
+
+/* Email Mockup */
+.email-mockup-card {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 11px;
+}
+
+.email-row-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-weight: 700;
-  margin-bottom: 4px;
-}
-.mail-sync-pill {
-  font-size: 10px;
-  background: rgba(244, 63, 94, 0.15);
-  color: var(--mail-pink);
-  padding: 2px 6px;
-  border-radius: 4px;
 }
 
-/* 07. Unified Inbox Visual */
+.mail-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--mail-pink);
+}
+
+.mail-badge {
+  font-size: 9.5px;
+  background: rgba(244, 63, 94, 0.15);
+  color: #fb7185;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+.email-meta-sub {
+  color: var(--text-dim);
+  font-size: 10px;
+}
+
+.email-preview-snippet {
+  background: rgba(255, 255, 255, 0.04);
+  padding: 6px 8px;
+  border-radius: 5px;
+  color: #e2e8f0;
+}
+
+.email-action-bar {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10.5px;
+  color: var(--text-muted);
+}
+
+/* Unified Inbox */
 .inbox-filter-demo {
   display: flex;
   gap: 4px;
   margin-bottom: 8px;
   overflow-x: auto;
 }
+
 .if-tab {
-  font-size: 10.5px;
+  font-size: 10px;
   padding: 3px 8px;
   border-radius: 4px;
   background: rgba(255, 255, 255, 0.06);
@@ -1027,225 +957,434 @@ button {
   cursor: pointer;
   white-space: nowrap;
 }
+
 .if-tab.active {
   background: var(--indigo);
   color: #fff;
   font-weight: 700;
 }
+
+.inbox-live-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
 .inbox-item-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 12px;
-  padding: 4px 6px;
-  background: rgba(255, 255, 255, 0.03);
+  padding: 6px 8px;
+  background: rgba(255, 255, 255, 0.04);
   border-radius: 6px;
+  font-size: 11.5px;
 }
 
-/* 08. Human Agent Takeover Visual */
-.takeover-toggle-bar {
+.inbox-item-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ch-indicator-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.wa-dot { background: var(--wa-green); }
+
+.inbox-sub-preview {
+  font-size: 10.5px;
+  color: var(--text-dim);
+}
+
+.inbox-time-chip {
+  font-size: 10px;
+  color: var(--green-light);
+  font-weight: 700;
+}
+
+/* Takeover State Box */
+.takeover-state-box {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.takeover-status-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(16, 185, 129, 0.1);
-  border: 1px solid rgba(16, 185, 129, 0.3);
-  border-radius: 8px;
-  padding: 8px 12px;
-  font-size: 12px;
-  margin-bottom: 8px;
+  font-size: 11px;
 }
-.switch-btn-sim {
+
+.agent-live-tag {
+  color: var(--green-light);
+  font-weight: 700;
+}
+
+.btn-toggle-sim {
   background: var(--green);
   color: #fff;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 700;
-  padding: 4px 10px;
+  padding: 3px 8px;
   border-radius: var(--radius-full);
 }
 
-/* 09. Analytics Visual */
-.analytics-mini-row {
+.takeover-bubble-view {
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  padding: 7px 10px;
+  border-radius: 7px;
+  font-size: 11.5px;
+  color: #fff;
+}
+
+.internal-note-strip {
+  font-size: 10px;
+  color: #cbd5e1;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+/* Analytics Showcase Grid */
+.analytics-showcase-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 8px;
+}
+
+.an-card {
+  background: rgba(255, 255, 255, 0.04);
+  padding: 8px 6px;
+  border-radius: 7px;
   text-align: center;
 }
-.an-kpi {
+
+.an-metric-title {
+  display: block;
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+.an-metric-val {
+  display: block;
+  font-size: 15px;
+  font-family: "Space Grotesk", sans-serif;
+  color: #fff;
+  font-weight: 800;
+  margin: 2px 0;
+}
+
+.an-trend-pos {
+  font-size: 9.5px;
+  color: var(--green-light);
+  font-weight: 700;
+}
+
+/* Campaigns Builder Mockup */
+.campaign-builder-mock {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  font-size: 11px;
+}
+
+.cb-filter-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.cb-chip {
+  background: rgba(255, 255, 255, 0.06);
+  padding: 3px 7px;
+  border-radius: 4px;
+  font-size: 10.5px;
+}
+
+.cb-count-badge {
+  background: rgba(245, 158, 11, 0.2);
+  color: #fbbf24;
+  padding: 3px 7px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 10.5px;
+}
+
+.cb-status-bar {
+  height: 5px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.cb-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #6366f1, #10b981);
+}
+
+.cb-meta-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+}
+
+/* Broadcast Metrics Box */
+.broadcast-metrics-box {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  text-align: center;
+}
+
+.bc-stat-card {
   background: rgba(255, 255, 255, 0.04);
   padding: 6px 4px;
   border-radius: 6px;
 }
-.an-kpi small {
-  display: block;
-  font-size: 10px;
-  color: #94a3b8;
-}
-.an-kpi strong {
-  font-size: 13px;
-  color: var(--green-light);
-}
 
-/* 10. Campaigns Visual */
-.campaign-target-visual {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  font-size: 11.5px;
-}
-.target-bar-wrap {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: rgba(255, 255, 255, 0.04);
-  padding: 6px 10px;
-  border-radius: 6px;
-}
-
-/* 11. Broadcast Visual */
-.broadcast-status-visual {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 12px;
-}
-.bc-metric {
-  text-align: center;
-}
-.bc-metric span {
+.bc-stat-card span {
   display: block;
-  font-size: 10px;
+  font-size: 9.5px;
   color: var(--text-dim);
 }
-.bc-metric strong {
-  font-size: 14px;
-  color: var(--wa-green);
+
+.bc-stat-card strong {
+  display: block;
+  font-size: 13px;
+  font-family: "Space Grotesk", sans-serif;
+  margin-top: 2px;
 }
 
-/* 12. AI Responses Visual */
-.ai-test-widget {
+/* AI Tester Interactive */
+.ai-tester-interactive {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
+
+.tester-prompt-label {
+  font-size: 9.5px;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.tester-chips-row {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
 .ai-sample-q {
-  font-size: 11px;
-  background: rgba(99, 102, 241, 0.12);
+  font-size: 10.5px;
+  background: rgba(99, 102, 241, 0.14);
   border: 1px dashed rgba(99, 102, 241, 0.35);
-  padding: 4px 8px;
-  border-radius: 6px;
   color: #cbd5e1;
+  padding: 3px 8px;
+  border-radius: 5px;
   cursor: pointer;
   transition: var(--transition);
 }
+
 .ai-sample-q:hover {
-  background: rgba(99, 102, 241, 0.22);
+  background: rgba(99, 102, 241, 0.25);
   color: #fff;
 }
-.ai-sample-ans {
-  font-size: 11.5px;
+
+.tester-output-box {
+  font-size: 11px;
   color: var(--green-light);
-  font-weight: 500;
+  line-height: 1.4;
+  background: rgba(16, 185, 129, 0.08);
+  padding: 6px 9px;
+  border-radius: 6px;
+  border: 1px solid rgba(16, 185, 129, 0.2);
 }
 
-/* 13. Flow Builder Visual */
-.flow-node-chain {
+/* Flow Journey Nodes */
+.flow-journey-nodes {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 6px;
+  gap: 5px;
   font-size: 10.5px;
-  font-weight: 700;
 }
-.flow-node {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid var(--border);
-  padding: 6px 8px;
+
+.journey-node {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
   border-radius: 6px;
+  padding: 6px 8px;
   text-align: center;
   flex: 1;
-}
-.flow-arrow {
-  color: var(--indigo-light);
-}
-
-/* 14. AI Follow-ups Visual */
-.followup-timeline {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 11px;
-}
-.timeline-step {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2px;
+  gap: 3px;
 }
-.step-bubble {
+
+.journey-node.highlight-node {
+  background: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.3);
+  color: #34d399;
+}
+
+.node-icon {
+  font-size: 13px;
+}
+
+.node-connector {
+  color: var(--indigo-light);
+  font-weight: 700;
+}
+
+/* Drip Timeline Visual */
+.drip-timeline-visual {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 10.5px;
+}
+
+.drip-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.drip-circle {
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  background: rgba(245, 158, 11, 0.18);
-  border: 1px solid var(--amber);
-  color: var(--amber);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 10px;
   font-weight: 800;
+  background: rgba(255, 255, 255, 0.08);
 }
 
-/* 15. CRM Sync Visual */
-.crm-sync-track {
+.active-drip .drip-circle {
+  background: var(--indigo);
+  color: #fff;
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+}
+
+.next-drip .drip-circle {
+  background: var(--amber);
+  color: #fff;
+}
+
+.goal-drip .drip-circle {
+  background: var(--green);
+  color: #fff;
+}
+
+.drip-line {
+  flex: 1;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 0 4px;
+}
+
+/* CRM Bridge Display */
+.crm-bridge-display {
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  font-size: 11.5px;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 11px;
 }
-.crm-logo-box {
+
+.crm-bubble {
   background: rgba(255, 255, 255, 0.06);
-  padding: 6px 12px;
+  padding: 6px 10px;
   border-radius: 6px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 5px;
+  flex: 1;
 }
 
-/* 16. AI Voice Calling Visual */
-.voice-wave-box {
+.crm-bubble strong {
+  display: block;
+  font-size: 11px;
+}
+
+.crm-bubble small {
+  color: var(--text-dim);
+  font-size: 10px;
+}
+
+.crm-arrows-badge {
+  font-size: 10px;
+  color: var(--green-light);
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.crm-supported-logos {
+  font-size: 10px;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: 6px;
+}
+
+/* Voice Call Mockup */
+.voice-call-mock {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 }
+
+.call-hdr-strip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10.5px;
+  color: var(--green-light);
+}
+
+.call-pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: pulseBeacon 1.5s infinite;
+}
+
 .soundwave-anim {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 4px;
-  height: 28px;
+  gap: 3px;
+  height: 24px;
 }
+
 .wave-bar {
   width: 3px;
   background: linear-gradient(180deg, var(--green-light), var(--indigo-light));
   border-radius: 3px;
   animation: soundwave 1.2s infinite ease-in-out;
 }
-.wave-bar:nth-child(2) { animation-delay: 0.15s; height: 18px; }
-.wave-bar:nth-child(3) { animation-delay: 0.3s; height: 26px; }
-.wave-bar:nth-child(4) { animation-delay: 0.45s; height: 12px; }
-.wave-bar:nth-child(5) { animation-delay: 0.6s; height: 22px; }
-.wave-bar:nth-child(6) { animation-delay: 0.75s; height: 16px; }
-.wave-bar:nth-child(7) { animation-delay: 0.9s; height: 24px; }
-.wave-bar:nth-child(8) { animation-delay: 1.05s; height: 10px; }
+.wave-bar:nth-child(2) { animation-delay: 0.15s; height: 16px; }
+.wave-bar:nth-child(3) { animation-delay: 0.3s; height: 22px; }
+.wave-bar:nth-child(4) { animation-delay: 0.45s; height: 10px; }
+.wave-bar:nth-child(5) { animation-delay: 0.6s; height: 20px; }
+.wave-bar:nth-child(6) { animation-delay: 0.75s; height: 14px; }
+.wave-bar:nth-child(7) { animation-delay: 0.9s; height: 22px; }
+.wave-bar:nth-child(8) { animation-delay: 1.05s; height: 12px; }
 
 @keyframes soundwave {
   0%, 100% { transform: scaleY(0.4); opacity: 0.5; }
   50% { transform: scaleY(1); opacity: 1; }
 }
 
-.voice-transcript-row {
-  font-size: 11px;
+.transcript-box {
+  font-size: 10.5px;
   color: #cbd5e1;
   text-align: center;
 }
@@ -1267,79 +1406,230 @@ button {
 }
 
 /* ==========================================================================
-   COMPARISON MATRIX / ROI TABLE
+   WHAT MESAGE SOLVES (PROBLEM -> SOLUTION -> RESULT FLOW)
    ========================================================================== */
-.table-wrapper {
-  background: rgba(13, 17, 39, 0.85);
+.solve-showcase-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.solve-card {
+  background: linear-gradient(165deg, rgba(14, 18, 42, 0.9), rgba(9, 12, 30, 0.98));
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  overflow: hidden;
+  padding: 24px;
   box-shadow: var(--shadow-card);
+  transition: var(--transition);
 }
 
-.roi-table {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: left;
-  font-size: 13.5px;
+.solve-card:hover {
+  border-color: rgba(99, 102, 241, 0.4);
+  box-shadow: var(--shadow-hover);
 }
 
-.roi-table th {
-  background: rgba(17, 22, 52, 0.95);
-  padding: 16px 20px;
+.solve-card-top-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.solve-title-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.solve-icon-badge {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: rgba(99, 102, 241, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.solve-main-h3 {
   font-family: "Space Grotesk", sans-serif;
-  font-weight: 700;
-  color: #cbd5e1;
-  border-bottom: 1px solid var(--border);
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.roi-table td {
-  padding: 16px 20px;
-  border-bottom: 1px solid var(--border-subtle);
-  color: var(--text-muted);
-  vertical-align: middle;
-}
-
-.roi-table tr:last-child td {
-  border-bottom: none;
-}
-
-.roi-table tr:hover td {
-  background: rgba(255, 255, 255, 0.02);
-}
-
-.col-feature {
-  font-weight: 700;
+  font-size: 19px;
+  font-weight: 800;
   color: var(--text-main);
 }
 
-.col-old {
+.solve-flow-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr 1fr;
+  gap: 16px;
+  align-items: stretch;
+}
+
+@media (max-width: 960px) {
+  .solve-flow-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
+
+.solve-col {
+  border-radius: var(--radius-md);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+/* Col 1: The Issue */
+.solve-col.issue-col {
+  background: rgba(239, 68, 68, 0.06);
+  border: 1px solid rgba(239, 68, 68, 0.22);
+}
+
+.col-tag-hdr {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  width: fit-content;
+}
+
+.col-tag-hdr.issue-tag {
+  background: rgba(239, 68, 68, 0.15);
   color: #f87171;
 }
 
-.col-new {
+.col-story-title {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 6px;
+}
+
+.col-story-p {
+  font-size: 12.5px;
+  color: #cbd5e1;
+  line-height: 1.55;
+  margin-bottom: 10px;
+}
+
+.col-mini-warning-box {
+  background: rgba(0, 0, 0, 0.25);
+  border-left: 3px solid #ef4444;
+  padding: 7px 10px;
+  border-radius: 4px;
+  font-size: 11.5px;
+  color: #fca5a5;
+  line-height: 1.4;
+}
+
+/* Col 2: The Solution */
+.solve-col.solution-col {
+  background: rgba(99, 102, 241, 0.08);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+}
+
+.col-tag-hdr.solution-tag {
+  background: rgba(99, 102, 241, 0.2);
+  color: var(--indigo-light);
+}
+
+.col-visual-flow-box {
+  background: rgba(7, 9, 21, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  padding: 10px;
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.solve-step-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11.5px;
+}
+
+.step-num-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--indigo);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.step-num-dot.green-step {
+  background: var(--green);
+}
+
+.step-text-bubble {
+  background: rgba(255, 255, 255, 0.06);
+  padding: 4px 8px;
+  border-radius: 6px;
+  color: #e2e8f0;
+  flex: 1;
+}
+
+/* Col 3: The Result */
+.solve-col.result-col {
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.28);
+}
+
+.col-tag-hdr.result-tag {
+  background: rgba(16, 185, 129, 0.2);
   color: var(--green-light);
+}
+
+.metric-hero-pill {
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  border-radius: var(--radius-sm);
+  padding: 10px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.metric-big-num {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: #34d399;
+  line-height: 1.1;
+  display: block;
+}
+
+.metric-sub-label {
+  font-size: 11px;
+  color: #cbd5e1;
   font-weight: 600;
 }
 
-.col-impact {
-  color: #fff;
-  font-weight: 700;
-}
-
-.impact-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  background: rgba(16, 185, 129, 0.15);
-  border: 1px solid rgba(16, 185, 129, 0.3);
-  color: var(--green-light);
-  padding: 4px 10px;
-  border-radius: var(--radius-full);
-  font-size: 11.5px;
+.result-takeaway-p {
+  font-size: 12.5px;
+  color: #e2e8f0;
+  line-height: 1.5;
 }
 
 /* ==========================================================================
@@ -1406,6 +1696,28 @@ button {
   color: var(--text-main);
 }
 
+.client-benefit-pill {
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.22);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  font-size: 11.5px;
+  color: #cbd5e1;
+  margin-top: 10px;
+  margin-bottom: 12px;
+  line-height: 1.45;
+}
+
+.client-benefit-pill strong {
+  color: var(--green-light);
+  font-weight: 700;
+}
+
+.brand-tag-crm {
+  color: #fff;
+  font-weight: 600;
+}
+
 /* ==========================================================================
    RESPONSIVENESS
    ========================================================================== */
@@ -1418,9 +1730,6 @@ button {
     width: 100%;
     justify-content: center;
     overflow-x: auto;
-  }
-  .top6-grid {
-    grid-template-columns: 1fr;
   }
   .features-matrix-grid {
     grid-template-columns: 1fr;
