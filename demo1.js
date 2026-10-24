@@ -29,15 +29,13 @@ const compReadyTag = document.getElementById('compReadyTag');
 const composerTextBox = document.getElementById('composerTextBox');
 const agentDispatchStatus = document.getElementById('agentDispatchStatus');
 
-// AI Robot Elements (Right Side)
+// AI Automation Elements (Right Side - Clean Logo & Soundwave only)
 const colAiBot = document.getElementById('colAiBot');
 const companyLogoCore = document.getElementById('companyLogoCore');
-const aiStatusPill = document.getElementById('aiStatusPill');
-const aiBeacon = document.getElementById('aiBeacon');
-const aiStatusText = document.getElementById('aiStatusText');
-const aiActionTitle = document.getElementById('aiActionTitle');
-const aiActionDesc = document.getElementById('aiActionDesc');
 const aiWaveform = document.getElementById('aiWaveform');
+
+// Authentic WhatsApp Blue Double Checkmark SVG
+const WA_BLUE_TICKS_SVG = `<svg viewBox="0 0 16 11" width="14" height="10" fill="none" class="wa-double-ticks"><path d="M11.04 1.15L5.78 8.08 3.12 5.09.8 7.18 5.78 12.8 13.36 2.87 11.04 1.15z" fill="#53bdeb"/><path d="M14.04 1.15L8.78 8.08 7.9 7.08 7.08 8.08 8.78 10.02 16.36 2.87 14.04 1.15z" fill="#53bdeb"/></svg>`;
 
 // State Machine
 let isPlaying = true;
@@ -55,14 +53,14 @@ function scrollWaCanvas() {
 // Dynamic Exact Horizontal Signal Alignment (ZERO vertical drift)
 // ==========================================================================
 function getActiveBubbleCenterY() {
-  // If typing indicator is active, use typing indicator position
+  // If typing indicator is active, track typing indicator position
   if (waTypingBox && waTypingBox.style.display !== 'none') {
     const rect = waTypingBox.getBoundingClientRect();
     if (rect.height > 0) {
       return rect.top + (rect.height / 2);
     }
   }
-  // Otherwise use the latest message bubble
+  // Otherwise track the latest chat bubble
   if (waChatStream && waChatStream.lastElementChild) {
     const rect = waChatStream.lastElementChild.getBoundingClientRect();
     return rect.top + (rect.height / 2);
@@ -77,14 +75,14 @@ function updateSignalLevel(immediate = true) {
   const connRect = colConn1.getBoundingClientRect();
 
   if (targetCenterY !== null && connRect.height > 0) {
-    // 7px is half of 14px orb height -> ball center matches targetCenterY exactly
+    // 7px is half of 14px orb height -> exact horizontal alignment
     const exactTop = targetCenterY - connRect.top - 7;
     const clampedY = Math.max(15, Math.min(exactTop, connRect.height - 30));
 
     if (immediate) {
       connectorTrackHolder.style.transition = 'none';
       connectorTrackHolder.style.top = `${clampedY}px`;
-      // Flush reflow so the position is locked before ball flight begins
+      // Flush layout reflow before launching ball animation
       void connectorTrackHolder.offsetHeight;
     } else {
       connectorTrackHolder.style.transition = 'top 0.2s ease';
@@ -108,7 +106,7 @@ function fireGreenForwardSignal(callback) {
   setTimeout(() => {
     if (orbGreenForward) orbGreenForward.classList.remove('shooting-right');
     if (companyLogoCore) {
-      companyLogoCore.style.transform = 'scale(1.08)';
+      companyLogoCore.style.transform = 'scale(1.12)';
       setTimeout(() => {
         companyLogoCore.style.transform = 'scale(1)';
       }, 350);
@@ -175,7 +173,7 @@ function addWaUserMessage(text, time = '14:15') {
     <div class="bubble-text-box">${text}</div>
     <div class="bubble-footer">
       <span>${time}</span>
-      <span>✓✓</span>
+      ${WA_BLUE_TICKS_SVG}
     </div>
   `;
   waChatStream.appendChild(item);
@@ -206,11 +204,16 @@ function addWaBrochureMessage(text, fileTitle, fileSize, promptText, time = '14:
   item.innerHTML = `
     <div class="bubble-text-box">
       ${text}
-      <div class="wa-attachment-box">
-        <span style="font-size: 22px;">📄</span>
-        <div>
-          <b>${fileTitle}</b>
-          <small>${fileSize}</small>
+      <div class="wa-doc-attachment-card">
+        <div class="wa-doc-icon-badge">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="#ea4335"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+        </div>
+        <div class="wa-doc-meta">
+          <span class="wa-doc-name">${fileTitle}</span>
+          <span class="wa-doc-sub">${fileSize}</span>
+        </div>
+        <div class="wa-doc-download-icon">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="#8696a0"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
         </div>
       </div>
       <p style="margin: 6px 0 0;">${promptText}</p>
@@ -261,7 +264,10 @@ function renderButtons(btnList) {
   btnList.forEach(btn => {
     const el = document.createElement('button');
     el.className = 'wa-btn-option';
-    el.innerHTML = btn.label;
+    el.innerHTML = `
+      <svg viewBox="0 0 24 24" width="12" height="12" fill="#00a884" style="flex-shrink:0"><path d="M10 9V5l-7 7 7 7v-4.1c5 0 8.5 1.6 11 5.1-1-5-4-10-11-11z"/></svg>
+      <span>${btn.label}</span>
+    `;
     el.onclick = () => {
       clearButtons();
       btn.action();
@@ -297,11 +303,8 @@ function executeStage(stageNumber) {
       // User sends message
       addWaUserMessage("Hi, I have a quick question about getting started with your premium service.", "14:15");
 
-      // Glowing Green Ball shoots to AI Automation
+      // Glowing Green Ball shoots from WhatsApp to AI Automation
       fireGreenForwardSignal(() => {
-        if (aiActionTitle) aiActionTitle.textContent = "Analyzing customer query...";
-        if (aiActionDesc) aiActionDesc.textContent = "Intent: Plan_Inquiry · Scanning solution packages";
-
         scheduleNext(() => {
           showTyping('MeSage AI');
           // Glowing Indigo Ball shoots back from AI to WhatsApp
@@ -318,9 +321,6 @@ function executeStage(stageNumber) {
     // STAGE 2: AI answers with service tiers (< 2s)
     // -------------------------------------------------------------
     case 2: {
-      if (aiActionTitle) aiActionTitle.textContent = "Dispatched plan options";
-      if (aiActionDesc) aiActionDesc.textContent = "Offered Growth, Enterprise, and Custom VIP tiers";
-
       addWaBotMessage(
         "Hello! 👋 Welcome to **MeSage Concierge**.<br><br>We would love to help you get started! Are you looking for our **Growth**, **Enterprise**, or **Custom VIP** plan?",
         "14:15"
@@ -349,16 +349,11 @@ function executeStage(stageNumber) {
 
       // Glowing Green Ball shoots from WhatsApp to AI Automation
       fireGreenForwardSignal(() => {
-        if (aiActionTitle) aiActionTitle.textContent = "Retrieving Enterprise Specs...";
-        if (aiActionDesc) aiActionDesc.textContent = "Pulling dedicated SLA, custom workflows, and API capacity";
-
         scheduleNext(() => {
           showTyping('MeSage AI');
           // Glowing Indigo Ball shoots back from AI to WhatsApp
           fireIndigoBackwardSignal(() => {
             hideTyping();
-            if (aiActionTitle) aiActionTitle.textContent = "Delivered tier specs & brochure prompt";
-            if (aiActionDesc) aiActionDesc.textContent = "Offered solution overview PDF & pricing inquiry";
 
             addWaBotMessage(
               "Excellent choice! Our **Enterprise Tier** includes 24/7 dedicated priority SLA, custom webhook workflows, and isolated cloud deployment.<br><br>Would you like our solution overview PDF?",
@@ -390,16 +385,11 @@ function executeStage(stageNumber) {
 
       // Glowing Green Ball shoots from WhatsApp to AI
       fireGreenForwardSignal(() => {
-        if (aiActionTitle) aiActionTitle.textContent = "Transmitting PDF Document...";
-        if (aiActionDesc) aiActionDesc.textContent = "Dispatched MeSage_Enterprise_Overview.pdf via Media API";
-
         scheduleNext(() => {
           showTyping('MeSage AI');
           // Glowing Indigo Ball shoots back from AI to WhatsApp
           fireIndigoBackwardSignal(() => {
             hideTyping();
-            if (aiActionTitle) aiActionTitle.textContent = "Overview document delivered";
-            if (aiActionDesc) aiActionDesc.textContent = "Prompting if customer needs commercial pricing";
 
             addWaBrochureMessage(
               "Here is our official solution overview with architectural diagrams, security compliance, and integration specs:",
@@ -431,22 +421,8 @@ function executeStage(stageNumber) {
 
       addWaUserMessage("What is your custom pricing and onboarding schedule?", "14:18");
 
-      // Green ball shoots to AI / Agent Inbox
+      // Green ball shoots from WhatsApp to AI / Agent Inbox
       fireGreenForwardSignal(() => {
-        // AI pauses and routes to Live Agent Sarah Mitchell
-        if (aiActionTitle) aiActionTitle.textContent = "Routing to Live Advisor Sarah Mitchell...";
-        if (aiActionDesc) aiActionDesc.textContent = "Commercial negotiation requested · Live Specialist joining chat";
-        if (aiStatusText) aiStatusText.textContent = "⏸ Handoff (Closer In-Between)";
-        if (aiStatusPill) {
-          aiStatusPill.style.background = "rgba(245, 158, 11, 0.2)";
-          aiStatusPill.style.color = "#f59e0b";
-          aiStatusPill.style.borderColor = "rgba(245, 158, 11, 0.45)";
-        }
-        if (aiBeacon) {
-          aiBeacon.style.background = "#f59e0b";
-          aiBeacon.style.boxShadow = "0 0 8px #f59e0b";
-        }
-
         // STEP 6: AGENT COMES IN-BETWEEN!
         scheduleNext(() => {
           executeStage(6);
@@ -528,20 +504,6 @@ function executeStage(stageNumber) {
         addWaHandoffBanner("⚡ <strong>Sarah Mitchell</strong> handed over to <strong>AI Booking Assistant</strong> for instant scheduling.");
         if (waStatusText) waStatusText.textContent = "AI Scheduler Online (Booking Consultation)";
 
-        // AI Robot wakes up and resumes active automation!
-        if (aiStatusText) aiStatusText.textContent = "Autonomous AI Active (<2s)";
-        if (aiStatusPill) {
-          aiStatusPill.style.background = "rgba(16, 185, 129, 0.16)";
-          aiStatusPill.style.color = "#34d399";
-          aiStatusPill.style.borderColor = "rgba(16, 185, 129, 0.4)";
-        }
-        if (aiBeacon) {
-          aiBeacon.style.background = "#10b981";
-          aiBeacon.style.boxShadow = "0 0 8px #10b981";
-        }
-        if (aiActionTitle) aiActionTitle.textContent = "Arranging VIP Onboarding Consultation...";
-        if (aiActionDesc) aiActionDesc.textContent = "Checking calendar availability for private meeting link";
-
         // AI asks for Date and Time via Indigo Ball
         scheduleNext(() => {
           showTyping('MeSage AI');
@@ -588,9 +550,6 @@ function executeStage(stageNumber) {
 
       // Green Ball shoots from WhatsApp user to AI Automation
       fireGreenForwardSignal(() => {
-        if (aiActionTitle) aiActionTitle.textContent = "Consultation Confirmed & Synced! 🎉";
-        if (aiActionDesc) aiActionDesc.textContent = "Calendar invite dispatched · Assigned Host: Sarah Mitchell";
-
         scheduleNext(() => {
           showTyping('MeSage AI');
           // Indigo Ball shoots from AI back to WhatsApp
@@ -686,18 +645,6 @@ window.restartSimulation = function() {
 
   // Reset AI Robot Stage
   if (companyLogoCore) companyLogoCore.style.transform = 'scale(1)';
-  if (aiStatusText) aiStatusText.textContent = 'Autonomous AI Online (<2s)';
-  if (aiStatusPill) {
-    aiStatusPill.style.background = "rgba(16, 185, 129, 0.16)";
-    aiStatusPill.style.color = "#34d399";
-    aiStatusPill.style.borderColor = "rgba(16, 185, 129, 0.4)";
-  }
-  if (aiBeacon) {
-    aiBeacon.style.background = "#10b981";
-    aiBeacon.style.boxShadow = "0 0 8px #10b981";
-  }
-  if (aiActionTitle) aiActionTitle.textContent = "Listening for customer query...";
-  if (aiActionDesc) aiActionDesc.textContent = "Instant answers in < 2 seconds";
 
   // Start at Stage 1
   scheduleNext(() => {
