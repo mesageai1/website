@@ -9,46 +9,34 @@ const waTypingBox = document.getElementById('waTypingBox');
 const typingSender = document.getElementById('typingSender');
 const waButtonsTray = document.getElementById('waButtonsTray');
 const waStatusText = document.getElementById('waStatusText');
+const phoneFrame = document.getElementById('phoneFrame');
 
 const btnPlayPause = document.getElementById('btnPlayPause');
 const playIcon = document.getElementById('playIcon');
 const playLabel = document.getElementById('playLabel');
 
-// Connector 1 Elements (WhatsApp <--> Middle Responder)
+// Connector 1 Elements (Dynamic Vertical Tracks)
+const colConn1 = document.getElementById('colConn1');
 const conn1Label = document.getElementById('conn1Label');
-const trackUserToMiddle = document.getElementById('trackUserToMiddle');
-const trackMiddleToUser = document.getElementById('trackMiddleToUser');
+const connectorTrackHolder = document.getElementById('connectorTrackHolder');
+const lineForward = document.getElementById('lineForward');
+const lineBackward = document.getElementById('lineBackward');
 
-// Middle Responder Elements (AI Bot <-> Human Agent Inbox)
-const middleResponderBox = document.getElementById('middleResponderBox');
-const middleStageTag = document.getElementById('middleStageTag');
-const middleStageTitle = document.getElementById('middleStageTitle');
-const middleStageCaption = document.getElementById('middleStageCaption');
-const middleAiView = document.getElementById('middleAiView');
-const middleAgentInboxView = document.getElementById('middleAgentInboxView');
+// In-Between Agent Elements (Slides in between on price!)
+const colAgentInbetween = document.getElementById('colAgentInbetween');
+const colConn2 = document.getElementById('colConn2');
 
+// AI Bot Elements (Right)
+const colAiBot = document.getElementById('colAiBot');
+const aiBotBox = document.getElementById('aiBotBox');
 const aiAvatarCore = document.getElementById('aiAvatarCore');
 const aiStatusPill = document.getElementById('aiStatusPill');
 const aiActionTitle = document.getElementById('aiActionTitle');
 const aiActionDesc = document.getElementById('aiActionDesc');
 const aiSpeedValue = document.getElementById('aiSpeedValue');
 const aiConfidenceValue = document.getElementById('aiConfidenceValue');
+const aiModeValue = document.getElementById('aiModeValue');
 const aiTransferNotice = document.getElementById('aiTransferNotice');
-
-// Connector 2 Elements (Middle Inbox <--> Agent Team)
-const conn2Label = document.getElementById('conn2Label');
-const trackAgentToMiddle = document.getElementById('trackAgentToMiddle');
-const trackMiddleToAgent = document.getElementById('trackMiddleToAgent');
-
-// Right Team & CRM Elements
-const agentBox = document.getElementById('agentBox');
-const teamMemberPriya = document.getElementById('teamMemberPriya');
-const priyaStatusText = document.getElementById('priyaStatusText');
-const priyaPill = document.getElementById('priyaPill');
-const leadHeat = document.getElementById('leadHeat');
-const agentLookingFor = document.getElementById('agentLookingFor');
-const agentBrochureStatus = document.getElementById('agentBrochureStatus');
-const leadStageText = document.getElementById('leadStageText');
 
 // Progress Pills
 const pills = [
@@ -83,87 +71,91 @@ function setActivePill(num) {
   });
 }
 
-// Helper: Reset signal track animations
-function resetTrack(el) {
-  if (!el) return;
-  el.classList.remove('fire-forward', 'fire-backward', 'shooting');
-  void el.offsetWidth; // force DOM reflow
+// ==========================================================================
+// Dynamic Vertical Signal Positioning ("lines come slowly below with messages")
+// ==========================================================================
+function updateSignalLevel() {
+  if (!connectorTrackHolder || !waChatStream || !phoneFrame) return;
+
+  const lastBubble = waChatStream.lastElementChild;
+  if (!lastBubble) {
+    connectorTrackHolder.style.top = '105px';
+    return;
+  }
+
+  const phoneRect = phoneFrame.getBoundingClientRect();
+  const bubbleRect = lastBubble.getBoundingClientRect();
+
+  // Vertical center of the latest message bubble relative to top of phone
+  const bubbleCenterY = (bubbleRect.top + bubbleRect.height / 2) - phoneRect.top;
+
+  // Clamp within the visible chat canvas
+  const clampedY = Math.max(90, Math.min(bubbleCenterY, 415));
+
+  connectorTrackHolder.style.top = `${clampedY}px`;
 }
 
-// ==========================================================================
-// Synchronized Signal Beams
-// ==========================================================================
+// Reset signal line animations
+function resetLine(line) {
+  if (!line) return;
+  line.classList.remove('active-fire', 'shooting');
+  void line.offsetWidth; // trigger reflow
+}
 
-// 1. Signal: User (Phone) -> Middle Responder
-function fireSignalUserToMiddle(callback) {
+// 1. Forward Signal: Phone -> AI / Agent (moves down with message)
+function fireForwardSignal(callback) {
+  updateSignalLevel();
   if (!isPlaying) {
     if (callback) callback();
     return;
   }
+
   if (conn1Label) {
     conn1Label.textContent = "Customer Signal ➔";
-    conn1Label.classList.add('active-link');
-  }
-  resetTrack(trackUserToMiddle);
-  if (trackUserToMiddle) {
-    trackUserToMiddle.classList.add('fire-forward', 'shooting');
+    conn1Label.classList.add('active-pulse');
   }
 
-  // Arrival at Middle (650ms animation duration)
+  resetLine(lineForward);
+  if (lineForward) {
+    lineForward.classList.add('active-fire', 'shooting');
+  }
+
+  // 600ms arrival
   setTimeout(() => {
-    if (trackUserToMiddle) trackUserToMiddle.classList.remove('shooting');
+    if (lineForward) lineForward.classList.remove('shooting');
     if (aiAvatarCore) {
-      aiAvatarCore.style.boxShadow = '0 0 35px #818cf8, 0 0 10px #ffffff';
+      aiAvatarCore.style.boxShadow = '0 0 32px #818cf8, 0 0 10px #ffffff';
       setTimeout(() => {
         aiAvatarCore.style.boxShadow = '0 0 20px rgba(99, 102, 241, 0.5)';
-      }, 500);
+      }, 450);
     }
     if (callback) callback();
-  }, 650);
+  }, 600);
 }
 
-// 2. Signal: Middle Responder -> User (Phone)
-function fireSignalMiddleToUser(callback) {
+// 2. Backward Signal: AI / Agent -> Phone (moves down with reply)
+function fireBackwardSignal(callback) {
+  updateSignalLevel();
   if (!isPlaying) {
     if (callback) callback();
     return;
   }
+
   if (conn1Label) {
     conn1Label.textContent = "Response Signal ➔";
-    conn1Label.classList.add('active-link');
-  }
-  resetTrack(trackMiddleToUser);
-  if (trackMiddleToUser) {
-    trackMiddleToUser.classList.add('fire-backward', 'shooting');
+    conn1Label.classList.add('active-pulse');
   }
 
-  // Arrival at Phone (650ms animation duration)
+  resetLine(lineBackward);
+  if (lineBackward) {
+    lineBackward.classList.add('active-fire', 'shooting');
+  }
+
+  // 600ms arrival
   setTimeout(() => {
-    if (trackMiddleToUser) trackMiddleToUser.classList.remove('shooting');
+    if (lineBackward) lineBackward.classList.remove('shooting');
     if (callback) callback();
-  }, 650);
-}
-
-// 3. Signal: Agent Team (Right) -> Middle Inbox
-function fireSignalAgentToMiddle(callback) {
-  if (!isPlaying) {
-    if (callback) callback();
-    return;
-  }
-  if (conn2Label) {
-    conn2Label.textContent = "Priya Assigned ➔";
-    conn2Label.classList.add('active-link');
-  }
-  resetTrack(trackAgentToMiddle);
-  if (trackAgentToMiddle) {
-    trackAgentToMiddle.classList.add('fire-backward', 'shooting');
-  }
-
-  // Arrival at Middle (650ms animation duration)
-  setTimeout(() => {
-    if (trackAgentToMiddle) trackAgentToMiddle.classList.remove('shooting');
-    if (callback) callback();
-  }, 650);
+  }, 600);
 }
 
 // Helper: Show typing indicator
@@ -172,6 +164,7 @@ function showTyping(name = 'AI Bot') {
     typingSender.textContent = name;
     waTypingBox.style.display = 'flex';
     scrollWaCanvas();
+    updateSignalLevel();
   }
 }
 
@@ -196,6 +189,7 @@ function addWaUserMessage(text, time = '14:15') {
   `;
   waChatStream.appendChild(item);
   scrollWaCanvas();
+  updateSignalLevel();
 }
 
 function addWaBotMessage(text, time = '14:15') {
@@ -211,6 +205,7 @@ function addWaBotMessage(text, time = '14:15') {
   `;
   waChatStream.appendChild(item);
   scrollWaCanvas();
+  updateSignalLevel();
 }
 
 function addWaBrochureMessage(text, fileTitle, fileSize, promptText, time = '14:17') {
@@ -235,6 +230,7 @@ function addWaBrochureMessage(text, fileTitle, fileSize, promptText, time = '14:
   `;
   waChatStream.appendChild(item);
   scrollWaCanvas();
+  updateSignalLevel();
 }
 
 function addWaAgentMessage(text, time = '14:19') {
@@ -255,6 +251,7 @@ function addWaAgentMessage(text, time = '14:19') {
   `;
   waChatStream.appendChild(item);
   scrollWaCanvas();
+  updateSignalLevel();
 }
 
 function addWaHandoffBanner(html) {
@@ -264,6 +261,7 @@ function addWaHandoffBanner(html) {
   item.innerHTML = html;
   waChatStream.appendChild(item);
   scrollWaCanvas();
+  updateSignalLevel();
 }
 
 function renderButtons(btnList) {
@@ -302,25 +300,24 @@ function executeStage(stageNumber) {
 
   switch (stageNumber) {
     // -------------------------------------------------------------
-    // STAGE 1: Buyer inquiries about apartments
+    // STAGE 1: Buyer Inquires about apartments
     // -------------------------------------------------------------
     case 1: {
       setActivePill(1);
 
-      // 1. User message appears in WhatsApp
+      // User sends message
       addWaUserMessage("Hi, I am looking for an apartment in your new project.", "14:15");
 
-      // 2. Synchronized signal travels from Phone -> Middle AI Bot
-      fireSignalUserToMiddle(() => {
-        // Signal hits Middle AI Bot!
+      // Signal line moves to message 1 level and fires forward to AI
+      fireForwardSignal(() => {
         if (aiActionTitle) aiActionTitle.textContent = "Analyzing Customer Inquiry...";
-        if (aiActionDesc) aiActionDesc.textContent = "Intent: Apartment_Search (2, 3, 4 BHK luxury residences). Fetching live project availability...";
+        if (aiActionDesc) aiActionDesc.textContent = "Intent: Apartment_Search. Scanning project inventory for 2, 3, 4 BHK luxury residences...";
         if (aiSpeedValue) aiSpeedValue.textContent = "0.8s";
         if (aiConfidenceValue) aiConfidenceValue.textContent = "99.4%";
 
         scheduleNext(() => {
-          // AI formulated response -> signal travels Middle -> Phone
-          fireSignalMiddleToUser(() => {
+          // AI dispatches reply back along the line
+          fireBackwardSignal(() => {
             showTyping('MeSage AI');
             scheduleNext(() => {
               hideTyping();
@@ -360,25 +357,22 @@ function executeStage(stageNumber) {
     }
 
     // -------------------------------------------------------------
-    // STAGE 3: Customer chooses 3 BHK -> AI explains area specs
+    // STAGE 3: Customer chooses 3 BHK -> Lines move down with message!
     // -------------------------------------------------------------
     case 3: {
       setActivePill(2);
       clearButtons();
 
-      // 1. User message in WhatsApp
       addWaUserMessage("3 BHK", "14:16");
 
-      // 2. Signal travels Phone -> Middle AI Bot
-      fireSignalUserToMiddle(() => {
-        if (agentLookingFor) agentLookingFor.textContent = "3 BHK (1,450-1,850 sq.ft)";
+      // Signal lines smoothly slide down to message 3 and fire forward
+      fireForwardSignal(() => {
         if (aiActionTitle) aiActionTitle.textContent = "Retrieving 3 BHK Specs";
-        if (aiActionDesc) aiActionDesc.textContent = "Pulling super built-up area (1,450 to 1,850 sq.ft), master floor layouts, and balcony views.";
+        if (aiActionDesc) aiActionDesc.textContent = "Pulling super built-up area (1,450 to 1,850 sq.ft), master floor layouts, and balcony specs.";
         if (aiSpeedValue) aiSpeedValue.textContent = "0.9s";
 
         scheduleNext(() => {
-          // AI sends response back -> signal travels Middle -> Phone
-          fireSignalMiddleToUser(() => {
+          fireBackwardSignal(() => {
             showTyping('MeSage AI');
             scheduleNext(() => {
               hideTyping();
@@ -387,7 +381,7 @@ function executeStage(stageNumber) {
               if (aiSpeedValue) aiSpeedValue.textContent = "1.1s";
 
               addWaBotMessage(
-                "Nice choice! Our 3 BHK luxury residences range from **1,450 to 1,850 sq. ft.** of super built-up area with panoramic skyline balconies.<br><br>What would you like to know more about our 3 BHK homes?",
+                "Nice choice! Our 3 BHK luxury residences range from **1,450 to 1,850 sq. ft.** super built-up area with panoramic balconies.<br><br>What would you like to know more about our 3 BHK homes?",
                 "14:16"
               );
 
@@ -409,7 +403,7 @@ function executeStage(stageNumber) {
     }
 
     // -------------------------------------------------------------
-    // STAGE 4: Customer asks Brochure -> AI sends PDF
+    // STAGE 4: Customer asks Brochure -> Lines move down with message!
     // -------------------------------------------------------------
     case 4: {
       setActivePill(3);
@@ -417,17 +411,17 @@ function executeStage(stageNumber) {
 
       addWaUserMessage("Brochure", "14:17");
 
-      fireSignalUserToMiddle(() => {
+      // Signal lines slide down to brochure message level
+      fireForwardSignal(() => {
         if (aiActionTitle) aiActionTitle.textContent = "Generating PDF Brochure";
-        if (aiActionDesc) aiActionDesc.textContent = "Fetching verified Skyline_Residences_3BHK_Brochure.pdf via WhatsApp Media API.";
+        if (aiActionDesc) aiActionDesc.textContent = "Transmitting verified Skyline_Residences_3BHK_Brochure.pdf via WhatsApp Media API.";
         if (aiSpeedValue) aiSpeedValue.textContent = "1.0s";
 
         scheduleNext(() => {
-          fireSignalMiddleToUser(() => {
+          fireBackwardSignal(() => {
             showTyping('MeSage AI');
             scheduleNext(() => {
               hideTyping();
-              if (agentBrochureStatus) agentBrochureStatus.textContent = "Sent via PDF ✓";
               if (aiActionTitle) aiActionTitle.textContent = "Brochure Dispatched";
               if (aiActionDesc) aiActionDesc.textContent = "Delivered floor layouts. Inquiring if buyer would like pricing.";
               if (aiSpeedValue) aiSpeedValue.textContent = "1.2s";
@@ -456,75 +450,60 @@ function executeStage(stageNumber) {
     }
 
     // -------------------------------------------------------------
-    // STAGE 5: Buyer asks PRICE -> ESCALATION & HUMAN AGENT ENTERS MIDDLE!
+    // STAGE 5: Buyer asks PRICE -> AGENT ENTERS IN-BETWEEN!
     // -------------------------------------------------------------
     case 5: {
       setActivePill(4);
       clearButtons();
 
-      // 1. User asks for price in WhatsApp
       addWaUserMessage("I want to know the price as well.", "14:18");
 
-      // 2. Signal travels Phone -> Middle AI Bot
-      fireSignalUserToMiddle(() => {
-        // AI Bot detects price inquiry!
+      // Lines slide down to the bottom message and fire forward
+      fireForwardSignal(() => {
+        // AI detects price inquiry!
         if (aiActionTitle) aiActionTitle.textContent = "⚠️ PRICE INQUIRY DETECTED!";
-        if (aiActionDesc) aiActionDesc.textContent = "Commercial negotiation requested. Pausing automated bot to bring Live Closer Priya Sharma into Middle Inbox.";
+        if (aiActionDesc) aiActionDesc.textContent = "Commercial negotiation requested. Pausing AI bot. Closer Priya Sharma entering in-between from Live Inbox.";
         if (aiSpeedValue) aiSpeedValue.textContent = "0.4s";
-        if (aiTransferNotice) aiTransferNotice.style.display = 'flex';
-
-        // Update Right CRM
-        if (leadHeat) {
-          leadHeat.className = 'lead-heat hot';
-          leadHeat.textContent = '🔥 Hot Buyer / Pricing';
+        if (aiModeValue) {
+          aiModeValue.textContent = "Paused ⏸";
+          aiModeValue.style.color = "#f59e0b";
         }
-        if (leadStageText) leadStageText.textContent = "Commercial Negotiation";
+        if (aiTransferNotice) aiTransferNotice.style.display = 'flex';
+        if (aiBotBox) aiBotBox.classList.add('ai-paused');
+        if (aiStatusPill) {
+          aiStatusPill.textContent = "⏸ Paused (Closer In-Between)";
+        }
 
-        // Step 6: Bring Human Agent into Middle from Inbox!
+        // STEP 6: AGENT COMES IN-BETWEEN!
         scheduleNext(() => {
           executeStage(6);
-        }, 1300);
+        }, 1200);
       });
       break;
     }
 
     // -------------------------------------------------------------
-    // STAGE 6: Priya Assigned & Steps into Middle Inbox!
+    // STAGE 6: Agent expands IN-BETWEEN WhatsApp & AI!
     // -------------------------------------------------------------
     case 6: {
       setActivePill(5);
 
-      // Signal shoots from Right (Sales Team) -> Middle Inbox
-      fireSignalAgentToMiddle(() => {
-        // Right team updates
-        if (teamMemberPriya) teamMemberPriya.classList.add('closer-assigned');
-        if (priyaStatusText) priyaStatusText.textContent = "🟢 Active in Middle Inbox!";
-        if (priyaPill) {
-          priyaPill.className = "tm-pill live";
-          priyaPill.textContent = "In Chat";
-        }
+      // Expand In-Between Slot smoothly
+      if (colAgentInbetween) colAgentInbetween.classList.add('active-inbetween');
+      if (colConn2) colConn2.classList.add('active-inbetween');
+      if (colConn1) colConn1.classList.add('narrowed');
 
-        // Middle Panel transforms into Human Agent Inbox!
-        if (middleResponderBox) middleResponderBox.classList.add('agent-mode-active');
-        if (middleStageTag) {
-          middleStageTag.className = "stage-tag inbox-tag";
-          middleStageTag.textContent = "STEP 2: HUMAN AGENT INBOX";
-        }
-        if (middleStageTitle) middleStageTitle.textContent = "Priya's Live Inbox";
-        if (middleStageCaption) middleStageCaption.textContent = "Senior Sales Closer answering live from unified inbox";
+      // WhatsApp Chat Notification Banner
+      addWaHandoffBanner("🤝 <strong>Senior Sales Advisor Priya Sharma</strong> has joined the conversation in-between.");
+      if (waStatusText) waStatusText.textContent = "Chatting with Priya Sharma (Sales Closer)";
 
-        if (middleAiView) middleAiView.style.display = 'none';
-        if (middleAgentInboxView) middleAgentInboxView.style.display = 'flex';
+      // Update signal level to align with handoff banner / bottom
+      updateSignalLevel();
 
-        // WhatsApp Chat Notification Banner
-        addWaHandoffBanner("🤝 <strong>Senior Sales Advisor Priya Sharma</strong> has joined the conversation.");
-        if (waStatusText) waStatusText.textContent = "Chatting with Priya Sharma (Sales Closer)";
-
-        // Agent in Middle Inbox prepares and dispatches quote
-        scheduleNext(() => {
-          sendAgentPricingMessage();
-        }, 1400);
-      });
+      // Agent in-between prepares & dispatches pricing quote
+      scheduleNext(() => {
+        sendAgentPricingMessage();
+      }, 1500);
       break;
     }
 
@@ -534,8 +513,8 @@ function executeStage(stageNumber) {
     case 7: {
       setActivePill(5);
 
-      // Green signal shoots from Middle Inbox -> Phone
-      fireSignalMiddleToUser(() => {
+      // Signal shoots from Agent in-between -> Phone along the level
+      fireBackwardSignal(() => {
         showTyping('Priya Sharma');
         scheduleNext(() => {
           hideTyping();
@@ -581,7 +560,7 @@ function sendAgentPricingMessage() {
   executeStage(7);
 }
 
-// Triggered by "Dispatched via WhatsApp Inbox" button in Middle Card
+// Triggered by button in Agent in-between card
 window.sendAgentMessageNow = function() {
   if (currentStage === 6) {
     clearTimeout(actionTimeout);
@@ -593,13 +572,13 @@ function userConfirmsSiteVisit() {
   clearButtons();
   addWaUserMessage("Yes, Saturday 11 AM works great for me!", "14:20");
 
-  fireSignalUserToMiddle(() => {
+  fireForwardSignal(() => {
     scheduleNext(() => {
-      fireSignalMiddleToUser(() => {
+      fireBackwardSignal(() => {
         showTyping('Priya Sharma');
         scheduleNext(() => {
           hideTyping();
-          if (conn2Label) conn2Label.textContent = "VIP Tour Booked! 🎉";
+          if (conn1Label) conn1Label.textContent = "Booking Confirmed! 🎉";
           addWaAgentMessage(
             "Wonderful Rahul! 🎉 Your VIP site consultation is confirmed for **Saturday at 11:00 AM**. I will personally welcome you at our experience gallery with the customized cost breakdown. Looking forward to meeting you!",
             "14:20"
@@ -622,9 +601,9 @@ function userRequestsCall() {
   clearButtons();
   addWaUserMessage("Can you please call me directly to discuss?", "14:20");
 
-  fireSignalUserToMiddle(() => {
+  fireForwardSignal(() => {
     scheduleNext(() => {
-      fireSignalMiddleToUser(() => {
+      fireBackwardSignal(() => {
         showTyping('Priya Sharma');
         scheduleNext(() => {
           hideTyping();
@@ -649,9 +628,8 @@ window.togglePlayPause = function() {
     if (playIcon) playIcon.textContent = '▶';
     if (playLabel) playLabel.textContent = 'Resume Demo';
     clearTimeout(actionTimeout);
-    if (trackUserToMiddle) resetTrack(trackUserToMiddle);
-    if (trackMiddleToUser) resetTrack(trackMiddleToUser);
-    if (trackAgentToMiddle) resetTrack(trackAgentToMiddle);
+    if (lineForward) resetLine(lineForward);
+    if (lineBackward) resetLine(lineBackward);
   }
 };
 
@@ -672,55 +650,34 @@ window.restartSimulation = function() {
   // Reset WhatsApp Status
   if (waStatusText) waStatusText.textContent = 'AI Bot Online (Replies in 2s)';
 
-  // Reset Connectors
-  if (trackUserToMiddle) resetTrack(trackUserToMiddle);
-  if (trackMiddleToUser) resetTrack(trackMiddleToUser);
-  if (trackAgentToMiddle) resetTrack(trackAgentToMiddle);
+  // Reset In-Between Agent slot to closed
+  if (colAgentInbetween) colAgentInbetween.classList.remove('active-inbetween');
+  if (colConn2) colConn2.classList.remove('active-inbetween');
+  if (colConn1) colConn1.classList.remove('narrowed');
 
+  // Reset Signal Lines to top
+  if (lineForward) resetLine(lineForward);
+  if (lineBackward) resetLine(lineBackward);
+  if (connectorTrackHolder) connectorTrackHolder.style.top = '105px';
   if (conn1Label) {
-    conn1Label.textContent = "Live Signal Link";
-    conn1Label.classList.remove('active-link');
-  }
-  if (conn2Label) {
-    conn2Label.textContent = "Team Standby";
-    conn2Label.classList.remove('active-link');
+    conn1Label.textContent = "⚡ Signal Link";
+    conn1Label.classList.remove('active-pulse');
   }
 
-  // Reset Middle Responder to AI Bot View
-  if (middleResponderBox) middleResponderBox.classList.remove('agent-mode-active');
-  if (middleStageTag) {
-    middleStageTag.className = "stage-tag ai-tag";
-    middleStageTag.textContent = "STEP 2: AI BOT ACTIVE";
-  }
-  if (middleStageTitle) middleStageTitle.textContent = "Active Responder";
-  if (middleStageCaption) middleStageCaption.textContent = "Handles routine queries & hands over on price";
-
-  if (middleAiView) middleAiView.style.display = 'flex';
-  if (middleAgentInboxView) middleAgentInboxView.style.display = 'none';
-
+  // Reset AI Bot Box
+  if (aiBotBox) aiBotBox.classList.remove('ai-paused');
   if (aiStatusPill) {
-    aiStatusPill.textContent = '🟢 Auto-Replying in < 2s';
+    aiStatusPill.textContent = '🟢 Active & Replying (<2s)';
   }
   if (aiActionTitle) aiActionTitle.textContent = "Listening for customer inquiry...";
   if (aiActionDesc) aiActionDesc.textContent = "Ready to answer questions about 2, 3, 4 BHK apartments, floor plans, and amenities.";
   if (aiSpeedValue) aiSpeedValue.textContent = "1.1s";
   if (aiConfidenceValue) aiConfidenceValue.textContent = "99.4%";
+  if (aiModeValue) {
+    aiModeValue.textContent = "Auto ⚡";
+    aiModeValue.style.color = "#34d399";
+  }
   if (aiTransferNotice) aiTransferNotice.style.display = 'none';
-
-  // Reset Right Team & CRM
-  if (teamMemberPriya) teamMemberPriya.classList.remove('closer-assigned');
-  if (priyaStatusText) priyaStatusText.textContent = "Standby ⏳ (Listening to AI)";
-  if (priyaPill) {
-    priyaPill.className = "tm-pill";
-    priyaPill.textContent = "Standby";
-  }
-  if (leadHeat) {
-    leadHeat.className = 'lead-heat';
-    leadHeat.textContent = 'Interested';
-  }
-  if (agentLookingFor) agentLookingFor.textContent = "3 BHK Apartment";
-  if (agentBrochureStatus) agentBrochureStatus.textContent = "Pending";
-  if (leadStageText) leadStageText.textContent = "AI Qualification";
 
   // Reset Pills
   setActivePill(1);
