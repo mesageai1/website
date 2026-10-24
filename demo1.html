@@ -74,7 +74,7 @@
       </div>
     </section>
 
-    <!-- ===== 3-STAGE VISUAL WORKFLOW (WhatsApp <--> AI Bot <--> Human Agent) ===== -->
+    <!-- ===== 3-STAGE VISUAL WORKFLOW (WhatsApp <--> Middle Responder <--> Agent Team) ===== -->
     <section class="stage-section container">
       <div class="stage-flow-layout">
 
@@ -82,7 +82,7 @@
         <div class="flow-card-col col-phone">
           <div class="stage-tag wa-tag">STEP 1: CUSTOMER</div>
           <h2 class="stage-title">Customer WhatsApp</h2>
-          <p class="stage-caption">Real-time chat on mobile phone</p>
+          <p class="stage-caption">Mobile chat in real-time</p>
 
           <div class="phone-frame">
             <!-- Notch -->
@@ -141,105 +141,184 @@
           </div>
         </div>
 
-        <!-- CONNECTOR 1: Animated Arrows (WhatsApp <--> AI Bot) -->
+        <!-- CONNECTOR 1: Synchronized Signal Beam (WhatsApp <--> Middle Responder) -->
         <div class="flow-connector-col" id="conn1">
           <div class="connector-inner">
-            <span class="conn-label" id="conn1Label">AI Answering (&lt;2s)</span>
+            <span class="conn-label" id="conn1Label">Live Signal Link</span>
             
-            <!-- Forward Arrow (User -> AI) -->
-            <div class="arrow-track forward" id="arrowUserToAI">
-              <div class="pulse-packet"></div>
-              <span class="arrow-head">➔</span>
+            <!-- Forward Signal Track (User -> Middle) -->
+            <div class="signal-track forward" id="trackUserToMiddle">
+              <div class="signal-packet-dot" id="pktUserToMiddle"></div>
+              <span class="track-arrow">➔</span>
             </div>
 
-            <!-- Return Arrow (AI -> WhatsApp) -->
-            <div class="arrow-track backward" id="arrowAIToUser">
-              <div class="pulse-packet"></div>
-              <span class="arrow-head">➔</span>
+            <!-- Return Signal Track (Middle -> User) -->
+            <div class="signal-track backward" id="trackMiddleToUser">
+              <div class="signal-packet-dot" id="pktMiddleToUser"></div>
+              <span class="track-arrow">➔</span>
             </div>
           </div>
         </div>
 
-        <!-- 2. MIDDLE: AI Bot Engine -->
-        <div class="flow-card-col col-ai">
-          <div class="stage-tag ai-tag">STEP 2: AUTOMATION</div>
-          <h2 class="stage-title">MeSage AI Bot</h2>
-          <p class="stage-caption">Auto-replies in under 2 seconds</p>
+        <!-- 2. MIDDLE: Dynamic Responder (AI Bot -> Transitions to Human Agent Inbox on Price!) -->
+        <div class="flow-card-col col-middle">
+          <div class="stage-tag" id="middleStageTag">STEP 2: AI BOT ACTIVE</div>
+          <h2 class="stage-title" id="middleStageTitle">Active Responder</h2>
+          <p class="stage-caption" id="middleStageCaption">Handles routine queries &amp; hands over on price</p>
 
-          <div class="ai-bot-box">
-            <!-- Animated Robot Avatar -->
-            <div class="ai-bot-avatar-wrap">
-              <div class="ai-bot-avatar">
-                <span class="bot-emoji">🤖</span>
-                <span class="ai-glow-ring"></span>
-              </div>
-              <h3>MeSage AI Assistant</h3>
-              <span class="ai-status-pill" id="aiStatusPill">🟢 Active & Replying Auto</span>
-            </div>
+          <div class="middle-responder-box" id="middleResponderBox">
 
-            <!-- Current AI Action Display -->
-            <div class="ai-action-card">
-              <span class="action-label">CURRENT AI ACTION:</span>
-              <strong id="aiActionTitle">Listening for customer questions...</strong>
-              <p id="aiActionDesc">Ready to answer questions about 2, 3, 4 BHK apartments, floor plans, and amenities.</p>
+            <!-- STATE A: AI BOT VIEW (Active during routine questions) -->
+            <div class="middle-view ai-mode" id="middleAiView">
               
-              <div class="ai-speed-counter">
-                <span>⏱️ Response Latency:</span>
-                <strong id="aiSpeedValue">1.2 Seconds</strong>
+              <div class="ai-header-row">
+                <div class="ai-avatar-wrap">
+                  <div class="ai-avatar-core" id="aiAvatarCore">
+                    <span class="bot-emoji">🤖</span>
+                    <span class="ai-pulse-wave"></span>
+                  </div>
+                </div>
+                <div class="ai-header-text">
+                  <div class="ai-title-row">
+                    <h3>MeSage AI Engine</h3>
+                    <span class="ai-live-dot"></span>
+                  </div>
+                  <span class="ai-pill-status" id="aiStatusPill">🟢 Auto-Replying in &lt; 2s</span>
+                </div>
               </div>
+
+              <!-- Animated Sound / Processing Waves -->
+              <div class="ai-waveform-box" id="aiWaveform">
+                <span class="wb"></span><span class="wb"></span><span class="wb"></span><span class="wb"></span><span class="wb"></span><span class="wb"></span><span class="wb"></span><span class="wb"></span><span class="wb"></span><span class="wb"></span>
+              </div>
+
+              <!-- Current AI Action Monitor -->
+              <div class="ai-live-card">
+                <div class="live-action-hdr">
+                  <span class="pulse-indicator"></span>
+                  <span class="action-kicker">MONITORING CONVERSATION</span>
+                </div>
+                <strong class="action-headline" id="aiActionTitle">Listening for customer inquiry...</strong>
+                <p class="action-detail" id="aiActionDesc">Ready to answer questions about 2, 3, 4 BHK apartments, floor plans, and amenities.</p>
+                
+                <div class="ai-metrics-row">
+                  <div class="metric-item">
+                    <small>Latency</small>
+                    <strong id="aiSpeedValue">1.1s</strong>
+                  </div>
+                  <div class="metric-item">
+                    <small>Intent Match</small>
+                    <strong id="aiConfidenceValue">99.4%</strong>
+                  </div>
+                  <div class="metric-item">
+                    <small>Mode</small>
+                    <strong style="color:#34d399">Auto ⚡</strong>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Flashing Amber Notice when Price is Asked -->
+              <div class="ai-transfer-notice" id="aiTransferNotice" style="display:none">
+                <span class="notice-icon">⚡</span>
+                <div>
+                  <strong>PRICE INQUIRY DETECTED!</strong>
+                  <p>Escalating lead to Closer Priya Sharma from Live Inbox ➔</p>
+                </div>
+              </div>
+
             </div>
 
-            <!-- AI Transfer Notice (Flashes when Price is asked) -->
-            <div class="ai-transfer-notice" id="aiTransferNotice" style="display:none">
-              <div class="transfer-icon">⚡</div>
-              <div>
-                <strong>PRICE INQUIRY DETECTED!</strong>
-                <p>Transferring conversation to Human Sales Agent Priya for personalized deal closing ➔</p>
+            <!-- STATE B: HUMAN AGENT INBOX VIEW (Brought to Middle when Price is asked!) -->
+            <div class="middle-view agent-inbox-mode" id="middleAgentInboxView" style="display:none">
+              
+              <div class="inbox-header">
+                <div class="inbox-agent-meta">
+                  <div class="agent-avatar-circle">
+                    <span>PS</span>
+                    <span class="agent-online-dot"></span>
+                  </div>
+                  <div>
+                    <div class="agent-name-row">
+                      <strong>Priya Sharma</strong>
+                      <span class="inbox-badge">Live Closer</span>
+                    </div>
+                    <small class="inbox-sub">MeSage Unified Inbox · Escalation Takeover</small>
+                  </div>
+                </div>
+                <span class="agent-live-tag">🟢 In Conversation</span>
               </div>
+
+              <!-- Escalation Context Banner -->
+              <div class="inbox-lead-context">
+                <div class="ctx-tag">ESCALATED ON PRICE</div>
+                <div class="ctx-buyer"><strong>Lead:</strong> Rahul Sharma · <strong>Interest:</strong> 3 BHK Luxury</div>
+                <div class="ctx-quote-bubble">
+                  <em>Customer asked: "I want to know the price as well."</em>
+                </div>
+              </div>
+
+              <!-- Agent Live Composer -->
+              <div class="inbox-composer-box">
+                <div class="composer-label">
+                  <span>Drafting Response to Customer</span>
+                  <span class="comp-badge">Auto-Prepared</span>
+                </div>
+                <div class="composer-text-preview" id="composerPreview">
+                  "3 BHK starts at <strong>₹1.85 Cr</strong> with an exclusive <strong>10:90 festive scheme</strong>. Can we book a site visit this Saturday at 11 AM?"
+                </div>
+                <button class="btn btn-primary btn-sm btn-full" id="btnSendPriceNow" onclick="sendAgentMessageNow()">
+                  <span>Dispatched via WhatsApp Inbox</span> ➔
+                </button>
+              </div>
+
             </div>
+
           </div>
         </div>
 
-        <!-- CONNECTOR 2: Animated Arrow (AI Bot -> Human Agent -> WhatsApp) -->
+        <!-- CONNECTOR 2: Assignment Link (Agent Team -> Middle Inbox) -->
         <div class="flow-connector-col" id="conn2">
           <div class="connector-inner">
-            <span class="conn-label" id="conn2Label">Standby...</span>
+            <span class="conn-label" id="conn2Label">Team Standby</span>
             
-            <!-- Transfer Arrow (AI -> Agent) -->
-            <div class="arrow-track forward" id="arrowAIToAgent">
-              <div class="pulse-packet"></div>
-              <span class="arrow-head">➔</span>
+            <!-- Agent Assignment Track (Right -> Middle) -->
+            <div class="signal-track backward" id="trackAgentToMiddle">
+              <div class="signal-packet-dot" id="pktAgentToMiddle"></div>
+              <span class="track-arrow">➔</span>
             </div>
 
-            <!-- Agent Reply Arrow (Agent -> WhatsApp) -->
-            <div class="arrow-track backward" id="arrowAgentToUser">
-              <div class="pulse-packet"></div>
-              <span class="arrow-head">➔</span>
+            <!-- Sync Back Track (Middle -> Right) -->
+            <div class="signal-track forward" id="trackMiddleToAgent">
+              <div class="signal-packet-dot" id="pktMiddleToAgent"></div>
+              <span class="track-arrow">➔</span>
             </div>
           </div>
         </div>
 
-        <!-- 3. RIGHT: Human Agent (Joins on Price) -->
+        <!-- 3. RIGHT: Human Agent Team & CRM Queue -->
         <div class="flow-card-col col-agent">
-          <div class="stage-tag agent-tag">STEP 3: HUMAN CLOSER</div>
-          <h2 class="stage-title">Human Sales Agent</h2>
-          <p class="stage-caption">Joins automatically on price negotiation</p>
+          <div class="stage-tag agent-tag">STEP 3: TEAM &amp; PIPELINE</div>
+          <h2 class="stage-title">Sales Closer Team</h2>
+          <p class="stage-caption">Live human sales closers</p>
 
           <div class="agent-box" id="agentBox">
-            <!-- Agent Profile -->
-            <div class="agent-profile-header">
-              <div class="agent-avatar-circle">
-                <span>PS</span>
-                <span class="agent-online-dot"></span>
-              </div>
-              <div class="agent-meta">
-                <strong>Priya Sharma</strong>
-                <small>Senior Real Estate Closer</small>
-              </div>
-              <span class="agent-status-badge" id="agentStatusBadge">Standby ⏳</span>
+            
+            <!-- Available Agents List -->
+            <div class="team-header">
+              <span class="team-title">CLOSER POOL</span>
+              <span class="team-count">1 Active</span>
             </div>
 
-            <!-- Lead Info Snapshot -->
+            <div class="team-member-card active-agent" id="teamMemberPriya">
+              <div class="tm-avatar">PS</div>
+              <div class="tm-info">
+                <strong>Priya Sharma</strong>
+                <small id="priyaStatusText">Standby ⏳ (Listening to AI)</small>
+              </div>
+              <span class="tm-pill" id="priyaPill">Standby</span>
+            </div>
+
+            <!-- Lead Intelligence Card -->
             <div class="agent-lead-card">
               <div class="lead-card-top">
                 <span class="lead-chip">PROSPECT</span>
@@ -248,31 +327,23 @@
               <div class="lead-info-list">
                 <div><span>Name:</span> <strong>Rahul Sharma</strong></div>
                 <div><span>Looking for:</span> <strong id="agentLookingFor">3 BHK Apartment</strong></div>
-                <div><span>Brochure:</span> <strong id="agentBrochureStatus">Sent by AI Bot ✓</strong></div>
+                <div><span>Brochure:</span> <strong id="agentBrochureStatus">Pending</strong></div>
+                <div><span>Stage:</span> <strong id="leadStageText">AI Qualification</strong></div>
               </div>
             </div>
 
-            <!-- Agent Message Panel -->
-            <div class="agent-action-panel">
-              <div class="agent-standby-view" id="agentStandbyView">
-                <p>⏳ Priya is on standby while the <strong>AI Bot</strong> handles routine questions...</p>
-                <small>She will automatically enter the chat the moment <strong>price</strong> is requested.</small>
+            <!-- Team Instruction Box -->
+            <div class="team-policy-box">
+              <div class="policy-item">
+                <span class="p-icon">🤖</span>
+                <p>AI automatically handles routine specs, brochures, &amp; amenities.</p>
               </div>
-
-              <!-- Activated Agent Control (When Price is asked) -->
-              <div class="agent-joined-view" id="agentJoinedView" style="display:none">
-                <div class="agent-joined-banner">
-                  ⚡ <strong>Priya has joined the chat!</strong>
-                </div>
-                <div class="agent-prepared-reply">
-                  <small>Agent's Personalized Pricing Message:</small>
-                  <p>"3 BHK starts at ₹1.85 Cr with a 10:90 festive payment plan. Can we book a site visit this Saturday?"</p>
-                </div>
-                <button class="btn btn-primary btn-sm btn-full" id="btnSendPriceNow" onclick="sendAgentMessageNow()">
-                  Dispatched to WhatsApp ➔
-                </button>
+              <div class="policy-item highlight">
+                <span class="p-icon">🎯</span>
+                <p>When <strong>Price</strong> is asked, Priya takes over the middle inbox to close the deal!</p>
               </div>
             </div>
+
           </div>
         </div>
 
