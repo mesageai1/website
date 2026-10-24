@@ -25,6 +25,7 @@
         <a href="index.html">Home</a>
         <a href="demo1.html">Demo 1 (Live Flow)</a>
         <a href="demo2.html" class="active">Demo 2 (Schedule Demo)</a>
+        <a href="demo3.html">Demo 3 (16 Feats)</a>
       </nav>
 
       <a href="index.html" class="btn btn-secondary btn-sm">← Back to Website</a>
@@ -50,86 +51,92 @@
 
             <div id="alertBanner" class="alert-banner"></div>
 
-            <!-- Booking Form (No Placeholders) -->
+            <!-- Booking Form (No Placeholders - Compact 2-Col Layout) -->
             <form id="scheduleDemoForm" class="demo-form" action="https://formsubmit.co/mesageai1@gmail.com" method="POST" novalidate>
               <input type="hidden" name="_subject" value="New Demo Schedule Request - MeSage AI">
               <input type="hidden" name="_template" value="box">
               <input type="hidden" name="_captcha" value="false">
               
-              <!-- 1. Name -->
-              <div class="form-group" id="groupName">
-                <label for="fullName" class="form-label">
-                  <span>Name <span class="req">*</span></span>
-                </label>
-                <div class="input-container">
-                  <span class="input-icon">👤</span>
-                  <input 
-                    type="text" 
-                    id="fullName" 
-                    name="name" 
-                    class="form-input" 
-                    required 
-                    autocomplete="name"
-                  >
+              <!-- Row 1: Name & Email -->
+              <div class="form-row">
+                <!-- 1. Name -->
+                <div class="form-group" id="groupName">
+                  <label for="fullName" class="form-label">
+                    <span>Name <span class="req">*</span></span>
+                  </label>
+                  <div class="input-container">
+                    <span class="input-icon">👤</span>
+                    <input 
+                      type="text" 
+                      id="fullName" 
+                      name="name" 
+                      class="form-input" 
+                      required 
+                      autocomplete="name"
+                    >
+                  </div>
+                  <span class="field-error">Please enter your name.</span>
                 </div>
-                <span class="field-error">Please enter your name.</span>
+
+                <!-- 2. Email -->
+                <div class="form-group" id="groupEmail">
+                  <label for="workEmail" class="form-label">
+                    <span>Email <span class="req">*</span></span>
+                  </label>
+                  <div class="input-container">
+                    <span class="input-icon">✉️</span>
+                    <input 
+                      type="email" 
+                      id="workEmail" 
+                      name="email" 
+                      class="form-input" 
+                      required 
+                      autocomplete="email"
+                    >
+                  </div>
+                  <span class="field-error">Please enter a valid email address.</span>
+                </div>
               </div>
 
-              <!-- 2. Email -->
-              <div class="form-group" id="groupEmail">
-                <label for="workEmail" class="form-label">
-                  <span>Email <span class="req">*</span></span>
-                </label>
-                <div class="input-container">
-                  <span class="input-icon">✉️</span>
-                  <input 
-                    type="email" 
-                    id="workEmail" 
-                    name="email" 
-                    class="form-input" 
-                    required 
-                    autocomplete="email"
-                  >
+              <!-- Row 2: Company & Mobile -->
+              <div class="form-row">
+                <!-- 3. Company Name -->
+                <div class="form-group" id="groupCompany">
+                  <label for="companyName" class="form-label">
+                    <span>Company Name <span class="req">*</span></span>
+                  </label>
+                  <div class="input-container">
+                    <span class="input-icon">🏢</span>
+                    <input 
+                      type="text" 
+                      id="companyName" 
+                      name="company_name" 
+                      class="form-input" 
+                      required 
+                      autocomplete="organization"
+                    >
+                  </div>
+                  <span class="field-error">Please enter your company name.</span>
                 </div>
-                <span class="field-error">Please enter a valid email address.</span>
-              </div>
 
-              <!-- 3. Company Name -->
-              <div class="form-group" id="groupCompany">
-                <label for="companyName" class="form-label">
-                  <span>Company Name <span class="req">*</span></span>
-                </label>
-                <div class="input-container">
-                  <span class="input-icon">🏢</span>
-                  <input 
-                    type="text" 
-                    id="companyName" 
-                    name="company_name" 
-                    class="form-input" 
-                    required 
-                    autocomplete="organization"
-                  >
+                <!-- 4. Mobile Number -->
+                <div class="form-group" id="groupPhone">
+                  <label for="mobileNumber" class="form-label">
+                    <span>Mobile Number <span class="req">*</span></span>
+                  </label>
+                  <div class="input-container">
+                    <span class="input-icon">📱</span>
+                    <input 
+                      type="tel" 
+                      id="mobileNumber" 
+                      name="mobile_number" 
+                      class="form-input" 
+                      required 
+                      autocomplete="tel"
+                    >
+                  </div>
+                  <span class="field-error">Please enter a valid mobile number with country code.</span>
                 </div>
-                <span class="field-error">Please enter your company name.</span>
-              </div>
-
-              <!-- 4. Mobile Number -->
-              <div class="form-group" id="groupPhone">
-                <label for="mobileNumber" class="form-label">
-                  <span>Mobile Number <span class="req">*</span></span>
-                </label>
-                <div class="input-container">
-                  <span class="input-icon">📱</span>
-                  <input 
-                    type="tel" 
-                    id="mobileNumber" 
-                    name="mobile_number" 
-                    class="form-input" 
-                    required 
-                    autocomplete="tel"
-                  >
-                </div>
-                <span class="field-error">Please enter a valid mobile number with country code.</span>
               </div>
 
               <!-- 5. Description -->
@@ -141,7 +148,7 @@
                   id="description" 
                   name="description" 
                   class="form-input form-textarea" 
-                  rows="4" 
+                  rows="2" 
                   required
                 ></textarea>
                 <span class="field-error">Please enter a description.</span>
