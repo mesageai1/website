@@ -328,7 +328,7 @@ function executeStage(stageNumber) {
 
       renderButtons([
         { label: "🏡 2 BHK (850 - 1,150 sq.ft)", action: () => selectBHK("2 BHK") },
-        { label: "🏡 3 BHK (1,450 - 1,850 sq.ft) (Recommended)", action: () => selectBHK("3 BHK") },
+        { label: "🏡 3 BHK (1,450 - 1,850 sq.ft)", action: () => selectBHK("3 BHK") },
         { label: "🏰 4 BHK Penthouse (2,400+ sq.ft)", action: () => selectBHK("4 BHK Penthouse") }
       ]);
 
@@ -463,7 +463,7 @@ function executeStage(stageNumber) {
       fireWhiteBackwardSignal(() => {
         hideTyping();
         addWaAgentMessage(
-          "Hello Alex! **Sarah Mitchell** here from the Sales Office. 👋<br><br>Our 3 BHK luxury residences start at **$485,000** (₹2.45 Cr all-inclusive) with an exclusive **10:90 festive payment scheme** and zero pre-EMI until possession.<br><br>Would you like to schedule an exclusive VIP site visit and private model apartment tour?",
+          "Hello Alex! **Sarah Mitchell** here from the Sales Office. 👋<br><br>Our 3 BHK luxury residences start at **₹2.45 Cr all-inclusive** with an exclusive **10:90 festive payment scheme** and zero pre-EMI until possession.<br><br>Would you like to schedule an exclusive VIP site visit and private model apartment tour?",
           "14:19"
         );
 
@@ -514,7 +514,7 @@ function executeStage(stageNumber) {
 
               renderButtons([
                 { label: "📅 Tomorrow, 11:00 AM", action: () => confirmAppointment("Tomorrow at 11:00 AM") },
-                { label: "📅 Saturday, 11:00 AM (Recommended)", action: () => confirmAppointment("Saturday at 11:00 AM") },
+                { label: "📅 Saturday, 11:00 AM", action: () => confirmAppointment("Saturday at 11:00 AM") },
                 { label: "📅 Sunday, 3:30 PM", action: () => confirmAppointment("Sunday at 3:30 PM") }
               ]);
 

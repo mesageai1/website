@@ -268,39 +268,39 @@ h1, h2, h3, p { margin-top: 0; }
 .agent-hdr .panel-title-text { color: #ffffff; text-shadow: 0 0 12px rgba(255, 255, 255, 0.4); }
 .ai-hdr .panel-title-text { color: #818cf8; }
 
-/* 1. LEFT: Phone Container (290px - WHATSAPP GREEN THEME) */
+/* 1. LEFT: Phone Container (250px - REAL COMPACT SMARTPHONE PROPORTIONS) */
 .col-phone {
   flex-shrink: 0;
-  width: 290px;
+  width: 250px;
 }
 
 .phone-frame {
-  width: 290px;
-  height: 465px;
+  width: 250px;
+  height: 485px;
   box-sizing: border-box;
   background: #0b141a;
-  border-radius: 28px;
-  border: 2px solid #25d366; /* SIGNATURE WHATSAPP GREEN */
-  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8), 0 0 30px rgba(37, 211, 102, 0.25);
+  border-radius: 32px;
+  border: 3px solid #1a2730;
+  box-shadow: 0 0 0 2px #25d366, 0 25px 70px rgba(0, 0, 0, 0.85), 0 0 30px rgba(37, 211, 102, 0.25);
   overflow: hidden;
   display: flex;
   flex-direction: column;
 }
 /* Smartphone Top Status Bar */
 .phone-status-bar {
-  height: 20px;
+  height: 22px;
   background: #1f2c34;
-  padding: 4px 14px 0;
+  padding: 4px 12px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 10px;
+  font-size: 9.5px;
   color: #aebac1;
   font-weight: 600;
   letter-spacing: -0.2px;
 }
 .status-bar-time {
-  font-size: 10px;
+  font-size: 9.5px;
   font-weight: 600;
   color: #e9edef;
 }
@@ -319,7 +319,7 @@ h1, h2, h3, p { margin-top: 0; }
 /* Authentic WhatsApp Dark Mode Header */
 .wa-header {
   background: #1f2c34;
-  padding: 6px 10px 8px;
+  padding: 6px 8px 7px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -329,7 +329,7 @@ h1, h2, h3, p { margin-top: 0; }
 .wa-header-left {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
 }
 .wa-back-btn {
   display: flex;
@@ -342,26 +342,26 @@ h1, h2, h3, p { margin-top: 0; }
 .wa-back-btn:hover {
   background: rgba(255, 255, 255, 0.08);
 }
+/* Customer WhatsApp Avatar with Clean White BG */
 .wa-avatar-box {
-  width: 36px;
-  height: 36px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, #1e1b4b 0%, #0b141a 90%);
-  border: 1px solid rgba(129, 140, 248, 0.35);
+  background: #ffffff; /* CLEAN PURE WHITE BG FOR LOGO */
+  border: 1.5px solid #ffffff;
   position: relative;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 .wa-avatar-pic {
   width: 22px;
   height: 22px;
   object-fit: contain;
   display: block;
-  filter: drop-shadow(0 0 4px rgba(99, 102, 241, 0.7));
 }
 .wa-avatar-fallback {
   color: white;
@@ -386,7 +386,7 @@ h1, h2, h3, p { margin-top: 0; }
   justify-content: center;
 }
 .wa-header-meta strong {
-  font-size: 11px;
+  font-size: 10.5px;
   display: block;
   line-height: 1.2;
   color: #e9edef;
@@ -394,29 +394,29 @@ h1, h2, h3, p { margin-top: 0; }
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 130px;
+  max-width: 95px;
 }
 .wa-name-row {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 3px;
 }
 .wa-verified-svg {
   flex-shrink: 0;
 }
 .wa-header-meta small {
-  font-size: 8.5px;
+  font-size: 8px;
   color: #8696a0;
   display: block;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 130px;
+  max-width: 95px;
 }
 .wa-header-icons {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   flex-shrink: 0;
 }
 .wa-icon-btn {
@@ -491,31 +491,52 @@ h1, h2, h3, p { margin-top: 0; }
   letter-spacing: 0.4px;
 }
 
+#waChatStream {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
 .wa-chat-bubble-item {
-  max-width: 85%;
   display: flex;
   flex-direction: column;
   position: relative;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
   animation: bubblePop 0.22s ease forwards;
 }
 @keyframes bubblePop {
   from { opacity: 0; transform: translateY(4px); }
   to { opacity: 1; transform: translateY(0); }
 }
-.wa-chat-bubble-item.user { align-self: flex-end; }
-.wa-chat-bubble-item.bot, .wa-chat-bubble-item.agent { align-self: flex-start; }
+
+/* 1. Customer User Message: EXPLICITLY ON THE RIGHT (SENT SIDE) */
+.wa-chat-bubble-item.user {
+  align-self: flex-end;
+  margin-left: auto;
+  margin-right: 0;
+  max-width: 82%;
+}
+
+/* 2. AI Bot & Live Agent Messages: EXPLICITLY ON THE LEFT (RECEIVED SIDE) */
+.wa-chat-bubble-item.bot,
+.wa-chat-bubble-item.agent {
+  align-self: flex-start;
+  margin-left: 0;
+  margin-right: auto;
+  max-width: 85%;
+}
 
 .bubble-text-box {
-  padding: 6px 9px 4px;
+  padding: 5px 8px 4px;
   border-radius: 8px;
-  font-size: 9.5px;
-  line-height: 1.4;
+  font-size: 9px;
+  line-height: 1.38;
   word-break: break-word;
   position: relative;
 }
 
-/* User Message (Outgoing WhatsApp Green #005c4b + Authentic Tail) */
+/* User Message (Outgoing WhatsApp Green #005c4b + Authentic Tail on Right) */
 .wa-chat-bubble-item.user .bubble-text-box {
   background: #005c4b;
   color: #e9edef;
@@ -532,7 +553,7 @@ h1, h2, h3, p { margin-top: 0; }
   border-right: 6px solid transparent;
 }
 
-/* Bot Message (Incoming WhatsApp Dark Slate #202c33 + Authentic Tail) */
+/* Bot Message (Incoming WhatsApp Dark Slate #202c33 + Authentic Tail on Left) */
 .wa-chat-bubble-item.bot .bubble-text-box {
   background: #202c33;
   color: #e9edef;
@@ -549,12 +570,12 @@ h1, h2, h3, p { margin-top: 0; }
   border-left: 6px solid transparent;
 }
 
-/* Agent Message (Incoming Dark Slate #202c33 with Accent bar + Authentic Tail) */
+/* Agent Message (Incoming Dark Slate #202c33 with Accent bar + Authentic Tail on Left) */
 .wa-chat-bubble-item.agent .bubble-text-box {
   background: #202c33;
   color: #e9edef;
   border-top-left-radius: 0px;
-  border-left: 3px solid #25d366;
+  border-left: 3px solid #34d399;
 }
 .wa-chat-bubble-item.agent .bubble-text-box::before {
   content: '';
@@ -757,7 +778,7 @@ h1, h2, h3, p { margin-top: 0; }
 .col-connector-1 {
   flex-shrink: 0;
   width: 100px;
-  height: 465px;
+  height: 485px;
   margin-top: 75px; /* offset top avatar ring */
   position: relative;
   transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
@@ -861,7 +882,7 @@ h1, h2, h3, p { margin-top: 0; }
 
 .agent-inbox-card {
   width: 315px;
-  height: 465px;
+  height: 485px;
   box-sizing: border-box;
   background: #ffffff; /* PURE WHITE COLOR */
   color: #0f172a;
@@ -1013,7 +1034,7 @@ h1, h2, h3, p { margin-top: 0; }
   opacity: 0;
   overflow: hidden;
   visibility: hidden;
-  height: 465px;
+  height: 485px;
   margin-top: 75px;
   display: flex;
   align-items: center;
@@ -1031,13 +1052,13 @@ h1, h2, h3, p { margin-top: 0; }
 /* 5. RIGHT: ROBOT FACE & FREQUENCY BUBBLES (NO BOX SCREEN!) */
 .col-ai-bot {
   flex-shrink: 0;
-  width: 290px;
+  width: 280px;
   transition: all 0.5s ease;
 }
 
 .robot-face-stage {
-  width: 290px;
-  height: 465px;
+  width: 280px;
+  height: 485px;
   box-sizing: border-box;
   background: radial-gradient(circle at 50% 35%, rgba(99, 102, 241, 0.18) 0%, #080a1c 70%);
   border: 2px solid #6366f1; /* INDIGO BORDER */
