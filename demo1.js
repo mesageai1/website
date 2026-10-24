@@ -79,7 +79,7 @@ function updateSignalLevel() {
 
   const lastBubble = waChatStream.lastElementChild;
   if (!lastBubble) {
-    connectorTrackHolder.style.top = '105px';
+    connectorTrackHolder.style.top = '85px';
     return;
   }
 
@@ -90,7 +90,7 @@ function updateSignalLevel() {
   const bubbleCenterY = (bubbleRect.top + bubbleRect.height / 2) - phoneRect.top;
 
   // Clamp within the visible chat canvas
-  const clampedY = Math.max(90, Math.min(bubbleCenterY, 415));
+  const clampedY = Math.max(65, Math.min(bubbleCenterY, 320));
 
   connectorTrackHolder.style.top = `${clampedY}px`;
 }
@@ -111,7 +111,7 @@ function fireForwardSignal(callback) {
   }
 
   if (conn1Label) {
-    conn1Label.textContent = "Customer Signal ➔";
+    conn1Label.textContent = "Inbound ➔";
     conn1Label.classList.add('active-pulse');
   }
 
@@ -126,7 +126,7 @@ function fireForwardSignal(callback) {
     if (aiAvatarCore) {
       aiAvatarCore.style.boxShadow = '0 0 32px #818cf8, 0 0 10px #ffffff';
       setTimeout(() => {
-        aiAvatarCore.style.boxShadow = '0 0 20px rgba(99, 102, 241, 0.5)';
+        aiAvatarCore.style.boxShadow = '0 0 16px rgba(99, 102, 241, 0.5)';
       }, 450);
     }
     if (callback) callback();
@@ -142,7 +142,7 @@ function fireBackwardSignal(callback) {
   }
 
   if (conn1Label) {
-    conn1Label.textContent = "Response Signal ➔";
+    conn1Label.textContent = "Outbound ➔";
     conn1Label.classList.add('active-pulse');
   }
 
@@ -488,6 +488,20 @@ function executeStage(stageNumber) {
     case 6: {
       setActivePill(5);
 
+      // AI Bot paused state indicator
+      if (aiBotBox) aiBotBox.classList.add('ai-paused');
+      if (aiStatusPill) {
+        aiStatusPill.textContent = "⏸ Paused (Closer In-Between)";
+        aiStatusPill.style.background = "rgba(245, 158, 11, 0.2)";
+        aiStatusPill.style.color = "#f59e0b";
+        aiStatusPill.style.borderColor = "rgba(245, 158, 11, 0.45)";
+      }
+      if (aiModeValue) {
+        aiModeValue.textContent = "Paused ⏸";
+        aiModeValue.style.color = "#f59e0b";
+      }
+      if (aiTransferNotice) aiTransferNotice.style.display = 'flex';
+
       // Expand In-Between Slot smoothly
       if (colAgentInbetween) colAgentInbetween.classList.add('active-inbetween');
       if (colConn2) colConn2.classList.add('active-inbetween');
@@ -658,7 +672,7 @@ window.restartSimulation = function() {
   // Reset Signal Lines to top
   if (lineForward) resetLine(lineForward);
   if (lineBackward) resetLine(lineBackward);
-  if (connectorTrackHolder) connectorTrackHolder.style.top = '105px';
+  if (connectorTrackHolder) connectorTrackHolder.style.top = '85px';
   if (conn1Label) {
     conn1Label.textContent = "⚡ Signal Link";
     conn1Label.classList.remove('active-pulse');
@@ -668,6 +682,9 @@ window.restartSimulation = function() {
   if (aiBotBox) aiBotBox.classList.remove('ai-paused');
   if (aiStatusPill) {
     aiStatusPill.textContent = '🟢 Active & Replying (<2s)';
+    aiStatusPill.style.background = '';
+    aiStatusPill.style.color = '';
+    aiStatusPill.style.borderColor = '';
   }
   if (aiActionTitle) aiActionTitle.textContent = "Listening for customer inquiry...";
   if (aiActionDesc) aiActionDesc.textContent = "Ready to answer questions about 2, 3, 4 BHK apartments, floor plans, and amenities.";
