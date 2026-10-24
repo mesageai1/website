@@ -179,7 +179,7 @@
                 <line x1="66.5" y1="119" x2="70.5" y2="119" stroke="#38bdf8" stroke-width="1.2" stroke-linecap="round"/>
               </g>
 
-              <!-- Right Gripping Hand -->
+              <!-- Right Gripping Hand (Active before submit) -->
               <g id="handRight" class="robot-hand">
                 <!-- Palm Base -->
                 <path d="M 165 106 Q 180 102 195 106 L 195 116 L 165 116 Z" fill="#141838" stroke="rgba(99,102,241,0.4)" stroke-width="1.2"/>
@@ -194,8 +194,34 @@
                 <line x1="190" y1="119" x2="194" y2="119" stroke="#38bdf8" stroke-width="1.2" stroke-linecap="round"/>
               </g>
 
+              <!-- Right THUMBS-UP Hand (Raised on Successful Submit) -->
+              <g id="handRightThumbsUp" class="robot-thumbs-up" style="display: none;">
+                <!-- Arm reaching up -->
+                <path d="M 166 104 Q 184 96 193 84" stroke="url(#fingerGrad)" stroke-width="11" stroke-linecap="round" fill="none"/>
+                <!-- Metallic Wrist Cuff -->
+                <rect x="185" y="74" width="16" height="6.5" rx="3.2" fill="#15193c" stroke="#818cf8" stroke-width="1.2" transform="rotate(-15 193 77)"/>
+                <!-- Clenched Fist -->
+                <rect x="185" y="56" width="22" height="24" rx="7" fill="url(#fingerGrad)" stroke="#818cf8" stroke-width="1.5"/>
+                <!-- Curled Finger Knuckles on Fist Face -->
+                <rect x="186" y="58" width="16" height="4.5" rx="2.2" fill="#242c66" stroke="#818cf8" stroke-width="0.9"/>
+                <rect x="186" y="64" width="17" height="4.5" rx="2.2" fill="#283274" stroke="#818cf8" stroke-width="0.9"/>
+                <rect x="186" y="70" width="17" height="4.5" rx="2.2" fill="#242c66" stroke="#818cf8" stroke-width="0.9"/>
+                <rect x="186" y="75.5" width="15" height="4" rx="2" fill="#1e2454" stroke="#818cf8" stroke-width="0.9"/>
+                <!-- Prominent Robotic Thumb Extended UP -->
+                <path d="M 190 58 C 190 49 192 39 198 39 C 204 39 206 49 206 59 L 206 67 Z" fill="url(#fingerGrad)" stroke="#818cf8" stroke-width="1.8"/>
+                <!-- Glowing Thumb Knuckle Seam -->
+                <line x1="194" y1="48" x2="202" y2="48" stroke="#10b981" stroke-width="2" stroke-linecap="round"/>
+                <!-- Glowing Sparkle Star at Thumb Tip -->
+                <circle cx="198" cy="37" r="3" fill="#34d399" filter="url(#beaconGlow)"/>
+                <path d="M 198 29 L 198 45 M 190 37 L 206 37" stroke="#34d399" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="213" cy="45" r="2" fill="#38bdf8" filter="url(#beaconGlow)"/>
+              </g>
+
             </svg>
           </div>
+
+          <!-- Dynamic Flying Data Particles Container -->
+          <div id="flyingDataOverlay" class="flying-data-overlay" aria-hidden="true"></div>
 
           <div class="form-wrapper-card">
 
