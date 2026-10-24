@@ -3,774 +3,483 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0a0b1a">
-  <meta name="description" content="MeSage AI — Enterprise WhatsApp Business API, AI Chatbot, Appointment Booking, Visual Flow Builder & Omnichannel Unified Inbox.">
-  <title>MeSage AI — WhatsApp Business API, AI Chatbot & Automation Platform</title>
+  <meta name="theme-color" content="#080a14">
+  <meta name="description" content="MeSage AI — Unified customer messaging, official WhatsApp Business API, AI chatbots, and visual workflow automation.">
+  <title>MeSage AI — Every Customer Conversation, Intelligently Connected</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
   <!-- Top Announcement Bar -->
-  <div class="announcement">
-    <span class="pulse"></span> 
-    Official Meta Cloud API Partner Ready · 24/7 AI Automation 
-    <a href="#demo">Try Live WhatsApp Bot <span>↗</span></a>
-  </div>
+  <aside class="announcement-bar">
+    <div class="container announcement-inner">
+      <span class="live-pulse"></span>
+      <span>Official WhatsApp Business API & AI Automation Platform</span>
+      <a href="#demo" class="announcement-link">Test Live Bot <span>→</span></a>
+    </div>
+  </aside>
 
-  <!-- Main Navigation -->
-  <header class="nav-wrap">
-    <nav class="nav container">
-      <a class="brand" href="#home" aria-label="MeSage AI home">
-        <img src="assets/logogif.gif" alt="MeSage AI logo" class="logo-gif" onerror="this.src='assets/logoimg.png'">
-        <span>MeSage<span class="brand-ai"> AI</span></span>
+  <!-- Navigation -->
+  <header class="header">
+    <nav class="container nav-content">
+      <a href="#home" class="brand-logo" aria-label="MeSage AI Home">
+        <img src="assets/logoimg.png" alt="MeSage AI Logo" class="brand-img" onerror="this.style.display='none'">
+        <span class="brand-name">MeSage<span class="brand-accent"> AI</span></span>
       </a>
-      <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
-      <div class="nav-links">
-        <a href="#demo">WhatsApp Demo</a>
-        <a href="#showcase">Console Showcase</a>
-        <a href="#channels">Channels</a>
+
+      <button class="menu-toggle" aria-label="Open Navigation Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="nav-menu">
+        <a href="#demo">Live Bot</a>
+        <a href="#platform">Platform</a>
         <a href="#features">Features</a>
-        <a href="#ai">Flow Builder</a>
+        <a href="#channels">Channels</a>
         <a href="#integrations">Integrations</a>
         <a href="#faq">FAQ</a>
       </div>
-      <a class="nav-cta" href="#contact">Book a Demo <span>↗</span></a>
+
+      <div class="nav-actions">
+        <a href="#contact" class="btn btn-primary">Book a Demo</a>
+      </div>
     </nav>
   </header>
 
   <main>
 
     <!-- ===== HERO SECTION ===== -->
-    <section class="hero container" id="home">
-      <div class="hero-copy">
-        <div class="eyebrow"><span class="eyebrow-dot"></span> NEXT-GEN CONVERSATIONAL AI & WABA PLATFORM</div>
-        <h1>Scale Your Business with <br><span class="gradient-text">WhatsApp & Omnichannel AI.</span></h1>
-        <p class="hero-sub">Empower your sales, support, and marketing teams with official WhatsApp Business API, 24/7 appointment booking chatbots, drag-and-drop visual flows, and a unified team inbox.</p>
-        
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#demo">Test Live WhatsApp Bot <span>↓</span></a>
-          <a class="btn btn-ghost" href="#showcase"><span class="play">▶</span> Interactive Console</a>
-        </div>
-        
-        <div class="hero-highlights">
-          <div class="highlight-item">
-            <span class="hl-icon">⚡</span>
-            <div><strong>Instant Replies</strong><small>&lt; 1.2s AI Response</small></div>
+    <section class="hero-section" id="home">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <div class="badge-pill">
+            <span class="pill-dot"></span>
+            <span>Omnichannel Conversational AI</span>
           </div>
-          <div class="highlight-item">
-            <span class="hl-icon">📅</span>
-            <div><strong>Auto Bookings</strong><small>Zero No-shows</small></div>
-          </div>
-          <div class="highlight-item">
-            <span class="hl-icon">🛡️</span>
-            <div><strong>Official Meta API</strong><small>Green Tick Ready</small></div>
-          </div>
-        </div>
-      </div>
 
-      <div class="hero-visual">
-        <div class="orbit orbit-one"></div>
-        <div class="orbit orbit-two"></div>
+          <h1 class="hero-heading">
+            Connect every conversation. <br>
+            <span class="text-gradient">Automate with AI.</span>
+          </h1>
 
-        <!-- floating channel chips -->
-        <div class="floating-chip chip-wa">
-          <span class="channel-icon-svg wa-svg">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          </span>
-          <span><b>WhatsApp WABA</b><small>Verified · Connected</small></span><i></i>
-        </div>
-        <div class="floating-chip chip-ig">
-          <span class="channel-icon-svg ig-svg">
-            <svg width="18" height="18" viewBox="0 0 24 24"><defs><linearGradient id="igh1" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f09433"/><stop offset="50%" stop-color="#dc2743"/><stop offset="100%" stop-color="#bc1888"/></linearGradient></defs><path fill="url(#igh1)" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-          </span>
-          <span><b>Instagram DMs</b><small>Story Replies · Active</small></span><i></i>
-        </div>
-        <div class="floating-chip chip-fb">
-          <span class="channel-icon-svg fb-svg">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-          </span>
-          <span><b>Messenger</b><small>Ad Leads · Active</small></span><i></i>
-        </div>
+          <p class="hero-description">
+            Bring WhatsApp Business API, Instagram DMs, Messenger, Web Chat, Telegram, and Email into a single intelligent workspace. Automate appointments, customer support, and sales 24/7.
+          </p>
 
-        <!-- Dashboard mockup -->
-        <div class="dashboard-window">
-          <div class="dash-top">
-            <div class="window-dots"><i></i><i></i><i></i></div>
-            <span>MeSage AI <b>SHARED INBOX & AUTOMATION</b></span>
-            <span class="dash-live">● 4 AGENTS ACTIVE</span>
+          <div class="hero-buttons">
+            <a href="#demo" class="btn btn-primary btn-lg">
+              Try Interactive Bot <span>↓</span>
+            </a>
+            <a href="#platform" class="btn btn-secondary btn-lg">
+              Explore Platform
+            </a>
           </div>
-          <div class="dash-layout">
-            <aside class="dash-rail">
-              <div class="rail-logo"><img src="assets/logoimg.png" alt="" onerror="this.style.display='none'">M</div>
-              <span class="rail-active" title="Live Inbox">▤</span>
-              <span title="Flow Builder">⌘</span>
-              <span title="Broadcasts">📢</span>
-              <span title="Analytics">📊</span>
-              <span title="CRM Sync">🔗</span>
-            </aside>
-            <div class="inbox-list">
-              <div class="inbox-title">Conversations <span class="count">24</span></div>
-              <div class="search">⌕ &nbsp; Search all channels...</div>
-              <div class="conversation selected">
-                <div class="person p1">PS</div>
-                <div class="conv-copy"><b>Priya Sharma <span class="mini wa">● WA</span></b><p>Confirmed my booking for 3 PM</p></div>
-                <time>Just now</time>
-              </div>
-              <div class="conversation">
-                <div class="person p2">AK</div>
-                <div class="conv-copy"><b>Arjun Kumar <span class="mini ig">● IG</span></b><p>Can I see the catalog?</p></div>
-                <time>2m</time>
-              </div>
-              <div class="conversation">
-                <div class="person p3">SM</div>
-                <div class="conv-copy"><b>Sara Mehta <span class="mini fb">● FB</span></b><p>Need a consultation callback</p></div>
-                <time>6m</time>
-              </div>
-              <div class="conversation">
-                <div class="person p4">RK</div>
-                <div class="conv-copy"><b>Rahul V. <span class="mini tg">● TG</span></b><p>Order #98721 delivery date?</p></div>
-                <time>12m</time>
-              </div>
+
+          <div class="hero-metrics">
+            <div class="metric-item">
+              <strong>98%</strong>
+              <span>WhatsApp Open Rate</span>
             </div>
-            <div class="chat-panel">
-              <div class="chat-head">
-                <div class="person p1">PS</div>
-                <div><b>Priya Sharma</b><small><span class="mini wa">●</span> WhatsApp Business · Assigned: Agent Ravi</small></div>
-                <span class="more">Takeover ⚡</span>
-              </div>
-              <div class="chat-body">
-                <div class="day-label">TODAY, 2:15 PM</div>
-                <div class="wa-chat-bubble incoming">
-                  <div class="bubble-content">Hi! Can I book an appointment for tomorrow afternoon?</div>
-                  <div class="wa-tick">✓✓</div>
-                </div>
-                <div class="wa-chat-bubble outgoing">
-                  <div class="bubble-content">🤖 <b>MeSage AI Bot:</b> Sure Priya! Here are available slots for tomorrow:</div>
-                  <div class="wa-tick sent">✓✓</div>
-                </div>
-                <div class="wa-chat-bubble incoming">
-                  <div class="bubble-content">Clicked <b>[ 3:00 PM - 3:30 PM ]</b></div>
-                  <div class="wa-tick">✓✓</div>
-                </div>
-                <div class="ai-note">
-                  <span>✦ AI AUTOMATION COMPLETE</span>
-                  <p>Slot locked in Google Calendar & CRM. Sent confirmation template with calendar invite.</p>
-                  <button>View in CRM ↗</button>
-                </div>
-              </div>
-              <div class="reply-box">Type manual reply or trigger flow… <span>✦ Send</span></div>
+            <div class="metric-divider"></div>
+            <div class="metric-item">
+              <strong>&lt; 1.5s</strong>
+              <span>AI Response Speed</span>
+            </div>
+            <div class="metric-divider"></div>
+            <div class="metric-item">
+              <strong>24/7</strong>
+              <span>Automated Booking</span>
             </div>
           </div>
-          <div class="dash-bottom">
-            <span><i></i> 6 Channels Live Sync</span>
-            <span>Meta WABA API: <b>Active 🟢</b></span>
-          </div>
         </div>
-      </div>
 
-      <!-- Trust bar -->
-      <div class="hero-bottom">
-        <span>POWERING OMNICHANNEL MESSAGING ACROSS:</span>
-        <div class="channel-wordmarks">
-          <span class="word-wa">WhatsApp Business API</span>
-          <span class="word-ig">Instagram DMs</span>
-          <span class="word-fb">Facebook Messenger</span>
-          <span class="word-web">Website Live Bot</span>
-          <span class="word-tg">Telegram Bot</span>
-          <span class="word-mail">Email Support</span>
+        <!-- Hero Preview Mockup -->
+        <div class="hero-preview-wrap">
+          <div class="glow-backdrop"></div>
+          
+          <div class="preview-card">
+            <div class="card-header-bar">
+              <div class="window-controls">
+                <span></span><span></span><span></span>
+              </div>
+              <span class="card-header-title">MeSage AI Unified Workspace</span>
+              <span class="badge-active">● Live</span>
+            </div>
+
+            <div class="workspace-preview-layout">
+              <!-- Left Mini Sidebar -->
+              <div class="preview-sidebar">
+                <div class="sidebar-avatar">M</div>
+                <div class="sidebar-nav-item active">💬</div>
+                <div class="sidebar-nav-item">⌘</div>
+                <div class="sidebar-nav-item">📢</div>
+                <div class="sidebar-nav-item">📊</div>
+              </div>
+
+              <!-- Center Chat List -->
+              <div class="preview-chats">
+                <div class="preview-chats-header">
+                  <span>Conversations</span>
+                  <span class="badge-count">18</span>
+                </div>
+                
+                <div class="chat-row active">
+                  <div class="chat-avatar p1">PS</div>
+                  <div class="chat-row-details">
+                    <div class="chat-row-top">
+                      <b>Priya Sharma</b>
+                      <span class="tag-channel tag-wa">WA</span>
+                    </div>
+                    <p>Confirmed appointment for 3 PM</p>
+                  </div>
+                </div>
+
+                <div class="chat-row">
+                  <div class="chat-avatar p2">AK</div>
+                  <div class="chat-row-details">
+                    <div class="chat-row-top">
+                      <b>Arjun Kumar</b>
+                      <span class="tag-channel tag-ig">IG</span>
+                    </div>
+                    <p>Can you share catalog pricing?</p>
+                  </div>
+                </div>
+
+                <div class="chat-row">
+                  <div class="chat-avatar p3">SM</div>
+                  <div class="chat-row-details">
+                    <div class="chat-row-top">
+                      <b>Sara Mehta</b>
+                      <span class="tag-channel tag-fb">FB</span>
+                    </div>
+                    <p>Thanks for the quick reply!</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right Conversation View -->
+              <div class="preview-main-chat">
+                <div class="main-chat-header">
+                  <div>
+                    <b>Priya Sharma</b>
+                    <small>WhatsApp Business API · Assigned to Agent Rahul</small>
+                  </div>
+                  <span class="takeover-btn">Takeover ⚡</span>
+                </div>
+
+                <div class="main-chat-messages">
+                  <div class="chat-bubble incoming">
+                    Hi! I need an appointment for a skin consultation tomorrow afternoon.
+                  </div>
+                  <div class="chat-bubble outgoing">
+                    Hello Priya! 👋 I have 2 slots available for tomorrow: <b>[ 2:30 PM ]</b> or <b>[ 4:00 PM ]</b>. Which one suits you?
+                  </div>
+                  <div class="chat-bubble incoming">
+                    4:00 PM works perfectly.
+                  </div>
+                  <div class="chat-alert-box">
+                    <span>✦ AUTOMATION EXECUTED</span>
+                    <p>Slot locked on Google Calendar. CRM updated. Reminder scheduled 2 hours before.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ===== LIVE INTERACTIVE WHATSAPP DEMO ===== -->
-    <section class="section wa-demo-section" id="demo">
+    <!-- ===== LIVE INTERACTIVE WHATSAPP BOT DEMO ===== -->
+    <section class="section demo-section" id="demo">
       <div class="container">
         <div class="section-heading centered">
-          <div class="eyebrow">TRY BEFORE YOU BUY · ZERO CODE</div>
-          <h2>Interactive WhatsApp Bot. <span class="gradient-text">Click & Experience.</span></h2>
-          <p>Tap the buttons below inside our real WhatsApp simulation to test automated booking, catalog browsing, support escalation, and human agent takeover in real-time.</p>
+          <div class="badge-pill">
+            <span class="pill-dot"></span>
+            <span>Interactive Simulator</span>
+          </div>
+          <h2>Experience the Bot in Real Time.</h2>
+          <p>Tap the buttons inside the WhatsApp phone to test appointment booking, product discovery, and customer support.</p>
         </div>
 
-        <div class="demo-wrapper">
+        <div class="demo-card-container">
+          <!-- Flow Explanation -->
+          <div class="demo-flow-info">
+            <h3>How WhatsApp Automation Drives Results</h3>
+            <p>From initial hello to confirmed appointment, our AI handles every step with zero manual intervention.</p>
 
-          <!-- Left: Step-by-Step Flow Explainer -->
-          <div class="flow-explainer">
-            <div class="flow-title">
-              <span class="flow-badge">● LIVE BOT SIMULATION</span>
-              <h3>How WhatsApp AI Works For Your Business</h3>
-              <p>Turn incoming messages into qualified appointments and confirmed sales without lifting a finger.</p>
-            </div>
+            <div class="flow-step-list">
+              <div class="flow-step-card active" id="fstep-1">
+                <div class="step-num">1</div>
+                <div>
+                  <strong>Customer Connects</strong>
+                  <p>User clicks your WhatsApp Ad, QR code, or website link.</p>
+                </div>
+              </div>
 
-            <div class="flow-steps">
-              <div class="flow-step" id="fs1">
-                <div class="fs-icon" style="background:rgba(99,102,241,.15);color:#818cf8">1</div>
-                <div class="fs-content">
-                  <b>Customer Initiates Chat</b>
-                  <small>Visitor clicks WhatsApp link from Ads, Website, or QR Code.</small>
+              <div class="flow-step-card" id="fstep-2">
+                <div class="step-num">2</div>
+                <div>
+                  <strong>AI Understands Intent</strong>
+                  <p>Instantly identifies booking, pricing, or support questions.</p>
                 </div>
-                <div class="fs-line"></div>
               </div>
-              <div class="flow-step" id="fs2">
-                <div class="fs-icon" style="background:rgba(16,185,129,.12);color:#10b981">2</div>
-                <div class="fs-content">
-                  <b>AI Intent Detection</b>
-                  <small>Recognizes request: Appointment, Pricing, Support, or Order.</small>
+
+              <div class="flow-step-card" id="fstep-3">
+                <div class="step-num">3</div>
+                <div>
+                  <strong>Interactive Slot Selection</strong>
+                  <p>Customer taps real-time buttons to choose date and time.</p>
                 </div>
-                <div class="fs-line"></div>
               </div>
-              <div class="flow-step" id="fs3">
-                <div class="fs-icon" style="background:rgba(99,102,241,.15);color:#818cf8">3</div>
-                <div class="fs-content">
-                  <b>Interactive Slot & Data Capture</b>
-                  <small>Customer taps instant buttons to select service, date, and time.</small>
+
+              <div class="flow-step-card" id="fstep-4">
+                <div class="step-num">4</div>
+                <div>
+                  <strong>Confirmation & Calendar Sync</strong>
+                  <p>Calendar blocked, CRM updated, and automated reminders set.</p>
                 </div>
-                <div class="fs-line"></div>
               </div>
-              <div class="flow-step" id="fs4">
-                <div class="fs-icon" style="background:rgba(16,185,129,.12);color:#34d399">4</div>
-                <div class="fs-content">
-                  <b>Automated Confirmation & Sync</b>
-                  <small>CRM updated, calendar blocked, and WhatsApp reminder scheduled.</small>
-                </div>
-                <div class="fs-line"></div>
-              </div>
-              <div class="flow-step" id="fs5">
-                <div class="fs-icon" style="background:rgba(99,102,241,.15);color:#a5b4fc">5</div>
-                <div class="fs-content">
-                  <b>Seamless Human Agent Hand-off</b>
-                  <small>Team gets notified and can take over the chat at any second.</small>
+
+              <div class="flow-step-card" id="fstep-5">
+                <div class="step-num">5</div>
+                <div>
+                  <strong>Human Agent Takeover</strong>
+                  <p>Agents can step in seamlessly whenever complex help is needed.</p>
                 </div>
               </div>
             </div>
 
-            <div class="use-cases">
-              <div class="uc-title">PRE-BUILT FLOWS INCLUDED:</div>
-              <div class="uc-tags">
-                <span class="uc-tag active-uc">📅 Doctor & Clinic Booking</span>
-                <span class="uc-tag">✂️ Salon & Spa Slots</span>
-                <span class="uc-tag">🏢 Real Estate Site Visits</span>
-                <span class="uc-tag">🛍️ E-Commerce Abandoned Cart</span>
-                <span class="uc-tag">🎫 Support Ticket Generation</span>
-                <span class="uc-tag">📊 Lead Qualification</span>
-              </div>
+            <div class="demo-actions-left">
+              <button class="btn btn-secondary" onclick="resetWADemo()">↺ Restart Bot Simulation</button>
+              <a href="#contact" class="btn btn-primary">Deploy On Your Number</a>
             </div>
           </div>
 
-          <!-- Right: WhatsApp Phone Simulation -->
-          <div class="wa-phone-wrap">
-            <div class="wa-phone">
-              <div class="wa-phone-bar">
-                <div class="phone-notch"></div>
-              </div>
+          <!-- Realistic WhatsApp Device Simulation -->
+          <div class="phone-mockup-wrapper">
+            <div class="phone-frame">
+              <div class="phone-notch"></div>
               
-              <div class="wa-app-header">
-                <div class="wa-back">‹</div>
-                <div class="wa-avatar-wrap">
-                  <div class="wa-bot-avatar">
-                    <img src="assets/logoimg.png" alt="MeSage AI Bot" onerror="this.style.display='none'">
+              <div class="phone-app-header">
+                <div class="phone-header-left">
+                  <span class="phone-back-arrow">‹</span>
+                  <div class="phone-avatar">
+                    <img src="assets/logoimg.png" alt="Bot Logo" onerror="this.style.display='none'">
                     <span>M</span>
                   </div>
-                  <div class="wa-online-dot"></div>
+                  <div class="phone-contact-info">
+                    <strong>MeSage AI Assistant 🟢</strong>
+                    <small>Official Business Account</small>
+                  </div>
                 </div>
-                <div class="wa-contact-info">
-                  <b>MeSage AI Assistant 🟢</b>
-                  <small>Verified WhatsApp Business Account</small>
-                </div>
-                <div class="wa-icons">⋮</div>
+                <div class="phone-header-right">⋮</div>
               </div>
 
-              <div class="wa-chat-bg" id="waChatBg">
-                <div class="wa-date-chip">Today · End-to-end encrypted</div>
+              <!-- Message View -->
+              <div class="phone-chat-body" id="waChatBg">
+                <div class="date-chip">Today · End-to-end encrypted</div>
                 <div id="waMsgs"></div>
-                <div class="wa-typing" id="waTyping" style="display:none">
-                  <div class="wa-typing-bubble"><span></span><span></span><span></span></div>
+                
+                <div class="typing-indicator" id="waTyping" style="display:none">
+                  <div class="typing-bubble">
+                    <span></span><span></span><span></span>
+                  </div>
                 </div>
               </div>
 
-              <!-- Quick reply buttons -->
-              <div class="wa-quick-area" id="waQuickArea"></div>
+              <!-- Quick Replies -->
+              <div class="phone-quick-replies" id="waQuickArea"></div>
 
-              <div class="wa-input-bar">
-                <div class="wa-input-field">Tap a button above to test...</div>
-                <div class="wa-send-btn">
-                  <svg viewBox="0 0 24 24" fill="white" width="18" height="18"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+              <!-- Bottom Bar -->
+              <div class="phone-input-bar">
+                <div class="fake-input">Tap a quick reply above...</div>
+                <div class="fake-send-btn">
+                  <svg viewBox="0 0 24 24" fill="white" width="16" height="16"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
                 </div>
               </div>
             </div>
           </div>
-
-        </div>
-
-        <div class="demo-cta-row">
-          <button class="btn btn-ghost" onclick="resetWADemo()">↺ Restart Bot Simulation</button>
-          <a class="btn btn-primary" href="#contact">Get This Setup For Your Business →</a>
         </div>
       </div>
     </section>
 
-    <!-- ===== INTERACTIVE CONSOLE SHOWCASE (Inspired by Botflo) ===== -->
-    <section class="section showcase-section" id="showcase">
+    <!-- ===== PLATFORM BENTO GRID SHOWCASE ===== -->
+    <section class="section platform-section" id="platform">
       <div class="container">
         <div class="section-heading centered">
-          <div class="eyebrow">INSIDE THE PLATFORM</div>
-          <h2>Empowering Conversation Console. <span class="gradient-text">Built for Scale.</span></h2>
-          <p>Explore real console modules and interact with our live builder tabs to see how MeSage AI turns chaos into high-converting conversations.</p>
+          <div class="badge-pill">
+            <span class="pill-dot"></span>
+            <span>Platform Overview</span>
+          </div>
+          <h2>Everything You Need. Built Clean.</h2>
+          <p>Explore the core modules engineered to give your team complete control over customer conversations.</p>
         </div>
 
-        <div class="showcase-grid">
-          <!-- Left Navigation Tabs -->
-          <div class="showcase-tabs">
-            <button onclick="switchShowcaseTab(0)" id="stab-0" class="showcase-tab-btn active">
-              <div class="stab-header">
-                <span class="stab-icon">📥</span>
-                <strong>Shared Team Live Inbox</strong>
+        <div class="bento-grid">
+          <!-- Bento 1: Shared Team Inbox (Large) -->
+          <div class="bento-card bento-span-2">
+            <div class="bento-header">
+              <span class="bento-icon">📥</span>
+              <div>
+                <h3>Shared Team Inbox & Multi-Channel Routing</h3>
+                <p>Manage WhatsApp, Instagram, Messenger, and Web chat in one unified dashboard with agent assignments and private internal notes.</p>
               </div>
-              <p>Manage WhatsApp, Instagram, Facebook & Web chats in one place with agent routing, internal notes, and instant takeover.</p>
-            </button>
-
-            <button onclick="switchShowcaseTab(1)" id="stab-1" class="showcase-tab-btn">
-              <div class="stab-header">
-                <span class="stab-icon">⌘</span>
-                <strong>Visual Flow Builder Canvas</strong>
+            </div>
+            
+            <div class="inbox-card-preview">
+              <div class="icp-row">
+                <span class="icp-badge wa">WhatsApp API</span>
+                <strong>Rahul Varma: "Looking for enterprise onboarding plan"</strong>
+                <span class="icp-status">Assigned: Priya</span>
               </div>
-              <p>Design no-code conversational workflows, conditional triggers, keyword routers, and multi-step booking paths.</p>
-            </button>
-
-            <button onclick="switchShowcaseTab(2)" id="stab-2" class="showcase-tab-btn">
-              <div class="stab-header">
-                <span class="stab-icon">📢</span>
-                <strong>Bulk Smart Broadcasting</strong>
+              <div class="icp-row">
+                <span class="icp-badge ig">Instagram DM</span>
+                <strong>Meera Patel: "Loved your latest reel! Need details"</strong>
+                <span class="icp-status">Assigned: Arjun</span>
               </div>
-              <p>Send Meta-compliant broadcasts with CTA buttons, import customer CSVs, and analyze delivery & read rates in real-time.</p>
-            </button>
+              <div class="icp-row">
+                <span class="icp-badge web">Website Bot</span>
+                <strong>Visitor #8021: "Booked demo for Thursday 3 PM"</strong>
+                <span class="icp-status auto">AI Handled</span>
+              </div>
+            </div>
           </div>
 
-          <!-- Right Showcase Display Window -->
-          <div class="showcase-display">
-            
-            <!-- Panel 0: Live Team Inbox -->
-            <div id="spanel-0" class="showcase-panel active">
-              <div class="sdisplay-bar">
-                <div class="sdisplay-title">
-                  <span class="dot-green"></span>
-                  <strong>LIVE TEAM INBOX</strong> · <span>3 Active Agents On Duty</span>
-                </div>
-                <div class="sdisplay-badge">Channel: WhatsApp API + IG</div>
-              </div>
-
-              <div class="inbox-mockup-layout">
-                <div class="inbox-mockup-sidebar">
-                  <div class="mockup-chat active">
-                    <div class="mc-avatar">PS</div>
-                    <div class="mc-info">
-                      <b>Priya Sharma <span class="tag-wa">WA</span></b>
-                      <small>Booking confirmed for tomorrow 3 PM</small>
-                    </div>
-                  </div>
-                  <div class="mockup-chat">
-                    <div class="mc-avatar">AK</div>
-                    <div class="mc-info">
-                      <b>Arjun K. <span class="tag-ig">IG</span></b>
-                      <small>Sent inquiry about Growth plan</small>
-                    </div>
-                  </div>
-                  <div class="mockup-chat">
-                    <div class="mc-avatar">SM</div>
-                    <div class="mc-info">
-                      <b>Sara Mehta <span class="tag-fb">FB</span></b>
-                      <small>Thanks, our team loved the demo!</small>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="inbox-mockup-chat">
-                  <div class="mockup-msg customer">
-                    <p>Can I reschedule my appointment to Thursday 4 PM instead?</p>
-                    <time>14:02</time>
-                  </div>
-                  <div class="mockup-msg bot">
-                    <p>✦ <strong>AI Bot:</strong> I've updated your slot to Thursday at 4:00 PM! Sent calendar invite to your email. 👍</p>
-                    <time>14:02 · Auto-replied</time>
-                  </div>
-                  <div class="mockup-agent-bar">
-                    <span>⚡ Agent Rahul is typing...</span>
-                    <button class="mini-btn">Assign to Me</button>
-                  </div>
-                </div>
+          <!-- Bento 2: Visual Flow Builder -->
+          <div class="bento-card">
+            <div class="bento-header">
+              <span class="bento-icon">⌘</span>
+              <div>
+                <h3>Visual Flow Builder</h3>
+                <p>Create conversation journeys with drag-and-drop ease. Connect triggers, conditions, and actions with zero code.</p>
               </div>
             </div>
+            <div class="flow-mini-preview">
+              <div class="flow-node">Keyword "Book"</div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-node ai">AI Slot Picker</div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-node crm">CRM Synced</div>
+            </div>
+          </div>
 
-            <!-- Panel 1: Visual Flow Builder Canvas -->
-            <div id="spanel-1" class="showcase-panel">
-              <div class="sdisplay-bar">
-                <div class="sdisplay-title">
-                  <span class="dot-indigo"></span>
-                  <strong>VISUAL FLOW CANVAS</strong> · <span>Workflow: "Appointment Booking v2"</span>
-                </div>
-                <div class="sdisplay-badge green">Status: Active & Deployed</div>
-              </div>
-
-              <div class="flow-canvas-mockup">
-                <div class="canvas-node node-trigger">
-                  <div class="node-badge">TRIGGER</div>
-                  <b>Incoming Keyword</b>
-                  <code>"Book" or "Appointment"</code>
-                  <div class="connector-right"></div>
-                </div>
-
-                <div class="canvas-connector-line line-1"></div>
-
-                <div class="canvas-node node-ai">
-                  <div class="node-badge">AI LOGIC</div>
-                  <b>Intent & Slot Finder</b>
-                  <p>Checks Google Calendar</p>
-                  <div class="connector-right"></div>
-                </div>
-
-                <div class="canvas-connector-line line-2"></div>
-
-                <div class="canvas-node node-action">
-                  <div class="node-badge">ACTION</div>
-                  <b>Send WA Interactive Buttons</b>
-                  <p>Shows Today / Tomorrow / Custom</p>
-                  <div class="connector-right"></div>
-                </div>
-
-                <div class="canvas-connector-line line-3"></div>
-
-                <div class="canvas-node node-crm">
-                  <div class="node-badge">DATABASE</div>
-                  <b>Sync CRM & Trigger Reminder</b>
-                  <p>WhatsApp Utility Template -2h</p>
-                </div>
+          <!-- Bento 3: Bulk Smart Broadcasting -->
+          <div class="bento-card">
+            <div class="bento-header">
+              <span class="bento-icon">📢</span>
+              <div>
+                <h3>Meta-Approved Broadcasts</h3>
+                <p>Send personalized offers, utility alerts, and updates to thousands of opted-in customers with rich media and interactive buttons.</p>
               </div>
             </div>
-
-            <!-- Panel 2: Bulk Smart Broadcasting -->
-            <div id="spanel-2" class="showcase-panel">
-              <div class="sdisplay-bar">
-                <div class="sdisplay-title">
-                  <span class="dot-pink"></span>
-                  <strong>BROADCAST CAMPAIGN MONITOR</strong> · <span>Campaign: "Festive Flash Sale"</span>
-                </div>
-                <div class="sdisplay-badge">Meta Approved Template</div>
+            <div class="stats-mini-row">
+              <div class="stat-box">
+                <strong>98.4%</strong>
+                <small>Delivery Rate</small>
               </div>
-
-              <div class="broadcast-mockup-layout">
-                <div class="bcast-stats-row">
-                  <div class="bcast-stat">
-                    <small>Recipients</small>
-                    <strong>25,400</strong>
-                    <span>100% Dispatched</span>
-                  </div>
-                  <div class="bcast-stat">
-                    <small>Delivered</small>
-                    <strong style="color:#10b981">98.4%</strong>
-                    <span>24,993 Successful</span>
-                  </div>
-                  <div class="bcast-stat">
-                    <small>Read Rate</small>
-                    <strong style="color:#818cf8">82.1%</strong>
-                    <span>20,853 Opened</span>
-                  </div>
-                  <div class="bcast-stat">
-                    <small>Button Clicks</small>
-                    <strong style="color:#34d399">41.6%</strong>
-                    <span>10,566 Conversions</span>
-                  </div>
-                </div>
-
-                <div class="bcast-preview-card">
-                  <div class="bcast-bubble">
-                    <b>Exclusive Festive VIP Offer 🎁</b>
-                    <p>Hello {first_name}, enjoy 30% OFF all plans this weekend only. Tap below to claim your personalized discount code!</p>
-                    <div class="bcast-actions">
-                      <button>Claim 30% OFF ↗</button>
-                      <button>Talk to Support 💬</button>
-                    </div>
-                  </div>
-                  <div class="bcast-meta">
-                    <span>Meta Cloud API Throughput: 80 msgs/sec</span>
-                    <span>Opt-out rate: 0.08% (Safe Zone)</span>
-                  </div>
-                </div>
+              <div class="stat-box">
+                <strong>84.2%</strong>
+                <small>Read Rate</small>
               </div>
             </div>
+          </div>
 
+          <!-- Bento 4: AI Knowledge Base -->
+          <div class="bento-card">
+            <div class="bento-header">
+              <span class="bento-icon">✦</span>
+              <div>
+                <h3>AI Trained on Your Business</h3>
+                <p>Upload your catalogs, FAQs, or website URL. The AI answers customer questions accurately in 50+ languages.</p>
+              </div>
+            </div>
+            <div class="source-tags">
+              <span>📄 Product PDFs</span>
+              <span>🌐 Website URL</span>
+              <span>📑 FAQ Sheets</span>
+            </div>
+          </div>
+
+          <!-- Bento 5: AI Voice Calling & Escalation -->
+          <div class="bento-card bento-span-2">
+            <div class="bento-header">
+              <span class="bento-icon">📞</span>
+              <div>
+                <h3>Automated Appointment Reminders & Voice AI</h3>
+                <p>Eliminate no-shows with timely automated WhatsApp notifications and natural voice confirmation calls.</p>
+              </div>
+            </div>
+            <div class="reminder-timeline">
+              <div class="timeline-point">
+                <b>Booking Created</b>
+                <small>Slot reserved on calendar</small>
+              </div>
+              <div class="timeline-line"></div>
+              <div class="timeline-point">
+                <b>24h WhatsApp Reminder</b>
+                <small>Sent with confirm/reschedule buttons</small>
+              </div>
+              <div class="timeline-line"></div>
+              <div class="timeline-point success">
+                <b>Attendance Verified</b>
+                <small>Customer arrives on time</small>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ===== CHANNELS ARCHITECTURE ===== -->
+    <!-- ===== CHANNELS OVERVIEW ===== -->
     <section class="section channels-section" id="channels">
       <div class="container">
         <div class="section-heading centered">
-          <div class="eyebrow">OMNICHANNEL CONNECTIVITY</div>
-          <h2>Every Major Channel. <span class="gradient-text">Unified In One Hub.</span></h2>
-          <p>No more messy tabs or missed opportunities. All customer conversations sync directly into your MeSage AI dashboard.</p>
+          <div class="badge-pill">
+            <span class="pill-dot"></span>
+            <span>All Channels Synced</span>
+          </div>
+          <h2>One Hub. Every Channel.</h2>
+          <p>Engage customers on the platforms they use every single day.</p>
         </div>
 
-        <div class="channel-connect-visual">
-          <div class="channels-left">
-            <div class="ch-node wa-node">
-              <div class="ch-logo-wrap wa-bg">
-                <svg viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-              </div>
-              <span>WhatsApp Business API</span>
-              <div class="ch-line"></div>
-            </div>
-            <div class="ch-node ig-node">
-              <div class="ch-logo-wrap ig-bg">
-                <svg viewBox="0 0 24 24"><defs><linearGradient id="igv1" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f09433"/><stop offset="50%" stop-color="#dc2743"/><stop offset="100%" stop-color="#bc1888"/></linearGradient></defs><path fill="url(#igv1)" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-              </div>
-              <span>Instagram Direct Messages</span>
-              <div class="ch-line"></div>
-            </div>
-            <div class="ch-node fb-node">
-              <div class="ch-logo-wrap fb-bg">
-                <svg viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-              </div>
-              <span>Facebook Messenger</span>
-              <div class="ch-line"></div>
-            </div>
-            <div class="ch-node web-node">
-              <div class="ch-logo-wrap web-bg">
-                <svg viewBox="0 0 24 24" fill="#818cf8"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
-              </div>
-              <span>Website AI Chat Widget</span>
-              <div class="ch-line"></div>
-            </div>
-            <div class="ch-node tg-node">
-              <div class="ch-logo-wrap tg-bg">
-                <svg viewBox="0 0 24 24" fill="#34d399"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-              </div>
-              <span>Telegram Bot Channels</span>
-              <div class="ch-line"></div>
-            </div>
-            <div class="ch-node mail-node">
-              <div class="ch-logo-wrap mail-bg">
-                <svg viewBox="0 0 24 24" fill="#a5b4fc"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-              </div>
-              <span>Email Support Inbox</span>
-              <div class="ch-line"></div>
-            </div>
+        <div class="channels-grid">
+          <div class="channel-box">
+            <div class="channel-icon-circle wa">🟢</div>
+            <h3>WhatsApp Business API</h3>
+            <p>Verified brand name, green tick support, high-speed broadcasts, and automated chatbots.</p>
           </div>
 
-          <div class="ch-center">
-            <div class="ch-center-box">
-              <img src="assets/logoimg.png" alt="MeSage AI" class="center-logo" onerror="this.style.display='none'">
-              <div class="center-title">MeSage AI Hub</div>
-              <div class="center-sub">Single Brain Architecture</div>
-              <div class="center-badges">
-                <span class="cbadge">✦ AI Core Active</span>
-                <span class="cbadge green">6 Channels Synced</span>
-              </div>
-            </div>
+          <div class="channel-box">
+            <div class="channel-icon-circle ig">📸</div>
+            <h3>Instagram DMs</h3>
+            <p>Automate reel comment replies, story mentions, and private sales conversations.</p>
           </div>
 
-          <div class="ch-right">
-            <div class="dash-preview-box">
-              <div class="dp-head">LIVE CHAT ACTIVITY</div>
-              <div class="dp-row wa-row"><span class="dp-dot wa-dot"></span><span class="dp-name">Priya S. (WhatsApp)</span><span class="dp-tag green-tag">Booked</span></div>
-              <div class="dp-row ig-row"><span class="dp-dot ig-dot"></span><span class="dp-name">Arjun K. (Instagram)</span><span class="dp-tag">Inquiry</span></div>
-              <div class="dp-row fb-row"><span class="dp-dot fb-dot"></span><span class="dp-name">Sara M. (Facebook)</span><span class="dp-tag green-tag">Resolved</span></div>
-              <div class="dp-row web-row"><span class="dp-dot web-dot"></span><span class="dp-name">Web Visitor #2901</span><span class="dp-tag ai-tag">AI Chatting</span></div>
-              <div class="dp-row tg-row"><span class="dp-dot tg-dot"></span><span class="dp-name">Rahul V. (Telegram)</span><span class="dp-tag">Order Sync</span></div>
-              <div class="dp-row mail-row"><span class="dp-dot mail-dot"></span><span class="dp-name">enterprise@co. (Email)</span><span class="dp-tag">Quote Sent</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== FULL FEATURES LIST (16 Core Capabilities) ===== -->
-    <section class="section features-overview-section" id="features">
-      <div class="container">
-        <div class="section-heading centered">
-          <div class="eyebrow">ALL-IN-ONE AUTOMATION STACK</div>
-          <h2>Enterprise Features for <span class="gradient-text">Modern Growth.</span></h2>
-          <p>Every tool your team needs to capture leads, book slots, automate replies, and broadcast at massive scale.</p>
-        </div>
-
-        <div class="features-ordered-list">
-          <!-- 1. WhatsApp Business API -->
-          <div class="fo-item feature-highlight">
-            <div class="fo-num">01</div>
-            <div class="fo-icon wa-bg-icon">🟢</div>
-            <div class="fo-text">
-              <h3>Official WhatsApp Business API (WABA)</h3>
-              <p>Meta Cloud API integration, green tick verification support, verified brand name, interactive catalog & button templates at unlimited speed.</p>
-            </div>
-            <div class="fo-tags"><span>Official WABA</span><span>Green Tick</span><span>Meta Verified</span></div>
+          <div class="channel-box">
+            <div class="channel-icon-circle fb">💬</div>
+            <h3>Facebook Messenger</h3>
+            <p>Connect page chats and route Click-to-WhatsApp ads with instant conversion flows.</p>
           </div>
 
-          <!-- 2. Instagram Automation -->
-          <div class="fo-item">
-            <div class="fo-num">02</div>
-            <div class="fo-icon ig-bg-icon">📸</div>
-            <div class="fo-text">
-              <h3>Instagram Direct Message Automation</h3>
-              <p>Turn reel comments into automated DMs, reply to story mentions in seconds, and capture leads while your posts trend.</p>
-            </div>
-            <div class="fo-tags"><span>Comment Auto-DM</span><span>Story Replies</span><span>Lead Capture</span></div>
+          <div class="channel-box">
+            <div class="channel-icon-circle web">🌐</div>
+            <h3>Website Live Bot</h3>
+            <p>Engage web visitors, answer inquiries instantly, or transition them straight to WhatsApp.</p>
           </div>
 
-          <!-- 3. Facebook Messenger -->
-          <div class="fo-item">
-            <div class="fo-num">03</div>
-            <div class="fo-icon fb-bg-icon">💬</div>
-            <div class="fo-text">
-              <h3>Facebook Messenger & Click-to-WhatsApp Ads</h3>
-              <p>Route incoming Ad clicks directly into high-converting WhatsApp conversations with instant automated qualification.</p>
-            </div>
-            <div class="fo-tags"><span>CTWA Ads</span><span>Messenger Sync</span><span>Instant Routing</span></div>
+          <div class="channel-box">
+            <div class="channel-icon-circle tg">✈️</div>
+            <h3>Telegram Bot</h3>
+            <p>Deliver broadcast alerts, customer community notifications, and automated workflows.</p>
           </div>
 
-          <!-- 4. Web Bot -->
-          <div class="fo-item">
-            <div class="fo-num">04</div>
-            <div class="fo-icon web-bg-icon">🌐</div>
-            <div class="fo-text">
-              <h3>Web AI Chatbot & WhatsApp Widget</h3>
-              <p>Embed our lightweight widget on any website. Capture visitor numbers, answer questions, or seamlessly transfer them to WhatsApp.</p>
-            </div>
-            <div class="fo-tags"><span>Website Widget</span><span>WhatsApp Redirect</span><span>Live Chat</span></div>
-          </div>
-
-          <!-- 5. Telegram -->
-          <div class="fo-item">
-            <div class="fo-num">05</div>
-            <div class="fo-icon tg-bg-icon">✈️</div>
-            <div class="fo-text">
-              <h3>Telegram Bot Integration</h3>
-              <p>Deploy custom automated bots on Telegram for community broadcasts, order status updates, and support workflows.</p>
-            </div>
-            <div class="fo-tags"><span>Bot Channels</span><span>Broadcast Groups</span><span>API Webhooks</span></div>
-          </div>
-
-          <!-- 6. Email Support -->
-          <div class="fo-item">
-            <div class="fo-num">06</div>
-            <div class="fo-icon mail-bg-icon">✉️</div>
-            <div class="fo-text">
-              <h3>Unified Email Support</h3>
-              <p>Bring support@ emails into the same inbox so agents never switch between an email client and chat channels.</p>
-            </div>
-            <div class="fo-tags"><span>Shared Threads</span><span>Auto-assign</span><span>Canned Replies</span></div>
-          </div>
-
-          <!-- 7. Separate Inbox For Each Channel -->
-          <div class="fo-item feature-highlight">
-            <div class="fo-num">07</div>
-            <div class="fo-icon inbox-icon">📥</div>
-            <div class="fo-text">
-              <h3>Separate Channel Inboxes in One Shared Workspace</h3>
-              <p>Filter by WhatsApp, Instagram, Telegram or view everything in one combined feed. Perfect clarity without tool fragmentation.</p>
-            </div>
-            <div class="fo-tags"><span>Channel Filters</span><span>Unified View</span><span>Team Permissions</span></div>
-          </div>
-
-          <!-- 8. Human Agent Chat -->
-          <div class="fo-item feature-highlight">
-            <div class="fo-num">08</div>
-            <div class="fo-icon human-icon">🧑‍💼</div>
-            <div class="fo-text">
-              <h3>Human Agent Live Chat Takeover</h3>
-              <p>Pause AI with one click to step in. Add private internal notes for teammates, transfer between departments, and assign priorities.</p>
-            </div>
-            <div class="fo-tags"><span>1-Click Takeover</span><span>Internal Notes</span><span>Multi-agent</span></div>
-          </div>
-
-          <!-- 9. Analytics -->
-          <div class="fo-item">
-            <div class="fo-num">09</div>
-            <div class="fo-icon analytics-icon">📊</div>
-            <div class="fo-text">
-              <h3>Deep Analytics & Performance Reports</h3>
-              <p>Track first response time, bot resolution percentage, agent efficiency, message delivery rates, and ROI across all channels.</p>
-            </div>
-            <div class="fo-tags"><span>Real-time KPIs</span><span>Agent Leaderboards</span><span>Delivery Stats</span></div>
-          </div>
-
-          <!-- 10. Multi-Channel Campaigns -->
-          <div class="fo-item">
-            <div class="fo-num">10</div>
-            <div class="fo-icon campaigns-icon">🎯</div>
-            <div class="fo-text">
-              <h3>Drip Campaigns & Customer Journeys</h3>
-              <p>Schedule multi-day onboarding series, promotional offers, and re-engagement drips based on customer behavior.</p>
-            </div>
-            <div class="fo-tags"><span>Drip Sequences</span><span>Audience Segments</span><span>Event Triggers</span></div>
-          </div>
-
-          <!-- 11. WhatsApp Bulk Broadcast -->
-          <div class="fo-item feature-highlight">
-            <div class="fo-num">11</div>
-            <div class="fo-icon broadcast-icon">📢</div>
-            <div class="fo-text">
-              <h3>Smart WhatsApp Broadcasts with CTA Buttons</h3>
-              <p>Send thousands of personalized messages with images, videos, documents, and clickable quick-reply buttons without getting banned.</p>
-            </div>
-            <div class="fo-tags"><span>Meta Approved</span><span>Rich Media</span><span>High Throughput</span></div>
-          </div>
-
-          <!-- 12. 24/7 AI Responses -->
-          <div class="fo-item feature-highlight">
-            <div class="fo-num">12</div>
-            <div class="fo-icon ai-icon">✦</div>
-            <div class="fo-text">
-              <h3>Custom AI Knowledge Base Training</h3>
-              <p>Train your AI chatbot on your website URL, product PDFs, FAQs, and catalogs. It answers accurately in English, Hindi, and 50+ languages.</p>
-            </div>
-            <div class="fo-tags"><span>PDF / URL Training</span><span>Multilingual</span><span>Zero Hallucination</span></div>
-          </div>
-
-          <!-- 13. Drag & Drop Flow Builder -->
-          <div class="fo-item feature-highlight">
-            <div class="fo-num">13</div>
-            <div class="fo-icon flow-icon">⌘</div>
-            <div class="fo-text">
-              <h3>Visual Drag-and-Drop Flow Builder</h3>
-              <p>Design conversation paths visually. Connect condition nodes, ask questions, validate phone numbers, and trigger external APIs.</p>
-            </div>
-            <div class="fo-tags"><span>No-code Canvas</span><span>Condition Logic</span><span>Webhooks</span></div>
-          </div>
-
-          <!-- 14. AI Automated Follow-Ups -->
-          <div class="fo-item">
-            <div class="fo-num">14</div>
-            <div class="fo-icon followup-icon">↗</div>
-            <div class="fo-text">
-              <h3>Intelligent Automated Follow-Ups</h3>
-              <p>Recover stalled leads and remind users of unpaid carts or incomplete bookings with contextual, friendly WhatsApp reminders.</p>
-            </div>
-            <div class="fo-tags"><span>Cart Recovery</span><span>Lead Re-engagement</span><span>Smart Scheduling</span></div>
-          </div>
-
-          <!-- 15. CRM & Webhooks Integration -->
-          <div class="fo-item">
-            <div class="fo-num">15</div>
-            <div class="fo-icon crm-icon">🔗</div>
-            <div class="fo-text">
-              <h3>Seamless CRM & E-Commerce Integration</h3>
-              <p>Sync leads automatically into Google Sheets, Zoho, HubSpot, Salesforce, Shopify, and WooCommerce with zero manual entry.</p>
-            </div>
-            <div class="fo-tags"><span>Google Sheets</span><span>Shopify / Woo</span><span>REST Webhooks</span></div>
-          </div>
-
-          <!-- 16. AI Voice Calling -->
-          <div class="fo-item feature-highlight">
-            <div class="fo-num">16</div>
-            <div class="fo-icon calling-icon">📞</div>
-            <div class="fo-text">
-              <h3>AI Voice Calling & Lead Qualification</h3>
-              <p>Automate outbound phone confirmation calls for high-value appointments, event RSVPs, and lead verification using natural AI voice.</p>
-            </div>
-            <div class="fo-tags"><span>Natural Voice AI</span><span>Call Verification</span><span>Instant Escalation</span></div>
+          <div class="channel-box">
+            <div class="channel-icon-circle mail">✉️</div>
+            <h3>Email Support</h3>
+            <p>Keep customer emails right alongside their chat history for complete relationship context.</p>
           </div>
         </div>
       </div>
@@ -780,151 +489,165 @@
     <section class="section integrations-section" id="integrations">
       <div class="container">
         <div class="section-heading centered">
-          <div class="eyebrow">PLUG & PLAY ECOSYSTEM</div>
-          <h2>Connects with the Tools <span class="gradient-text">You Already Use.</span></h2>
-          <p>Sync conversation data, automate order notifications, and send instant WhatsApp alerts from your favorite software.</p>
+          <div class="badge-pill">
+            <span class="pill-dot"></span>
+            <span>Ecosystem</span>
+          </div>
+          <h2>Seamless Integrations.</h2>
+          <p>Sync leads, update CRM records, and trigger automated WhatsApp notifications from your existing tools.</p>
         </div>
 
-        <div class="integrations-grid">
-          <div class="int-card">
-            <div class="int-logo">🟢</div>
-            <b>Meta Cloud API</b>
-            <small>Direct WhatsApp Business</small>
+        <div class="integrations-list">
+          <div class="integration-item">
+            <span class="int-icon">🟢</span>
+            <strong>Meta Cloud API</strong>
+            <small>Direct WhatsApp</small>
           </div>
-          <div class="int-card">
-            <div class="int-logo">🛍️</div>
-            <b>Shopify</b>
-            <small>Abandoned Cart & Tracking</small>
+          <div class="integration-item">
+            <span class="int-icon">🛍️</span>
+            <strong>Shopify</strong>
+            <small>Abandoned Cart</small>
           </div>
-          <div class="int-card">
-            <div class="int-logo">📦</div>
-            <b>WooCommerce</b>
-            <small>Order & COD Confirmations</small>
+          <div class="integration-item">
+            <span class="int-icon">📦</span>
+            <strong>WooCommerce</strong>
+            <small>Order Alerts</small>
           </div>
-          <div class="int-card">
-            <div class="int-logo">📊</div>
-            <b>Google Sheets</b>
-            <small>Instant Real-time Row Sync</small>
+          <div class="integration-item">
+            <span class="int-icon">📊</span>
+            <strong>Google Sheets</strong>
+            <small>Live Row Sync</small>
           </div>
-          <div class="int-card">
-            <div class="int-logo">🟧</div>
-            <b>HubSpot</b>
-            <small>Lead & Deal Pipeline Sync</small>
+          <div class="integration-item">
+            <span class="int-icon">🟧</span>
+            <strong>HubSpot</strong>
+            <small>CRM Pipeline</small>
           </div>
-          <div class="int-card">
-            <div class="int-logo">🟥</div>
-            <b>Zoho CRM</b>
-            <small>Contact & Ticket Updates</small>
+          <div class="integration-item">
+            <span class="int-icon">🟥</span>
+            <strong>Zoho CRM</strong>
+            <small>Deal Updates</small>
           </div>
-          <div class="int-card">
-            <div class="int-logo">⚡</div>
-            <b>Zapier / Make</b>
-            <small>Connect 5,000+ External Apps</small>
+          <div class="integration-item">
+            <span class="int-icon">⚡</span>
+            <strong>Zapier / Make</strong>
+            <small>5,000+ Apps</small>
           </div>
-          <div class="int-card">
-            <div class="int-logo">💳</div>
-            <b>Razorpay / Stripe</b>
-            <small>Instant In-Chat Payment Links</small>
+          <div class="integration-item">
+            <span class="int-icon">💳</span>
+            <strong>Razorpay</strong>
+            <small>Payment Links</small>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ===== FAQ ACCORDION SECTION (Just like Botflo) ===== -->
+    <!-- ===== FAQ SECTION ===== -->
     <section class="section faq-section" id="faq">
-      <div class="container" style="max-width: 860px;">
+      <div class="container faq-container">
         <div class="section-heading centered">
-          <div class="eyebrow">GOT QUESTIONS?</div>
-          <h2>Frequently Asked <span class="gradient-text">Questions.</span></h2>
-          <p>Everything you need to know about setting up MeSage AI and official WhatsApp Business API.</p>
+          <div class="badge-pill">
+            <span class="pill-dot"></span>
+            <span>FAQ</span>
+          </div>
+          <h2>Frequently Asked Questions.</h2>
+          <p>Clear answers to the most common questions about MeSage AI.</p>
         </div>
 
-        <div class="faq-list">
-          <div class="faq-item active">
-            <button class="faq-question" onclick="toggleFAQ(this)">
+        <div class="faq-accordion">
+          <div class="faq-card active">
+            <button class="faq-btn" onclick="toggleFAQ(this)">
               <span>How does WhatsApp appointment booking work?</span>
-              <i>+</i>
+              <span class="faq-icon">+</span>
             </button>
-            <div class="faq-answer">
-              <p>Customers message your WhatsApp number or tap your link. MeSage AI greets them, asks for their service and preferred date/time through interactive buttons, checks calendar availability in real time, locks the slot, syncs your CRM, and sends an automated WhatsApp confirmation + reminder.</p>
+            <div class="faq-body">
+              <p>Customers tap your WhatsApp link or message you. MeSage AI prompts them with interactive buttons to pick a service and preferred date/time slot. It checks your calendar in real time, reserves the spot, syncs your CRM, and schedules automated reminder messages before the appointment.</p>
             </div>
           </div>
 
-          <div class="faq-item">
-            <button class="faq-question" onclick="toggleFAQ(this)">
+          <div class="faq-card">
+            <button class="faq-btn" onclick="toggleFAQ(this)">
+              <span>Can multiple agents log in to the same WhatsApp number?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-body">
+              <p>Yes. With MeSage AI's shared inbox, your entire support and sales team can log in from their own computers or phones using one official business number. You can assign conversations, leave private internal notes, and monitor response metrics.</p>
+            </div>
+          </div>
+
+          <div class="faq-card">
+            <button class="faq-btn" onclick="toggleFAQ(this)">
+              <span>How does MeSage AI train on my business information?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-body">
+              <p>Simply upload your product PDFs, service catalogs, or paste your website URL. MeSage AI indexes your content securely and answers customer queries accurately without hallucinating or making up false details.</p>
+            </div>
+          </div>
+
+          <div class="faq-card">
+            <button class="faq-btn" onclick="toggleFAQ(this)">
               <span>What is the difference between WhatsApp Business App and API?</span>
-              <i>+</i>
+              <span class="faq-icon">+</span>
             </button>
-            <div class="faq-answer">
-              <p>The standard WhatsApp Business App is limited to 1 phone, lacks automated AI chatbots, caps broadcasts at 256 contacts, and risks getting banned. The official WhatsApp Business API (WABA) supports unlimited agents, automated flow builders, 24/7 AI chatbot responses, bulk broadcasting to thousands, and green tick verification.</p>
+            <div class="faq-body">
+              <p>The standard WhatsApp Business App is designed for single-user small operations with a 256-broadcast contact limit and no AI automation. The official WhatsApp Business API (WABA) supports unlimited agents, automated flow builders, 24/7 AI chatbots, bulk broadcasts, and verified green tick badges.</p>
             </div>
           </div>
 
-          <div class="faq-item">
-            <button class="faq-question" onclick="toggleFAQ(this)">
-              <span>Can multiple agents log in and reply simultaneously?</span>
-              <i>+</i>
+          <div class="faq-card">
+            <button class="faq-btn" onclick="toggleFAQ(this)">
+              <span>Can a human agent take over from the chatbot at any time?</span>
+              <span class="faq-icon">+</span>
             </button>
-            <div class="faq-answer">
-              <p>Yes! With MeSage AI's unified team inbox, unlimited agents can log in from their own laptops or phones using a single WhatsApp number. You can assign conversations, leave private internal notes, and track agent response metrics.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" onclick="toggleFAQ(this)">
-              <span>How does MeSage AI train on my business data?</span>
-              <i>+</i>
-            </button>
-            <div class="faq-answer">
-              <p>You simply paste your website URL or upload your product catalog, FAQs, or PDF brochures. Our AI model ingests the information and creates a dedicated, secure knowledge base to answer customer questions accurately without hallucinating.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" onclick="toggleFAQ(this)">
-              <span>Can human agents take over from the chatbot anytime?</span>
-              <i>+</i>
-            </button>
-            <div class="faq-answer">
-              <p>Absolutely. Whenever a customer asks for a human, or if a query needs personal attention, any team member can click "Takeover" in the inbox to pause the bot instantly and chat live with full context.</p>
+            <div class="faq-body">
+              <p>Yes. When a customer asks for a human, or whenever an agent chooses to intervene, a single click on "Takeover" pauses the automated bot and allows the agent to chat live with full context.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ===== FINAL CALL TO ACTION ===== -->
-    <section class="section final-cta" id="contact">
-      <div class="container cta-box">
-        <div class="cta-glow"></div>
-        <div class="eyebrow">READY TO TRANSFORM YOUR CONVERSATIONS?</div>
-        <h2>Start Automating on WhatsApp <br><span class="gradient-text">In Less Than 10 Minutes.</span></h2>
-        <p>Book a personalized walkthrough with our solution architects and see how MeSage AI scales your business.</p>
-        <div class="cta-actions">
-          <a class="btn btn-primary" href="mailto:hello@mesage.ai?subject=MeSage%20AI%20Demo%20Request">Schedule Live Demo <span>→</span></a>
-          <a class="btn btn-ghost" href="#demo">Try Interactive Demo</a>
+    <!-- ===== FINAL CTA ===== -->
+    <section class="section cta-section" id="contact">
+      <div class="container">
+        <div class="cta-banner">
+          <div class="cta-backdrop-glow"></div>
+          <h2>Ready to Automate Your Conversations?</h2>
+          <p>Join businesses scaling sales, customer support, and appointment bookings on WhatsApp with MeSage AI.</p>
+          <div class="cta-btn-group">
+            <a href="mailto:hello@mesage.ai?subject=MeSage%20AI%20Demo%20Inquiry" class="btn btn-primary btn-lg">Schedule a Demo <span>→</span></a>
+            <a href="#demo" class="btn btn-secondary btn-lg">Try Bot Simulator</a>
+          </div>
+          <small class="cta-footnote">Official Meta Cloud API Partner Compliant · Fast Onboarding</small>
         </div>
-        <small>Official Meta Tech Provider Compliant · No Credit Card Required For Demo</small>
       </div>
     </section>
 
   </main>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container footer-row">
-      <a class="brand footer-brand" href="#home">
-        <img src="assets/logoimg.png" alt="" onerror="this.style.display='none'">
-        <span>MeSage<span class="brand-ai"> AI</span></span>
-      </a>
-      <p>Every conversation, intelligently connected & automated.</p>
-      <div>
-        <a href="#demo">Demo</a>
-        <a href="#showcase">Showcase</a>
-        <a href="#features">Features</a>
+  <!-- Clean Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-brand-side">
+        <a href="#home" class="brand-logo">
+          <img src="assets/logoimg.png" alt="" class="brand-img" onerror="this.style.display='none'">
+          <span class="brand-name">MeSage<span class="brand-accent"> AI</span></span>
+        </a>
+        <p>Every customer conversation, intelligently connected & automated.</p>
+      </div>
+
+      <div class="footer-links-side">
+        <a href="#demo">Live Bot</a>
+        <a href="#platform">Platform</a>
+        <a href="#channels">Channels</a>
+        <a href="#integrations">Integrations</a>
         <a href="#faq">FAQ</a>
       </div>
-      <small>© <span id="year"></span> MeSage AI. All rights reserved.</small>
+
+      <div class="footer-bottom-row">
+        <small>© <span id="year"></span> MeSage AI. All rights reserved.</small>
+      </div>
     </div>
   </footer>
 

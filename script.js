@@ -1,294 +1,254 @@
 // ===================== NAVIGATION =====================
-const toggle = document.querySelector('.menu-toggle');
-const links = document.querySelector('.nav-links');
-if (toggle && links) {
-  toggle.addEventListener('click', () => {
-    const isOpen = links.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', String(isOpen));
-    toggle.textContent = isOpen ? '✕' : '☰';
+const menuToggle = document.querySelector('.menu-toggle');
+const navMenu = document.querySelector('.nav-menu');
+if (menuToggle && navMenu) {
+  menuToggle.addEventListener('click', () => {
+    const isOpen = navMenu.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', String(isOpen));
   });
-  links.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
-    links.classList.remove('open');
-    toggle.setAttribute('aria-expanded', 'false');
-    toggle.textContent = '☰';
+  navMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+    navMenu.classList.remove('open');
+    menuToggle.setAttribute('aria-expanded', 'false');
   }));
 }
 
-// Current Year
-document.getElementById('year').textContent = new Date().getFullYear();
-
-// ===================== SHOWCASE TABS (Botflo style) =====================
-window.switchShowcaseTab = function(index) {
-  // Update buttons
-  document.querySelectorAll('.showcase-tab-btn').forEach((btn, i) => {
-    btn.classList.toggle('active', i === index);
-  });
-  // Update panels
-  document.querySelectorAll('.showcase-panel').forEach((panel, i) => {
-    panel.classList.toggle('active', i === index);
-  });
-};
+// Current Year in Footer
+const yearEl = document.getElementById('year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 // ===================== FAQ ACCORDION =====================
 window.toggleFAQ = function(btn) {
-  const item = btn.closest('.faq-item');
-  const wasActive = item.classList.contains('active');
-  // Close all
-  document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
-  // Toggle clicked
+  const card = btn.closest('.faq-card');
+  const wasActive = card.classList.contains('active');
+  document.querySelectorAll('.faq-card').forEach(el => el.classList.remove('active'));
   if (!wasActive) {
-    item.classList.add('active');
+    card.classList.add('active');
   }
 };
 
-// ===================== ANIMATIONS & USE CASES =====================
-const ucTags = document.querySelectorAll('.uc-tag');
-let ucIndex = 0;
-function cycleUC() {
-  ucTags.forEach(t => t.classList.remove('active-uc'));
-  if (ucTags[ucIndex]) ucTags[ucIndex].classList.add('active-uc');
-  ucIndex = (ucIndex + 1) % ucTags.length;
-}
-if (ucTags.length) setInterval(cycleUC, 2400);
-
-function highlightFlowStep(n) {
-  document.querySelectorAll('.flow-step').forEach(s => s.classList.remove('active'));
-  const el = document.getElementById('fs' + n);
-  if (el) el.classList.add('active');
+// ===================== FLOW STEPS HIGHLIGHT =====================
+function highlightStep(stepNum) {
+  document.querySelectorAll('.flow-step-card').forEach(s => s.classList.remove('active'));
+  const activeEl = document.getElementById('fstep-' + stepNum);
+  if (activeEl) activeEl.classList.add('active');
 }
 
-// ===================== WHATSAPP LIVE DEMO =====================
+// ===================== WHATSAPP BOT SIMULATION =====================
 const waMsgs = document.getElementById('waMsgs');
 const waTyping = document.getElementById('waTyping');
 const waQuickArea = document.getElementById('waQuickArea');
 const waChatBg = document.getElementById('waChatBg');
 
-const flows = {
+const botFlows = {
   start: {
-    botMsg: "👋 Welcome to *MeSage AI*!\n\nI can help you with appointments, product queries, support, or order tracking. How can I help you today?",
-    quickReplies: [
-      { label: "📅 Book Appointment", next: "book1" },
-      { label: "🛍️ View Products & Plans", next: "product1" },
-      { label: "🎫 Raise Support Ticket", next: "support1" },
-      { label: "📦 Track Order", next: "order1" }
+    msg: "👋 Welcome to *MeSage AI*!\n\nI can help you book appointments, check pricing, or track orders. What would you like to do?",
+    replies: [
+      { label: "📅 Book an Appointment", next: "book1" },
+      { label: "🛍️ Explore Pricing & Plans", next: "plans1" },
+      { label: "🎫 Support Request", next: "support1" },
+      { label: "📦 Track an Order", next: "order1" }
     ],
-    flowStep: 1
+    step: 1
   },
 
   // Appointment Flow
   book1: {
-    userMsg: "📅 Book Appointment",
-    botMsg: "Great! Let's book your slot in 30 seconds. ⚡\n\nWhat type of appointment do you need?",
-    quickReplies: [
+    msg: "I can help you book an appointment in seconds! ⚡\n\nWhat kind of appointment do you need?",
+    replies: [
       { label: "🩺 Doctor Consultation", next: "book2" },
       { label: "💼 Business Strategy Call", next: "book2" },
-      { label: "💇 Salon & Spa Service", next: "book2" },
+      { label: "💇 Salon & Spa Slot", next: "book2" },
       { label: "🏢 Real Estate Site Visit", next: "book2" }
     ],
-    flowStep: 2
+    step: 2
   },
   book2: {
-    botMsg: "Awesome! Which day works best for you?",
-    quickReplies: [
+    msg: "Which date works best for your schedule?",
+    replies: [
       { label: "📆 Today", next: "book3" },
       { label: "📆 Tomorrow", next: "book3" },
-      { label: "📆 This Saturday", next: "book3" },
-      { label: "📆 Next Monday", next: "book3" }
+      { label: "📆 This Weekend", next: "book3" },
+      { label: "📆 Next Week", next: "book3" }
     ],
-    flowStep: 2
+    step: 2
   },
   book3: {
-    botMsg: "Please select an available time slot:",
-    quickReplies: [
-      { label: "🕘 10:00 AM", next: "book4" },
-      { label: "🕐 1:00 PM", next: "book4" },
-      { label: "🕒 3:30 PM", next: "book4" },
-      { label: "🕕 6:00 PM", next: "book4" }
+    msg: "Here are open slots for your selected day:",
+    replies: [
+      { label: "🕙 10:00 AM", next: "book4" },
+      { label: "🕐 1:30 PM", next: "book4" },
+      { label: "🕓 4:00 PM", next: "book4" },
+      { label: "🕕 6:30 PM", next: "book4" }
     ],
-    flowStep: 3
+    step: 3
   },
   book4: {
-    botMsg: "Almost done! Please confirm your booking details:\n\n👤 *Rahul Sharma*\n📱 *+91 98765 43210*\n🕒 *Tomorrow at 3:30 PM*",
-    quickReplies: [
+    msg: "Great! Let's lock this in for you:\n\n👤 *Rahul Sharma*\n📱 *+91 98765 43210*\n🕒 *Selected Slot: 4:00 PM*",
+    replies: [
       { label: "✅ Confirm & Lock Slot", next: "book5" },
       { label: "✏️ Change Details", next: "book1" }
     ],
-    flowStep: 3
+    step: 3
   },
   book5: {
-    botMsg: "🎉 *Appointment Confirmed!*\n\n✅ Added to Google Calendar\n✅ Synced with CRM\n🔔 Automated reminder scheduled 2 hours before.\n\nNeed directions or have any questions?",
-    quickReplies: [
-      { label: "📍 Send Location", next: "book6" },
-      { label: "🧑‍💼 Talk to an Agent", next: "human" },
-      { label: "🏠 Back to Menu", next: "start" }
+    msg: "🎉 *Appointment Confirmed!*\n\n✅ Reserved in Google Calendar\n✅ Synced to CRM\n🔔 WhatsApp reminder scheduled 2h before.\n\nNeed directions or further help?",
+    replies: [
+      { label: "📍 Send Office Location", next: "book6" },
+      { label: "🧑‍💼 Talk to an Agent", next: "agent" },
+      { label: "🏠 Main Menu", next: "start" }
     ],
-    flowStep: 4
+    step: 4
   },
   book6: {
-    botMsg: "📍 Here is our office location on Google Maps:\n\n🔗 *maps.google.com/?q=MeSageAI*\n\nLooking forward to seeing you! 😊",
-    quickReplies: [
+    msg: "📍 Here is our location:\n\n🔗 *maps.google.com/?q=MeSageAI*\n\nWe look forward to seeing you!",
+    replies: [
       { label: "🏠 Main Menu", next: "start" }
     ],
-    flowStep: 4
+    step: 4
   },
 
-  // Products
-  product1: {
-    userMsg: "🛍️ View Products & Plans",
-    botMsg: "MeSage AI brings everything you need to scale conversations:\n\n1️⃣ Official WhatsApp Business API\n2️⃣ 24/7 AI Knowledge Base Chatbot\n3️⃣ Shared Team Live Inbox\n4️⃣ Bulk Broadcasts with CTA Buttons\n5️⃣ Visual Drag-and-Drop Flow Builder\n\nWould you like pricing details?",
-    quickReplies: [
-      { label: "💰 View Pricing Plans", next: "product2" },
-      { label: "📅 Schedule Live Demo", next: "book1" },
+  // Plans Flow
+  plans1: {
+    msg: "MeSage AI brings everything into one clean workspace:\n\n1️⃣ Official WhatsApp Business API\n2️⃣ 24/7 AI Knowledge Base\n3️⃣ Multi-Agent Shared Inbox\n4️⃣ Drag-and-Drop Flow Builder\n5️⃣ High-Speed Smart Broadcasts\n\nWould you like pricing details?",
+    replies: [
+      { label: "💰 View Pricing Tiers", next: "plans2" },
+      { label: "📅 Book a 1-on-1 Demo", next: "book1" },
       { label: "🏠 Main Menu", next: "start" }
     ],
-    flowStep: 2
+    step: 2
   },
-  product2: {
-    botMsg: "🏷️ *MeSage AI Plans:*\n\n🥉 *Starter:* ₹999/mo (1 Channel, 1,000 Contacts)\n🥈 *Growth:* ₹2,499/mo (All Channels, Unlimited Agents)\n🥇 *Enterprise:* Custom Solutions & Dedicated Support\n\nWould you like a representative to call you?",
-    quickReplies: [
-      { label: "📞 Connect with Sales", next: "human" },
+  plans2: {
+    msg: "🏷️ *Available Plans:*\n\n🥉 *Starter:* ₹999/mo (1 Channel, 1,000 Contacts)\n🥈 *Growth:* ₹2,499/mo (All Channels, Unlimited Agents)\n🥇 *Enterprise:* Custom Workflows & Dedicated Manager\n\nWould you like our team to get in touch?",
+    replies: [
+      { label: "📞 Connect with Sales", next: "agent" },
       { label: "🏠 Main Menu", next: "start" }
     ],
-    flowStep: 3
+    step: 3
   },
 
-  // Support
+  // Support Flow
   support1: {
-    userMsg: "🎫 Raise Support Ticket",
-    botMsg: "We're here to help! What issue are you experiencing?",
-    quickReplies: [
+    msg: "I'm ready to assist! What issue are you experiencing?",
+    replies: [
       { label: "🔧 Technical Setup Help", next: "support2" },
-      { label: "💳 Billing & Invoice", next: "support2" },
-      { label: "🔗 Meta API Green Tick", next: "support2" }
+      { label: "💳 Billing / Invoicing", next: "support2" },
+      { label: "🟢 Meta Green Tick Approval", next: "support2" }
     ],
-    flowStep: 2
+    step: 2
   },
   support2: {
-    botMsg: "Ticket generated: 🎫 *#MSG-2024-9102*\n\nPriority: High ⚡\nStatus: Assigned to Tier-1 Support Engineer\n\nExpected response: Under 15 minutes.",
-    quickReplies: [
-      { label: "🧑‍💼 Chat with Agent Now", next: "human" },
+    msg: "Ticket generated: 🎫 *#MSG-2024-9401*\n\nPriority: High ⚡\nStatus: Assigned to Technical Specialist\n\nEstimated resolution: Under 15 minutes.",
+    replies: [
+      { label: "🧑‍💼 Speak with Agent Now", next: "agent" },
       { label: "🏠 Main Menu", next: "start" }
     ],
-    flowStep: 4
+    step: 4
   },
 
-  // Order tracking
+  // Order Flow
   order1: {
-    userMsg: "📦 Track Order",
-    botMsg: "📦 *Order #ORD-88192 Status:*\n\n✅ Order Confirmed (Oct 22)\n✅ Dispatched via BlueDart\n🚚 *Out for delivery today by 5:00 PM*\n\nDriver: Suresh (+91 98200 XXXXX)",
-    quickReplies: [
+    msg: "📦 *Order #ORD-88192 Status:*\n\n✅ Dispatched via BlueDart\n🚚 *Out for delivery today by 5:00 PM*\nDriver: Suresh (+91 98200 XXXXX)",
+    replies: [
       { label: "📞 Call Delivery Agent", next: "order2" },
       { label: "🏠 Main Menu", next: "start" }
     ],
-    flowStep: 3
+    step: 3
   },
   order2: {
-    botMsg: "Connecting you to driver Suresh at +91 98200 XXXXX... 📞\n\nHave a great delivery!",
-    quickReplies: [
+    msg: "Connecting you to driver Suresh at +91 98200 XXXXX... 📞",
+    replies: [
       { label: "🏠 Main Menu", next: "start" }
     ],
-    flowStep: 4
+    step: 4
   },
 
-  // Human Takeover
-  human: {
-    botMsg: "🧑‍💼 *Human Agent Handoff:*\n\nAgent Priya from our specialist team has joined the conversation!\n\n_Priya: Hello Rahul! I can see your inquiry. How can I assist you right now?_",
-    quickReplies: [
-      { label: "💬 Ask a Custom Question", next: "start" },
-      { label: "🏠 Return to AI Bot", next: "start" }
+  // Agent Takeover
+  agent: {
+    msg: "🧑‍💼 *Human Agent Joined!*\n\n_Agent Priya: Hello Rahul! I've taken over this chat. How can I assist you right now?_",
+    replies: [
+      { label: "💬 Return to AI Bot", next: "start" },
+      { label: "🏠 Main Menu", next: "start" }
     ],
-    flowStep: 5
+    step: 5
   }
 };
 
-function scrollWA() {
+function scrollChat() {
   if (waChatBg) waChatBg.scrollTop = waChatBg.scrollHeight;
 }
 
-function addWAMsg(text, type) {
-  const div = document.createElement('div');
-  div.className = `wa-msg wa-msg-${type}`;
-  const lines = text.replace(/\*(.*?)\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
-  div.innerHTML = `<div class="wa-bubble-inner">${lines}</div><div class="wa-tick-${type}">✓✓</div>`;
-  waMsgs.appendChild(div);
-  scrollWA();
+function appendMessage(text, sender) {
+  const msgEl = document.createElement('div');
+  msgEl.className = `wa-msg wa-msg-${sender}`;
+  const formatted = text.replace(/\*(.*?)\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
+  msgEl.innerHTML = `<div class="wa-bubble-inner">${formatted}</div><div class="wa-tick-${sender}">✓✓</div>`;
+  waMsgs.appendChild(msgEl);
+  scrollChat();
 }
 
-function showTyping() {
-  if (waTyping) {
-    waTyping.style.display = 'flex';
-    scrollWA();
-  }
-}
-
-function hideTyping() {
-  if (waTyping) waTyping.style.display = 'none';
-}
-
-function clearQuickReplies() {
-  if (waQuickArea) waQuickArea.innerHTML = '';
-}
-
-function showQuickReplies(replies) {
-  clearQuickReplies();
-  replies.forEach((r) => {
+function renderReplies(replyList) {
+  if (!waQuickArea) return;
+  waQuickArea.innerHTML = '';
+  replyList.forEach(item => {
     const btn = document.createElement('button');
     btn.className = 'wa-qr-btn';
-    btn.textContent = r.label;
-    btn.onclick = () => handleWAChoice(r.label, r.next);
+    btn.textContent = item.label;
+    btn.onclick = () => {
+      waQuickArea.innerHTML = '';
+      appendMessage(item.label, 'user');
+      setTimeout(() => executeFlow(item.next), 350);
+    };
     waQuickArea.appendChild(btn);
   });
 }
 
-function handleWAChoice(label, nextKey) {
-  clearQuickReplies();
-  addWAMsg(label, 'user');
-  setTimeout(() => runWAFlow(nextKey), 350);
-}
+function executeFlow(flowKey) {
+  const current = botFlows[flowKey];
+  if (!current) return;
 
-function runWAFlow(key) {
-  const flow = flows[key];
-  if (!flow) return;
+  highlightStep(current.step || 1);
+  if (waTyping) {
+    waTyping.style.display = 'flex';
+    scrollChat();
+  }
 
-  highlightFlowStep(flow.flowStep || 1);
-  showTyping();
-
-  const delay = Math.min(600 + (flow.botMsg ? flow.botMsg.length * 7 : 400), 1800);
+  const delay = Math.min(500 + current.msg.length * 6, 1600);
 
   setTimeout(() => {
-    hideTyping();
-    addWAMsg(flow.botMsg, 'bot');
-    setTimeout(() => showQuickReplies(flow.quickReplies || []), 350);
+    if (waTyping) waTyping.style.display = 'none';
+    appendMessage(current.msg, 'bot');
+    setTimeout(() => renderReplies(current.replies || []), 300);
   }, delay);
 }
 
 window.resetWADemo = function() {
   if (waMsgs) waMsgs.innerHTML = '';
-  clearQuickReplies();
-  hideTyping();
-  setTimeout(() => initWADemo(), 200);
+  if (waQuickArea) waQuickArea.innerHTML = '';
+  if (waTyping) waTyping.style.display = 'none';
+  highlightStep(1);
+  setTimeout(() => initDemo(), 200);
 };
 
-function initWADemo() {
-  highlightFlowStep(1);
-  showTyping();
+function initDemo() {
+  highlightStep(1);
+  if (waTyping) waTyping.style.display = 'flex';
   setTimeout(() => {
-    hideTyping();
-    addWAMsg(flows.start.botMsg, 'bot');
-    setTimeout(() => showQuickReplies(flows.start.quickReplies), 400);
-  }, 900);
+    if (waTyping) waTyping.style.display = 'none';
+    appendMessage(botFlows.start.msg, 'bot');
+    setTimeout(() => renderReplies(botFlows.start.replies), 300);
+  }, 750);
 }
 
-// Auto start demo when scrolled into view
-const demoSection = document.getElementById('demo');
-if (demoSection) {
-  const demoObserver = new IntersectionObserver((entries) => {
+// Auto-start when in viewport
+const demoSec = document.getElementById('demo');
+if (demoSec) {
+  const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        initWADemo();
-        demoObserver.disconnect();
+        initDemo();
+        observer.disconnect();
       }
     });
   }, { threshold: 0.25 });
-  demoObserver.observe(demoSection);
+  observer.observe(demoSec);
 }
