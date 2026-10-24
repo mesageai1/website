@@ -41,6 +41,9 @@ let actionTimeout = null;
 function scrollWaCanvas() {
   if (waChatCanvas) {
     waChatCanvas.scrollTop = waChatCanvas.scrollHeight;
+    setTimeout(() => {
+      if (waChatCanvas) waChatCanvas.scrollTop = waChatCanvas.scrollHeight;
+    }, 60);
   }
 }
 
@@ -363,6 +366,7 @@ function renderButtons(btnList) {
     };
     waButtonsTray.appendChild(el);
   });
+  scrollWaCanvas();
 }
 
 function clearButtons() {
@@ -625,14 +629,11 @@ function executeStage(stageNumber) {
     case 9: {
       clearButtons();
 
-      if (agentStatusPill) {
-        agentStatusPill.textContent = "📅 Site Visit Confirmed";
-        agentStatusPill.style.background = "#dcfce7";
-        agentStatusPill.style.color = "#15803d";
-        agentStatusPill.style.borderColor = "#86efac";
-      }
-      if (agentDispatchStatus) {
-        agentDispatchStatus.textContent = "Confirmed for Saturday 11 AM 🎉";
+      const activeBadge = document.querySelector('.crm-active-badge');
+      if (activeBadge) {
+        activeBadge.textContent = "Visit Booked";
+        activeBadge.style.background = "rgba(16, 185, 129, 0.2)";
+        activeBadge.style.color = "#34d399";
       }
 
       addWaUserMessage("Saturday at 11:00 AM", "14:21");
@@ -697,7 +698,7 @@ function confirmAppointment(slotText) {
 }
 
 // Restart Simulation (Continuous loop)
-window.restartSimulation = function() {
+function restartSimulation() {
   clearTimeout(actionTimeout);
   isPlaying = true;
   currentStage = 0;
@@ -725,11 +726,20 @@ window.restartSimulation = function() {
   // Reset AI Robot Stage
   if (companyLogoCore) companyLogoCore.style.transform = 'scale(1)';
 
+  // Reset CRM status
+  const activeBadge = document.querySelector('.crm-active-badge');
+  if (activeBadge) {
+    activeBadge.textContent = "active";
+    activeBadge.style.background = "";
+    activeBadge.style.color = "";
+  }
+
   // Start at Stage 1
   scheduleNext(() => {
     executeStage(1);
   }, 500);
-};
+}
+window.restartSimulation = restartSimulation;
 
 // Initialize on DOM load
 window.addEventListener('DOMContentLoaded', () => {
