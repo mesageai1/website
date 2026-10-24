@@ -9,7 +9,7 @@
 // ==========================================
 const CONFIG = {
   // Set your email address below. All form submissions will be delivered here.
-  recipientEmail: "hello@mesage.ai",
+  recipientEmail: "mesageai1@gmail.com",
   serviceEndpoint: "https://formsubmit.co/ajax/"
 };
 
@@ -24,6 +24,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnReset = document.getElementById("btnReset");
 
   if (!form) return;
+
+  const yearEl = document.getElementById("year");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 
   // Auto-fill from URL params if present (e.g. ?name=...&email=...)
   try {
