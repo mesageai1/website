@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (!description) {
-      showFieldError("description", "Please tell us briefly about your requirements");
+      showFieldError("description", "Please enter a description");
       hasError = true;
     }
 
@@ -185,7 +185,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       submitBtn.disabled = false;
       btnSpinner.style.display = "none";
-      btnText.textContent = "Schedule My Live Demo 🚀";
+      btnText.textContent = "Schedule Demo 🚀";
     }
   }
 
