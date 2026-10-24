@@ -20,7 +20,10 @@
         <span class="live-beacon"></span>
         <span><strong>LIVE INTERACTIVE DEMO:</strong> WhatsApp AI Automation with Live Agent Takeover on Pricing</span>
       </div>
-      <a href="index.html" class="back-link">← Back to Main Website</a>
+      <div class="topbar-right-links">
+        <a href="demo2.html" class="back-link" style="color: #34d399; margin-right: 18px;">📅 Schedule Demo (Demo 2) ➔</a>
+        <a href="index.html" class="back-link">← Back to Main Website</a>
+      </div>
     </div>
   </aside>
 
@@ -35,7 +38,7 @@
         <span class="hbadge">⚡ AI Bot Answers in &lt; 2s</span>
         <span class="hbadge green">🤝 Human Agent Steps in on Price</span>
       </div>
-      <a href="mailto:hello@mesage.ai?subject=MeSage%20AI%20Demo%20Request" class="btn btn-primary">Book a Demo <span>↗</span></a>
+      <a href="demo2.html" class="btn btn-primary">Book a Demo <span>↗</span></a>
     </div>
   </header>
 
@@ -47,29 +50,24 @@
         <span class="eyebrow-dot"></span>
         <span>REAL-TIME WHATSAPP WORKFLOW</span>
       </div>
-      <h1>Customer WhatsApp <span class="flow-arrow-text">⇄</span> AI Bot <span class="flow-arrow-text">➔</span> Live Agent on Price</h1>
+      <h1>Customer WhatsApp <span class="flow-arrow-text">⇄</span> AI Bot <span class="flow-arrow-text">➔</span> Live Agent Can Step In Anytime</h1>
       <p class="intro-sub">
-        AI answers apartment queries automatically. When price is asked, the human agent enters in-between from their inbox to close the deal.
+        Autonomous AI answers buyer questions instantly 24/7. Live human agents can step into the chat anytime to close deals, then seamlessly hand back to AI for automated appointment scheduling.
       </p>
 
       <!-- Player Controls -->
       <div class="demo-player-bar">
-        <button id="btnPlayPause" class="player-btn primary" onclick="togglePlayPause()">
-          <span id="playIcon">⏸</span> <span id="playLabel">Pause Demo</span>
-        </button>
-        <button class="player-btn secondary" onclick="restartSimulation()">
-          ↺ Restart Simulation
-        </button>
-        <div class="step-indicator-pills">
-          <span class="spill active" id="pill-1">1. Buyer Inquires</span>
-          <span class="spill-arrow">➔</span>
-          <span class="spill" id="pill-2">2. AI Answers (&lt;2s)</span>
-          <span class="spill-arrow">➔</span>
-          <span class="spill" id="pill-3">3. Brochure Sent</span>
-          <span class="spill-arrow">➔</span>
-          <span class="spill" id="pill-4">4. Price Asked</span>
-          <span class="spill-arrow">➔</span>
-          <span class="spill highlight" id="pill-5">5. Agent Enters In-Between!</span>
+        <div class="player-controls-group">
+          <button id="btnPlayPause" class="player-btn primary" onclick="togglePlayPause()">
+            <span id="playIcon">⏸</span> <span id="playLabel">Pause Demo</span>
+          </button>
+          <button class="player-btn secondary" onclick="restartSimulation()">
+            ↺ Restart Simulation
+          </button>
+        </div>
+        <div class="demo-live-badge">
+          <span class="live-dot-pulse"></span>
+          <span id="demoStatusNotice">Live Simulation Active · AI &amp; Agent Sync</span>
         </div>
       </div>
     </section>
@@ -80,7 +78,10 @@
 
         <!-- 1. LEFT: Customer WhatsApp Phone -->
         <div class="col-stage col-phone" id="colPhone">
-          <div class="stage-tag wa-tag">CUSTOMER</div>
+          <div class="panel-top-header customer-hdr">
+            <span class="panel-icon-wrap user-avatar-pill">👤</span>
+            <span class="panel-title-text">CUSTOMER</span>
+          </div>
           
           <div class="phone-frame" id="phoneFrame">
             <!-- Notch -->
@@ -106,7 +107,9 @@
                 </div>
               </div>
               <div class="wa-header-icons">
-                <span>⋮</span>
+                <span class="wa-action-icon" title="Video Call">📹</span>
+                <span class="wa-action-icon" title="Voice Call">📞</span>
+                <span class="wa-action-icon" title="Options">⋮</span>
               </div>
             </div>
 
@@ -133,13 +136,15 @@
 
             <!-- Input Bar -->
             <div class="wa-footer-bar">
+              <span class="fake-emoji-btn">😊</span>
               <div class="fake-input-pill">Message</div>
+              <span class="fake-attach-btn">📎</span>
               <div class="fake-mic-btn">🎤</div>
             </div>
           </div>
         </div>
 
-        <!-- CONNECTOR 1: 100px gap with dynamic vertical signal tracks that follow messages down -->
+        <!-- CONNECTOR 1: Dynamic vertical signal tracks that follow messages down -->
         <div class="col-stage col-connector-1" id="colConn1">
           <div class="connector-track-holder" id="connectorTrackHolder">
             <span class="conn-floating-badge" id="conn1Label">⚡ Signal Link</span>
@@ -158,9 +163,12 @@
           </div>
         </div>
 
-        <!-- 2. IN-BETWEEN: Human Agent Inbox (Hidden initially, slides in between on Price!) -->
+        <!-- 2. IN-BETWEEN: Human Agent Inbox (Hidden initially, slides in between!) -->
         <div class="col-stage col-agent-inbetween" id="colAgentInbetween">
-          <div class="stage-tag agent-tag">HUMAN CLOSER TAKEOVER</div>
+          <div class="panel-top-header agent-hdr">
+            <span class="panel-icon-wrap agent-avatar-pill">🧑‍💼🎙️</span>
+            <span class="panel-title-text">LIVE AGENT</span>
+          </div>
           
           <div class="agent-inbox-card" id="agentInboxCard">
             <!-- Header -->
@@ -178,20 +186,20 @@
                   <small class="inbox-sub">Entered in-between from Live Inbox</small>
                 </div>
               </div>
-              <span class="inbox-status-pill">🟢 Live in Chat</span>
+              <span class="inbox-status-pill" id="agentStatusPill">🟢 Live in Chat</span>
             </div>
 
             <!-- Escalated Context Banner -->
-            <div class="inbox-context-card">
+            <div class="inbox-context-card" id="agentContextCard">
               <div class="ctx-header-row">
                 <span class="ctx-alert-icon">⚡</span>
-                <strong>ESCALATED ON PRICE</strong>
+                <strong id="agentContextTitle">AGENT ENTERED CHAT</strong>
               </div>
               <div class="ctx-lead-info">
                 <span>Prospect: <strong>Rahul Sharma</strong></span>
                 <span>Requirement: <strong>3 BHK Luxury</strong></span>
               </div>
-              <div class="ctx-user-quote">
+              <div class="ctx-user-quote" id="agentContextQuote">
                 <em>"I want to know the price as well."</em>
               </div>
             </div>
@@ -199,15 +207,15 @@
             <!-- Agent Composer -->
             <div class="inbox-composer-card">
               <div class="composer-top-row">
-                <span>Personalized Closer Response:</span>
-                <span class="comp-ready-tag">Prepared</span>
+                <span id="composerTitle">Personalized Closer Response:</span>
+                <span class="comp-ready-tag" id="compReadyTag">Dispatched</span>
               </div>
-              <p class="composer-text-box">
+              <p class="composer-text-box" id="composerTextBox">
                 "3 BHK starts at <strong>₹1.85 Cr</strong> with an exclusive <strong>10:90 festive payment scheme</strong>. Can we reserve a VIP site walkthrough this Saturday at 11 AM?"
               </p>
-              <button class="btn btn-primary btn-sm btn-full" id="btnSendPriceNow" onclick="sendAgentMessageNow()">
-                <span>Dispatched via WhatsApp Inbox</span> ➔
-              </button>
+              <div class="agent-dispatch-status" id="agentDispatchStatus">
+                <span>✓ Sent to WhatsApp chat</span>
+              </div>
             </div>
           </div>
         </div>
@@ -222,7 +230,10 @@
 
         <!-- 3. RIGHT: MeSage AI Bot -->
         <div class="col-stage col-ai-bot" id="colAiBot">
-          <div class="stage-tag ai-tag" id="aiStageTag">AUTOMATION</div>
+          <div class="panel-top-header ai-hdr">
+            <span class="panel-icon-wrap ai-avatar-pill">🤖</span>
+            <span class="panel-title-text">AI AUTOMATION</span>
+          </div>
           
           <div class="ai-bot-box" id="aiBotBox">
             <!-- Avatar & Header -->
@@ -251,7 +262,7 @@
             <div class="ai-live-card">
               <div class="live-action-hdr">
                 <span class="pulse-indicator"></span>
-                <span class="action-kicker">MONITORING CONVERSATION</span>
+                <span class="action-kicker" id="aiActionKicker">MONITORING CONVERSATION</span>
               </div>
               <strong class="action-headline" id="aiActionTitle">Listening for customer inquiry...</strong>
               <p class="action-detail" id="aiActionDesc">Ready to answer questions about 2, 3, 4 BHK apartments, floor plans, and amenities.</p>
@@ -276,8 +287,8 @@
             <div class="ai-transfer-notice" id="aiTransferNotice" style="display:none">
               <span class="notice-icon">⚡</span>
               <div>
-                <strong>PRICE INQUIRY DETECTED!</strong>
-                <p>Pausing AI automation. Closer Priya Sharma stepping in-between to close deal ➔</p>
+                <strong id="aiTransferNoticeTitle">LIVE AGENT ENTERED CHAT</strong>
+                <p id="aiTransferNoticeDesc">AI paused while Closer Priya Sharma handles commercial consultation ➔</p>
               </div>
             </div>
 
@@ -323,7 +334,7 @@
         <h2>Want this exact setup on your WhatsApp number?</h2>
         <p>MeSage AI sets up this automated qualification and live agent transfer for your business in 24 hours.</p>
         <div class="cta-actions">
-          <a href="mailto:hello@mesage.ai?subject=MeSage%20AI%20WhatsApp%20Setup" class="btn btn-primary btn-lg">Deploy On My Number <span>→</span></a>
+          <a href="demo2.html" class="btn btn-primary btn-lg">Schedule Live Demo <span>→</span></a>
           <a href="index.html" class="btn btn-secondary btn-lg">Back to Main Website</a>
         </div>
       </div>

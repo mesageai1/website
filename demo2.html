@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#070913">
+  <meta name="description" content="Schedule a live 1-on-1 demo with MeSage AI. Experience WhatsApp automation, unified omnichannel inbox, and smart agent handoffs.">
+  <title>Schedule a Demo (Demo 2) — MeSage AI Omnichannel Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="demo2.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <aside class="demo-topbar">
+    <div class="container topbar-content">
+      <div class="topbar-left">
+        <span class="live-beacon"></span>
+        <span><strong>DEMO 2:</strong> Schedule a 1-on-1 Live Walkthrough tailored for your business</span>
+      </div>
+      <div class="topbar-right">
+        <a href="demo1.html" class="nav-pill-link">⚡ Watch Interactive Simulation (Demo 1)</a>
+        <a href="index.html" class="nav-pill-link">← Back to Main Website</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Navbar -->
+  <header class="demo-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand" aria-label="MeSage AI home">
+        <img src="assets/logoimg.png" alt="MeSage AI" class="brand-logo" onerror="this.src='assets/logogif.gif'">
+        <span>MeSage<span class="brand-ai"> AI</span></span>
+      </a>
+
+      <nav class="header-nav">
+        <a href="index.html">Home</a>
+        <a href="demo1.html">Demo 1 (Live Flow)</a>
+        <a href="demo2.html" class="active">Demo 2 (Schedule Demo)</a>
+      </nav>
+
+      <div class="header-badges">
+        <span class="hbadge green">⚡ 2-Hour Response Time</span>
+        <span class="hbadge">🚀 Tailored Setup</span>
+      </div>
+
+      <a href="demo1.html" class="btn btn-secondary btn-sm">Watch Demo 1 <span>↗</span></a>
+    </div>
+  </header>
+
+  <main class="schedule-main">
+    <div class="container">
+
+      <div class="schedule-grid">
+
+        <!-- Left Column: Value Proposition & Information -->
+        <section class="info-col">
+          <div class="intro-eyebrow">
+            <span class="eyebrow-dot"></span>
+            <span>SCHEDULE 1-ON-1 DEMO (DEMO 2)</span>
+          </div>
+
+          <h1>See MeSage AI in action for <span class="gradient-text">your business.</span></h1>
+          
+          <p class="info-desc">
+            Get a tailored walkthrough from our product specialists. We’ll demonstrate live WhatsApp bot qualification, omnichannel unified inbox, and instant agent takeover workflows mapped to your sales cycle.
+          </p>
+
+          <div class="demo-perks">
+            <div class="perk-card">
+              <div class="perk-icon-box">⚡</div>
+              <div class="perk-content">
+                <strong>Live Workflow Simulation on Your Number</strong>
+                <p>We’ll test your actual customer queries live and showcase &lt;2 second AI automated replies with brochure delivery.</p>
+              </div>
+            </div>
+
+            <div class="perk-card">
+              <div class="perk-icon-box">🤝</div>
+              <div class="perk-content">
+                <strong>Smart Agent Handover on High Intent</strong>
+                <p>See how your sales team can step in-between on pricing, objections, or custom quotes to close deals faster.</p>
+              </div>
+            </div>
+
+            <div class="perk-card">
+              <div class="perk-icon-box">📊</div>
+              <div class="perk-content">
+                <strong>Custom Architecture &amp; ROI Plan</strong>
+                <p>Review Meta API setup, CRM integration, team permission roles, and tailored pricing options.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="trust-badge-row">
+            <div class="avatar-stack">
+              <span>RS</span>
+              <span>AK</span>
+              <span>MP</span>
+              <span>VS</span>
+            </div>
+            <div class="trust-text">
+              <strong>150+ teams</strong> onboarded across Real Estate, E-Commerce &amp; Services.
+            </div>
+          </div>
+        </section>
+
+        <!-- Right Column: Demo Booking Form -->
+        <section class="form-col" id="formWrapper">
+          <div class="form-wrapper-card">
+
+            <div class="form-header">
+              <h2>Schedule Your Live Demo</h2>
+              <p>Fill out the details below. Our team will prepare a custom demonstration for you.</p>
+            </div>
+
+            <div id="alertBanner" class="alert-banner"></div>
+
+            <!-- Booking Form -->
+            <form id="scheduleDemoForm" class="demo-form" novalidate>
+              
+              <!-- 1. Full Name -->
+              <div class="form-group" id="groupName">
+                <label for="fullName" class="form-label">
+                  <span>Your Name <span class="req">*</span></span>
+                </label>
+                <div class="input-container">
+                  <span class="input-icon">👤</span>
+                  <input 
+                    type="text" 
+                    id="fullName" 
+                    name="name" 
+                    class="form-input" 
+                    placeholder="e.g. Rahul Sharma" 
+                    required 
+                    autocomplete="name"
+                  >
+                </div>
+                <span class="field-error">Please enter your name.</span>
+              </div>
+
+              <!-- 2. Work Email -->
+              <div class="form-group" id="groupEmail">
+                <label for="workEmail" class="form-label">
+                  <span>Work Email <span class="req">*</span></span>
+                </label>
+                <div class="input-container">
+                  <span class="input-icon">✉️</span>
+                  <input 
+                    type="email" 
+                    id="workEmail" 
+                    name="email" 
+                    class="form-input" 
+                    placeholder="e.g. rahul@company.com" 
+                    required 
+                    autocomplete="email"
+                  >
+                </div>
+                <span class="field-error">Please enter a valid email address.</span>
+              </div>
+
+              <!-- 3. Company Name -->
+              <div class="form-group" id="groupCompany">
+                <label for="companyName" class="form-label">
+                  <span>Company Name <span class="req">*</span></span>
+                </label>
+                <div class="input-container">
+                  <span class="input-icon">🏢</span>
+                  <input 
+                    type="text" 
+                    id="companyName" 
+                    name="company_name" 
+                    class="form-input" 
+                    placeholder="e.g. Skyline Realty / Apex Retail" 
+                    required 
+                    autocomplete="organization"
+                  >
+                </div>
+                <span class="field-error">Please enter your company name.</span>
+              </div>
+
+              <!-- 4. Mobile Number -->
+              <div class="form-group" id="groupPhone">
+                <label for="mobileNumber" class="form-label">
+                  <span>Mobile / WhatsApp Number <span class="req">*</span></span>
+                </label>
+                <div class="input-container">
+                  <span class="input-icon">📱</span>
+                  <input 
+                    type="tel" 
+                    id="mobileNumber" 
+                    name="mobile_number" 
+                    class="form-input" 
+                    placeholder="e.g. +91 98765 43210" 
+                    required 
+                    autocomplete="tel"
+                  >
+                </div>
+                <span class="field-error">Please enter a valid mobile number with country code.</span>
+              </div>
+
+              <!-- 5. Description -->
+              <div class="form-group textarea-container" id="groupDescription">
+                <label for="description" class="form-label">
+                  <span>Description / Requirements <span class="req">*</span></span>
+                </label>
+                <textarea 
+                  id="description" 
+                  name="description" 
+                  class="form-input form-textarea" 
+                  rows="4" 
+                  placeholder="Tell us what channels you want to connect (WhatsApp, Instagram, etc.), current message volume, or specific features you need..." 
+                  required
+                ></textarea>
+                <span class="field-error">Please describe your requirements briefly.</span>
+              </div>
+
+              <!-- Submit Button -->
+              <button type="submit" id="submitBtn" class="btn btn-primary btn-submit">
+                <span id="btnSpinner" class="spinner" style="display: none;"></span>
+                <span id="btnText">Schedule My Live Demo 🚀</span>
+              </button>
+
+              <div class="form-disclaimer">
+                <span>🔒 Your information is confidential and will never be shared.</span>
+              </div>
+
+            </form>
+
+            <!-- Success State -->
+            <div id="successCard" class="success-card">
+              <div class="success-icon-wrap">✓</div>
+              <h3>Demo Request Confirmed!</h3>
+              <p>
+                Thank you! Your demo details have been submitted. We've sent a confirmation to your email, and our team will reach out via WhatsApp/Email to finalize the calendar slot.
+              </p>
+
+              <div class="submitted-summary">
+                <div class="sum-row">
+                  <span class="sum-label">Name:</span>
+                  <span class="sum-val" id="sumName">-</span>
+                </div>
+                <div class="sum-row">
+                  <span class="sum-label">Email:</span>
+                  <span class="sum-val" id="sumEmail">-</span>
+                </div>
+                <div class="sum-row">
+                  <span class="sum-label">Company:</span>
+                  <span class="sum-val" id="sumCompany">-</span>
+                </div>
+                <div class="sum-row">
+                  <span class="sum-label">Mobile:</span>
+                  <span class="sum-val" id="sumPhone">-</span>
+                </div>
+              </div>
+
+              <div class="success-actions">
+                <button type="button" id="btnReset" class="btn btn-secondary">Submit Another Request</button>
+                <a href="demo1.html" class="btn btn-primary">Watch Demo 1 Flow ⚡</a>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="demo-footer">
+    <div class="container footer-content">
+      <div>
+        <span>© <span id="year">2026</span> MeSage AI. All rights reserved.</span>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Main Website</a>
+        <a href="demo1.html">Demo 1: Live Bot Handover</a>
+        <a href="demo2.html">Demo 2: Schedule Demo</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="demo2.js"></script>
+</body>
+</html>
