@@ -1,0 +1,481 @@
+TOTAL PAGES: 45
+
+=== PAGE 1 ===
+Customer Panel Guide
+WABA Panel 2026 (NodeJS) — Client / Vendor Panel
+Your everyday manual: connect WhatsApp, inbox, contacts, campaigns, bots, AI,
+calling, CRM & sales — shown with real screenshots.
+KKHS Media Private Limited
+190A Krishna Kunj, Kalwar Road, Jaipur, Rajasthan 302012
+Mob: 9782005500 | Email: info@kkhsmedia.com | GST: 08AAICK3853C1ZL
+
+=== PAGE 2 ===
+WABA Panel 2026 (NodeJS)  —  Customer Panel Guide
+KKHS Media Private Limited  —  190A Krishna Kunj, Kalwar Road, Jaipur, Rajasthan 302012
+Page 1
+Welcome — Your Day-to-Day WhatsApp Workspace
+This guide is for the Customer Panel — the screen you (or your customer) use every day to connect WhatsApp, chat with
+customers from a team inbox, save contacts, send campaigns, build chatbots, run AI follow-ups and AI calls, book
+appointments, sell products, and track leads. Everything is shown with real screenshots.
+IN SIMPLE WORDS   The one-line idea
+Connect your WhatsApp once, then manage all your chats, contacts, marketing, automation and sales from one panel — with
+your whole team.
+Log in at https://your-domain.com/auth/login. The left menu groups features: Inbox, Campaigns, Save Money, Contacts,
+Lead CRM, Automation, Leads & Commerce, Channels, Settings, Subscription & Plans. Use Search menu… to find any
+
+=== PAGE 3 ===
+WABA Panel 2026 (NodeJS)  —  Customer Panel Guide
+KKHS Media Private Limited  —  190A Krishna Kunj, Kalwar Road, Jaipur, Rajasthan 302012
+Page 2
+1. Dashboard
+Your daily overview.
+Dashboard: WhatsApp status, today's numbers, action-needed cards, messaging &amp; contacts stats.
+What you get
+•
+WhatsApp connection badge, today sent/received, unread, new contacts.
+•
+Action Needed: upcoming appointments, due reminders, AI follow-ups, active chats.
+•
+
+=== PAGE 4 ===
+WABA Panel 2026 (NodeJS)  —  Customer Panel Guide
+KKHS Media Private Limited  —  190A Krishna Kunj, Kalwar Road, Jaipur, Rajasthan 302012
+Page 3
+2. Analytics
+Understand what works.
+Analytics: delivery, read rate, reply rate, message volume, busiest hours, agent performance.
+What you get
+•
+Date range filters (7/30/90 days, custom), export.
+•
+Sent, delivered, read, replied percentages; failed reasons.
+•
+
+=== PAGE 5 ===
+WABA Panel 2026 (NodeJS)  —  Customer Panel Guide
+KKHS Media Private Limited  —  190A Krishna Kunj, Kalwar Road, Jaipur, Rajasthan 302012
+Page 4
+3. Channels — Connect WhatsApp & Other Inboxes (Start Here)
+Connect every channel your customers use. All of them land in one Inbox.
+Channel Configuration: WhatsApp Cloud API, WhatsApp QR (web), Instagram, Facebook Messenger, Telegram, Website Chat, Email.
+What you get
+•
+WhatsApp Cloud API (official) via one-click Facebook login, or manual Phone Number ID / token.
+•
+WhatsApp QR (coexistence / web) for a personal number.
+•
+
+=== PAGE 6 ===
+WABA Panel 2026 (NodeJS)  —  Customer Panel Guide
+KKHS Media Private Limited  —  190A Krishna Kunj, Kalwar Road, Jaipur, Rajasthan 302012
+Page 5
+WhatsApp Settings: connected number, quality, limits, sync, WhatsApp Pay.
+
+=== PAGE 7 ===
+WABA Panel 2026 (NodeJS)  —  Customer Panel Guide
+KKHS Media Private Limited  —  190A Krishna Kunj, Kalwar Road, Jaipur, Rajasthan 302012
+Page 6
+4. Inbox — The Team Chat Screen
+One shared inbox for your whole team, per channel (WhatsApp, QR, Instagram, Facebook, Telegram, Website, Email).
+Inbox: all conversations with labels, stages, sources, assignment and a full customer context panel.
+What you get
+•
+Filters: unread, active, assigned/unassigned, resolved, labels, stages, sources, Hot/Warm/Cold.
+•
+Reply with text, media, templates, quick replies, voice notes, catalog products, payment links.
+•
+
+=== PAGE 8 ===
+WABA Panel 2026 (NodeJS)  —  Customer Panel Guide
+KKHS Media Private Limited  —  190A Krishna Kunj, Kalwar Road, Jaipur, Rajasthan 302012
+Page 7
+5. Contacts, Segments, Labels, Stages & Custom Fields
+Your CRM database.
+Contact Directory: import, export, tags, platform, status, unsubscribes.
+What you get
+•
+Import Excel/CSV with field mapping, duplicate check and Import Logs; export any filter.
+•
+Segments — dynamic groups (by tag, field, activity, city…) for targeted campaigns; view members.
+•
+
+=== PAGE 9 ===
+WABA Panel 2026 (NodeJS)  —  Customer Panel Guide
+KKHS Media Private Limited  —  190A Krishna Kunj, Kalwar Road, Jaipur, Rajasthan 302012
+Page 8
+Segments: rule-based groups for campaigns.
+Stage/Pipeline: funnel counts per stage.
+
+=== PAGE 10 ===
+WABA Panel 2026 (NodeJS)  —  Customer Panel Guide
+KKHS Media Private Limited  —  190A Krishna Kunj, Kalwar Road, Jaipur, Rajasthan 302012
+Page 9
+Labels: colour-coded contact tags.
+
+=== PAGE 11 ===
+WABA Panel 2026 (NodeJS)  —  Customer Panel Guide
+KKHS Media Private Limited  —  190A Krishna Kunj, Kalwar Road, Jaipur, Rajasthan 302012
+Page 10
+6. Message Templates
+Meta-approved templates are needed to start a conversation.
+Templates: create, sync with WhatsApp, and browse the ready-made Template Library.
+What you get
+•
+Create Marketing / Utility / Authentication templates with header (image/video/document), body variables, buttons
+(URL, call, quick reply, copy code, flow).
+•
+Template Library — hundreds of ready templates by industry; one-click submit.
+
+=== PAGE 12 ===
+WABA Panel 2026 (NodeJS)  —  Customer Panel Guide
+KKHS Media Private Limited  —  190A Krishna Kunj, Kalwar Road, Jaipur, Rajasthan 302012
+Page 11
+7. Broadcast Campaigns & Reports
+Send a template to thousands of contacts with scheduling, speed control and detailed reports.
+Broadcast Campaigns: status, sent/delivered, read, failed, with per-campaign Report.
+What you get
+•
+Audience: all, segment, tags, upload list; exclude unsubscribed / recently messaged.
+•
+Schedule, send speed (default 80 msg/sec, auto-limited to your Meta tier), retry failed, pause/resume.
+•
+
+=== PAGE 13 ===
+WABA Panel 2026 (NodeJS)  —  Customer Panel Guide
+KKHS Media Private Limited  —  190A Krishna Kunj, Kalwar Road, Jaipur, Rajasthan 302012
+Page 12
+8. Smart Broadcast, Drip & Sequence Campaigns
+Advanced campaign types for higher delivery and automated nurturing.
+Smart Broadcast: send in batches with human-like pacing and utility-template rules.
+What you get
+•
+Smart Broadcast — batch pacing, daily caps, quality-safe sending.
+•
+Drip Campaigns — day-wise message series after a trigger (signup, tag, purchase).
+•
+
+=== PAGE 14 ===
+WABA Panel 2026 (NodeJS)  —  Customer Panel Guide
+KKHS Media Private Limited  —  190A Krishna Kunj, Kalwar Road, Jaipur, Rajasthan 302012
+Page 13
+Drip Campaigns: timed message series.
+Sequence Campaigns: conditional multi-step journeys.
+
+=== PAGE 15 ===
+WABA Panel 2026 (NodeJS)  —  Customer Panel Guide
+KKHS Media Private Limited  —  190A Krishna Kunj, Kalwar Road, Jaipur, Rajasthan 302012
+Page 14
+9. Save Money — Preset Templates & Web WhatsApp Campaigns
+Reduce Meta conversation costs.
+Preset Templates: pre-approved utility templates you can use immediately.
+What you get
+•
+Preset Templates and Preset Campaigns — ready utility-category flows priced lower than marketing.
+•
+Web WhatsApp Campaigns — send via your QR-connected number (no per-message Meta cost) with safe pacing.
+How to use
+
+=== PAGE 16 ===
+WABA Panel 2026 (NodeJS)  —  Customer Panel Guide
+KKHS Media Private Limited  —  190A Krishna Kunj, Kalwar Road, Jaipur, Rajasthan 302012
+Page 15
+Web WhatsApp Campaigns via QR number.
+
+=== PAGE 17 ===
+WABA Panel 2026 (NodeJS)  —  Customer Panel Guide
+KKHS Media Private Limited  —  190A Krishna Kunj, Kalwar Road, Jaipur, Rajasthan 302012
+Page 16
+10. Automation Hub & Keyword Triggers
+Set-and-forget automations.
+Automations: ready recipes — welcome, out-of-office, keyword reply, birthday, missed call, cart reminders and more.
+What you get
+•
+One-click recipes: Welcome message, Out of Office, Keyword Auto Reply, Bot Flow trigger, Feedback, Birthday &
+Anniversary, Win-back, Google Sheet trigger, Missed Call auto-reply.
+•
+Keyword Triggers — exact / contains / regex match → reply text, template, media or start a flow; hit counts.
+
+=== PAGE 18 ===
+WABA Panel 2026 (NodeJS)  —  Customer Panel Guide
+KKHS Media Private Limited  —  190A Krishna Kunj, Kalwar Road, Jaipur, Rajasthan 302012
+Page 17
+Keyword Triggers: word-based auto replies.
+
+=== PAGE 19 ===
+WABA Panel 2026 (NodeJS)  —  Customer Panel Guide
+KKHS Media Private Limited  —  190A Krishna Kunj, Kalwar Road, Jaipur, Rajasthan 302012
+Page 18
+11. Bot Flow Builder
+Build menu bots, lead-qualification bots and order bots without code.
+Bot Flows: visual drag-and-drop chatbot builder, unlimited steps, templates &amp; marketplace.
+What you get
+•
+Nodes: message, buttons, list, media, question & save-to-field, condition, delay, API call, Google Sheet, assign
+agent, tag, catalog, payment, AI answer.
+•
+Click-to-click connections, unlimited steps, test mode, version history, Flow Report (drop-offs per step).
+
+=== PAGE 20 ===
+WABA Panel 2026 (NodeJS)  —  Customer Panel Guide
+KKHS Media Private Limited  —  190A Krishna Kunj, Kalwar Road, Jaipur, Rajasthan 302012
+Page 19
+12. AI Chatbot, Knowledge Base & AI Follow-ups
+Let AI answer instantly from your own data, 24×7.
+AI Chatbot Settings: persona, model, temperature, handover rules, training sources.
+What you get
+•
+AI agent persona, tone, language, business hours, handover to human on request or low confidence.
+•
+Knowledge Base — upload PDFs/docs, paste website URL or FAQs; AI answers only from this.
+•
+
+=== PAGE 21 ===
+WABA Panel 2026 (NodeJS)  —  Customer Panel Guide
+KKHS Media Private Limited  —  190A Krishna Kunj, Kalwar Road, Jaipur, Rajasthan 302012
+Page 20
+Knowledge Base: your documents that train the AI.
+AI Follow-ups: scored leads with suggested messages.
+
+=== PAGE 22 ===
+WABA Panel 2026 (NodeJS)  —  Customer Panel Guide
+KKHS Media Private Limited  —  190A Krishna Kunj, Kalwar Road, Jaipur, Rajasthan 302012
+Page 21
+AI Assistant — Tools &amp; Apps: connect business apps the AI may use.
+
+=== PAGE 23 ===
+WABA Panel 2026 (NodeJS)  —  Customer Panel Guide
+KKHS Media Private Limited  —  190A Krishna Kunj, Kalwar Road, Jaipur, Rajasthan 302012
+Page 22
+13. AI Calling & Bulk AI Calls
+AI voice agent that calls leads, qualifies them and logs the outcome.
+AI Calling Settings: voice, language, script, calling hours, provider.
+What you get
+•
+Realtime AI voice with Indian languages, custom script and goals, calling window, retries.
+•
+Bulk AI Calls — upload a list → AI calls everyone → results & recordings in Call Logs.
+•
+
+=== PAGE 24 ===
+WABA Panel 2026 (NodeJS)  —  Customer Panel Guide
+KKHS Media Private Limited  —  190A Krishna Kunj, Kalwar Road, Jaipur, Rajasthan 302012
+Page 23
+Bulk AI Calls: campaign list and progress.
+Call Logs: duration, outcome, recording.
+
+=== PAGE 25 ===
+WABA Panel 2026 (NodeJS)  —  Customer Panel Guide
+KKHS Media Private Limited  —  190A Krishna Kunj, Kalwar Road, Jaipur, Rajasthan 302012
+Page 24
+14. Lead CRM — Lead Dashboard, Lead Report, CRM 360 & Pipeline
+Board
+Sales management built in.
+Lead Dashboard: leads by day, stage, source, agent; conversion &amp; revenue.
+What you get
+•
+Lead Dashboard — new/won/lost, per stage & source, revenue.
+•
+Lead Report (Call Center view) — agents' daily targets, follow-up due list, call/WhatsApp actions.
+
+=== PAGE 26 ===
+WABA Panel 2026 (NodeJS)  —  Customer Panel Guide
+KKHS Media Private Limited  —  190A Krishna Kunj, Kalwar Road, Jaipur, Rajasthan 302012
+Page 25
+Pipeline Board: kanban deals.
+CRM 360: full customer profile.
+
+=== PAGE 27 ===
+WABA Panel 2026 (NodeJS)  —  Customer Panel Guide
+KKHS Media Private Limited  —  190A Krishna Kunj, Kalwar Road, Jaipur, Rajasthan 302012
+Page 26
+Lead Report: agent-wise follow-up worklist.
+
+=== PAGE 28 ===
+WABA Panel 2026 (NodeJS)  —  Customer Panel Guide
+KKHS Media Private Limited  —  190A Krishna Kunj, Kalwar Road, Jaipur, Rajasthan 302012
+Page 27
+15. Leads & Commerce — Leads, Lead Gen Forms, Facebook Leads
+Capture leads from everywhere.
+Lead Gen Forms: build forms (228 ready templates) that submit straight into WhatsApp &amp; CRM.
+What you get
+•
+All Leads — unified lead list with source, status, owner.
+•
+Lead Gen Forms — drag-drop form builder + Form Library; share link / embed / open in chat; auto-tag & auto-reply.
+•
+
+=== PAGE 29 ===
+WABA Panel 2026 (NodeJS)  —  Customer Panel Guide
+KKHS Media Private Limited  —  190A Krishna Kunj, Kalwar Road, Jaipur, Rajasthan 302012
+Page 28
+All Leads: unified list.
+Facebook Lead Ads connection.
+
+=== PAGE 30 ===
+WABA Panel 2026 (NodeJS)  —  Customer Panel Guide
+KKHS Media Private Limited  —  190A Krishna Kunj, Kalwar Road, Jaipur, Rajasthan 302012
+Page 29
+Lead Source &amp; QR: tracked wa.me links and QR codes.
+
+=== PAGE 31 ===
+WABA Panel 2026 (NodeJS)  —  Customer Panel Guide
+KKHS Media Private Limited  —  190A Krishna Kunj, Kalwar Road, Jaipur, Rajasthan 302012
+Page 30
+16. Product Catalog & Orders
+Sell inside WhatsApp.
+Product Catalogue: products with image, price, stock; share to WhatsApp; sync to Meta catalog.
+What you get
+•
+Products, variants, stock, categories; Sync to WhatsApp (Meta Commerce catalog); shareable catalog link.
+•
+Order Management — cart orders from WhatsApp, status flow (pending → confirmed → shipped → delivered),
+payment link (Razorpay/UPI/WhatsApp Pay), invoices.
+
+=== PAGE 32 ===
+WABA Panel 2026 (NodeJS)  —  Customer Panel Guide
+KKHS Media Private Limited  —  190A Krishna Kunj, Kalwar Road, Jaipur, Rajasthan 302012
+Page 31
+Orders: track and update every order.
+
+=== PAGE 33 ===
+WABA Panel 2026 (NodeJS)  —  Customer Panel Guide
+KKHS Media Private Limited  —  190A Krishna Kunj, Kalwar Road, Jaipur, Rajasthan 302012
+Page 32
+17. Appointments
+Bookings via chat or link.
+Appointments: services, availability, calendar and WhatsApp reminders.
+What you get
+•
+Services with duration/price, staff availability, buffer, holidays.
+•
+Booking page link + in-chat booking via bot; Google Calendar sync.
+•
+
+=== PAGE 34 ===
+WABA Panel 2026 (NodeJS)  —  Customer Panel Guide
+KKHS Media Private Limited  —  190A Krishna Kunj, Kalwar Road, Jaipur, Rajasthan 302012
+Page 33
+18. Tickets & Quick Replies
+Structured support on top of chat.
+Tickets: support ticketing with SLA, priority and assignment.
+What you get
+•
+Create tickets from a conversation, priority, category, SLA timers, assignment, resolution notes.
+•
+Quick Replies — canned answers with shortcuts (type / in Inbox), variables, media.
+How to use
+
+=== PAGE 35 ===
+WABA Panel 2026 (NodeJS)  —  Customer Panel Guide
+KKHS Media Private Limited  —  190A Krishna Kunj, Kalwar Road, Jaipur, Rajasthan 302012
+Page 34
+Quick Replies: canned messages for agents.
+
+=== PAGE 36 ===
+WABA Panel 2026 (NodeJS)  —  Customer Panel Guide
+KKHS Media Private Limited  —  190A Krishna Kunj, Kalwar Road, Jaipur, Rajasthan 302012
+Page 35
+19. Teams & Agents
+Bring your team in.
+Teams &amp; Agents: add agents, roles, teams, online status and performance.
+What you get
+•
+Agents with roles (Admin/Manager/Agent), teams/departments, working hours.
+•
+Round-robin / manual / rule-based assignment; agent performance (response time, resolved chats).
+•
+
+=== PAGE 37 ===
+WABA Panel 2026 (NodeJS)  —  Customer Panel Guide
+KKHS Media Private Limited  —  190A Krishna Kunj, Kalwar Road, Jaipur, Rajasthan 302012
+Page 36
+Audit Log: who did what and when.
+
+=== PAGE 38 ===
+WABA Panel 2026 (NodeJS)  —  Customer Panel Guide
+KKHS Media Private Limited  —  190A Krishna Kunj, Kalwar Road, Jaipur, Rajasthan 302012
+Page 37
+20. Integrations, Chat Widget & API
+Connect the tools you already use.
+Integrations: Google Sheets, Calendar, Workspace, Shopify, WooCommerce, HubSpot, Mailchimp, Stripe, Razorpay, Zapier/Make webhooks.
+What you get
+•
+One-click connectors + incoming/outgoing webhooks.
+•
+Chat Widget — website WhatsApp/live-chat button with colours, greeting, agents, working hours; copy one script
+tag.
+
+=== PAGE 39 ===
+WABA Panel 2026 (NodeJS)  —  Customer Panel Guide
+KKHS Media Private Limited  —  190A Krishna Kunj, Kalwar Road, Jaipur, Rajasthan 302012
+Page 38
+Chat Widget: live preview and embed code.
+API &amp; Developers: your key and endpoints.
+
+=== PAGE 40 ===
+WABA Panel 2026 (NodeJS)  —  Customer Panel Guide
+KKHS Media Private Limited  —  190A Krishna Kunj, Kalwar Road, Jaipur, Rajasthan 302012
+Page 39
+21. CTWA Ads & Instagram Auto DM
+Marketing add-ons.
+Click-to-WhatsApp Ads: campaign spend, leads, cost per lead, conversations from ads.
+What you get
+•
+CTWA Ads — connect ad account, see leads/conversations per ad, cost per lead, auto-reply flows for ad clicks.
+•
+Instagram Auto DM (add-on) — comment-to-DM, story reply, keyword auto reply and 24×7 lead capture from
+Instagram.
+
+=== PAGE 41 ===
+WABA Panel 2026 (NodeJS)  —  Customer Panel Guide
+KKHS Media Private Limited  —  190A Krishna Kunj, Kalwar Road, Jaipur, Rajasthan 302012
+Page 40
+Instagram Auto DM automations.
+
+=== PAGE 42 ===
+WABA Panel 2026 (NodeJS)  —  Customer Panel Guide
+KKHS Media Private Limited  —  190A Krishna Kunj, Kalwar Road, Jaipur, Rajasthan 302012
+Page 41
+22. Media Library
+Upload once, use everywhere.
+Media Library: images, videos, documents reused across templates, campaigns and bots.
+What you get
+•
+Folders, search, preview, WebP thumbnails, storage usage vs plan.
+•
+Pick media from the library in templates, broadcasts, bot flows and quick replies.
+
+=== PAGE 43 ===
+WABA Panel 2026 (NodeJS)  —  Customer Panel Guide
+KKHS Media Private Limited  —  190A Krishna Kunj, Kalwar Road, Jaipur, Rajasthan 302012
+Page 42
+23. Subscription, Billing & Wallet, Transactions, Invoices
+Self-service billing.
+Subscription Plans: current plan, usage, upgrade with monthly/quarterly/yearly billing.
+What you get
+•
+Compare plans, upgrade/downgrade, coupon at checkout, auto-renew.
+•
+Billing & Wallet — add money for per-message charges, transaction history.
+•
+
+=== PAGE 44 ===
+WABA Panel 2026 (NodeJS)  —  Customer Panel Guide
+KKHS Media Private Limited  —  190A Krishna Kunj, Kalwar Road, Jaipur, Rajasthan 302012
+Page 43
+Billing &amp; Wallet: balance and top-ups.
+Invoices: download GST invoices.
+
+=== PAGE 45 ===
+WABA Panel 2026 (NodeJS)  —  Customer Panel Guide
+KKHS Media Private Limited  —  190A Krishna Kunj, Kalwar Road, Jaipur, Rajasthan 302012
+Page 44
+24. Business Settings, Support & User Guide
+Your account.
+Business Settings: profile, business details, notifications, security (2FA), API &amp; webhooks, preferences.
+What you get
+•
+Profile & business info (appears on invoices), notification preferences (email/WhatsApp/push), 2FA, sessions,
+language & timezone.
+•
+Support — raise a ticket to your panel provider; User Guide — in-panel help articles.

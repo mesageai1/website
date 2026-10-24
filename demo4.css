@@ -1,0 +1,195 @@
+/* ==========================================================================
+   MeSage AI — Demo 4: What Problems Does MeSage Solve?
+   Visual Problem-Solution-ROI Showcase for Clients
+   ========================================================================== */
+
+@import url('demo3.css');
+
+/* ==========================================================================
+   EXECUTIVE COMPARISON BOARD (OLD WAY VS MESAGE AI)
+   ========================================================================== */
+.vs-comparison-board {
+  background: linear-gradient(165deg, rgba(14, 18, 42, 0.95), rgba(9, 12, 30, 0.98));
+  border: 1px solid var(--border-active);
+  border-radius: var(--radius-lg);
+  padding: 36px 30px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  margin-top: 10px;
+}
+
+.vs-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.vs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+@media (max-width: 900px) {
+  .vs-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.vs-col {
+  border-radius: var(--radius-md);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.vs-col.old-way-col {
+  background: rgba(239, 68, 68, 0.05);
+  border: 1px solid rgba(239, 68, 68, 0.22);
+}
+
+.vs-col.new-way-col {
+  background: rgba(16, 185, 129, 0.06);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.vs-badge-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  width: fit-content;
+  margin-bottom: 12px;
+}
+
+.vs-badge-tag.old-tag {
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.vs-badge-tag.new-tag {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--green-light);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+}
+
+.vs-col-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 18px;
+}
+
+.vs-point-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.vs-point-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13.5px;
+  color: #cbd5e1;
+  line-height: 1.5;
+}
+
+.vs-icon-cross {
+  color: #ef4444;
+  font-weight: 800;
+  font-size: 16px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.vs-icon-check {
+  color: #34d399;
+  font-weight: 800;
+  font-size: 16px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ==========================================================================
+   PROBLEM CARD ENHANCEMENTS
+   ========================================================================== */
+.solve-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.solve-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(99, 102, 241, 0.45);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(99, 102, 241, 0.1);
+}
+
+.solve-card[data-hidden="true"] {
+  display: none !important;
+}
+
+/* Clear search button */
+.search-clear-btn {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--text-muted);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.search-clear-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  color: var(--text-main);
+}
+
+/* ==========================================================================
+   NO RESULTS BOX
+   ========================================================================== */
+.no-results-box {
+  background: rgba(14, 18, 42, 0.85);
+  border: 1px dashed var(--border-active);
+  border-radius: var(--radius-lg);
+  padding: 48px 24px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.no-res-icon {
+  font-size: 36px;
+  display: block;
+  margin-bottom: 12px;
+  opacity: 0.7;
+}
+
+.no-results-box h3 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.no-results-box p {
+  color: var(--text-muted);
+  font-size: 14px;
+  max-width: 500px;
+  margin: 0 auto;
+}
