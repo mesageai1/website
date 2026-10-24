@@ -1,5 +1,5 @@
 // ==========================================================================
-// MeSage AI — Live Interactive Demo: WhatsApp Automation & Live Agent Transfer
+// MeSage AI — Live Interactive Demo: Real Estate Apartment Search & Booking
 // ==========================================================================
 
 // DOM Elements
@@ -11,14 +11,14 @@ const waButtonsTray = document.getElementById('waButtonsTray');
 const waStatusText = document.getElementById('waStatusText');
 const phoneFrame = document.getElementById('phoneFrame');
 
-// Connector 1 Elements (Signal Transit Zone & Glowing Orbs)
+// Connector 1 Elements (Signal Transit Zone & Glowing Solid Balls)
 const colConn1 = document.getElementById('colConn1');
 const connectorTrackHolder = document.getElementById('connectorTrackHolder');
 const orbGreenForward = document.getElementById('orbGreenForward');
 const orbIndigoBackward = document.getElementById('orbIndigoBackward');
 const orbWhiteBackward = document.getElementById('orbWhiteBackward');
 
-// In-Between Agent Elements (Slides in between)
+// In-Between Agent Elements (Slides in between on Price)
 const colAgentInbetween = document.getElementById('colAgentInbetween');
 const colConn2 = document.getElementById('colConn2');
 const agentStatusPill = document.getElementById('agentStatusPill');
@@ -29,7 +29,7 @@ const compReadyTag = document.getElementById('compReadyTag');
 const composerTextBox = document.getElementById('composerTextBox');
 const agentDispatchStatus = document.getElementById('agentDispatchStatus');
 
-// AI Automation Elements (Right Side - Clean Logo & Soundwave only)
+// AI Automation Elements (Right Side - Clean Logo & Soundwave)
 const colAiBot = document.getElementById('colAiBot');
 const companyLogoCore = document.getElementById('companyLogoCore');
 const aiWaveform = document.getElementById('aiWaveform');
@@ -93,7 +93,7 @@ function updateSignalLevel(immediate = true) {
   }
 }
 
-// 1. Green Ball: WhatsApp (Left) -> AI / Human Agent (Right) in exact horizontal line
+// 1. Solid Green Ball: WhatsApp (Left) -> AI / Human Agent (Right) in exact horizontal line
 function fireGreenForwardSignal(callback) {
   updateSignalLevel(true);
 
@@ -115,7 +115,7 @@ function fireGreenForwardSignal(callback) {
   }, 650);
 }
 
-// 2. Indigo Ball: AI (Right) -> WhatsApp User (Left) in exact horizontal line
+// 2. Solid Indigo Ball: AI (Right) -> WhatsApp User (Left) in exact horizontal line
 function fireIndigoBackwardSignal(callback) {
   updateSignalLevel(true);
 
@@ -131,7 +131,7 @@ function fireIndigoBackwardSignal(callback) {
   }, 650);
 }
 
-// 3. White Ball: Live Agent (Right) -> WhatsApp User (Left) in exact horizontal line
+// 3. Solid White Ball: Live Agent (Right) -> WhatsApp User (Left) in exact horizontal line
 function fireWhiteBackwardSignal(callback) {
   updateSignalLevel(true);
 
@@ -235,7 +235,7 @@ function addWaAgentMessage(text, time = '14:19') {
   item.innerHTML = `
     <div class="bubble-text-box">
       <small style="color: #34d399; font-weight: 800; display: block; margin-bottom: 4px;">
-        🧑‍💼 Sarah Mitchell (Live Advisor)
+        🧑‍💼 Sarah Mitchell (Property Advisor)
       </small>
       ${formatted}
     </div>
@@ -289,7 +289,7 @@ function scheduleNext(fn, delayMs) {
 }
 
 // ==========================================================================
-// Interactive Conversation Flow
+// Interactive Conversation Flow: Real Estate Apartment Search
 // ==========================================================================
 
 function executeStage(stageNumber) {
@@ -297,17 +297,17 @@ function executeStage(stageNumber) {
 
   switch (stageNumber) {
     // -------------------------------------------------------------
-    // STAGE 1: Buyer Inquires about service
+    // STAGE 1: Buyer Inquires about Apartment Configurations
     // -------------------------------------------------------------
     case 1: {
-      // User sends message
-      addWaUserMessage("Hi, I have a quick question about getting started with your premium service.", "14:15");
+      // User sends initial inquiry
+      addWaUserMessage("Hi, I am looking for a luxury apartment in Prime Residency. What configurations are available?", "14:15");
 
-      // Glowing Green Ball shoots from WhatsApp to AI Automation
+      // Solid Green Ball shoots from WhatsApp to AI Automation
       fireGreenForwardSignal(() => {
         scheduleNext(() => {
           showTyping('MeSage AI');
-          // Glowing Indigo Ball shoots back from AI to WhatsApp
+          // Solid Indigo Ball shoots back from AI to WhatsApp
           fireIndigoBackwardSignal(() => {
             hideTyping();
             executeStage(2);
@@ -318,51 +318,51 @@ function executeStage(stageNumber) {
     }
 
     // -------------------------------------------------------------
-    // STAGE 2: AI answers with service tiers (< 2s)
+    // STAGE 2: AI answers with BHK configurations (< 2s)
     // -------------------------------------------------------------
     case 2: {
       addWaBotMessage(
-        "Hello! 👋 Welcome to **MeSage Concierge**.<br><br>We would love to help you get started! Are you looking for our **Growth**, **Enterprise**, or **Custom VIP** plan?",
+        "Hello! 👋 Welcome to **Prime Residency Concierge** powered by MeSage AI.<br><br>We have premium **2 BHK**, **3 BHK**, and **4 BHK Penthouse** units available with contemporary architecture.<br><br>Which configuration would you like to explore?",
         "14:15"
       );
 
       renderButtons([
-        { label: "🚀 Growth Tier", action: () => selectTier("Growth Tier") },
-        { label: "⚡ Enterprise Tier (Recommended)", action: () => selectTier("Enterprise Tier") },
-        { label: "💎 Custom VIP", action: () => selectTier("Custom VIP") }
+        { label: "🏡 2 BHK (850 - 1,150 sq.ft)", action: () => selectBHK("2 BHK") },
+        { label: "🏡 3 BHK (1,450 - 1,850 sq.ft) (Recommended)", action: () => selectBHK("3 BHK") },
+        { label: "🏰 4 BHK Penthouse (2,400+ sq.ft)", action: () => selectBHK("4 BHK Penthouse") }
       ]);
 
       // Auto-advance after 3.4s
       scheduleNext(() => {
-        selectTier("Enterprise Tier");
+        selectBHK("3 BHK");
       }, 3400);
       break;
     }
 
     // -------------------------------------------------------------
-    // STAGE 3: Customer chooses Enterprise Tier
+    // STAGE 3: Customer chooses 3 BHK -> AI Details Area, Location, Specs
     // -------------------------------------------------------------
     case 3: {
       clearButtons();
 
-      addWaUserMessage("Enterprise Tier", "14:16");
+      addWaUserMessage("3 BHK (1,450 - 1,850 sq.ft)", "14:16");
 
-      // Glowing Green Ball shoots from WhatsApp to AI Automation
+      // Solid Green Ball shoots from WhatsApp to AI Automation
       fireGreenForwardSignal(() => {
         scheduleNext(() => {
           showTyping('MeSage AI');
-          // Glowing Indigo Ball shoots back from AI to WhatsApp
+          // Solid Indigo Ball shoots back from AI to WhatsApp
           fireIndigoBackwardSignal(() => {
             hideTyping();
 
             addWaBotMessage(
-              "Excellent choice! Our **Enterprise Tier** includes 24/7 dedicated priority SLA, custom webhook workflows, and isolated cloud deployment.<br><br>Would you like our solution overview PDF?",
+              "Excellent choice! Our **3 BHK Premium Residences** range from **1,450 to 1,850 sq.ft** with panoramic skyline views, private sundecks, Italian marble flooring, and smart home automation.<br><br>📍 **Location:** Central Business District, Sector 48 (5 mins from Metro &amp; Express Highway).<br><br>Would you like to download our official floor plan brochure?",
               "14:16"
             );
 
             renderButtons([
-              { label: "📄 Download Solution Overview", action: () => selectBrochureOption() },
-              { label: "💰 Request Custom Pricing & Terms", action: () => triggerPriceInquiry() }
+              { label: "📄 Download 3 BHK Brochure & Floor Plans", action: () => selectBrochureOption() },
+              { label: "💰 What is the exact price & payment plan?", action: () => triggerPriceInquiry() }
             ]);
 
             // Auto advance to Brochure
@@ -381,26 +381,26 @@ function executeStage(stageNumber) {
     case 4: {
       clearButtons();
 
-      addWaUserMessage("Download Solution Overview", "14:17");
+      addWaUserMessage("Download 3 BHK Brochure & Floor Plans", "14:17");
 
-      // Glowing Green Ball shoots from WhatsApp to AI
+      // Solid Green Ball shoots from WhatsApp to AI
       fireGreenForwardSignal(() => {
         scheduleNext(() => {
           showTyping('MeSage AI');
-          // Glowing Indigo Ball shoots back from AI to WhatsApp
+          // Solid Indigo Ball shoots back from AI to WhatsApp
           fireIndigoBackwardSignal(() => {
             hideTyping();
 
             addWaBrochureMessage(
-              "Here is our official solution overview with architectural diagrams, security compliance, and integration specs:",
-              "MeSage_Enterprise_Overview.pdf",
-              "3.8 MB · Verified PDF Document",
-              "Would you like to review customized pricing and available payment terms?",
+              "Here is our complete project brochure with 3 BHK floor plans, master layout, and 40+ world-class club amenities:",
+              "Prime_Residency_3BHK_Brochure.pdf",
+              "4.2 MB • Verified PDF Brochure",
+              "Would you like to review the pricing and available payment schemes?",
               "14:17"
             );
 
             renderButtons([
-              { label: "💰 What is your custom pricing?", action: () => triggerPriceInquiry() }
+              { label: "💰 What is the exact price & payment plan?", action: () => triggerPriceInquiry() }
             ]);
 
             // Auto advance to price
@@ -414,14 +414,14 @@ function executeStage(stageNumber) {
     }
 
     // -------------------------------------------------------------
-    // STAGE 5: Buyer asks PRICE -> AGENT CAN STEP IN ANYTIME!
+    // STAGE 5: Buyer asks PRICE -> HANDLED BY LIVE AGENT!
     // -------------------------------------------------------------
     case 5: {
       clearButtons();
 
-      addWaUserMessage("What is your custom pricing and onboarding schedule?", "14:18");
+      addWaUserMessage("I want to know the exact price and available payment schemes.", "14:18");
 
-      // Green ball shoots from WhatsApp to AI / Agent Inbox
+      // Solid Green ball shoots from WhatsApp to Live Agent Inbox
       fireGreenForwardSignal(() => {
         // STEP 6: AGENT COMES IN-BETWEEN!
         scheduleNext(() => {
@@ -441,13 +441,13 @@ function executeStage(stageNumber) {
       if (colConn1) colConn1.classList.add('narrowed');
 
       // WhatsApp Chat Notification Banner
-      addWaHandoffBanner("🤝 <strong>Senior Live Advisor Sarah Mitchell</strong> joined the chat in-between.");
-      if (waStatusText) waStatusText.textContent = "Chatting with Sarah Mitchell (Live Advisor)";
+      addWaHandoffBanner("🤝 <strong>Senior Property Advisor Sarah Mitchell</strong> joined the chat in-between.");
+      if (waStatusText) waStatusText.textContent = "Chatting with Sarah Mitchell (Property Advisor)";
 
       // Update signal level to align with handoff banner
       updateSignalLevel(true);
 
-      // Agent prepares & dispatches pricing quote
+      // Agent prepares & dispatches property pricing quote
       scheduleNext(() => {
         sendAgentPricingMessage();
       }, 1200);
@@ -455,20 +455,20 @@ function executeStage(stageNumber) {
     }
 
     // -------------------------------------------------------------
-    // STAGE 7: Sarah Mitchell quotes price via White Ball
+    // STAGE 7: Sarah Mitchell quotes price via Solid White Ball
     // -------------------------------------------------------------
     case 7: {
       showTyping('Sarah Mitchell');
-      // Glowing White Ball shoots from Agent in-between -> WhatsApp User
+      // Glowing Solid White Ball shoots from Agent in-between -> WhatsApp User
       fireWhiteBackwardSignal(() => {
         hideTyping();
         addWaAgentMessage(
-          "Hello Alex! **Sarah Mitchell** here from the Enterprise Solutions Team. 👋<br><br>Our Enterprise tier starts at **$1,499/mo** with custom volume discounts and an introductory **quarterly flex schedule**.<br><br>Would you like to schedule a private VIP onboarding consultation with us?",
+          "Hello Alex! **Sarah Mitchell** here from the Sales Office. 👋<br><br>Our 3 BHK luxury residences start at **$485,000** (₹2.45 Cr all-inclusive) with an exclusive **10:90 festive payment scheme** and zero pre-EMI until possession.<br><br>Would you like to schedule an exclusive VIP site visit and private model apartment tour?",
           "14:19"
         );
 
         renderButtons([
-          { label: "📅 I want to book an appointment for a consultation", action: () => triggerAppointmentBooking() }
+          { label: "📅 Book a Site Visit & Model Tour", action: () => triggerAppointmentBooking() }
         ]);
 
         // Auto-advance after 3.8s
@@ -485,7 +485,7 @@ function executeStage(stageNumber) {
     case 8: {
       clearButtons();
 
-      addWaUserMessage("I want to book an appointment for a consultation.", "14:20");
+      addWaUserMessage("I want to book an appointment for a site visit.", "14:20");
 
       // AGENT DROPS OUT SMOOTHLY (Panel collapses, layout returns to WhatsApp <-> AI)
       if (colAgentInbetween) colAgentInbetween.classList.remove('active-inbetween');
@@ -493,22 +493,22 @@ function executeStage(stageNumber) {
       if (colConn1) colConn1.classList.remove('narrowed');
 
       // WhatsApp handoff notice
-      addWaHandoffBanner("⚡ <strong>Sarah Mitchell</strong> completed pricing &amp; stepped out. <strong>Autonomous AI Concierge</strong> takes over to book your appointment.");
+      addWaHandoffBanner("⚡ <strong>Sarah Mitchell</strong> completed pricing consultation &amp; stepped out. <strong>Autonomous AI Concierge</strong> takes over to schedule your visit.");
       if (waStatusText) waStatusText.textContent = "online";
 
       // Give 500ms for Agent panel to collapse smoothly back to 2-column view
       scheduleNext(() => {
         updateSignalLevel(true);
 
-        // Green ball shoots directly from WhatsApp user to AI Automation across the 100px connector
+        // Solid Green ball shoots directly from WhatsApp user to AI Automation across the 100px connector
         fireGreenForwardSignal(() => {
           scheduleNext(() => {
             showTyping('MeSage AI');
-            // Indigo ball shoots from AI Automation directly to WhatsApp
+            // Solid Indigo ball shoots from AI Automation directly to WhatsApp
             fireIndigoBackwardSignal(() => {
               hideTyping();
               addWaBotMessage(
-                "I would be delighted to schedule your VIP onboarding consultation! 🏛️<br><br>Please select your preferred date and time slot:",
+                "I would be delighted to schedule your VIP site visit and private model apartment tour! 🏛️<br><br>Please select your preferred date and time slot:",
                 "14:20"
               );
 
@@ -530,13 +530,13 @@ function executeStage(stageNumber) {
     }
 
     // -------------------------------------------------------------
-    // STAGE 9: Customer selects Date & Time -> AI Confirms Booking!
+    // STAGE 9: Customer selects Date & Time -> AI Confirms Site Visit Booking!
     // -------------------------------------------------------------
     case 9: {
       clearButtons();
 
       if (agentStatusPill) {
-        agentStatusPill.textContent = "📅 Consultation Set";
+        agentStatusPill.textContent = "📅 Site Visit Confirmed";
         agentStatusPill.style.background = "#dcfce7";
         agentStatusPill.style.color = "#15803d";
         agentStatusPill.style.borderColor = "#86efac";
@@ -547,16 +547,16 @@ function executeStage(stageNumber) {
 
       addWaUserMessage("Saturday at 11:00 AM", "14:21");
 
-      // Green Ball shoots from WhatsApp user to AI Automation
+      // Solid Green Ball shoots from WhatsApp user to AI Automation
       fireGreenForwardSignal(() => {
         scheduleNext(() => {
           showTyping('MeSage AI');
-          // Indigo Ball shoots from AI back to WhatsApp
+          // Solid Indigo Ball shoots from AI back to WhatsApp
           fireIndigoBackwardSignal(() => {
             hideTyping();
 
             addWaBotMessage(
-              "🎉 **Your VIP Consultation is Confirmed!**<br><br>🗓️ **Schedule:** This Saturday at 11:00 AM<br>📍 **Channel:** Dedicated Google Meet &amp; Executive Briefing Link<br>👤 **Host:** Sarah Mitchell will personally lead your deployment walk-through.<br><br>A calendar invite and preparation notes have been sent to your WhatsApp. We look forward to meeting you!",
+              "🎉 **Your VIP Site Visit is Confirmed!**<br><br>🗓️ **Schedule:** This Saturday at 11:00 AM<br>📍 **Location:** Prime Residency Experience Center, Tower A<br>👤 **Host:** Sarah Mitchell will personally welcome you and guide your model apartment tour.<br><br>A location pin, gate pass QR code, and confirmation details have been sent to your WhatsApp. We look forward to hosting you!",
               "14:21"
             );
 
@@ -577,7 +577,7 @@ function executeStage(stageNumber) {
 }
 
 // User Action Handlers
-function selectTier(tier) {
+function selectBHK(bhk) {
   clearButtons();
   executeStage(3);
 }
