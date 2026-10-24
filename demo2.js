@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const alertBanner = document.getElementById("alertBanner");
   const successCard = document.getElementById("successCard");
   const formWrapper = document.getElementById("formWrapper");
+  const formHeader = document.getElementById("formHeader");
   const btnReset = document.getElementById("btnReset");
 
   if (!form) return;
@@ -179,14 +180,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function showSuccessView(details) {
+    if (formHeader) formHeader.style.display = "none";
     form.style.display = "none";
     successCard.style.display = "block";
-
-    // Populate summary
-    document.getElementById("sumName").textContent = details.name || "-";
-    document.getElementById("sumEmail").textContent = details.email || "-";
-    document.getElementById("sumCompany").textContent = details.company || "-";
-    document.getElementById("sumPhone").textContent = details.phone || "-";
 
     // Scroll to success card
     formWrapper.scrollIntoView({ behavior: "smooth", block: "center" });
