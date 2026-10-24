@@ -27,10 +27,11 @@ const colConn2 = document.getElementById('colConn2');
 const crmChatCanvas = document.getElementById('crmChatCanvas');
 const crmChatStream = document.getElementById('crmChatStream');
 
-// AI Automation Elements (Right Side - Clean Logo & Soundwave)
+// AI Automation Elements (Right Side - Futuristic Robot Face & Soundwave)
 const colAiBot = document.getElementById('colAiBot');
-const companyLogoCore = document.getElementById('companyLogoCore');
+const robotFaceCore = document.getElementById('robotFaceCore');
 const aiWaveform = document.getElementById('aiWaveform');
+const agentPanelTitle = document.getElementById('agentPanelTitle');
 
 // Authentic WhatsApp Blue Double Checkmark SVG
 const WA_BLUE_TICKS_SVG = `<svg viewBox="0 0 16 11" width="14" height="10" fill="none" class="wa-double-ticks"><path d="M11.04 1.15L5.78 8.08 3.12 5.09.8 7.18 5.78 12.8 13.36 2.87 11.04 1.15z" fill="#53bdeb"/><path d="M14.04 1.15L8.78 8.08 7.9 7.08 7.08 8.08 8.78 10.02 16.36 2.87 14.04 1.15z" fill="#53bdeb"/></svg>`;
@@ -115,10 +116,10 @@ function fireGreenForwardSignal(callback) {
 
   setTimeout(() => {
     if (orbGreenForward) orbGreenForward.classList.remove('shooting-right');
-    if (companyLogoCore) {
-      companyLogoCore.style.transform = 'scale(1.12)';
+    if (robotFaceCore) {
+      robotFaceCore.style.transform = 'scale(1.12)';
       setTimeout(() => {
-        companyLogoCore.style.transform = 'scale(1)';
+        if (robotFaceCore) robotFaceCore.style.transform = 'scale(1)';
       }, 350);
     }
     if (callback) callback();
@@ -394,10 +395,9 @@ function respondToInquiry(rawText, time) {
   // Handled by LIVE HUMAN AGENT Sarah Mitchell stepping in!
   // -------------------------------------------------------------
   if (/(price|cost|how much|rate|payment|scheme|discount|offer|budget|cr|lakh|inr|₹|emi|downpayment|quote|pricing|deal)/i.test(text)) {
-    // Sarah Mitchell expands into the chat in-between!
+    // Sarah Mitchell steps in without moving Customer or AI panel!
     if (colAgentInbetween) colAgentInbetween.classList.add('active-inbetween');
-    if (colConn2) colConn2.classList.add('active-inbetween');
-    if (colConn1) colConn1.classList.add('narrowed');
+    if (agentPanelTitle) agentPanelTitle.textContent = "LIVE AGENT (ACTIVE)";
 
     addWaHandoffBanner("🤝 <strong>Senior Property Advisor Sarah Mitchell</strong> joined the chat in-between.");
     if (waStatusText) waStatusText.textContent = "Chatting with Sarah Mitchell (Property Advisor)";
@@ -423,8 +423,7 @@ function respondToInquiry(rawText, time) {
     // If agent was active, agent steps out gracefully, AI confirms
     if (colAgentInbetween && colAgentInbetween.classList.contains('active-inbetween')) {
       colAgentInbetween.classList.remove('active-inbetween');
-      if (colConn2) colConn2.classList.remove('active-inbetween');
-      if (colConn1) colConn1.classList.remove('narrowed');
+      if (agentPanelTitle) agentPanelTitle.textContent = "LIVE AGENT";
       addWaHandoffBanner("⚡ <strong>Sarah Mitchell</strong> completed pricing consultation &amp; stepped out. <strong>Autonomous AI Concierge</strong> takes over to confirm your booking.");
       if (waStatusText) waStatusText.textContent = "online";
     }
@@ -532,8 +531,7 @@ function respondToInquiry(rawText, time) {
   // -------------------------------------------------------------
   if (/(agent|human|person|call|phone|talk|representative|sales\s*rep)/i.test(text)) {
     if (colAgentInbetween) colAgentInbetween.classList.add('active-inbetween');
-    if (colConn2) colConn2.classList.add('active-inbetween');
-    if (colConn1) colConn1.classList.add('narrowed');
+    if (agentPanelTitle) agentPanelTitle.textContent = "LIVE AGENT (ACTIVE)";
 
     addWaHandoffBanner("🤝 <strong>Senior Property Advisor Sarah Mitchell</strong> joined the chat in-between.");
     if (waStatusText) waStatusText.textContent = "Chatting with Sarah Mitchell (Property Advisor)";
@@ -698,12 +696,11 @@ function executeStage(stageNumber) {
     }
 
     // -------------------------------------------------------------
-    // STAGE 6: Agent expands IN-BETWEEN in Pure White Panel!
+    // STAGE 6: Agent steps IN-BETWEEN (Without moving Customer or AI panel!)
     // -------------------------------------------------------------
     case 6: {
       if (colAgentInbetween) colAgentInbetween.classList.add('active-inbetween');
-      if (colConn2) colConn2.classList.add('active-inbetween');
-      if (colConn1) colConn1.classList.add('narrowed');
+      if (agentPanelTitle) agentPanelTitle.textContent = "LIVE AGENT (ACTIVE)";
 
       addWaHandoffBanner("🤝 <strong>Senior Property Advisor Sarah Mitchell</strong> joined the chat in-between.");
       if (waStatusText) waStatusText.textContent = "Chatting with Sarah Mitchell (Property Advisor)";
@@ -743,10 +740,9 @@ function executeStage(stageNumber) {
     case 8: {
       addWaUserMessage("I want to book an appointment for a site visit this Saturday at 11:00 AM.", "14:20");
 
-      // AGENT DROPS OUT SMOOTHLY
+      // AGENT DROPS OUT SMOOTHLY (Customer & AI panel never move!)
       if (colAgentInbetween) colAgentInbetween.classList.remove('active-inbetween');
-      if (colConn2) colConn2.classList.remove('active-inbetween');
-      if (colConn1) colConn1.classList.remove('narrowed');
+      if (agentPanelTitle) agentPanelTitle.textContent = "LIVE AGENT";
 
       addWaHandoffBanner("⚡ <strong>Sarah Mitchell</strong> completed pricing consultation &amp; stepped out. <strong>Autonomous AI Concierge</strong> takes over to confirm your booking.");
       if (waStatusText) waStatusText.textContent = "online";
@@ -805,10 +801,9 @@ function restartSimulation() {
   // Reset WhatsApp Status
   if (waStatusText) waStatusText.textContent = 'online';
 
-  // Reset In-Between Agent slot to closed
+  // Reset In-Between Agent slot to standby (Customer & AI positions stay fixed!)
   if (colAgentInbetween) colAgentInbetween.classList.remove('active-inbetween');
-  if (colConn2) colConn2.classList.remove('active-inbetween');
-  if (colConn1) colConn1.classList.remove('narrowed');
+  if (agentPanelTitle) agentPanelTitle.textContent = "LIVE AGENT";
 
   // Reset Signal Orbs
   if (orbGreenForward) orbGreenForward.classList.remove('shooting-right');
@@ -817,7 +812,7 @@ function restartSimulation() {
   if (connectorTrackHolder) connectorTrackHolder.style.top = '95px';
 
   // Reset AI Robot Stage
-  if (companyLogoCore) companyLogoCore.style.transform = 'scale(1)';
+  if (robotFaceCore) robotFaceCore.style.transform = 'scale(1)';
 
   // Reset CRM status
   const activeBadge = document.querySelector('.crm-active-badge');
