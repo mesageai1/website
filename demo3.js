@@ -6,7 +6,27 @@
 document.addEventListener('DOMContentLoaded', () => {
   initSearchAndFilter();
   initMicroInteractions();
+  initCockpitTabs();
 });
+
+// 0. MASTER COCKPIT TABS
+function initCockpitTabs() {
+  const tabs = document.querySelectorAll('.cockpit-tab-btn');
+  const screens = document.querySelectorAll('.cockpit-screen');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      screens.forEach(s => s.classList.remove('active'));
+      tab.classList.add('active');
+      const targetId = tab.dataset.screen;
+      const targetScreen = document.getElementById(targetId);
+      if (targetScreen) {
+        targetScreen.classList.add('active');
+      }
+    });
+  });
+}
 
 // 1. FILTERING & SEARCH
 function initSearchAndFilter() {

@@ -681,37 +681,9 @@ h1, h2, h3, p { margin-top: 0; }
 .typing-bubble i:nth-child(3) { animation-delay: 0.4s; }
 @keyframes dotBlink { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
 
-/* Real WhatsApp Interactive Buttons Tray */
+/* WhatsApp Quick Buttons Tray (Hidden: Natural Typing Mode) */
 .wa-buttons-tray {
-  padding: 4px 6px;
-  background: #111b21;
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  min-height: 28px;
-  flex-shrink: 0;
-}
-.wa-btn-option {
-  width: 100%;
-  background: #202c33;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  color: #00a884;
-  border-radius: 6px;
-  padding: 5px 8px;
-  font-size: 9px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.2s;
-  font-family: inherit;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-}
-.wa-btn-option:hover {
-  background: #2a3942;
-  color: #25d366;
+  display: none !important;
 }
 
 /* Authentic WhatsApp Dark Mode Footer Input Bar */
@@ -723,12 +695,13 @@ h1, h2, h3, p { margin-top: 0; }
   gap: 6px;
   border-top: 1px solid rgba(255, 255, 255, 0.04);
   flex-shrink: 0;
+  margin: 0;
 }
 .wa-input-pill-wrap {
   flex: 1;
   background: #2a3942;
   border-radius: 20px;
-  padding: 5px 10px;
+  padding: 4px 10px;
   display: flex;
   align-items: center;
   gap: 7px;
@@ -752,13 +725,25 @@ h1, h2, h3, p { margin-top: 0; }
 .wa-clip-btn {
   transform: rotate(45deg);
 }
-.wa-placeholder-text {
+.wa-real-input {
   flex: 1;
-  font-size: 9.5px;
-  color: #8696a0;
-  user-select: none;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 11px;
+  color: #e9edef;
+  font-family: inherit;
+  padding: 2px 0;
+  margin: 0;
+  width: 100%;
 }
-.wa-mic-action-btn {
+.wa-real-input::placeholder {
+  color: #8696a0;
+  font-size: 10.5px;
+}
+.wa-send-btn {
+  border: none;
+  outline: none;
   width: 28px;
   height: 28px;
   border-radius: 50%;
@@ -768,10 +753,75 @@ h1, h2, h3, p { margin-top: 0; }
   cursor: pointer;
   flex-shrink: 0;
   box-shadow: 0 2px 6px rgba(0, 168, 132, 0.35);
-  transition: transform 0.15s;
+  transition: transform 0.15s, background 0.15s;
 }
-.wa-mic-action-btn:hover {
+.wa-send-btn:hover {
   transform: scale(1.08);
+  background: #00b890;
+}
+
+/* Stage Interactive Controls Bar */
+.stage-controls-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(14, 18, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-full);
+  padding: 7px 16px;
+  margin: 0 auto 16px;
+  max-width: 720px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+.stage-status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #cbd5e1;
+}
+.live-dot-pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 8px #10b981;
+  animation: pulseDot 2s infinite;
+}
+.btn-replay-pill {
+  background: rgba(99, 102, 241, 0.15);
+  border: 1px solid rgba(99, 102, 241, 0.35);
+  color: #a5b4fc;
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 4px 14px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: inherit;
+}
+.btn-replay-pill:hover {
+  background: rgba(99, 102, 241, 0.35);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+.phone-type-hint {
+  text-align: center;
+  font-size: 11.5px;
+  color: #94a3b8;
+  margin-top: 10px;
+}
+.phone-type-hint span {
+  color: var(--green-light);
+  font-weight: 700;
+}
+.phone-type-hint em {
+  color: #e2e8f0;
+  font-style: normal;
+  font-weight: 600;
 }
 
 /* 2. OPEN SIGNAL TRANSIT CHANNELS (NO STATIC LINES - JUST GLOWING BALLS!) */
