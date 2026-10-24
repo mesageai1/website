@@ -11,17 +11,11 @@ const waButtonsTray = document.getElementById('waButtonsTray');
 const waStatusText = document.getElementById('waStatusText');
 const phoneFrame = document.getElementById('phoneFrame');
 
-const btnPlayPause = document.getElementById('btnPlayPause');
-const playIcon = document.getElementById('playIcon');
-const playLabel = document.getElementById('playLabel');
-const demoStatusNotice = document.getElementById('demoStatusNotice');
-
-// Connector 1 Elements (Dynamic Vertical Tracks)
+// Connector 1 Elements (Signal Transit Zone & Glowing Orbs)
 const colConn1 = document.getElementById('colConn1');
-const conn1Label = document.getElementById('conn1Label');
 const connectorTrackHolder = document.getElementById('connectorTrackHolder');
-const lineForward = document.getElementById('lineForward');
-const lineBackward = document.getElementById('lineBackward');
+const orbForward = document.getElementById('orbForward');
+const orbBackward = document.getElementById('orbBackward');
 
 // In-Between Agent Elements (Slides in between)
 const colAgentInbetween = document.getElementById('colAgentInbetween');
@@ -34,42 +28,30 @@ const compReadyTag = document.getElementById('compReadyTag');
 const composerTextBox = document.getElementById('composerTextBox');
 const agentDispatchStatus = document.getElementById('agentDispatchStatus');
 
-// AI Bot Elements (Right)
+// AI Robot Elements (Right Side)
 const colAiBot = document.getElementById('colAiBot');
-const aiBotBox = document.getElementById('aiBotBox');
-const aiAvatarCore = document.getElementById('aiAvatarCore');
+const robotFaceSphere = document.getElementById('robotFaceSphere');
 const aiStatusPill = document.getElementById('aiStatusPill');
-const aiActionKicker = document.getElementById('aiActionKicker');
+const aiBeacon = document.getElementById('aiBeacon');
+const aiStatusText = document.getElementById('aiStatusText');
 const aiActionTitle = document.getElementById('aiActionTitle');
 const aiActionDesc = document.getElementById('aiActionDesc');
-const aiSpeedValue = document.getElementById('aiSpeedValue');
-const aiConfidenceValue = document.getElementById('aiConfidenceValue');
-const aiModeValue = document.getElementById('aiModeValue');
-const aiTransferNotice = document.getElementById('aiTransferNotice');
-const aiTransferNoticeTitle = document.getElementById('aiTransferNoticeTitle');
-const aiTransferNoticeDesc = document.getElementById('aiTransferNoticeDesc');
+const aiWaveform = document.getElementById('aiWaveform');
 
 // State Machine
 let isPlaying = true;
 let currentStage = 0;
 let actionTimeout = null;
 
-// Helper: Scroll WhatsApp canvas smoothly
+// Helper: Scroll WhatsApp canvas smoothly (No scrollbar visible)
 function scrollWaCanvas() {
   if (waChatCanvas) {
     waChatCanvas.scrollTop = waChatCanvas.scrollHeight;
   }
 }
 
-// Helper: Update Status Notice in Player Bar
-function setDemoStatus(text) {
-  if (demoStatusNotice) {
-    demoStatusNotice.textContent = text;
-  }
-}
-
 // ==========================================================================
-// Dynamic Vertical Signal Positioning ("lines come slowly below with messages")
+// Dynamic Vertical Signal Positioning (Balls travel at exact message level)
 // ==========================================================================
 function updateSignalLevel() {
   if (!connectorTrackHolder || !waChatStream || !phoneFrame) return;
@@ -92,71 +74,48 @@ function updateSignalLevel() {
   connectorTrackHolder.style.top = `${clampedY}px`;
 }
 
-// Reset signal line animations
-function resetLine(line) {
-  if (!line) return;
-  line.classList.remove('active-fire', 'shooting');
-  void line.offsetWidth; // trigger reflow
-}
-
-// 1. Forward Signal: Phone -> AI / Agent (moves down with message)
+// 1. Forward Signal: Glowing Blue Ball shoots Phone -> AI/Agent at exact message level
 function fireForwardSignal(callback) {
   updateSignalLevel();
-  if (!isPlaying) {
-    if (callback) callback();
-    return;
+
+  if (orbForward) {
+    orbForward.classList.remove('shooting');
+    void orbForward.offsetWidth; // trigger reflow
+    orbForward.classList.add('shooting');
   }
 
-  if (conn1Label) {
-    conn1Label.textContent = "Inbound ➔";
-    conn1Label.classList.add('active-pulse');
-  }
-
-  resetLine(lineForward);
-  if (lineForward) {
-    lineForward.classList.add('active-fire', 'shooting');
-  }
-
-  // 600ms arrival
+  // 650ms transit
   setTimeout(() => {
-    if (lineForward) lineForward.classList.remove('shooting');
-    if (aiAvatarCore) {
-      aiAvatarCore.style.boxShadow = '0 0 32px #818cf8, 0 0 10px #ffffff';
+    if (orbForward) orbForward.classList.remove('shooting');
+    if (robotFaceSphere) {
+      robotFaceSphere.style.transform = 'scale(1.08)';
       setTimeout(() => {
-        aiAvatarCore.style.boxShadow = '0 0 16px rgba(99, 102, 241, 0.5)';
-      }, 450);
+        robotFaceSphere.style.transform = 'scale(1)';
+      }, 350);
     }
     if (callback) callback();
-  }, 600);
+  }, 650);
 }
 
-// 2. Backward Signal: AI / Agent -> Phone (moves down with reply)
+// 2. Backward Signal: Glowing Green Ball shoots AI/Agent -> Phone at exact message level
 function fireBackwardSignal(callback) {
   updateSignalLevel();
-  if (!isPlaying) {
-    if (callback) callback();
-    return;
+
+  if (orbBackward) {
+    orbBackward.classList.remove('shooting');
+    void orbBackward.offsetWidth; // trigger reflow
+    orbBackward.classList.add('shooting');
   }
 
-  if (conn1Label) {
-    conn1Label.textContent = "Outbound ➔";
-    conn1Label.classList.add('active-pulse');
-  }
-
-  resetLine(lineBackward);
-  if (lineBackward) {
-    lineBackward.classList.add('active-fire', 'shooting');
-  }
-
-  // 600ms arrival
+  // 650ms transit
   setTimeout(() => {
-    if (lineBackward) lineBackward.classList.remove('shooting');
+    if (orbBackward) orbBackward.classList.remove('shooting');
     if (callback) callback();
-  }, 600);
+  }, 650);
 }
 
 // Helper: Show typing indicator
-function showTyping(name = 'AI Bot') {
+function showTyping(name = 'MeSage AI') {
   if (waTypingBox && typingSender) {
     typingSender.textContent = name;
     waTypingBox.style.display = 'flex';
@@ -213,13 +172,13 @@ function addWaBrochureMessage(text, fileTitle, fileSize, promptText, time = '14:
     <div class="bubble-text-box">
       ${text}
       <div class="wa-attachment-box">
-        <span style="font-size: 20px;">📄</span>
+        <span style="font-size: 22px;">📄</span>
         <div>
           <b>${fileTitle}</b>
           <small>${fileSize}</small>
         </div>
       </div>
-      <p style="margin: 5px 0 0;">${promptText}</p>
+      <p style="margin: 6px 0 0;">${promptText}</p>
     </div>
     <div class="bubble-footer">
       <span>${time}</span>
@@ -237,8 +196,8 @@ function addWaAgentMessage(text, time = '14:19') {
   const formatted = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
   item.innerHTML = `
     <div class="bubble-text-box">
-      <small style="color: #34d399; font-weight: 800; display: block; margin-bottom: 3px;">
-        🧑‍💼 Priya Sharma (Senior Property Advisor)
+      <small style="color: #34d399; font-weight: 800; display: block; margin-bottom: 4px;">
+        🧑‍💼 Sarah Mitchell (Live Advisor)
       </small>
       ${formatted}
     </div>
@@ -297,24 +256,19 @@ function executeStage(stageNumber) {
 
   switch (stageNumber) {
     // -------------------------------------------------------------
-    // STAGE 1: Buyer Inquires about apartments
+    // STAGE 1: Buyer Inquires about service
     // -------------------------------------------------------------
     case 1: {
-      setDemoStatus("Step 1: Buyer Inquires about Apartments");
-
       // User sends message
-      addWaUserMessage("Hi, I am looking for an apartment in your new project.", "14:15");
+      addWaUserMessage("Hi, I have a quick question about getting started with your premium service.", "14:15");
 
-      // Signal line moves to message 1 level and fires forward to AI
+      // Glowing Blue Ball shoots to AI Robot
       fireForwardSignal(() => {
-        if (aiActionKicker) aiActionKicker.textContent = "INTENT CLASSIFICATION";
-        if (aiActionTitle) aiActionTitle.textContent = "Analyzing Customer Inquiry...";
-        if (aiActionDesc) aiActionDesc.textContent = "Intent: Apartment_Search. Scanning project inventory for 2, 3, 4 BHK luxury residences...";
-        if (aiSpeedValue) aiSpeedValue.textContent = "0.8s";
-        if (aiConfidenceValue) aiConfidenceValue.textContent = "99.4%";
+        if (aiActionTitle) aiActionTitle.textContent = "Analyzing customer query...";
+        if (aiActionDesc) aiActionDesc.textContent = "Intent: Plan_Inquiry · Scanning solution packages";
 
         scheduleNext(() => {
-          // AI dispatches reply back along the line
+          // Glowing Green Ball shoots back to WhatsApp
           fireBackwardSignal(() => {
             showTyping('MeSage AI');
             scheduleNext(() => {
@@ -322,73 +276,65 @@ function executeStage(stageNumber) {
               executeStage(2);
             }, 600);
           });
-        }, 900);
+        }, 800);
       });
       break;
     }
 
     // -------------------------------------------------------------
-    // STAGE 2: AI answers with 2, 3, 4 BHK options
+    // STAGE 2: AI answers with service tiers (< 2s)
     // -------------------------------------------------------------
     case 2: {
-      setDemoStatus("Step 2: AI Bot Replies in < 2s");
-      if (aiActionKicker) aiActionKicker.textContent = "OFFER CONFIGURATIONS";
-      if (aiActionTitle) aiActionTitle.textContent = "Dispatched Apartment Configurations";
-      if (aiActionDesc) aiActionDesc.textContent = "Offered 2, 3 & 4 BHK choices with instant interactive selection buttons.";
-      if (aiSpeedValue) aiSpeedValue.textContent = "1.2s";
+      if (aiActionTitle) aiActionTitle.textContent = "Dispatched plan options";
+      if (aiActionDesc) aiActionDesc.textContent = "Offered Growth, Enterprise, and Custom VIP tiers";
 
       addWaBotMessage(
-        "Hello! 👋 Welcome to **Skyline Residences** by MeSage Realty.<br><br>We have premium **2, 3, and 4 BHK** luxury residences available for you. Which configuration would you like to explore?",
+        "Hello! 👋 Welcome to **MeSage Concierge**.<br><br>We would love to help you get started! Are you looking for our **Growth**, **Enterprise**, or **Custom VIP** plan?",
         "14:15"
       );
 
       renderButtons([
-        { label: "2 BHK", action: () => selectConfiguration("2 BHK") },
-        { label: "3 BHK (Recommended)", action: () => selectConfiguration("3 BHK") },
-        { label: "4 BHK Penthouse", action: () => selectConfiguration("4 BHK") }
+        { label: "🚀 Growth Tier", action: () => selectTier("Growth Tier") },
+        { label: "⚡ Enterprise Tier (Recommended)", action: () => selectTier("Enterprise Tier") },
+        { label: "💎 Custom VIP", action: () => selectTier("Custom VIP") }
       ]);
 
       // Auto-advance after 3.2s
       scheduleNext(() => {
-        selectConfiguration("3 BHK");
+        selectTier("Enterprise Tier");
       }, 3400);
       break;
     }
 
     // -------------------------------------------------------------
-    // STAGE 3: Customer chooses 3 BHK -> Lines move down with message!
+    // STAGE 3: Customer chooses Enterprise
     // -------------------------------------------------------------
     case 3: {
-      setDemoStatus("Step 3: Buyer Selects 3 BHK");
       clearButtons();
 
-      addWaUserMessage("3 BHK", "14:16");
+      addWaUserMessage("Enterprise Tier", "14:16");
 
-      // Signal lines smoothly slide down to message 3 and fire forward
+      // Glowing Blue Ball shoots to AI Robot
       fireForwardSignal(() => {
-        if (aiActionKicker) aiActionKicker.textContent = "SPECIFICATION LOOKUP";
-        if (aiActionTitle) aiActionTitle.textContent = "Retrieving 3 BHK Specs";
-        if (aiActionDesc) aiActionDesc.textContent = "Pulling super built-up area (1,450 to 1,850 sq.ft), master floor layouts, and balcony specs.";
-        if (aiSpeedValue) aiSpeedValue.textContent = "0.9s";
+        if (aiActionTitle) aiActionTitle.textContent = "Retrieving Enterprise Specs...";
+        if (aiActionDesc) aiActionDesc.textContent = "Pulling dedicated SLA, custom workflows, and API capacity";
 
         scheduleNext(() => {
           fireBackwardSignal(() => {
             showTyping('MeSage AI');
             scheduleNext(() => {
               hideTyping();
-              if (aiActionTitle) aiActionTitle.textContent = "Delivered 3 BHK Specs";
-              if (aiActionDesc) aiActionDesc.textContent = "Provided dimensions & prompt for Brochure, Location, or Pricing.";
-              if (aiSpeedValue) aiSpeedValue.textContent = "1.1s";
+              if (aiActionTitle) aiActionTitle.textContent = "Delivered tier specs & brochure prompt";
+              if (aiActionDesc) aiActionDesc.textContent = "Offered solution overview PDF & pricing inquiry";
 
               addWaBotMessage(
-                "Nice choice! Our 3 BHK luxury residences range from **1,450 to 1,850 sq. ft.** super built-up area with panoramic balconies.<br><br>What would you like to know more about our 3 BHK homes?",
+                "Excellent choice! Our **Enterprise Tier** includes 24/7 dedicated priority SLA, custom webhook workflows, and isolated cloud deployment.<br><br>Would you like our solution overview PDF?",
                 "14:16"
               );
 
               renderButtons([
-                { label: "📄 Project Brochure", action: () => selectBrochureOption() },
-                { label: "📍 Location & Amenities", action: () => selectBrochureOption() },
-                { label: "💰 Pricing & Payment Plans", action: () => triggerPriceInquiry() }
+                { label: "📄 Download Solution Overview", action: () => selectBrochureOption() },
+                { label: "💰 Request Custom Pricing & Terms", action: () => triggerPriceInquiry() }
               ]);
 
               // Auto advance to Brochure
@@ -397,46 +343,42 @@ function executeStage(stageNumber) {
               }, 3400);
             }, 600);
           });
-        }, 900);
+        }, 800);
       });
       break;
     }
 
     // -------------------------------------------------------------
-    // STAGE 4: Customer asks Brochure -> Lines move down with message!
+    // STAGE 4: Customer asks Brochure -> AI sends verified PDF
     // -------------------------------------------------------------
     case 4: {
-      setDemoStatus("Step 4: AI Sends Verified PDF Brochure");
       clearButtons();
 
-      addWaUserMessage("Brochure", "14:17");
+      addWaUserMessage("Download Solution Overview", "14:17");
 
-      // Signal lines slide down to brochure message level
+      // Glowing Blue Ball shoots to AI Robot
       fireForwardSignal(() => {
-        if (aiActionKicker) aiActionKicker.textContent = "DOCUMENT DISPATCH";
-        if (aiActionTitle) aiActionTitle.textContent = "Generating PDF Brochure";
-        if (aiActionDesc) aiActionDesc.textContent = "Transmitting verified Skyline_Residences_3BHK_Brochure.pdf via WhatsApp Media API.";
-        if (aiSpeedValue) aiSpeedValue.textContent = "1.0s";
+        if (aiActionTitle) aiActionTitle.textContent = "Transmitting PDF Document...";
+        if (aiActionDesc) aiActionDesc.textContent = "Dispatched MeSage_Enterprise_Overview.pdf via Media API";
 
         scheduleNext(() => {
           fireBackwardSignal(() => {
             showTyping('MeSage AI');
             scheduleNext(() => {
               hideTyping();
-              if (aiActionTitle) aiActionTitle.textContent = "Brochure Dispatched";
-              if (aiActionDesc) aiActionDesc.textContent = "Delivered floor layouts. Inquiring if buyer would like pricing.";
-              if (aiSpeedValue) aiSpeedValue.textContent = "1.2s";
+              if (aiActionTitle) aiActionTitle.textContent = "Overview document delivered";
+              if (aiActionDesc) aiActionDesc.textContent = "Prompting if customer needs commercial pricing";
 
               addWaBrochureMessage(
-                "Here is our official project brochure with architectural floor layouts, master planning, and club amenities:",
-                "Skyline_Residences_3BHK_Brochure.pdf",
-                "4.2 MB · Verified PDF Document",
-                "Would you also like to know the pricing and available payment plans?",
+                "Here is our official solution overview with architectural diagrams, security compliance, and integration specs:",
+                "MeSage_Enterprise_Overview.pdf",
+                "3.8 MB · Verified PDF Document",
+                "Would you like to review customized pricing and available payment terms?",
                 "14:17"
               );
 
               renderButtons([
-                { label: "💰 I want to know the price as well", action: () => triggerPriceInquiry() }
+                { label: "💰 What is your custom pricing?", action: () => triggerPriceInquiry() }
               ]);
 
               // Auto advance to price
@@ -445,44 +387,39 @@ function executeStage(stageNumber) {
               }, 3600);
             }, 600);
           });
-        }, 900);
+        }, 800);
       });
       break;
     }
 
     // -------------------------------------------------------------
-    // STAGE 5: Buyer asks PRICE -> AGENT CAN ENTER AT ANY TIME!
+    // STAGE 5: Buyer asks PRICE -> AGENT STEPS IN ANYTIME!
     // -------------------------------------------------------------
     case 5: {
-      setDemoStatus("Step 5: Buyer Inquires Pricing — Live Agent Joining");
       clearButtons();
 
-      addWaUserMessage("I want to know the price as well.", "14:18");
+      addWaUserMessage("What is your custom pricing and onboarding schedule?", "14:18");
 
-      // Lines slide down to the bottom message and fire forward
+      // Blue ball shoots to Robot
       fireForwardSignal(() => {
-        // AI detects price inquiry and routes to closer!
-        if (aiActionKicker) aiActionKicker.textContent = "COMMERCIAL NEGOTIATION";
-        if (aiActionTitle) aiActionTitle.textContent = "Routing to Live Property Advisor...";
-        if (aiActionDesc) aiActionDesc.textContent = "Commercial quote requested. Senior Closer Priya Sharma stepping in-between from live inbox to discuss payment schemes.";
-        if (aiSpeedValue) aiSpeedValue.textContent = "0.4s";
-        if (aiModeValue) {
-          aiModeValue.textContent = "Paused ⏸";
-          aiModeValue.style.color = "#f59e0b";
-        }
-        if (aiTransferNotice) aiTransferNotice.style.display = 'flex';
-        if (aiBotBox) aiBotBox.classList.add('ai-paused');
+        // AI pauses and routes to Live Agent Sarah Mitchell
+        if (aiActionTitle) aiActionTitle.textContent = "Routing to Live Advisor Sarah Mitchell...";
+        if (aiActionDesc) aiActionDesc.textContent = "Commercial negotiation requested · Live Specialist joining chat";
+        if (aiStatusText) aiStatusText.textContent = "⏸ Handoff (Closer In-Between)";
         if (aiStatusPill) {
-          aiStatusPill.textContent = "⏸ Paused (Closer In-Between)";
           aiStatusPill.style.background = "rgba(245, 158, 11, 0.2)";
           aiStatusPill.style.color = "#f59e0b";
           aiStatusPill.style.borderColor = "rgba(245, 158, 11, 0.45)";
+        }
+        if (aiBeacon) {
+          aiBeacon.style.background = "#f59e0b";
+          aiBeacon.style.boxShadow = "0 0 8px #f59e0b";
         }
 
         // STEP 6: AGENT COMES IN-BETWEEN!
         scheduleNext(() => {
           executeStage(6);
-        }, 1200);
+        }, 1100);
       });
       break;
     }
@@ -491,59 +428,41 @@ function executeStage(stageNumber) {
     // STAGE 6: Agent expands IN-BETWEEN in White Panel!
     // -------------------------------------------------------------
     case 6: {
-      setDemoStatus("Step 6: Live Closer Priya Sharma Joins the Chat");
-
-      // Ensure AI Bot paused state indicator
-      if (aiBotBox) aiBotBox.classList.add('ai-paused');
-      if (aiStatusPill) {
-        aiStatusPill.textContent = "⏸ Paused (Closer In-Between)";
-        aiStatusPill.style.background = "rgba(245, 158, 11, 0.2)";
-        aiStatusPill.style.color = "#f59e0b";
-        aiStatusPill.style.borderColor = "rgba(245, 158, 11, 0.45)";
-      }
-      if (aiModeValue) {
-        aiModeValue.textContent = "Paused ⏸";
-        aiModeValue.style.color = "#f59e0b";
-      }
-      if (aiTransferNotice) aiTransferNotice.style.display = 'flex';
-
       // Expand In-Between Slot smoothly
       if (colAgentInbetween) colAgentInbetween.classList.add('active-inbetween');
       if (colConn2) colConn2.classList.add('active-inbetween');
       if (colConn1) colConn1.classList.add('narrowed');
 
       // WhatsApp Chat Notification Banner
-      addWaHandoffBanner("🤝 <strong>Senior Sales Advisor Priya Sharma</strong> has joined the conversation in-between.");
-      if (waStatusText) waStatusText.textContent = "Chatting with Priya Sharma (Sales Closer)";
+      addWaHandoffBanner("🤝 <strong>Senior Live Advisor Sarah Mitchell</strong> joined the chat in-between.");
+      if (waStatusText) waStatusText.textContent = "Chatting with Sarah Mitchell (Live Advisor)";
 
-      // Update signal level to align with handoff banner / bottom
+      // Update signal level to align with handoff banner
       updateSignalLevel();
 
-      // Agent in-between prepares & dispatches pricing quote
+      // Agent prepares & dispatches pricing quote
       scheduleNext(() => {
         sendAgentPricingMessage();
-      }, 1500);
+      }, 1400);
       break;
     }
 
     // -------------------------------------------------------------
-    // STAGE 7: Priya dispatches pricing -> Buyer requests appointment
+    // STAGE 7: Sarah quotes price -> Customer requests appointment
     // -------------------------------------------------------------
     case 7: {
-      setDemoStatus("Step 7: Priya Provides Quotation & Payment Scheme");
-
-      // Signal shoots from Agent in-between -> Phone along the level
+      // Glowing Green Ball shoots from Agent in-between -> Phone
       fireBackwardSignal(() => {
-        showTyping('Priya Sharma');
+        showTyping('Sarah Mitchell');
         scheduleNext(() => {
           hideTyping();
           addWaAgentMessage(
-            "Hello Rahul! **Priya Sharma** here from the Skyline Advisory Team. 👋<br><br>Our 3 BHK luxury residences start at **₹1.85 Cr**, with an exclusive **10:90 festive payment scheme** available this month (pay 10% now, nothing until possession).<br><br>Would you like to book a private VIP site consultation with us?",
+            "Hello Alex! **Sarah Mitchell** here from the Enterprise Solutions Team. 👋<br><br>Our Enterprise tier starts at **$1,499/mo** with custom volume discounts and an introductory **quarterly flex schedule**.<br><br>Would you like to schedule a private VIP onboarding consultation with us?",
             "14:19"
           );
 
           renderButtons([
-            { label: "📅 I want to book an appointment for a site visit", action: () => triggerAppointmentBooking() }
+            { label: "📅 I want to book an appointment for a consultation", action: () => triggerAppointmentBooking() }
           ]);
 
           // Auto-confirm after 3.8s
@@ -556,13 +475,12 @@ function executeStage(stageNumber) {
     }
 
     // -------------------------------------------------------------
-    // STAGE 8: Buyer asks for appointment -> AI TAKES BACK OVER!
+    // STAGE 8: Customer wants appointment -> AI TAKES BACK OVER!
     // -------------------------------------------------------------
     case 8: {
-      setDemoStatus("Step 8: AI Takes Back Over for Automated Scheduling");
       clearButtons();
 
-      addWaUserMessage("I want to book an appointment for a site visit.", "14:20");
+      addWaUserMessage("I want to book an appointment for a consultation.", "14:20");
 
       fireForwardSignal(() => {
         // Agent panel updates to reflect handoff back to AI
@@ -577,26 +495,22 @@ function executeStage(stageNumber) {
         }
 
         // WhatsApp handoff notice
-        addWaHandoffBanner("⚡ <strong>Priya Sharma</strong> handed over to <strong>AI Booking Assistant</strong> for instant scheduling.");
-        if (waStatusText) waStatusText.textContent = "AI Scheduler Online (Booking Visit)";
+        addWaHandoffBanner("⚡ <strong>Sarah Mitchell</strong> handed over to <strong>AI Booking Assistant</strong> for instant scheduling.");
+        if (waStatusText) waStatusText.textContent = "AI Scheduler Online (Booking Consultation)";
 
-        // AI Bot wakes up and resumes active automation!
-        if (aiBotBox) aiBotBox.classList.remove('ai-paused');
+        // AI Robot wakes up and resumes active automation!
+        if (aiStatusText) aiStatusText.textContent = "Autonomous AI Active (<2s)";
         if (aiStatusPill) {
-          aiStatusPill.textContent = "🟢 Active ⚡ (AI Booking Assistant)";
           aiStatusPill.style.background = "rgba(16, 185, 129, 0.16)";
           aiStatusPill.style.color = "#34d399";
           aiStatusPill.style.borderColor = "rgba(16, 185, 129, 0.4)";
         }
-        if (aiModeValue) {
-          aiModeValue.textContent = "Auto ⚡";
-          aiModeValue.style.color = "#34d399";
+        if (aiBeacon) {
+          aiBeacon.style.background = "#10b981";
+          aiBeacon.style.boxShadow = "0 0 8px #10b981";
         }
-        if (aiTransferNotice) aiTransferNotice.style.display = 'none';
-        if (aiActionKicker) aiActionKicker.textContent = "CALENDAR SCHEDULER";
-        if (aiActionTitle) aiActionTitle.textContent = "Arranging VIP Site Walkthrough...";
-        if (aiActionDesc) aiActionDesc.textContent = "Collecting buyer's preferred date and time slot to sync with experience centre availability.";
-        if (aiSpeedValue) aiSpeedValue.textContent = "0.7s";
+        if (aiActionTitle) aiActionTitle.textContent = "Arranging VIP Onboarding Consultation...";
+        if (aiActionDesc) aiActionDesc.textContent = "Checking calendar availability for private meeting link";
 
         // AI asks for Date and Time
         scheduleNext(() => {
@@ -605,7 +519,7 @@ function executeStage(stageNumber) {
             scheduleNext(() => {
               hideTyping();
               addWaBotMessage(
-                "I would be delighted to schedule your VIP site walkthrough! 🏛️<br><br>Please choose your preferred date and time slot:",
+                "I would be delighted to schedule your VIP onboarding consultation! 🏛️<br><br>Please select your preferred date and time slot:",
                 "14:20"
               );
 
@@ -621,7 +535,7 @@ function executeStage(stageNumber) {
               }, 4200);
             }, 600);
           });
-        }, 900);
+        }, 800);
       });
       break;
     }
@@ -630,25 +544,10 @@ function executeStage(stageNumber) {
     // STAGE 9: Customer selects Date & Time -> AI Confirms Booking!
     // -------------------------------------------------------------
     case 9: {
-      setDemoStatus("Step 9: Appointment Confirmed & Calendar Invite Dispatched");
       clearButtons();
 
-      // Ensure AI Bot status is active & confirmed
-      if (aiBotBox) aiBotBox.classList.remove('ai-paused');
-      if (aiStatusPill) {
-        aiStatusPill.textContent = "🟢 Confirmed (Calendar Synced)";
-        aiStatusPill.style.background = "rgba(16, 185, 129, 0.16)";
-        aiStatusPill.style.color = "#34d399";
-        aiStatusPill.style.borderColor = "rgba(16, 185, 129, 0.4)";
-      }
-      if (aiModeValue) {
-        aiModeValue.textContent = "Auto ⚡";
-        aiModeValue.style.color = "#34d399";
-      }
-      if (aiTransferNotice) aiTransferNotice.style.display = 'none';
-
       if (agentStatusPill) {
-        agentStatusPill.textContent = "📅 Appointment Set";
+        agentStatusPill.textContent = "📅 Consultation Set";
         agentStatusPill.style.background = "#dcfce7";
         agentStatusPill.style.color = "#15803d";
         agentStatusPill.style.borderColor = "#86efac";
@@ -660,34 +559,31 @@ function executeStage(stageNumber) {
       addWaUserMessage("Saturday at 11:00 AM", "14:21");
 
       fireForwardSignal(() => {
-        if (aiActionKicker) aiActionKicker.textContent = "BOOKING CONFIRMED";
-        if (aiActionTitle) aiActionTitle.textContent = "Appointment Confirmed & Synced!";
-        if (aiActionDesc) aiActionDesc.textContent = "Calendar event created, Google Maps pin sent, and notification dispatched to Priya Sharma.";
-        if (aiSpeedValue) aiSpeedValue.textContent = "0.9s";
+        if (aiActionTitle) aiActionTitle.textContent = "Consultation Confirmed & Synced! 🎉";
+        if (aiActionDesc) aiActionDesc.textContent = "Calendar invite dispatched · Assigned Host: Sarah Mitchell";
 
         scheduleNext(() => {
           fireBackwardSignal(() => {
             showTyping('MeSage AI');
             scheduleNext(() => {
               hideTyping();
-              if (conn1Label) conn1Label.textContent = "Visit Booked! 🎉";
 
               addWaBotMessage(
-                "🎉 **Your VIP Site Consultation is Confirmed!**<br><br>🗓️ **Date & Time:** This Saturday at 11:00 AM<br>📍 **Location:** Skyline Experience Centre, Golf Course Road<br>👤 **Host:** Senior Advisor Priya Sharma will personally welcome you with customized payment sheets.<br><br>A calendar invite and location directions have been sent to your WhatsApp. We look forward to meeting you!",
+                "🎉 **Your VIP Consultation is Confirmed!**<br><br>🗓️ **Schedule:** This Saturday at 11:00 AM<br>📍 **Channel:** Dedicated Google Meet &amp; Executive Briefing Link<br>👤 **Host:** Sarah Mitchell will personally lead your deployment walk-through.<br><br>A calendar invite and preparation notes have been sent to your WhatsApp. We look forward to meeting you!",
                 "14:21"
               );
 
               renderButtons([
-                { label: "↺ Replay Demo from Start", action: () => restartSimulation() }
+                { label: "↺ Replay Interactive Demo", action: () => restartSimulation() }
               ]);
 
-              // Auto replay after 14s
+              // Auto replay after 10s in a continuous loop
               scheduleNext(() => {
                 restartSimulation();
-              }, 14000);
+              }, 10000);
             }, 600);
           });
-        }, 900);
+        }, 800);
       });
       break;
     }
@@ -695,7 +591,7 @@ function executeStage(stageNumber) {
 }
 
 // User Action Handlers
-function selectConfiguration(cfg) {
+function selectTier(tier) {
   clearButtons();
   executeStage(3);
 }
@@ -724,31 +620,11 @@ function confirmAppointment(slotText) {
   executeStage(9);
 }
 
-// Play / Pause Simulation
-window.togglePlayPause = function() {
-  isPlaying = !isPlaying;
-  if (isPlaying) {
-    if (playIcon) playIcon.textContent = '⏸';
-    if (playLabel) playLabel.textContent = 'Pause Demo';
-    executeStage(currentStage + 1 <= 9 ? currentStage + 1 : 1);
-  } else {
-    if (playIcon) playIcon.textContent = '▶';
-    if (playLabel) playLabel.textContent = 'Resume Demo';
-    clearTimeout(actionTimeout);
-    if (lineForward) resetLine(lineForward);
-    if (lineBackward) resetLine(lineBackward);
-  }
-};
-
-// Restart Simulation
+// Restart Simulation (Continuous loop)
 window.restartSimulation = function() {
   clearTimeout(actionTimeout);
   isPlaying = true;
   currentStage = 0;
-
-  if (playIcon) playIcon.textContent = '⏸';
-  if (playLabel) playLabel.textContent = 'Pause Demo';
-  setDemoStatus("Live Simulation Active · AI & Agent Sync");
 
   // Clear chat
   if (waChatStream) waChatStream.innerHTML = '';
@@ -756,7 +632,7 @@ window.restartSimulation = function() {
   hideTyping();
 
   // Reset WhatsApp Status
-  if (waStatusText) waStatusText.textContent = 'AI Bot Online (Replies in 2s)';
+  if (waStatusText) waStatusText.textContent = 'online';
 
   // Reset In-Between Agent slot to closed
   if (colAgentInbetween) colAgentInbetween.classList.remove('active-inbetween');
@@ -774,33 +650,24 @@ window.restartSimulation = function() {
     agentDispatchStatus.textContent = "✓ Sent to WhatsApp chat";
   }
 
-  // Reset Signal Lines to top
-  if (lineForward) resetLine(lineForward);
-  if (lineBackward) resetLine(lineBackward);
+  // Reset Signal Orbs
+  if (orbForward) orbForward.classList.remove('shooting');
+  if (orbBackward) orbBackward.classList.remove('shooting');
   if (connectorTrackHolder) connectorTrackHolder.style.top = '95px';
-  if (conn1Label) {
-    conn1Label.textContent = "⚡ Signal Link";
-    conn1Label.classList.remove('active-pulse');
-  }
 
-  // Reset AI Bot Box
-  if (aiBotBox) aiBotBox.classList.remove('ai-paused');
+  // Reset AI Robot Stage
+  if (aiStatusText) aiStatusText.textContent = 'Autonomous AI Online (<2s)';
   if (aiStatusPill) {
-    aiStatusPill.textContent = '🟢 Active & Replying (<2s)';
-    aiStatusPill.style.background = '';
-    aiStatusPill.style.color = '';
-    aiStatusPill.style.borderColor = '';
+    aiStatusPill.style.background = "rgba(16, 185, 129, 0.16)";
+    aiStatusPill.style.color = "#34d399";
+    aiStatusPill.style.borderColor = "rgba(16, 185, 129, 0.4)";
   }
-  if (aiActionKicker) aiActionKicker.textContent = "MONITORING CONVERSATION";
-  if (aiActionTitle) aiActionTitle.textContent = "Listening for customer inquiry...";
-  if (aiActionDesc) aiActionDesc.textContent = "Ready to answer questions about 2, 3, 4 BHK apartments, floor plans, and amenities.";
-  if (aiSpeedValue) aiSpeedValue.textContent = "1.1s";
-  if (aiConfidenceValue) aiConfidenceValue.textContent = "99.4%";
-  if (aiModeValue) {
-    aiModeValue.textContent = "Auto ⚡";
-    aiModeValue.style.color = "#34d399";
+  if (aiBeacon) {
+    aiBeacon.style.background = "#10b981";
+    aiBeacon.style.boxShadow = "0 0 8px #10b981";
   }
-  if (aiTransferNotice) aiTransferNotice.style.display = 'none';
+  if (aiActionTitle) aiActionTitle.textContent = "Listening for customer query...";
+  if (aiActionDesc) aiActionDesc.textContent = "Instant answers in < 2 seconds";
 
   // Start at Stage 1
   scheduleNext(() => {

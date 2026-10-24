@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#070913">
-  <meta name="description" content="MeSage AI — Real-time WhatsApp Automation: AI Bot Qualification & Live Human Agent Transfer on Pricing.">
-  <title>Live Demo — MeSage AI WhatsApp Bot & Human Agent Transfer</title>
+  <meta name="description" content="MeSage AI — Real-time WhatsApp Automation: Autonomous AI Bot & Seamless Live Agent Transfer Anytime.">
+  <title>Live Demo — MeSage AI WhatsApp Bot &amp; Live Agent Transfer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
@@ -18,10 +18,10 @@
     <div class="container topbar-content">
       <div class="topbar-left">
         <span class="live-beacon"></span>
-        <span><strong>LIVE INTERACTIVE DEMO:</strong> WhatsApp AI Automation with Live Agent Takeover on Pricing</span>
+        <span><strong>LIVE INTERACTIVE WORKFLOW:</strong> WhatsApp Autonomous AI &amp; Instant Live Agent Takeover</span>
       </div>
-      <div class="topbar-right-links">
-        <a href="demo2.html" class="back-link" style="color: #34d399; margin-right: 18px;">📅 Schedule Demo (Demo 2) ➔</a>
+      <div class="topbar-right">
+        <a href="demo2.html" class="topbar-link">📅 Schedule Demo (Demo 2) ➔</a>
         <a href="index.html" class="back-link">← Back to Main Website</a>
       </div>
     </div>
@@ -35,8 +35,8 @@
         <span>MeSage<span class="brand-ai"> AI</span></span>
       </a>
       <div class="header-badges">
-        <span class="hbadge">⚡ AI Bot Answers in &lt; 2s</span>
-        <span class="hbadge green">🤝 Human Agent Steps in on Price</span>
+        <span class="hbadge">⚡ Instant AI Replies &lt; 2s</span>
+        <span class="hbadge green">🤝 Live Agent Can Step In Anytime</span>
       </div>
       <a href="demo2.html" class="btn btn-primary">Book a Demo <span>↗</span></a>
     </div>
@@ -54,22 +54,6 @@
       <p class="intro-sub">
         Autonomous AI answers buyer questions instantly 24/7. Live human agents can step into the chat anytime to close deals, then seamlessly hand back to AI for automated appointment scheduling.
       </p>
-
-      <!-- Player Controls -->
-      <div class="demo-player-bar">
-        <div class="player-controls-group">
-          <button id="btnPlayPause" class="player-btn primary" onclick="togglePlayPause()">
-            <span id="playIcon">⏸</span> <span id="playLabel">Pause Demo</span>
-          </button>
-          <button class="player-btn secondary" onclick="restartSimulation()">
-            ↺ Restart Simulation
-          </button>
-        </div>
-        <div class="demo-live-badge">
-          <span class="live-dot-pulse"></span>
-          <span id="demoStatusNotice">Live Simulation Active · AI &amp; Agent Sync</span>
-        </div>
-      </div>
     </section>
 
     <!-- ===== DYNAMIC WORKFLOW STAGE ===== -->
@@ -79,12 +63,16 @@
         <!-- 1. LEFT: Customer WhatsApp Phone -->
         <div class="col-stage col-phone" id="colPhone">
           <div class="panel-top-header customer-hdr">
-            <span class="panel-icon-wrap user-avatar-pill">👤</span>
+            <div class="avatar-face-ring customer-ring">
+              <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=120&h=120&q=80" alt="Customer" class="real-face-img" onerror="this.style.display='none'">
+              <span class="face-fallback">👤</span>
+              <span class="live-status-dot green-dot"></span>
+            </div>
             <span class="panel-title-text">CUSTOMER</span>
           </div>
           
           <div class="phone-frame" id="phoneFrame">
-            <!-- Notch -->
+            <!-- Top Speaker & Camera Notch -->
             <div class="phone-notch-bar">
               <span class="notch-camera"></span>
             </div>
@@ -94,30 +82,34 @@
               <div class="wa-header-left">
                 <span class="wa-back-icon">‹</span>
                 <div class="wa-avatar-box">
-                  <img src="assets/logoimg.png" alt="Skyline Residences" onerror="this.style.display='none'">
-                  <span>S</span>
+                  <img src="assets/logoimg.png" alt="MeSage Concierge" class="wa-avatar-pic" onerror="this.style.display='none'">
+                  <span class="wa-avatar-fallback">M</span>
                   <span class="online-dot"></span>
                 </div>
                 <div class="wa-header-meta">
                   <div class="wa-name-row">
-                    <strong>Skyline Residences</strong>
+                    <strong>MeSage Concierge</strong>
                     <span class="wa-verified">✓</span>
                   </div>
-                  <small id="waStatusText">AI Bot Online (Replies in 2s)</small>
+                  <small id="waStatusText">online</small>
                 </div>
               </div>
               <div class="wa-header-icons">
                 <span class="wa-action-icon" title="Video Call">📹</span>
                 <span class="wa-action-icon" title="Voice Call">📞</span>
-                <span class="wa-action-icon" title="Options">⋮</span>
+                <span class="wa-action-icon" title="More Options">⋮</span>
               </div>
             </div>
 
-            <!-- Chat Canvas -->
+            <!-- Chat Canvas (WhatsApp Authentic Doodle Wallpaper, Zero Scrollbar) -->
             <div class="wa-chat-canvas" id="waChatCanvas">
+              <!-- Encryption Shield Notice -->
               <div class="wa-security-note">
-                🔒 Official WhatsApp Business Account
+                🔒 Messages and calls are end-to-end encrypted. No one outside of this chat, not even WhatsApp, can read or listen to them.
               </div>
+
+              <!-- Today Pill -->
+              <div class="wa-date-pill">TODAY</div>
 
               <!-- Message Stream -->
               <div id="waChatStream"></div>
@@ -125,7 +117,7 @@
               <!-- Typing Indicator -->
               <div class="wa-typing-box" id="waTypingBox" style="display:none">
                 <div class="typing-bubble">
-                  <span id="typingSender">AI Bot</span> is typing
+                  <span id="typingSender">MeSage AI</span> is typing
                   <i></i><i></i><i></i>
                 </div>
               </div>
@@ -134,39 +126,35 @@
             <!-- Interactive Quick Buttons -->
             <div class="wa-buttons-tray" id="waButtonsTray"></div>
 
-            <!-- Input Bar -->
+            <!-- Real-time WhatsApp Input Bar -->
             <div class="wa-footer-bar">
-              <span class="fake-emoji-btn">😊</span>
-              <div class="fake-input-pill">Message</div>
-              <span class="fake-attach-btn">📎</span>
-              <div class="fake-mic-btn">🎤</div>
+              <span class="fake-emoji-btn" title="Emoji">😊</span>
+              <div class="fake-input-pill">Type a message</div>
+              <span class="fake-attach-btn" title="Attach">📎</span>
+              <span class="fake-camera-btn" title="Camera">📷</span>
+              <div class="fake-mic-btn" title="Voice Note">🎤</div>
             </div>
           </div>
         </div>
 
-        <!-- CONNECTOR 1: Dynamic vertical signal tracks that follow messages down -->
+        <!-- CONNECTOR 1: Open signal transit zone with glowing Blue and Green balls -->
         <div class="col-stage col-connector-1" id="colConn1">
-          <div class="connector-track-holder" id="connectorTrackHolder">
-            <span class="conn-floating-badge" id="conn1Label">⚡ Signal Link</span>
-            
-            <!-- Forward Line: Customer -> AI/Agent -->
-            <div class="dynamic-signal-line forward" id="lineForward">
-              <div class="signal-dot" id="dotForward"></div>
-              <span class="line-arrow">➔</span>
-            </div>
-
-            <!-- Backward Line: AI/Agent -> Customer -->
-            <div class="dynamic-signal-line backward" id="lineBackward">
-              <div class="signal-dot" id="dotBackward"></div>
-              <span class="line-arrow">➔</span>
-            </div>
+          <div class="signal-transit-lane" id="connectorTrackHolder">
+            <!-- Glowing Blue Ball (Customer -> AI/Agent) -->
+            <div class="signal-orb blue-orb" id="orbForward"></div>
+            <!-- Glowing Green Ball (AI/Agent -> Customer) -->
+            <div class="signal-orb green-orb" id="orbBackward"></div>
           </div>
         </div>
 
-        <!-- 2. IN-BETWEEN: Human Agent Inbox (Hidden initially, slides in between!) -->
+        <!-- 2. IN-BETWEEN: Human Agent Inbox (Slides in between when active!) -->
         <div class="col-stage col-agent-inbetween" id="colAgentInbetween">
           <div class="panel-top-header agent-hdr">
-            <span class="panel-icon-wrap agent-avatar-pill">🧑‍💼🎙️</span>
+            <div class="avatar-face-ring agent-ring">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=120&h=120&q=80" alt="Live Agent" class="real-face-img" onerror="this.style.display='none'">
+              <span class="face-fallback">🧑‍💼</span>
+              <span class="live-status-dot pink-dot"></span>
+            </div>
             <span class="panel-title-text">LIVE AGENT</span>
           </div>
           
@@ -175,15 +163,15 @@
             <div class="inbox-card-header">
               <div class="inbox-agent-profile">
                 <div class="inbox-avatar-circle">
-                  <span>PS</span>
+                  <span>SM</span>
                   <span class="inbox-dot-green"></span>
                 </div>
                 <div>
                   <div class="inbox-name-row">
-                    <strong>Priya Sharma</strong>
-                    <span class="inbox-role-chip">Live Closer</span>
+                    <strong id="agentDisplayName">Sarah Mitchell</strong>
+                    <span class="inbox-role-chip">Senior Specialist</span>
                   </div>
-                  <small class="inbox-sub">Entered in-between from Live Inbox</small>
+                  <small class="inbox-sub">Joined in-between from Live Inbox</small>
                 </div>
               </div>
               <span class="inbox-status-pill" id="agentStatusPill">🟢 Live in Chat</span>
@@ -193,25 +181,25 @@
             <div class="inbox-context-card" id="agentContextCard">
               <div class="ctx-header-row">
                 <span class="ctx-alert-icon">⚡</span>
-                <strong id="agentContextTitle">AGENT ENTERED CHAT</strong>
+                <strong id="agentContextTitle">HIGH-VALUE INQUIRY</strong>
               </div>
               <div class="ctx-lead-info">
-                <span>Prospect: <strong>Rahul Sharma</strong></span>
-                <span>Requirement: <strong>3 BHK Luxury</strong></span>
+                <span>Prospect: <strong>Alex Turner</strong></span>
+                <span>Tier: <strong>Enterprise Deployment</strong></span>
               </div>
               <div class="ctx-user-quote" id="agentContextQuote">
-                <em>"I want to know the price as well."</em>
+                <em>"What is your enterprise pricing and onboarding schedule?"</em>
               </div>
             </div>
 
             <!-- Agent Composer -->
             <div class="inbox-composer-card">
               <div class="composer-top-row">
-                <span id="composerTitle">Personalized Closer Response:</span>
+                <span id="composerTitle">Live Specialist Response:</span>
                 <span class="comp-ready-tag" id="compReadyTag">Dispatched</span>
               </div>
               <p class="composer-text-box" id="composerTextBox">
-                "3 BHK starts at <strong>₹1.85 Cr</strong> with an exclusive <strong>10:90 festive payment scheme</strong>. Can we reserve a VIP site walkthrough this Saturday at 11 AM?"
+                "Our Enterprise Tier starts at <strong>$1,499/mo</strong> with customized SLA, dedicated cloud deployment, and flexible quarterly terms. Would you like to schedule an onboarding consultation?"
               </p>
               <div class="agent-dispatch-status" id="agentDispatchStatus">
                 <span>✓ Sent to WhatsApp chat</span>
@@ -220,123 +208,77 @@
           </div>
         </div>
 
-        <!-- CONNECTOR 2: Shown when agent is in-between, linking Agent to AI Bot -->
+        <!-- CONNECTOR 2: Open signal transit zone between Agent and AI Robot -->
         <div class="col-stage col-connector-2" id="colConn2">
-          <div class="connector-bridge-box">
-            <span class="bridge-tag">⚡ Transfer</span>
-            <div class="bridge-dash-line"></div>
+          <div class="signal-transit-lane">
+            <div class="signal-orb amber-orb" id="orbHandoff"></div>
           </div>
         </div>
 
-        <!-- 3. RIGHT: MeSage AI Bot -->
+        <!-- 3. RIGHT: Robot Face with Sound Frequency Bubbles (No boxy screen!) -->
         <div class="col-stage col-ai-bot" id="colAiBot">
           <div class="panel-top-header ai-hdr">
-            <span class="panel-icon-wrap ai-avatar-pill">🤖</span>
+            <div class="avatar-face-ring ai-ring">
+              <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=120&h=120&q=80" alt="AI Robot" class="real-face-img" onerror="this.style.display='none'">
+              <span class="face-fallback">🤖</span>
+              <span class="live-status-dot indigo-dot"></span>
+            </div>
             <span class="panel-title-text">AI AUTOMATION</span>
           </div>
           
-          <div class="ai-bot-box" id="aiBotBox">
-            <!-- Avatar & Header -->
-            <div class="ai-header-row">
-              <div class="ai-avatar-wrap">
-                <div class="ai-avatar-core" id="aiAvatarCore">
-                  <span class="bot-emoji">🤖</span>
-                  <span class="ai-pulse-wave"></span>
+          <div class="robot-face-stage" id="robotFaceStage">
+            <!-- 3D Glowing Robot Holographic Face Core -->
+            <div class="robot-face-sphere" id="robotFaceSphere">
+              <div class="robot-halo-glow"></div>
+              <div class="robot-visor-screen">
+                <div class="robot-eye-pair">
+                  <span class="robot-eye left-eye"></span>
+                  <span class="robot-eye right-eye"></span>
                 </div>
-              </div>
-              <div class="ai-header-text">
-                <div class="ai-title-row">
-                  <h3>MeSage AI Bot</h3>
-                  <span class="ai-live-dot" id="aiLiveDot"></span>
-                </div>
-                <span class="ai-pill-status" id="aiStatusPill">🟢 Active &amp; Replying (&lt;2s)</span>
+                <div class="robot-smile-beam"></div>
               </div>
             </div>
 
-            <!-- Soundwave Equalizer -->
-            <div class="ai-waveform-box" id="aiWaveform">
-              <span class="wb"></span><span class="wb"></span><span class="wb"></span><span class="wb"></span><span class="wb"></span><span class="wb"></span><span class="wb"></span><span class="wb"></span><span class="wb"></span><span class="wb"></span>
+            <!-- Dynamic AI Status Pill -->
+            <div class="robot-status-pill" id="aiStatusPill">
+              <span class="ai-status-beacon" id="aiBeacon"></span>
+              <span id="aiStatusText">Autonomous AI Online (&lt;2s)</span>
             </div>
 
-            <!-- Live Action Monitor -->
-            <div class="ai-live-card">
-              <div class="live-action-hdr">
-                <span class="pulse-indicator"></span>
-                <span class="action-kicker" id="aiActionKicker">MONITORING CONVERSATION</span>
-              </div>
-              <strong class="action-headline" id="aiActionTitle">Listening for customer inquiry...</strong>
-              <p class="action-detail" id="aiActionDesc">Ready to answer questions about 2, 3, 4 BHK apartments, floor plans, and amenities.</p>
-              
-              <div class="ai-metrics-row">
-                <div class="metric-item">
-                  <small>Latency</small>
-                  <strong id="aiSpeedValue">1.1s</strong>
-                </div>
-                <div class="metric-item">
-                  <small>Intent Match</small>
-                  <strong id="aiConfidenceValue">99.4%</strong>
-                </div>
-                <div class="metric-item">
-                  <small>Mode</small>
-                  <strong id="aiModeValue" style="color:#34d399">Auto ⚡</strong>
-                </div>
-              </div>
+            <!-- Soundwave Equalizer Frequencies -->
+            <div class="freq-soundwave-wrap" id="aiWaveform">
+              <span class="freq-bar b1"></span>
+              <span class="freq-bar b2"></span>
+              <span class="freq-bar b3"></span>
+              <span class="freq-bar b4"></span>
+              <span class="freq-bar b5"></span>
+              <span class="freq-bar b6"></span>
+              <span class="freq-bar b7"></span>
+              <span class="freq-bar b8"></span>
+              <span class="freq-bar b9"></span>
+              <span class="freq-bar b10"></span>
+              <span class="freq-bar b11"></span>
+              <span class="freq-bar b12"></span>
             </div>
 
-            <!-- Flashing Alert Notice when Price is Asked -->
-            <div class="ai-transfer-notice" id="aiTransferNotice" style="display:none">
-              <span class="notice-icon">⚡</span>
-              <div>
-                <strong id="aiTransferNoticeTitle">LIVE AGENT ENTERED CHAT</strong>
-                <p id="aiTransferNoticeDesc">AI paused while Closer Priya Sharma handles commercial consultation ➔</p>
-              </div>
+            <!-- Floating Frequency Bubbles -->
+            <div class="freq-bubbles-cluster">
+              <span class="freq-bubble fb1"></span>
+              <span class="freq-bubble fb2"></span>
+              <span class="freq-bubble fb3"></span>
+              <span class="freq-bubble fb4"></span>
+              <span class="freq-bubble fb5"></span>
+              <span class="freq-bubble fb6"></span>
             </div>
 
+            <!-- Real-time Activity Caption -->
+            <div class="robot-activity-caption" id="aiActivityCaption">
+              <strong id="aiActionTitle">Listening for customer query...</strong>
+              <small id="aiActionDesc">Instant answers in &lt; 2 seconds</small>
+            </div>
           </div>
         </div>
 
-      </div>
-    </section>
-
-    <!-- ===== KEY TAKEAWAYS ===== -->
-    <section class="summary-section container">
-      <div class="summary-card">
-        <h3>Why this workflow closes 3x more deals:</h3>
-        <div class="summary-grid">
-          <div class="sum-item">
-            <span class="sum-icon">⚡</span>
-            <div>
-              <strong>Instant 2-Second Answers</strong>
-              <p>AI answers 24/7 immediately so hot leads never leave for a competitor.</p>
-            </div>
-          </div>
-          <div class="sum-item">
-            <span class="sum-icon">📄</span>
-            <div>
-              <strong>Automated Brochure Delivery</strong>
-              <p>Delivers floor plans and project PDFs right into WhatsApp on request.</p>
-            </div>
-          </div>
-          <div class="sum-item">
-            <span class="sum-icon">🎯</span>
-            <div>
-              <strong>Human Closers on High-Intent</strong>
-              <p>When price is asked, your human sales experts step in-between to negotiate and close.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA Banner -->
-    <section class="demo-cta-wrap container">
-      <div class="demo-cta-box">
-        <h2>Want this exact setup on your WhatsApp number?</h2>
-        <p>MeSage AI sets up this automated qualification and live agent transfer for your business in 24 hours.</p>
-        <div class="cta-actions">
-          <a href="demo2.html" class="btn btn-primary btn-lg">Schedule Live Demo <span>→</span></a>
-          <a href="index.html" class="btn btn-secondary btn-lg">Back to Main Website</a>
-        </div>
       </div>
     </section>
 
