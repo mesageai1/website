@@ -21,8 +21,9 @@
         <span><strong>LIVE INTERACTIVE WORKFLOW:</strong> WhatsApp Autonomous AI &amp; Instant Live Agent Takeover</span>
       </div>
       <div class="topbar-right">
-        <a href="demo2.html" class="topbar-link">📅 Schedule Demo (Demo 2) ➔</a>
-        <a href="index.html" class="back-link">← Back to Main Website</a>
+        <a href="demo2.html" class="topbar-link">📅 Schedule Demo (Demo 2)</a>
+        <a href="demo3.html" class="topbar-link" style="color:#fbbf24">★ All 16 Features (Demo 3)</a>
+        <a href="index.html" class="back-link">← Main Website</a>
       </div>
     </div>
   </aside>
@@ -35,7 +36,7 @@
         <span>MeSage<span class="brand-ai"> AI</span></span>
       </a>
       <div class="header-badges">
-        <span class="hbadge">⚡ Instant AI Replies &lt; 2s</span>
+        <a href="demo3.html" class="hbadge" style="color:#fbbf24;text-decoration:none">★ Demo 3: All 16 Features</a>
         <span class="hbadge green">🤝 Live Agent Can Step In Anytime</span>
       </div>
       <a href="demo2.html" class="btn btn-primary">Book a Demo <span>↗</span></a>
@@ -137,13 +138,15 @@
           </div>
         </div>
 
-        <!-- CONNECTOR 1: Open signal transit zone with glowing Blue and Green balls -->
+        <!-- CONNECTOR 1: Open signal transit zone with glowing Green, Indigo, and White balls -->
         <div class="col-stage col-connector-1" id="colConn1">
           <div class="signal-transit-lane" id="connectorTrackHolder">
-            <!-- Glowing Blue Ball (Customer -> AI/Agent) -->
-            <div class="signal-orb blue-orb" id="orbForward"></div>
-            <!-- Glowing Green Ball (AI/Agent -> Customer) -->
-            <div class="signal-orb green-orb" id="orbBackward"></div>
+            <!-- 1. Green Ball: Customer (WhatsApp) -> AI / Human Agent -->
+            <div class="signal-orb green-orb" id="orbGreenForward"></div>
+            <!-- 2. Indigo Ball: AI -> Customer (WhatsApp) -->
+            <div class="signal-orb indigo-orb" id="orbIndigoBackward"></div>
+            <!-- 3. White Ball: Live Agent -> Customer (WhatsApp) -->
+            <div class="signal-orb white-orb" id="orbWhiteBackward"></div>
           </div>
         </div>
 
@@ -215,27 +218,23 @@
           </div>
         </div>
 
-        <!-- 3. RIGHT: Robot Face with Sound Frequency Bubbles (No boxy screen!) -->
+        <!-- 3. RIGHT: Company Logo Showcase with Sound Frequency Bubbles (No boxy screen!) -->
         <div class="col-stage col-ai-bot" id="colAiBot">
           <div class="panel-top-header ai-hdr">
             <div class="avatar-face-ring ai-ring">
-              <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=120&h=120&q=80" alt="AI Robot" class="real-face-img" onerror="this.style.display='none'">
-              <span class="face-fallback">🤖</span>
+              <img src="assets/logoimg.png" alt="MeSage AI Logo" class="real-face-img ai-logo-face" onerror="this.style.display='none'">
+              <span class="face-fallback">⚡</span>
               <span class="live-status-dot indigo-dot"></span>
             </div>
             <span class="panel-title-text">AI AUTOMATION</span>
           </div>
           
           <div class="robot-face-stage" id="robotFaceStage">
-            <!-- 3D Glowing Robot Holographic Face Core -->
-            <div class="robot-face-sphere" id="robotFaceSphere">
-              <div class="robot-halo-glow"></div>
-              <div class="robot-visor-screen">
-                <div class="robot-eye-pair">
-                  <span class="robot-eye left-eye"></span>
-                  <span class="robot-eye right-eye"></span>
-                </div>
-                <div class="robot-smile-beam"></div>
+            <!-- Glowing Company Logo Core Showcase -->
+            <div class="company-logo-stage-core" id="companyLogoCore">
+              <div class="logo-halo-glow"></div>
+              <div class="company-logo-orb">
+                <img src="assets/logoimg.png" alt="MeSage AI Logo" class="ai-company-logo-img">
               </div>
             </div>
 

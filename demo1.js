@@ -14,8 +14,9 @@ const phoneFrame = document.getElementById('phoneFrame');
 // Connector 1 Elements (Signal Transit Zone & Glowing Orbs)
 const colConn1 = document.getElementById('colConn1');
 const connectorTrackHolder = document.getElementById('connectorTrackHolder');
-const orbForward = document.getElementById('orbForward');
-const orbBackward = document.getElementById('orbBackward');
+const orbGreenForward = document.getElementById('orbGreenForward');
+const orbIndigoBackward = document.getElementById('orbIndigoBackward');
+const orbWhiteBackward = document.getElementById('orbWhiteBackward');
 
 // In-Between Agent Elements (Slides in between)
 const colAgentInbetween = document.getElementById('colAgentInbetween');
@@ -30,7 +31,7 @@ const agentDispatchStatus = document.getElementById('agentDispatchStatus');
 
 // AI Robot Elements (Right Side)
 const colAiBot = document.getElementById('colAiBot');
-const robotFaceSphere = document.getElementById('robotFaceSphere');
+const companyLogoCore = document.getElementById('companyLogoCore');
 const aiStatusPill = document.getElementById('aiStatusPill');
 const aiBeacon = document.getElementById('aiBeacon');
 const aiStatusText = document.getElementById('aiStatusText');
@@ -51,65 +52,99 @@ function scrollWaCanvas() {
 }
 
 // ==========================================================================
-// Dynamic Vertical Signal Positioning (Balls travel at exact message level)
+// Dynamic Exact Horizontal Signal Alignment (ZERO vertical drift)
 // ==========================================================================
-function updateSignalLevel() {
-  if (!connectorTrackHolder || !waChatStream || !phoneFrame) return;
-
-  const lastBubble = waChatStream.lastElementChild;
-  if (!lastBubble) {
-    connectorTrackHolder.style.top = '95px';
-    return;
+function getActiveBubbleCenterY() {
+  // If typing indicator is active, use typing indicator position
+  if (waTypingBox && waTypingBox.style.display !== 'none') {
+    const rect = waTypingBox.getBoundingClientRect();
+    if (rect.height > 0) {
+      return rect.top + (rect.height / 2);
+    }
   }
-
-  const phoneRect = phoneFrame.getBoundingClientRect();
-  const bubbleRect = lastBubble.getBoundingClientRect();
-
-  // Vertical center of the latest message bubble relative to top of phone
-  const bubbleCenterY = (bubbleRect.top + bubbleRect.height / 2) - phoneRect.top;
-
-  // Clamp within the visible chat canvas (between 80px and 390px for 465px height phone)
-  const clampedY = Math.max(80, Math.min(bubbleCenterY, 390));
-
-  connectorTrackHolder.style.top = `${clampedY}px`;
+  // Otherwise use the latest message bubble
+  if (waChatStream && waChatStream.lastElementChild) {
+    const rect = waChatStream.lastElementChild.getBoundingClientRect();
+    return rect.top + (rect.height / 2);
+  }
+  return null;
 }
 
-// 1. Forward Signal: Glowing Blue Ball shoots Phone -> AI/Agent at exact message level
-function fireForwardSignal(callback) {
-  updateSignalLevel();
+function updateSignalLevel(immediate = true) {
+  if (!connectorTrackHolder || !colConn1) return;
 
-  if (orbForward) {
-    orbForward.classList.remove('shooting');
-    void orbForward.offsetWidth; // trigger reflow
-    orbForward.classList.add('shooting');
+  const targetCenterY = getActiveBubbleCenterY();
+  const connRect = colConn1.getBoundingClientRect();
+
+  if (targetCenterY !== null && connRect.height > 0) {
+    // 7px is half of 14px orb height -> ball center matches targetCenterY exactly
+    const exactTop = targetCenterY - connRect.top - 7;
+    const clampedY = Math.max(15, Math.min(exactTop, connRect.height - 30));
+
+    if (immediate) {
+      connectorTrackHolder.style.transition = 'none';
+      connectorTrackHolder.style.top = `${clampedY}px`;
+      // Flush reflow so the position is locked before ball flight begins
+      void connectorTrackHolder.offsetHeight;
+    } else {
+      connectorTrackHolder.style.transition = 'top 0.2s ease';
+      connectorTrackHolder.style.top = `${clampedY}px`;
+    }
+  } else {
+    connectorTrackHolder.style.top = '95px';
+  }
+}
+
+// 1. Green Ball: WhatsApp (Left) -> AI / Human Agent (Right) in exact horizontal line
+function fireGreenForwardSignal(callback) {
+  updateSignalLevel(true);
+
+  if (orbGreenForward) {
+    orbGreenForward.classList.remove('shooting-right');
+    void orbGreenForward.offsetWidth; // reflow
+    orbGreenForward.classList.add('shooting-right');
   }
 
-  // 650ms transit
   setTimeout(() => {
-    if (orbForward) orbForward.classList.remove('shooting');
-    if (robotFaceSphere) {
-      robotFaceSphere.style.transform = 'scale(1.08)';
+    if (orbGreenForward) orbGreenForward.classList.remove('shooting-right');
+    if (companyLogoCore) {
+      companyLogoCore.style.transform = 'scale(1.08)';
       setTimeout(() => {
-        robotFaceSphere.style.transform = 'scale(1)';
+        companyLogoCore.style.transform = 'scale(1)';
       }, 350);
     }
     if (callback) callback();
   }, 650);
 }
 
-// 2. Backward Signal: Glowing Green Ball shoots AI/Agent -> Phone at exact message level
-function fireBackwardSignal(callback) {
-  updateSignalLevel();
+// 2. Indigo Ball: AI (Right) -> WhatsApp User (Left) in exact horizontal line
+function fireIndigoBackwardSignal(callback) {
+  updateSignalLevel(true);
 
-  if (orbBackward) {
-    orbBackward.classList.remove('shooting');
-    void orbBackward.offsetWidth; // trigger reflow
-    orbBackward.classList.add('shooting');
+  if (orbIndigoBackward) {
+    orbIndigoBackward.classList.remove('shooting-left');
+    void orbIndigoBackward.offsetWidth; // reflow
+    orbIndigoBackward.classList.add('shooting-left');
   }
 
-  // 650ms transit
   setTimeout(() => {
-    if (orbBackward) orbBackward.classList.remove('shooting');
+    if (orbIndigoBackward) orbIndigoBackward.classList.remove('shooting-left');
+    if (callback) callback();
+  }, 650);
+}
+
+// 3. White Ball: Live Agent (Right) -> WhatsApp User (Left) in exact horizontal line
+function fireWhiteBackwardSignal(callback) {
+  updateSignalLevel(true);
+
+  if (orbWhiteBackward) {
+    orbWhiteBackward.classList.remove('shooting-left');
+    void orbWhiteBackward.offsetWidth; // reflow
+    orbWhiteBackward.classList.add('shooting-left');
+  }
+
+  setTimeout(() => {
+    if (orbWhiteBackward) orbWhiteBackward.classList.remove('shooting-left');
     if (callback) callback();
   }, 650);
 }
@@ -120,7 +155,7 @@ function showTyping(name = 'MeSage AI') {
     typingSender.textContent = name;
     waTypingBox.style.display = 'flex';
     scrollWaCanvas();
-    updateSignalLevel();
+    updateSignalLevel(true);
   }
 }
 
@@ -145,7 +180,7 @@ function addWaUserMessage(text, time = '14:15') {
   `;
   waChatStream.appendChild(item);
   scrollWaCanvas();
-  updateSignalLevel();
+  updateSignalLevel(true);
 }
 
 function addWaBotMessage(text, time = '14:15') {
@@ -161,7 +196,7 @@ function addWaBotMessage(text, time = '14:15') {
   `;
   waChatStream.appendChild(item);
   scrollWaCanvas();
-  updateSignalLevel();
+  updateSignalLevel(true);
 }
 
 function addWaBrochureMessage(text, fileTitle, fileSize, promptText, time = '14:17') {
@@ -186,7 +221,7 @@ function addWaBrochureMessage(text, fileTitle, fileSize, promptText, time = '14:
   `;
   waChatStream.appendChild(item);
   scrollWaCanvas();
-  updateSignalLevel();
+  updateSignalLevel(true);
 }
 
 function addWaAgentMessage(text, time = '14:19') {
@@ -207,7 +242,7 @@ function addWaAgentMessage(text, time = '14:19') {
   `;
   waChatStream.appendChild(item);
   scrollWaCanvas();
-  updateSignalLevel();
+  updateSignalLevel(true);
 }
 
 function addWaHandoffBanner(html) {
@@ -217,7 +252,7 @@ function addWaHandoffBanner(html) {
   item.innerHTML = html;
   waChatStream.appendChild(item);
   scrollWaCanvas();
-  updateSignalLevel();
+  updateSignalLevel(true);
 }
 
 function renderButtons(btnList) {
@@ -262,21 +297,19 @@ function executeStage(stageNumber) {
       // User sends message
       addWaUserMessage("Hi, I have a quick question about getting started with your premium service.", "14:15");
 
-      // Glowing Blue Ball shoots to AI Robot
-      fireForwardSignal(() => {
+      // Glowing Green Ball shoots to AI Automation
+      fireGreenForwardSignal(() => {
         if (aiActionTitle) aiActionTitle.textContent = "Analyzing customer query...";
         if (aiActionDesc) aiActionDesc.textContent = "Intent: Plan_Inquiry · Scanning solution packages";
 
         scheduleNext(() => {
-          // Glowing Green Ball shoots back to WhatsApp
-          fireBackwardSignal(() => {
-            showTyping('MeSage AI');
-            scheduleNext(() => {
-              hideTyping();
-              executeStage(2);
-            }, 600);
+          showTyping('MeSage AI');
+          // Glowing Indigo Ball shoots back from AI to WhatsApp
+          fireIndigoBackwardSignal(() => {
+            hideTyping();
+            executeStage(2);
           });
-        }, 800);
+        }, 700);
       });
       break;
     }
@@ -299,7 +332,7 @@ function executeStage(stageNumber) {
         { label: "💎 Custom VIP", action: () => selectTier("Custom VIP") }
       ]);
 
-      // Auto-advance after 3.2s
+      // Auto-advance after 3.4s
       scheduleNext(() => {
         selectTier("Enterprise Tier");
       }, 3400);
@@ -307,43 +340,42 @@ function executeStage(stageNumber) {
     }
 
     // -------------------------------------------------------------
-    // STAGE 3: Customer chooses Enterprise
+    // STAGE 3: Customer chooses Enterprise Tier
     // -------------------------------------------------------------
     case 3: {
       clearButtons();
 
       addWaUserMessage("Enterprise Tier", "14:16");
 
-      // Glowing Blue Ball shoots to AI Robot
-      fireForwardSignal(() => {
+      // Glowing Green Ball shoots from WhatsApp to AI Automation
+      fireGreenForwardSignal(() => {
         if (aiActionTitle) aiActionTitle.textContent = "Retrieving Enterprise Specs...";
         if (aiActionDesc) aiActionDesc.textContent = "Pulling dedicated SLA, custom workflows, and API capacity";
 
         scheduleNext(() => {
-          fireBackwardSignal(() => {
-            showTyping('MeSage AI');
+          showTyping('MeSage AI');
+          // Glowing Indigo Ball shoots back from AI to WhatsApp
+          fireIndigoBackwardSignal(() => {
+            hideTyping();
+            if (aiActionTitle) aiActionTitle.textContent = "Delivered tier specs & brochure prompt";
+            if (aiActionDesc) aiActionDesc.textContent = "Offered solution overview PDF & pricing inquiry";
+
+            addWaBotMessage(
+              "Excellent choice! Our **Enterprise Tier** includes 24/7 dedicated priority SLA, custom webhook workflows, and isolated cloud deployment.<br><br>Would you like our solution overview PDF?",
+              "14:16"
+            );
+
+            renderButtons([
+              { label: "📄 Download Solution Overview", action: () => selectBrochureOption() },
+              { label: "💰 Request Custom Pricing & Terms", action: () => triggerPriceInquiry() }
+            ]);
+
+            // Auto advance to Brochure
             scheduleNext(() => {
-              hideTyping();
-              if (aiActionTitle) aiActionTitle.textContent = "Delivered tier specs & brochure prompt";
-              if (aiActionDesc) aiActionDesc.textContent = "Offered solution overview PDF & pricing inquiry";
-
-              addWaBotMessage(
-                "Excellent choice! Our **Enterprise Tier** includes 24/7 dedicated priority SLA, custom webhook workflows, and isolated cloud deployment.<br><br>Would you like our solution overview PDF?",
-                "14:16"
-              );
-
-              renderButtons([
-                { label: "📄 Download Solution Overview", action: () => selectBrochureOption() },
-                { label: "💰 Request Custom Pricing & Terms", action: () => triggerPriceInquiry() }
-              ]);
-
-              // Auto advance to Brochure
-              scheduleNext(() => {
-                selectBrochureOption();
-              }, 3400);
-            }, 600);
+              selectBrochureOption();
+            }, 3400);
           });
-        }, 800);
+        }, 700);
       });
       break;
     }
@@ -356,52 +388,51 @@ function executeStage(stageNumber) {
 
       addWaUserMessage("Download Solution Overview", "14:17");
 
-      // Glowing Blue Ball shoots to AI Robot
-      fireForwardSignal(() => {
+      // Glowing Green Ball shoots from WhatsApp to AI
+      fireGreenForwardSignal(() => {
         if (aiActionTitle) aiActionTitle.textContent = "Transmitting PDF Document...";
         if (aiActionDesc) aiActionDesc.textContent = "Dispatched MeSage_Enterprise_Overview.pdf via Media API";
 
         scheduleNext(() => {
-          fireBackwardSignal(() => {
-            showTyping('MeSage AI');
+          showTyping('MeSage AI');
+          // Glowing Indigo Ball shoots back from AI to WhatsApp
+          fireIndigoBackwardSignal(() => {
+            hideTyping();
+            if (aiActionTitle) aiActionTitle.textContent = "Overview document delivered";
+            if (aiActionDesc) aiActionDesc.textContent = "Prompting if customer needs commercial pricing";
+
+            addWaBrochureMessage(
+              "Here is our official solution overview with architectural diagrams, security compliance, and integration specs:",
+              "MeSage_Enterprise_Overview.pdf",
+              "3.8 MB · Verified PDF Document",
+              "Would you like to review customized pricing and available payment terms?",
+              "14:17"
+            );
+
+            renderButtons([
+              { label: "💰 What is your custom pricing?", action: () => triggerPriceInquiry() }
+            ]);
+
+            // Auto advance to price
             scheduleNext(() => {
-              hideTyping();
-              if (aiActionTitle) aiActionTitle.textContent = "Overview document delivered";
-              if (aiActionDesc) aiActionDesc.textContent = "Prompting if customer needs commercial pricing";
-
-              addWaBrochureMessage(
-                "Here is our official solution overview with architectural diagrams, security compliance, and integration specs:",
-                "MeSage_Enterprise_Overview.pdf",
-                "3.8 MB · Verified PDF Document",
-                "Would you like to review customized pricing and available payment terms?",
-                "14:17"
-              );
-
-              renderButtons([
-                { label: "💰 What is your custom pricing?", action: () => triggerPriceInquiry() }
-              ]);
-
-              // Auto advance to price
-              scheduleNext(() => {
-                triggerPriceInquiry();
-              }, 3600);
-            }, 600);
+              triggerPriceInquiry();
+            }, 3600);
           });
-        }, 800);
+        }, 700);
       });
       break;
     }
 
     // -------------------------------------------------------------
-    // STAGE 5: Buyer asks PRICE -> AGENT STEPS IN ANYTIME!
+    // STAGE 5: Buyer asks PRICE -> AGENT CAN STEP IN ANYTIME!
     // -------------------------------------------------------------
     case 5: {
       clearButtons();
 
       addWaUserMessage("What is your custom pricing and onboarding schedule?", "14:18");
 
-      // Blue ball shoots to Robot
-      fireForwardSignal(() => {
+      // Green ball shoots to AI / Agent Inbox
+      fireGreenForwardSignal(() => {
         // AI pauses and routes to Live Agent Sarah Mitchell
         if (aiActionTitle) aiActionTitle.textContent = "Routing to Live Advisor Sarah Mitchell...";
         if (aiActionDesc) aiActionDesc.textContent = "Commercial negotiation requested · Live Specialist joining chat";
@@ -419,13 +450,13 @@ function executeStage(stageNumber) {
         // STEP 6: AGENT COMES IN-BETWEEN!
         scheduleNext(() => {
           executeStage(6);
-        }, 1100);
+        }, 1000);
       });
       break;
     }
 
     // -------------------------------------------------------------
-    // STAGE 6: Agent expands IN-BETWEEN in White Panel!
+    // STAGE 6: Agent expands IN-BETWEEN in Pure White Panel!
     // -------------------------------------------------------------
     case 6: {
       // Expand In-Between Slot smoothly
@@ -438,38 +469,36 @@ function executeStage(stageNumber) {
       if (waStatusText) waStatusText.textContent = "Chatting with Sarah Mitchell (Live Advisor)";
 
       // Update signal level to align with handoff banner
-      updateSignalLevel();
+      updateSignalLevel(true);
 
       // Agent prepares & dispatches pricing quote
       scheduleNext(() => {
         sendAgentPricingMessage();
-      }, 1400);
+      }, 1200);
       break;
     }
 
     // -------------------------------------------------------------
-    // STAGE 7: Sarah quotes price -> Customer requests appointment
+    // STAGE 7: Sarah Mitchell quotes price via White Ball
     // -------------------------------------------------------------
     case 7: {
-      // Glowing Green Ball shoots from Agent in-between -> Phone
-      fireBackwardSignal(() => {
-        showTyping('Sarah Mitchell');
+      showTyping('Sarah Mitchell');
+      // Glowing White Ball shoots from Agent in-between -> WhatsApp User
+      fireWhiteBackwardSignal(() => {
+        hideTyping();
+        addWaAgentMessage(
+          "Hello Alex! **Sarah Mitchell** here from the Enterprise Solutions Team. 👋<br><br>Our Enterprise tier starts at **$1,499/mo** with custom volume discounts and an introductory **quarterly flex schedule**.<br><br>Would you like to schedule a private VIP onboarding consultation with us?",
+          "14:19"
+        );
+
+        renderButtons([
+          { label: "📅 I want to book an appointment for a consultation", action: () => triggerAppointmentBooking() }
+        ]);
+
+        // Auto-advance after 3.8s
         scheduleNext(() => {
-          hideTyping();
-          addWaAgentMessage(
-            "Hello Alex! **Sarah Mitchell** here from the Enterprise Solutions Team. 👋<br><br>Our Enterprise tier starts at **$1,499/mo** with custom volume discounts and an introductory **quarterly flex schedule**.<br><br>Would you like to schedule a private VIP onboarding consultation with us?",
-            "14:19"
-          );
-
-          renderButtons([
-            { label: "📅 I want to book an appointment for a consultation", action: () => triggerAppointmentBooking() }
-          ]);
-
-          // Auto-confirm after 3.8s
-          scheduleNext(() => {
-            triggerAppointmentBooking();
-          }, 3800);
-        }, 600);
+          triggerAppointmentBooking();
+        }, 3800);
       });
       break;
     }
@@ -482,7 +511,8 @@ function executeStage(stageNumber) {
 
       addWaUserMessage("I want to book an appointment for a consultation.", "14:20");
 
-      fireForwardSignal(() => {
+      // Green ball shoots from WhatsApp user to Agent & AI
+      fireGreenForwardSignal(() => {
         // Agent panel updates to reflect handoff back to AI
         if (agentStatusPill) {
           agentStatusPill.textContent = "🔄 Handed to AI";
@@ -512,30 +542,28 @@ function executeStage(stageNumber) {
         if (aiActionTitle) aiActionTitle.textContent = "Arranging VIP Onboarding Consultation...";
         if (aiActionDesc) aiActionDesc.textContent = "Checking calendar availability for private meeting link";
 
-        // AI asks for Date and Time
+        // AI asks for Date and Time via Indigo Ball
         scheduleNext(() => {
-          fireBackwardSignal(() => {
-            showTyping('MeSage AI');
+          showTyping('MeSage AI');
+          fireIndigoBackwardSignal(() => {
+            hideTyping();
+            addWaBotMessage(
+              "I would be delighted to schedule your VIP onboarding consultation! 🏛️<br><br>Please select your preferred date and time slot:",
+              "14:20"
+            );
+
+            renderButtons([
+              { label: "📅 Tomorrow, 11:00 AM", action: () => confirmAppointment("Tomorrow at 11:00 AM") },
+              { label: "📅 Saturday, 11:00 AM (Recommended)", action: () => confirmAppointment("Saturday at 11:00 AM") },
+              { label: "📅 Sunday, 3:30 PM", action: () => confirmAppointment("Sunday at 3:30 PM") }
+            ]);
+
+            // Auto advance to Saturday booking
             scheduleNext(() => {
-              hideTyping();
-              addWaBotMessage(
-                "I would be delighted to schedule your VIP onboarding consultation! 🏛️<br><br>Please select your preferred date and time slot:",
-                "14:20"
-              );
-
-              renderButtons([
-                { label: "📅 Tomorrow, 11:00 AM", action: () => confirmAppointment("Tomorrow at 11:00 AM") },
-                { label: "📅 Saturday, 11:00 AM (Recommended)", action: () => confirmAppointment("Saturday at 11:00 AM") },
-                { label: "📅 Sunday, 3:30 PM", action: () => confirmAppointment("Sunday at 3:30 PM") }
-              ]);
-
-              // Auto advance to Saturday booking
-              scheduleNext(() => {
-                confirmAppointment("Saturday at 11:00 AM");
-              }, 4200);
-            }, 600);
+              confirmAppointment("Saturday at 11:00 AM");
+            }, 4200);
           });
-        }, 800);
+        }, 700);
       });
       break;
     }
@@ -558,32 +586,32 @@ function executeStage(stageNumber) {
 
       addWaUserMessage("Saturday at 11:00 AM", "14:21");
 
-      fireForwardSignal(() => {
+      // Green Ball shoots from WhatsApp user to AI Automation
+      fireGreenForwardSignal(() => {
         if (aiActionTitle) aiActionTitle.textContent = "Consultation Confirmed & Synced! 🎉";
         if (aiActionDesc) aiActionDesc.textContent = "Calendar invite dispatched · Assigned Host: Sarah Mitchell";
 
         scheduleNext(() => {
-          fireBackwardSignal(() => {
-            showTyping('MeSage AI');
+          showTyping('MeSage AI');
+          // Indigo Ball shoots from AI back to WhatsApp
+          fireIndigoBackwardSignal(() => {
+            hideTyping();
+
+            addWaBotMessage(
+              "🎉 **Your VIP Consultation is Confirmed!**<br><br>🗓️ **Schedule:** This Saturday at 11:00 AM<br>📍 **Channel:** Dedicated Google Meet &amp; Executive Briefing Link<br>👤 **Host:** Sarah Mitchell will personally lead your deployment walk-through.<br><br>A calendar invite and preparation notes have been sent to your WhatsApp. We look forward to meeting you!",
+              "14:21"
+            );
+
+            renderButtons([
+              { label: "↺ Replay Interactive Demo", action: () => restartSimulation() }
+            ]);
+
+            // Auto replay after 10s in a continuous loop
             scheduleNext(() => {
-              hideTyping();
-
-              addWaBotMessage(
-                "🎉 **Your VIP Consultation is Confirmed!**<br><br>🗓️ **Schedule:** This Saturday at 11:00 AM<br>📍 **Channel:** Dedicated Google Meet &amp; Executive Briefing Link<br>👤 **Host:** Sarah Mitchell will personally lead your deployment walk-through.<br><br>A calendar invite and preparation notes have been sent to your WhatsApp. We look forward to meeting you!",
-                "14:21"
-              );
-
-              renderButtons([
-                { label: "↺ Replay Interactive Demo", action: () => restartSimulation() }
-              ]);
-
-              // Auto replay after 10s in a continuous loop
-              scheduleNext(() => {
-                restartSimulation();
-              }, 10000);
-            }, 600);
+              restartSimulation();
+            }, 10000);
           });
-        }, 800);
+        }, 700);
       });
       break;
     }
@@ -651,11 +679,13 @@ window.restartSimulation = function() {
   }
 
   // Reset Signal Orbs
-  if (orbForward) orbForward.classList.remove('shooting');
-  if (orbBackward) orbBackward.classList.remove('shooting');
+  if (orbGreenForward) orbGreenForward.classList.remove('shooting-right');
+  if (orbIndigoBackward) orbIndigoBackward.classList.remove('shooting-left');
+  if (orbWhiteBackward) orbWhiteBackward.classList.remove('shooting-left');
   if (connectorTrackHolder) connectorTrackHolder.style.top = '95px';
 
   // Reset AI Robot Stage
+  if (companyLogoCore) companyLogoCore.style.transform = 'scale(1)';
   if (aiStatusText) aiStatusText.textContent = 'Autonomous AI Online (<2s)';
   if (aiStatusPill) {
     aiStatusPill.style.background = "rgba(16, 185, 129, 0.16)";
