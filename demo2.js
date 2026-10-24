@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    // 1. Validate Form
+    // 1. Validate Form (Only Mobile Number is Mandatory)
     const name = document.getElementById("fullName").value.trim();
     const email = document.getElementById("workEmail").value.trim();
     const company = document.getElementById("companyName").value.trim();
@@ -61,33 +61,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let hasError = false;
 
-    if (!name) {
-      showFieldError("fullName", "Please enter your name");
-      hasError = true;
-    }
-
-    if (!email || !isValidEmail(email)) {
-      showFieldError("workEmail", "Please enter a valid work email address");
-      hasError = true;
-    }
-
-    if (!company) {
-      showFieldError("companyName", "Please enter your company / business name");
-      hasError = true;
-    }
-
+    // Only mobile number is required
     if (!phone || phone.length < 7) {
       showFieldError("mobileNumber", "Please enter a valid mobile number with country code");
       hasError = true;
     }
 
-    if (!description) {
-      showFieldError("description", "Please enter a description");
+    // Email is optional, but validate format if entered
+    if (email && !isValidEmail(email)) {
+      showFieldError("workEmail", "Please enter a valid work email address");
       hasError = true;
     }
 
     if (hasError) {
-      showAlert("Please check highlighted fields and try again.", "error");
+      showAlert("Please enter a valid mobile number to continue.", "error");
       return;
     }
 
@@ -95,13 +82,15 @@ document.addEventListener("DOMContentLoaded", () => {
     setLoading(true);
     hideAlert();
 
+    const senderTitle = company ? `${company} (${phone})` : (name ? `${name} (${phone})` : phone);
+
     const payload = {
-      name: name,
-      email: email,
-      "company_name": company,
+      name: name || "Not provided",
+      email: email || "Not provided",
+      "company_name": company || "Not provided",
       "mobile_number": phone,
-      description: description,
-      _subject: `New Demo Schedule Request: ${company} (${name})`,
+      description: description || "Not provided",
+      _subject: `New Demo Schedule Request: ${senderTitle}`,
       _template: "table",
       _captcha: "false"
     };
@@ -194,10 +183,10 @@ document.addEventListener("DOMContentLoaded", () => {
     successCard.style.display = "block";
 
     // Populate summary
-    document.getElementById("sumName").textContent = details.name;
-    document.getElementById("sumEmail").textContent = details.email;
-    document.getElementById("sumCompany").textContent = details.company;
-    document.getElementById("sumPhone").textContent = details.phone;
+    document.getElementById("sumName").textContent = details.name || "-";
+    document.getElementById("sumEmail").textContent = details.email || "-";
+    document.getElementById("sumCompany").textContent = details.company || "-";
+    document.getElementById("sumPhone").textContent = details.phone || "-";
 
     // Scroll to success card
     formWrapper.scrollIntoView({ behavior: "smooth", block: "center" });

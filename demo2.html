@@ -62,7 +62,7 @@
                 <!-- 1. Name -->
                 <div class="form-group" id="groupName">
                   <label for="fullName" class="form-label">
-                    <span>Name <span class="req">*</span></span>
+                    <span>Name</span>
                   </label>
                   <div class="input-container">
                     <span class="input-icon">👤</span>
@@ -71,7 +71,6 @@
                       id="fullName" 
                       name="name" 
                       class="form-input" 
-                      required 
                       autocomplete="name"
                     >
                   </div>
@@ -81,7 +80,7 @@
                 <!-- 2. Email -->
                 <div class="form-group" id="groupEmail">
                   <label for="workEmail" class="form-label">
-                    <span>Email <span class="req">*</span></span>
+                    <span>Email</span>
                   </label>
                   <div class="input-container">
                     <span class="input-icon">✉️</span>
@@ -90,7 +89,6 @@
                       id="workEmail" 
                       name="email" 
                       class="form-input" 
-                      required 
                       autocomplete="email"
                     >
                   </div>
@@ -100,10 +98,10 @@
 
               <!-- Row 2: Mobile & Company -->
               <div class="form-row">
-                <!-- 3. Mobile Number -->
+                <!-- 3. Mobile Number (Mandatory) -->
                 <div class="form-group" id="groupPhone">
                   <label for="mobileNumber" class="form-label">
-                    <span>Mobile Number <span class="req">*</span></span>
+                    <span>Mobile Number</span>
                   </label>
                   <div class="input-container">
                     <span class="input-icon">📱</span>
@@ -122,7 +120,7 @@
                 <!-- 4. Company Name -->
                 <div class="form-group" id="groupCompany">
                   <label for="companyName" class="form-label">
-                    <span>Company Name <span class="req">*</span></span>
+                    <span>Company Name</span>
                   </label>
                   <div class="input-container">
                     <span class="input-icon">🏢</span>
@@ -131,7 +129,6 @@
                       id="companyName" 
                       name="company_name" 
                       class="form-input" 
-                      required 
                       autocomplete="organization"
                     >
                   </div>
@@ -142,14 +139,13 @@
               <!-- 5. Description -->
               <div class="form-group textarea-container" id="groupDescription">
                 <label for="description" class="form-label">
-                  <span>Description <span class="req">*</span></span>
+                  <span>Description</span>
                 </label>
                 <textarea 
                   id="description" 
                   name="description" 
                   class="form-input form-textarea" 
-                  rows="2" 
-                  required
+                  rows="2"
                 ></textarea>
                 <span class="field-error">Please enter a description.</span>
               </div>
