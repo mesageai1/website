@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#070913">
-  <meta name="description" content="Schedule a demo with MeSage AI.">
-  <title>Schedule a Demo — MeSage AI</title>
+  <meta name="description" content="Schedule a live demo with MeSage AI.">
+  <title>Schedule a Demo (Demo 2) — MeSage AI Omnichannel Platform</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
@@ -13,160 +13,188 @@
 </head>
 <body>
 
+  <!-- Navbar -->
+  <header class="demo-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand" aria-label="MeSage AI home">
+        <img src="assets/logoimg.png" alt="MeSage AI" class="brand-logo" onerror="this.src='assets/logogif.gif'">
+        <span>MeSage<span class="brand-ai"> AI</span></span>
+      </a>
+
+      <nav class="header-nav">
+        <a href="index.html">Home</a>
+        <a href="demo1.html">Demo 1 (Live Flow)</a>
+        <a href="demo2.html" class="active">Demo 2 (Schedule Demo)</a>
+      </nav>
+
+      <a href="index.html" class="btn btn-secondary btn-sm">← Back to Website</a>
+    </div>
+  </header>
+
   <main class="schedule-main">
-    <div class="form-wrapper-card" id="formWrapper">
+    <div class="container">
 
-      <!-- Form Brand & Header -->
-      <div class="form-header">
-        <a href="index.html" class="brand" aria-label="MeSage AI home">
-          <img src="assets/logoimg.png" alt="MeSage AI" class="brand-logo" onerror="this.src='assets/logogif.gif'">
-          <span>MeSage<span class="brand-ai"> AI</span></span>
-        </a>
-        <h2>Schedule a Demo</h2>
-      </div>
+      <div class="schedule-grid">
 
-      <div id="alertBanner" class="alert-banner"></div>
+        <!-- Left Column: Empty to keep form on the right side with exact original proportions -->
+        <div class="left-spacer"></div>
 
-      <!-- Booking Form (No Placeholders) -->
-      <form id="scheduleDemoForm" class="demo-form" action="https://formsubmit.co/mesageai1@gmail.com" method="POST" novalidate>
-        <input type="hidden" name="_subject" value="New Demo Schedule Request - MeSage AI">
-        <input type="hidden" name="_template" value="box">
-        <input type="hidden" name="_captcha" value="false">
-        
-        <!-- 1. Name -->
-        <div class="form-group" id="groupName">
-          <label for="fullName" class="form-label">
-            <span>Name <span class="req">*</span></span>
-          </label>
-          <div class="input-container">
-            <span class="input-icon">👤</span>
-            <input 
-              type="text" 
-              id="fullName" 
-              name="name" 
-              class="form-input" 
-              required 
-              autocomplete="name"
-            >
+        <!-- Right Column: Demo Booking Form (Exact Same Size & Position As Earlier) -->
+        <section class="form-col" id="formWrapper">
+          <div class="form-wrapper-card">
+
+            <div class="form-header">
+              <h2>Schedule Your Live Demo</h2>
+              <p>Fill out the details below. Our team will prepare a custom demonstration for you.</p>
+            </div>
+
+            <div id="alertBanner" class="alert-banner"></div>
+
+            <!-- Booking Form (No Placeholders) -->
+            <form id="scheduleDemoForm" class="demo-form" action="https://formsubmit.co/mesageai1@gmail.com" method="POST" novalidate>
+              <input type="hidden" name="_subject" value="New Demo Schedule Request - MeSage AI">
+              <input type="hidden" name="_template" value="box">
+              <input type="hidden" name="_captcha" value="false">
+              
+              <!-- 1. Name -->
+              <div class="form-group" id="groupName">
+                <label for="fullName" class="form-label">
+                  <span>Name <span class="req">*</span></span>
+                </label>
+                <div class="input-container">
+                  <span class="input-icon">👤</span>
+                  <input 
+                    type="text" 
+                    id="fullName" 
+                    name="name" 
+                    class="form-input" 
+                    required 
+                    autocomplete="name"
+                  >
+                </div>
+                <span class="field-error">Please enter your name.</span>
+              </div>
+
+              <!-- 2. Email -->
+              <div class="form-group" id="groupEmail">
+                <label for="workEmail" class="form-label">
+                  <span>Email <span class="req">*</span></span>
+                </label>
+                <div class="input-container">
+                  <span class="input-icon">✉️</span>
+                  <input 
+                    type="email" 
+                    id="workEmail" 
+                    name="email" 
+                    class="form-input" 
+                    required 
+                    autocomplete="email"
+                  >
+                </div>
+                <span class="field-error">Please enter a valid email address.</span>
+              </div>
+
+              <!-- 3. Company Name -->
+              <div class="form-group" id="groupCompany">
+                <label for="companyName" class="form-label">
+                  <span>Company Name <span class="req">*</span></span>
+                </label>
+                <div class="input-container">
+                  <span class="input-icon">🏢</span>
+                  <input 
+                    type="text" 
+                    id="companyName" 
+                    name="company_name" 
+                    class="form-input" 
+                    required 
+                    autocomplete="organization"
+                  >
+                </div>
+                <span class="field-error">Please enter your company name.</span>
+              </div>
+
+              <!-- 4. Mobile Number -->
+              <div class="form-group" id="groupPhone">
+                <label for="mobileNumber" class="form-label">
+                  <span>Mobile Number <span class="req">*</span></span>
+                </label>
+                <div class="input-container">
+                  <span class="input-icon">📱</span>
+                  <input 
+                    type="tel" 
+                    id="mobileNumber" 
+                    name="mobile_number" 
+                    class="form-input" 
+                    required 
+                    autocomplete="tel"
+                  >
+                </div>
+                <span class="field-error">Please enter a valid mobile number with country code.</span>
+              </div>
+
+              <!-- 5. Description -->
+              <div class="form-group textarea-container" id="groupDescription">
+                <label for="description" class="form-label">
+                  <span>Description <span class="req">*</span></span>
+                </label>
+                <textarea 
+                  id="description" 
+                  name="description" 
+                  class="form-input form-textarea" 
+                  rows="4" 
+                  required
+                ></textarea>
+                <span class="field-error">Please enter a description.</span>
+              </div>
+
+              <!-- Submit Button -->
+              <button type="submit" id="submitBtn" class="btn btn-primary btn-submit">
+                <span id="btnSpinner" class="spinner" style="display: none;"></span>
+                <span id="btnText">Schedule My Live Demo 🚀</span>
+              </button>
+
+              <div class="form-disclaimer">
+                <span>🔒 Your information is confidential and will never be shared.</span>
+              </div>
+
+            </form>
+
+            <!-- Success State -->
+            <div id="successCard" class="success-card">
+              <div class="success-icon-wrap">✓</div>
+              <h3>Demo Request Confirmed!</h3>
+              <p>
+                Thank you! Your demo details have been submitted. We've sent a confirmation to your email, and our team will reach out via WhatsApp/Email to finalize the calendar slot.
+              </p>
+
+              <div class="submitted-summary">
+                <div class="sum-row">
+                  <span class="sum-label">Name:</span>
+                  <span class="sum-val" id="sumName">-</span>
+                </div>
+                <div class="sum-row">
+                  <span class="sum-label">Email:</span>
+                  <span class="sum-val" id="sumEmail">-</span>
+                </div>
+                <div class="sum-row">
+                  <span class="sum-label">Company:</span>
+                  <span class="sum-val" id="sumCompany">-</span>
+                </div>
+                <div class="sum-row">
+                  <span class="sum-label">Mobile:</span>
+                  <span class="sum-val" id="sumPhone">-</span>
+                </div>
+              </div>
+
+              <div class="success-actions">
+                <button type="button" id="btnReset" class="btn btn-secondary">Submit Another Request</button>
+                <a href="index.html" class="btn btn-primary">Back to Home</a>
+              </div>
+            </div>
+
           </div>
-          <span class="field-error">Please enter your name.</span>
-        </div>
+        </section>
 
-        <!-- 2. Email -->
-        <div class="form-group" id="groupEmail">
-          <label for="workEmail" class="form-label">
-            <span>Email <span class="req">*</span></span>
-          </label>
-          <div class="input-container">
-            <span class="input-icon">✉️</span>
-            <input 
-              type="email" 
-              id="workEmail" 
-              name="email" 
-              class="form-input" 
-              required 
-              autocomplete="email"
-            >
-          </div>
-          <span class="field-error">Please enter a valid email address.</span>
-        </div>
-
-        <!-- 3. Company Name -->
-        <div class="form-group" id="groupCompany">
-          <label for="companyName" class="form-label">
-            <span>Company Name <span class="req">*</span></span>
-          </label>
-          <div class="input-container">
-            <span class="input-icon">🏢</span>
-            <input 
-              type="text" 
-              id="companyName" 
-              name="company_name" 
-              class="form-input" 
-              required 
-              autocomplete="organization"
-            >
-          </div>
-          <span class="field-error">Please enter your company name.</span>
-        </div>
-
-        <!-- 4. Mobile Number -->
-        <div class="form-group" id="groupPhone">
-          <label for="mobileNumber" class="form-label">
-            <span>Mobile Number <span class="req">*</span></span>
-          </label>
-          <div class="input-container">
-            <span class="input-icon">📱</span>
-            <input 
-              type="tel" 
-              id="mobileNumber" 
-              name="mobile_number" 
-              class="form-input" 
-              required 
-              autocomplete="tel"
-            >
-          </div>
-          <span class="field-error">Please enter a valid mobile number with country code.</span>
-        </div>
-
-        <!-- 5. Description -->
-        <div class="form-group textarea-container" id="groupDescription">
-          <label for="description" class="form-label">
-            <span>Description <span class="req">*</span></span>
-          </label>
-          <textarea 
-            id="description" 
-            name="description" 
-            class="form-input form-textarea" 
-            rows="4" 
-            required
-          ></textarea>
-          <span class="field-error">Please enter a description.</span>
-        </div>
-
-        <!-- Submit Button -->
-        <button type="submit" id="submitBtn" class="btn btn-primary btn-submit">
-          <span id="btnSpinner" class="spinner" style="display: none;"></span>
-          <span id="btnText">Schedule Demo 🚀</span>
-        </button>
-
-        <div class="form-footer-nav">
-          <a href="index.html" class="back-link">← Back to Main Website</a>
-        </div>
-
-      </form>
-
-      <!-- Success State -->
-      <div id="successCard" class="success-card">
-        <div class="success-icon-wrap">✓</div>
-        <h3>Demo Request Confirmed!</h3>
-        <p>
-          Thank you! Your demo details have been submitted. We've sent a confirmation to your email, and our team will get in touch shortly.
-        </p>
-
-        <div class="submitted-summary">
-          <div class="sum-row">
-            <span class="sum-label">Name:</span>
-            <span class="sum-val" id="sumName">-</span>
-          </div>
-          <div class="sum-row">
-            <span class="sum-label">Email:</span>
-            <span class="sum-val" id="sumEmail">-</span>
-          </div>
-          <div class="sum-row">
-            <span class="sum-label">Company:</span>
-            <span class="sum-val" id="sumCompany">-</span>
-          </div>
-          <div class="sum-row">
-            <span class="sum-label">Mobile:</span>
-            <span class="sum-val" id="sumPhone">-</span>
-          </div>
-        </div>
-
-        <div class="success-actions">
-          <button type="button" id="btnReset" class="btn btn-secondary">Submit Another Request</button>
-          <a href="index.html" class="btn btn-primary">Back to Home</a>
-        </div>
       </div>
 
     </div>
