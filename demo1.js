@@ -480,53 +480,52 @@ function executeStage(stageNumber) {
     }
 
     // -------------------------------------------------------------
-    // STAGE 8: Customer wants appointment -> AI TAKES BACK OVER!
+    // STAGE 8: Customer wants appointment -> AGENT DROPS OUT, AI TAKES OVER!
     // -------------------------------------------------------------
     case 8: {
       clearButtons();
 
       addWaUserMessage("I want to book an appointment for a consultation.", "14:20");
 
-      // Green ball shoots from WhatsApp user to Agent & AI
-      fireGreenForwardSignal(() => {
-        // Agent panel updates to reflect handoff back to AI
-        if (agentStatusPill) {
-          agentStatusPill.textContent = "🔄 Handed to AI";
-          agentStatusPill.style.background = "#e0f2fe";
-          agentStatusPill.style.color = "#0369a1";
-          agentStatusPill.style.borderColor = "#7dd3fc";
-        }
-        if (agentDispatchStatus) {
-          agentDispatchStatus.textContent = "Transferred to AI Scheduler ➔";
-        }
+      // AGENT DROPS OUT SMOOTHLY (Panel collapses, layout returns to WhatsApp <-> AI)
+      if (colAgentInbetween) colAgentInbetween.classList.remove('active-inbetween');
+      if (colConn2) colConn2.classList.remove('active-inbetween');
+      if (colConn1) colConn1.classList.remove('narrowed');
 
-        // WhatsApp handoff notice
-        addWaHandoffBanner("⚡ <strong>Sarah Mitchell</strong> handed over to <strong>AI Booking Assistant</strong> for instant scheduling.");
-        if (waStatusText) waStatusText.textContent = "AI Scheduler Online (Booking Consultation)";
+      // WhatsApp handoff notice
+      addWaHandoffBanner("⚡ <strong>Sarah Mitchell</strong> completed pricing &amp; stepped out. <strong>Autonomous AI Concierge</strong> takes over to book your appointment.");
+      if (waStatusText) waStatusText.textContent = "online";
 
-        // AI asks for Date and Time via Indigo Ball
-        scheduleNext(() => {
-          showTyping('MeSage AI');
-          fireIndigoBackwardSignal(() => {
-            hideTyping();
-            addWaBotMessage(
-              "I would be delighted to schedule your VIP onboarding consultation! 🏛️<br><br>Please select your preferred date and time slot:",
-              "14:20"
-            );
+      // Give 500ms for Agent panel to collapse smoothly back to 2-column view
+      scheduleNext(() => {
+        updateSignalLevel(true);
 
-            renderButtons([
-              { label: "📅 Tomorrow, 11:00 AM", action: () => confirmAppointment("Tomorrow at 11:00 AM") },
-              { label: "📅 Saturday, 11:00 AM (Recommended)", action: () => confirmAppointment("Saturday at 11:00 AM") },
-              { label: "📅 Sunday, 3:30 PM", action: () => confirmAppointment("Sunday at 3:30 PM") }
-            ]);
+        // Green ball shoots directly from WhatsApp user to AI Automation across the 100px connector
+        fireGreenForwardSignal(() => {
+          scheduleNext(() => {
+            showTyping('MeSage AI');
+            // Indigo ball shoots from AI Automation directly to WhatsApp
+            fireIndigoBackwardSignal(() => {
+              hideTyping();
+              addWaBotMessage(
+                "I would be delighted to schedule your VIP onboarding consultation! 🏛️<br><br>Please select your preferred date and time slot:",
+                "14:20"
+              );
 
-            // Auto advance to Saturday booking
-            scheduleNext(() => {
-              confirmAppointment("Saturday at 11:00 AM");
-            }, 4200);
-          });
-        }, 700);
-      });
+              renderButtons([
+                { label: "📅 Tomorrow, 11:00 AM", action: () => confirmAppointment("Tomorrow at 11:00 AM") },
+                { label: "📅 Saturday, 11:00 AM (Recommended)", action: () => confirmAppointment("Saturday at 11:00 AM") },
+                { label: "📅 Sunday, 3:30 PM", action: () => confirmAppointment("Sunday at 3:30 PM") }
+              ]);
+
+              // Auto advance to Saturday booking
+              scheduleNext(() => {
+                confirmAppointment("Saturday at 11:00 AM");
+              }, 4200);
+            });
+          }, 700);
+        });
+      }, 500);
       break;
     }
 
