@@ -196,82 +196,80 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ==========================================
   // ROBOT COMPANION INTERACTION
-  // Tracks active input, looks down into form while typing
+  // Real-Time Optical Tracking while Typing
   // ==========================================
   const robotHead = document.getElementById("robotHead");
-  const robotFace = document.getElementById("robotFace");
+  const robotIdleImg = document.getElementById("robotIdleImg");
+  const opticLeft = document.getElementById("opticLeft");
+  const opticRight = document.getElementById("opticRight");
   const pupilLeft = document.getElementById("pupilLeft");
   const pupilRight = document.getElementById("pupilRight");
-  const robotBeacon = document.getElementById("robotBeacon");
-  const happyEyes = document.getElementById("happyEyes");
-  const robotWrap = document.getElementById("robotMascotWrap");
-  const eyelids = document.querySelectorAll(".robot-eyelid");
+  const visorScanner = document.getElementById("visorScannerBeam");
+  const robotIdleStage = document.getElementById("robotIdleStage");
+  const robotThumbsStage = document.getElementById("robotThumbsStage");
 
   let typingTimer = null;
   let isFormSuccess = false;
 
-  // Turn on natural blinking
-  eyelids.forEach((lid) => lid.classList.add("auto-blink"));
-
   function trackElement(el, isTyping = false) {
-    if (!el || !robotFace || !pupilLeft || !pupilRight || isFormSuccess) return;
+    if (!el || !robotHead || isFormSuccess) return;
 
-    const faceRect = robotFace.getBoundingClientRect();
+    const headRect = robotHead.getBoundingClientRect();
     const targetRect = el.getBoundingClientRect();
 
-    const faceCenterX = faceRect.left + faceRect.width / 2;
-    const faceCenterY = faceRect.top + faceRect.height / 2;
+    // Robot visor focus point (around 63% horizontal, 36% vertical of head container)
+    const visorCenterX = headRect.left + headRect.width * 0.628;
+    const visorCenterY = headRect.top + headRect.height * 0.360;
+
     const targetCenterX = targetRect.left + targetRect.width / 2;
     const targetCenterY = targetRect.top + targetRect.height / 2;
 
-    const deltaX = targetCenterX - faceCenterX;
-    const deltaY = targetCenterY - faceCenterY;
+    const deltaX = targetCenterX - visorCenterX;
+    const deltaY = targetCenterY - visorCenterY;
 
-    // Normalize horizontal and vertical tracking
-    const maxPupilX = 4.8;
-    const maxPupilY = 8.5;
-
-    // Normalizing ratio
-    const normX = Math.max(-1, Math.min(1, deltaX / (faceRect.width * 1.8)));
+    // Normalize horizontal tilt and eye shift
+    const normX = Math.max(-1, Math.min(1, deltaX / (headRect.width * 0.85)));
+    const maxPupilX = 4.2;
     const pupilX = normX * maxPupilX;
 
-    // Since the form is below the robot, deltaY is positive
-    const normY = Math.max(0.4, Math.min(1, deltaY / 420));
+    // Normalize vertical tracking (form fields are below the robot)
+    const normY = Math.max(0.3, Math.min(1, deltaY / 420));
+    const maxPupilY = 5.5;
     const pupilY = normY * maxPupilY;
 
-    // Subtle micro-movement / jitter while actively typing
-    const jitterX = isTyping ? (Math.random() * 0.8 - 0.4) : 0;
+    // Subtle organic jitter while active typing
+    const jitterX = isTyping ? (Math.random() * 0.9 - 0.45) : 0;
     const jitterY = isTyping ? (Math.random() * 0.6 - 0.3) : 0;
 
     const finalX = pupilX + jitterX;
     const finalY = pupilY + jitterY;
 
-    pupilLeft.style.transform = `translate(${finalX.toFixed(2)}px, ${finalY.toFixed(2)}px)`;
-    pupilRight.style.transform = `translate(${finalX.toFixed(2)}px, ${finalY.toFixed(2)}px)`;
+    if (pupilLeft) pupilLeft.style.transform = `translate(${finalX.toFixed(2)}px, ${finalY.toFixed(2)}px)`;
+    if (pupilRight) pupilRight.style.transform = `translate(${finalX.toFixed(2)}px, ${finalY.toFixed(2)}px)`;
 
-    // Tilt head towards field being filled
-    const headTilt = normX * 3.5;
-    const headNod = normY * 3.2 + (isTyping ? 0.8 : 0);
-    if (robotHead) {
-      robotHead.style.transform = `rotate(${headTilt.toFixed(2)}deg) translateY(${headNod.toFixed(2)}px)`;
-    }
+    // Tilt robot towards the field being edited
+    const headTilt = normX * 3.8;
+    const headNod = normY * 3.6 + (isTyping ? 1.4 : 0);
+    robotHead.style.transform = `rotate(${headTilt.toFixed(2)}deg) translateY(${headNod.toFixed(2)}px)`;
 
-    if (robotBeacon) {
-      if (isTyping) {
-        robotBeacon.classList.add("typing-active");
-      }
+    if (isTyping) {
+      if (opticLeft) opticLeft.classList.add("active");
+      if (opticRight) opticRight.classList.add("active");
+      if (visorScanner) visorScanner.classList.add("active");
     }
   }
 
   function resetRobotGaze() {
     if (isFormSuccess) return;
-    if (pupilLeft) pupilLeft.style.transform = "translate(0, 0)";
-    if (pupilRight) pupilRight.style.transform = "translate(0, 0)";
+    if (pupilLeft) pupilLeft.style.transform = "translate(0px, 0px)";
+    if (pupilRight) pupilRight.style.transform = "translate(0px, 0px)";
     if (robotHead) robotHead.style.transform = "rotate(0deg) translateY(0px)";
-    if (robotBeacon) robotBeacon.classList.remove("typing-active");
+    if (opticLeft) opticLeft.classList.remove("active");
+    if (opticRight) opticRight.classList.remove("active");
+    if (visorScanner) visorScanner.classList.remove("active");
   }
 
-  // Attach focus and input listeners to form elements
+  // Attach focus and input listeners to all form controls
   const allInputs = form.querySelectorAll("input, textarea, button");
   allInputs.forEach((input) => {
     input.addEventListener("focus", () => {
@@ -283,11 +281,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
       clearTimeout(typingTimer);
       typingTimer = setTimeout(() => {
-        if (robotBeacon) robotBeacon.classList.remove("typing-active");
+        if (opticLeft) opticLeft.classList.remove("active");
+        if (opticRight) opticRight.classList.remove("active");
+        if (visorScanner) visorScanner.classList.remove("active");
         if (document.activeElement === input) {
           trackElement(input, false);
         }
-      }, 350);
+      }, 400);
     });
 
     input.addEventListener("blur", () => {
@@ -299,7 +299,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Hover over fields also makes robot look
+  // Hovering over fields also gently directs the robot's optical sensor
   allInputs.forEach((input) => {
     input.addEventListener("mouseenter", () => {
       if (!document.activeElement || !form.contains(document.activeElement)) {
@@ -319,16 +319,17 @@ document.addEventListener("DOMContentLoaded", () => {
   // ==========================================
   async function animateFormDetailsFlyingToRobot() {
     const overlay = document.getElementById("flyingDataOverlay");
-    const robotHeadEl = document.getElementById("robotHead");
-    if (!overlay || !robotHeadEl) return;
+    if (!overlay || !robotHead) return;
 
     overlay.innerHTML = "";
 
-    // Target coordinates: robot's forehead/visor center relative to overlay
-    const headRect = robotHeadEl.getBoundingClientRect();
+    // Target coordinates: robot's visor center relative to overlay
+    const imgEl = robotIdleImg || robotHead;
+    const imgRect = imgEl.getBoundingClientRect();
     const overlayRect = overlay.getBoundingClientRect();
-    const targetX = headRect.left + headRect.width / 2 - overlayRect.left;
-    const targetY = headRect.top + headRect.height / 2 - overlayRect.top;
+
+    const targetX = imgRect.left + (imgRect.width * 0.628) - overlayRect.left;
+    const targetY = imgRect.top + (imgRect.height * 0.360) - overlayRect.top;
 
     // Fields to gather data from
     const fieldItems = [
@@ -386,7 +387,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       }
 
-      // Delta to target
+      // Delta to target visor
       const deltaX = targetX - startX;
       const deltaY = targetY - startY;
       const delay = index * 110; // Staggered launch
@@ -412,7 +413,7 @@ document.addEventListener("DOMContentLoaded", () => {
         fill: "forwards"
       });
 
-      // Robot eyes track each flying packet as it approaches!
+      // Robot eyes track each flying packet as it approaches
       setTimeout(() => {
         if (pupilLeft && pupilRight) {
           pupilLeft.style.transform = `translate(${((index % 2 === 0 ? -1 : 1) * 3)}px, 2px)`;
@@ -420,11 +421,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }, delay + 180);
 
-      // When packet reaches robot head: trigger head absorption pulse
+      // When packet reaches robot visor: trigger absorption pulse
       setTimeout(() => {
-        robotHeadEl.classList.remove("absorbing");
-        void robotHeadEl.offsetWidth; // re-flow
-        robotHeadEl.classList.add("absorbing");
+        robotHead.classList.remove("absorbing");
+        void robotHead.offsetWidth; // re-flow
+        robotHead.classList.add("absorbing");
       }, delay + 650);
 
       const promise = new Promise((resolve) => {
@@ -441,30 +442,20 @@ document.addEventListener("DOMContentLoaded", () => {
     overlay.innerHTML = "";
   }
 
-  // Success Celebration & Thumbs-Up Gesture
+  // Success Celebration: Transitions to Photorealistic Thumbs-Up Robot
   function triggerRobotCelebration() {
     isFormSuccess = true;
 
-    // Switch eyes to happy arches ^ ^
-    if (pupilLeft) pupilLeft.style.display = "none";
-    if (pupilRight) pupilRight.style.display = "none";
-    if (happyEyes) happyEyes.style.display = "block";
-
-    // Antenna glow emerald green
-    if (robotBeacon) {
-      robotBeacon.setAttribute("fill", "#10b981");
-      robotBeacon.classList.remove("typing-active");
+    // Smoothly transition from Idle Robot to Thumbs-Up Robot
+    if (robotIdleStage) {
+      robotIdleStage.style.opacity = "0";
+      setTimeout(() => {
+        robotIdleStage.style.display = "none";
+        if (robotThumbsStage) {
+          robotThumbsStage.style.display = "flex";
+        }
+      }, 250);
     }
-
-    // Hide gripping right hand and SHOW THUMBS-UP HAND!
-    const handRight = document.getElementById("handRight");
-    const handRightThumbsUp = document.getElementById("handRightThumbsUp");
-    if (handRight) handRight.style.display = "none";
-    if (handRightThumbsUp) handRightThumbsUp.style.display = "block";
-
-    // Mascot celebration bounce
-    if (robotWrap) robotWrap.classList.add("celebrating");
-    if (robotHead) robotHead.style.transform = "rotate(0deg) translateY(-2px)";
   }
 
   function saveLeadLocally(lead) {

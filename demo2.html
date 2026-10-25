@@ -44,209 +44,58 @@
         <!-- Right Column: Demo Booking Form (with Robot Holding Top) -->
         <section class="form-col" id="formWrapper">
 
-          <!-- Interactive Robot Mascot Gripping Top of Form -->
-          <div class="robot-mascot-wrap" id="robotMascotWrap" aria-hidden="true">
-            <svg class="robot-svg" viewBox="0 0 280 155" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <!-- Premium Multi-tone Helmet Gradients -->
-                <linearGradient id="helmetGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#222b64"/>
-                  <stop offset="35%" stop-color="#14193d"/>
-                  <stop offset="80%" stop-color="#0b0e24"/>
-                  <stop offset="100%" stop-color="#080a1c"/>
-                </linearGradient>
+          <!-- Photorealistic 3D Robot Mascot (Holding Top of Form) -->
+          <div class="robot-companion-wrap" id="robotMascotWrap" aria-hidden="true">
 
-                <linearGradient id="crestGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stop-color="#818cf8" stop-opacity="0.8"/>
-                  <stop offset="100%" stop-color="#4f46e5" stop-opacity="0.2"/>
-                </linearGradient>
+            <!-- Idle / Attentive Pose (Robot Gripping Form Card Top & Watching Form) -->
+            <div class="robot-pose-stage" id="robotIdleStage">
+              <div class="robot-image-container" id="robotHead">
+                <img 
+                  src="assets/robot_realistic_idle.png" 
+                  alt="MeSage AI Realistic Robot Assistant" 
+                  class="robot-realistic-img" 
+                  id="robotIdleImg"
+                  draggable="false"
+                >
+                <!-- Glowing Cyan Optical HUD Over Robot's Eyes for Real-Time Typing Tracking -->
+                <div class="robot-eyes-hud" id="robotEyesHud">
+                  <!-- Left Optical Sensor Point -->
+                  <div class="optic-reticle optic-left" id="opticLeft">
+                    <span class="optic-core" id="pupilLeft"></span>
+                    <span class="optic-ring"></span>
+                  </div>
+                  <!-- Right Optical Sensor Point -->
+                  <div class="optic-reticle optic-right" id="opticRight">
+                    <span class="optic-core" id="pupilRight"></span>
+                    <span class="optic-ring"></span>
+                  </div>
+                </div>
+                <!-- Visor Holographic Hologram / Scanning Light Cone -->
+                <div class="visor-scanner-beam" id="visorScannerBeam"></div>
+              </div>
+            </div>
 
-                <!-- Hand & Finger Metallic Gradient -->
-                <linearGradient id="fingerGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stop-color="#2f397c"/>
-                  <stop offset="45%" stop-color="#1c2350"/>
-                  <stop offset="100%" stop-color="#121634"/>
-                </linearGradient>
+            <!-- Thumbs-Up Pose (Displayed on Successful Submit) -->
+            <div class="robot-pose-stage robot-thumbs-stage" id="robotThumbsStage" style="display: none;">
+              <div class="robot-image-container thumbs-container" id="thumbsContainer">
+                <img 
+                  src="assets/robot_realistic_thumbs.png" 
+                  alt="MeSage AI Robot Thumbs Up Success" 
+                  class="robot-realistic-img robot-thumbs-img" 
+                  id="robotThumbsImg"
+                  draggable="false"
+                >
+                <!-- Celebratory Thumb Aura & Sparkles -->
+                <div class="thumb-glow-aura"></div>
+                <div class="thumb-sparkle-stars" id="thumbSparkles">
+                  <span class="sparkle-star s1">✦</span>
+                  <span class="sparkle-star s2">✨</span>
+                  <span class="sparkle-star s3">✦</span>
+                  <span class="sparkle-star s4">★</span>
+                </div>
+              </div>
+            </div>
 
-                <!-- High-res Glow Filters -->
-                <filter id="cyanGlow" x="-40%" y="-40%" width="180%" height="180%">
-                  <feGaussianBlur stdDeviation="3" result="blur"/>
-                  <feMerge>
-                    <feMergeNode in="blur"/>
-                    <feMergeNode in="SourceGraphic"/>
-                  </feMerge>
-                </filter>
-
-                <filter id="beaconGlow" x="-60%" y="-60%" width="220%" height="220%">
-                  <feGaussianBlur stdDeviation="3.5" result="blur"/>
-                  <feMerge>
-                    <feMergeNode in="blur"/>
-                    <feMergeNode in="SourceGraphic"/>
-                  </feMerge>
-                </filter>
-
-                <!-- Eye Sockets Clip Paths for Smooth Pupil Tracking -->
-                <clipPath id="leftSocketClip">
-                  <ellipse cx="114" cy="73" rx="14" ry="16"/>
-                </clipPath>
-                <clipPath id="rightSocketClip">
-                  <ellipse cx="166" cy="73" rx="14" ry="16"/>
-                </clipPath>
-              </defs>
-
-              <!-- Flexible Cyber Neck / Collar behind card -->
-              <g id="robotNeck">
-                <path d="M 112 120 L 112 138 L 168 138 L 168 120 Z" fill="#0c0f2b" stroke="rgba(99,102,241,0.3)" stroke-width="1.5"/>
-                <line x1="114" y1="126" x2="166" y2="126" stroke="#252e68" stroke-width="1.2"/>
-                <line x1="114" y1="132" x2="166" y2="132" stroke="#252e68" stroke-width="1.2"/>
-              </g>
-
-              <!-- Robot Head Group (Tilts & Moves Organic Tracking) -->
-              <g id="robotHead" class="robot-head-group">
-
-                <!-- Cyber Antenna with Holographic Beacon -->
-                <g id="robotAntenna">
-                  <path d="M 134 20 L 146 20 L 143 8 L 137 8 Z" fill="#242b66" stroke="#818cf8" stroke-width="1"/>
-                  <line x1="140" y1="8" x2="140" y2="3" stroke="#818cf8" stroke-width="2.5" stroke-linecap="round"/>
-                  <!-- Glowing Floating Beacon Ring & Orb -->
-                  <circle cx="140" cy="2" r="7" fill="#10b981" opacity="0.3" filter="url(#beaconGlow)"/>
-                  <ellipse cx="140" cy="2" rx="7.5" ry="2.2" stroke="#38bdf8" stroke-width="0.9" fill="none" opacity="0.8"/>
-                  <circle id="robotBeacon" cx="140" cy="2" r="4.5" fill="#10b981" filter="url(#beaconGlow)"/>
-                </g>
-
-                <!-- Side Cyber Audio Pods (Ears) -->
-                <g id="robotEars">
-                  <!-- Left Ear Pod -->
-                  <rect x="68" y="55" width="13" height="34" rx="6.5" fill="#161c46" stroke="#818cf8" stroke-width="1.5"/>
-                  <circle cx="74.5" cy="72" r="5" fill="#0f1334" stroke="#38bdf8" stroke-width="1.2"/>
-                  <circle cx="74.5" cy="72" r="2.5" fill="#38bdf8" filter="url(#cyanGlow)"/>
-                  
-                  <!-- Right Ear Pod -->
-                  <rect x="199" y="55" width="13" height="34" rx="6.5" fill="#161c46" stroke="#818cf8" stroke-width="1.5"/>
-                  <circle cx="205.5" cy="72" r="5" fill="#0f1334" stroke="#38bdf8" stroke-width="1.2"/>
-                  <circle cx="205.5" cy="72" r="2.5" fill="#38bdf8" filter="url(#cyanGlow)"/>
-                </g>
-
-                <!-- Sculpted Metallic Helmet Chassis -->
-                <path d="M 88 44 C 88 28 110 20 140 20 C 170 20 192 28 192 44 L 198 94 C 198 116 172 124 140 124 C 108 124 82 116 82 94 Z" fill="url(#helmetGrad)" stroke="rgba(129,140,248,0.5)" stroke-width="2"/>
-                
-                <!-- Helmet Top Crest Accent -->
-                <path d="M 112 21 C 122 19 135 18 140 18 C 145 18 158 19 168 21 C 160 25 150 27 140 27 C 130 27 120 25 112 21 Z" fill="url(#crestGrad)"/>
-
-                <!-- Glossy OLED Curved Visor Faceplate -->
-                <rect x="88" y="40" width="104" height="68" rx="22" ry="22" fill="#04050d" stroke="rgba(129,140,248,0.45)" stroke-width="1.8"/>
-
-                <!-- Curved Glass Glare & Reflection Arcs -->
-                <path d="M 94 48 Q 140 41 186 49 C 176 56 150 54 140 54 C 130 54 104 56 94 48 Z" fill="rgba(255,255,255,0.14)"/>
-                <path d="M 100 102 Q 140 106 180 102" stroke="rgba(99,102,241,0.2)" stroke-width="1.5" fill="none"/>
-
-                <!-- Interactive Face & Expressive OLED Eyes -->
-                <g id="robotFace">
-                  <!-- Eye Sockets Background -->
-                  <ellipse cx="114" cy="73" rx="14.5" ry="16.5" fill="#070a20" stroke="rgba(56,189,248,0.25)" stroke-width="1.2"/>
-                  <ellipse cx="166" cy="73" rx="14.5" ry="16.5" fill="#070a20" stroke="rgba(56,189,248,0.25)" stroke-width="1.2"/>
-
-                  <!-- Left Pupil (Smooth Tracking) -->
-                  <g clip-path="url(#leftSocketClip)">
-                    <g id="pupilLeft" class="robot-pupil">
-                      <ellipse cx="114" cy="73" rx="12" ry="14" fill="#0284c7" opacity="0.45" filter="url(#cyanGlow)"/>
-                      <ellipse cx="114" cy="73" rx="9" ry="11" fill="#38bdf8" filter="url(#cyanGlow)"/>
-                      <ellipse cx="114" cy="73" rx="6" ry="7.5" fill="#bae6fd"/>
-                      <circle cx="111.5" cy="70" r="2.8" fill="#ffffff"/>
-                      <circle cx="116.5" cy="76" r="1.5" fill="#ffffff" opacity="0.8"/>
-                    </g>
-                    <!-- Eyelid for Blinking -->
-                    <rect id="eyelidLeft" class="robot-eyelid" x="98" y="55" width="32" height="20" fill="#04050d"/>
-                  </g>
-
-                  <!-- Right Pupil (Smooth Tracking) -->
-                  <g clip-path="url(#rightSocketClip)">
-                    <g id="pupilRight" class="robot-pupil">
-                      <ellipse cx="166" cy="73" rx="12" ry="14" fill="#0284c7" opacity="0.45" filter="url(#cyanGlow)"/>
-                      <ellipse cx="166" cy="73" rx="9" ry="11" fill="#38bdf8" filter="url(#cyanGlow)"/>
-                      <ellipse cx="166" cy="73" rx="6" ry="7.5" fill="#bae6fd"/>
-                      <circle cx="163.5" cy="70" r="2.8" fill="#ffffff"/>
-                      <circle cx="168.5" cy="76" r="1.5" fill="#ffffff" opacity="0.8"/>
-                    </g>
-                    <!-- Eyelid for Blinking -->
-                    <rect id="eyelidRight" class="robot-eyelid" x="150" y="55" width="32" height="20" fill="#04050d"/>
-                  </g>
-
-                  <!-- Cute Cyber Cheek Blushes -->
-                  <ellipse cx="98" cy="88" rx="4.5" ry="2" fill="#38bdf8" opacity="0.32"/>
-                  <ellipse cx="182" cy="88" rx="4.5" ry="2" fill="#38bdf8" opacity="0.32"/>
-
-                  <!-- Happy Eyes (Celebration on Successful Submission) -->
-                  <g id="happyEyes" class="robot-happy-eyes" style="display: none;">
-                    <path d="M 104 77 Q 114 63 124 77" stroke="#34d399" stroke-width="3.6" fill="none" stroke-linecap="round"/>
-                    <path d="M 156 77 Q 166 63 176 77" stroke="#34d399" stroke-width="3.6" fill="none" stroke-linecap="round"/>
-                  </g>
-
-                  <!-- Cute Digital LED Smile Line -->
-                  <path id="robotMouth" d="M 134 94 Q 140 98 146 94" stroke="#38bdf8" stroke-width="2.2" fill="none" stroke-linecap="round" opacity="0.85"/>
-                </g>
-              </g>
-
-              <!-- SCULPTED ARTICULATED HANDS GRIPPING TOP OF FORM -->
-              
-              <!-- Left Gripping Hand -->
-              <g id="handLeft" class="robot-hand">
-                <!-- Wrist Cuff -->
-                <path d="M 58 126 Q 72 122 86 126 L 86 135 L 58 135 Z" fill="#181f4a" stroke="rgba(129,140,248,0.5)" stroke-width="1.2"/>
-                <!-- Palm Base -->
-                <rect x="56" y="132" width="32" height="7" rx="3.5" fill="#222b64"/>
-                <!-- Finger 1 -->
-                <rect x="55" y="133" width="9" height="19" rx="4.5" fill="url(#fingerGrad)" stroke="#818cf8" stroke-width="1.2"/>
-                <line x1="57" y1="144" x2="62" y2="144" stroke="#38bdf8" stroke-width="1.4" stroke-linecap="round"/>
-                <!-- Finger 2 (Middle) -->
-                <rect x="67" y="131" width="9.5" height="21" rx="4.7" fill="url(#fingerGrad)" stroke="#818cf8" stroke-width="1.2"/>
-                <line x1="69" y1="145" x2="74.5" y2="145" stroke="#38bdf8" stroke-width="1.4" stroke-linecap="round"/>
-                <!-- Finger 3 -->
-                <rect x="79.5" y="133" width="9" height="19" rx="4.5" fill="url(#fingerGrad)" stroke="#818cf8" stroke-width="1.2"/>
-                <line x1="81.5" y1="144" x2="86.5" y2="144" stroke="#38bdf8" stroke-width="1.4" stroke-linecap="round"/>
-              </g>
-
-              <!-- Right Gripping Hand (Active before submit) -->
-              <g id="handRight" class="robot-hand">
-                <!-- Wrist Cuff -->
-                <path d="M 194 126 Q 208 122 222 126 L 222 135 L 194 135 Z" fill="#181f4a" stroke="rgba(129,140,248,0.5)" stroke-width="1.2"/>
-                <!-- Palm Base -->
-                <rect x="192" y="132" width="32" height="7" rx="3.5" fill="#222b64"/>
-                <!-- Finger 1 -->
-                <rect x="191.5" y="133" width="9" height="19" rx="4.5" fill="url(#fingerGrad)" stroke="#818cf8" stroke-width="1.2"/>
-                <line x1="193.5" y1="144" x2="198.5" y2="144" stroke="#38bdf8" stroke-width="1.4" stroke-linecap="round"/>
-                <!-- Finger 2 (Middle) -->
-                <rect x="203.5" y="131" width="9.5" height="21" rx="4.7" fill="url(#fingerGrad)" stroke="#818cf8" stroke-width="1.2"/>
-                <line x1="205.5" y1="145" x2="211" y2="145" stroke="#38bdf8" stroke-width="1.4" stroke-linecap="round"/>
-                <!-- Finger 3 -->
-                <rect x="216" y="133" width="9" height="19" rx="4.5" fill="url(#fingerGrad)" stroke="#818cf8" stroke-width="1.2"/>
-                <line x1="218" y1="144" x2="223" y2="144" stroke="#38bdf8" stroke-width="1.4" stroke-linecap="round"/>
-              </g>
-
-              <!-- Right THUMBS-UP Hand (Raised on Successful Submit) -->
-              <g id="handRightThumbsUp" class="robot-thumbs-up" style="display: none;">
-                <!-- Articulated Arm reaching up -->
-                <path d="M 190 120 Q 215 110 226 95" stroke="url(#fingerGrad)" stroke-width="13" stroke-linecap="round" fill="none"/>
-                <!-- Metallic Wrist Cuff -->
-                <rect x="216" y="84" width="18" height="7.5" rx="3.5" fill="#15193c" stroke="#818cf8" stroke-width="1.4" transform="rotate(-18 225 87)"/>
-                <!-- Clenched Metallic Fist -->
-                <rect x="216" y="64" width="24" height="27" rx="8" fill="url(#fingerGrad)" stroke="#818cf8" stroke-width="1.6"/>
-                <!-- Curled Finger Knuckles on Fist Face -->
-                <rect x="217" y="66" width="18" height="5" rx="2.5" fill="#283274" stroke="#818cf8" stroke-width="1"/>
-                <rect x="217" y="72.5" width="19" height="5" rx="2.5" fill="#303c8c" stroke="#818cf8" stroke-width="1"/>
-                <rect x="217" y="79" width="19" height="5" rx="2.5" fill="#283274" stroke="#818cf8" stroke-width="1"/>
-                <rect x="217" y="85" width="17" height="4.5" rx="2.2" fill="#1f265c" stroke="#818cf8" stroke-width="1"/>
-                <!-- Prominent Metallic Thumb Extended UP -->
-                <path d="M 222 66 C 222 56 224 44 231 44 C 238 44 240 56 240 68 L 240 76 Z" fill="url(#fingerGrad)" stroke="#818cf8" stroke-width="1.8"/>
-                <!-- Glowing Emerald Thumb Knuckle Seam -->
-                <line x1="226" y1="55" x2="236" y2="55" stroke="#10b981" stroke-width="2.2" stroke-linecap="round"/>
-                <!-- Glowing Sparkle Star at Thumb Tip -->
-                <circle cx="231" cy="42" r="3.5" fill="#34d399" filter="url(#beaconGlow)"/>
-                <path d="M 231 33 L 231 51 M 222 42 L 240 42" stroke="#34d399" stroke-width="1.8" stroke-linecap="round"/>
-                <circle cx="248" cy="50" r="2.2" fill="#38bdf8" filter="url(#beaconGlow)"/>
-              </g>
-
-            </svg>
           </div>
 
           <!-- Dynamic Flying Data Particles Container -->

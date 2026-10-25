@@ -204,113 +204,229 @@ a {
   align-items: center;
 }
 
-/* ROBOT COMPANION MASCOT (HOLDING TOP OF FORM) */
-.robot-mascot-wrap {
+/* PHOTOREALISTIC 3D ROBOT COMPANION (HOLDING TOP OF FORM) */
+.robot-companion-wrap {
   display: flex;
   justify-content: center;
+  align-items: flex-end;
   width: 100%;
-  margin-bottom: -18px; /* Hands hook down onto top edge of card */
+  max-width: 500px;
+  margin: 0 auto -30px auto; /* Fingers hook and grip down over top edge of card */
   position: relative;
   z-index: 25;
   pointer-events: none;
+  user-select: none;
 }
 
-.robot-svg {
-  width: 255px;
-  height: 140px;
-  overflow: visible;
-  filter: drop-shadow(0 16px 32px rgba(0, 0, 0, 0.55));
+.robot-pose-stage {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  transition: opacity 0.35s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.robot-head-group {
-  transform-origin: 140px 125px;
+.robot-image-container {
+  position: relative;
+  width: 100%;
+  transform-origin: 62% 35%; /* Center of robot visor face */
   transition: transform 0.22s cubic-bezier(0.2, 0.9, 0.3, 1);
+  will-change: transform;
 }
 
-.robot-pupil {
-  transform-origin: center;
-  transition: transform 0.16s cubic-bezier(0.2, 0.9, 0.3, 1);
+.robot-realistic-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 18px 36px rgba(0, 0, 0, 0.75));
+  pointer-events: none;
 }
 
-.robot-eyelid {
-  transform-origin: top;
-  transform: scaleY(0);
-  transition: transform 0.08s ease;
+/* REAL-TIME OPTICAL HUD OVER ROBOT EYES */
+.robot-eyes-hud {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
 
-.robot-eyelid.auto-blink {
-  animation: robotNaturalBlink 4.2s infinite;
+.optic-reticle {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
 }
 
-@keyframes robotNaturalBlink {
-  0%, 93%, 97%, 100% { transform: scaleY(0); }
-  95% { transform: scaleY(1); }
+/* Precise Eye Coordinates calculated from 3D model render */
+.optic-left {
+  left: 59.2%;
+  top: 34.4%;
 }
 
-@keyframes beaconBreathe {
-  0%, 100% { fill: #10b981; filter: drop-shadow(0 0 2px #10b981); }
-  50% { fill: #34d399; filter: drop-shadow(0 0 7px #34d399); }
+.optic-right {
+  left: 66.4%;
+  top: 37.5%;
 }
 
-@keyframes beaconTyping {
-  0%, 100% { fill: #38bdf8; filter: drop-shadow(0 0 4px #38bdf8); }
-  50% { fill: #818cf8; filter: drop-shadow(0 0 9px #818cf8); }
+.optic-core {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #38bdf8;
+  box-shadow: 0 0 10px #38bdf8, 0 0 20px #0ea5e9;
+  transition: transform 0.14s cubic-bezier(0.2, 0.9, 0.3, 1), background 0.25s, box-shadow 0.25s;
+  display: block;
 }
 
-#robotBeacon {
-  animation: beaconBreathe 2.5s ease-in-out infinite;
-  transition: fill 0.3s;
+.optic-ring {
+  position: absolute;
+  width: 19px;
+  height: 19px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(56, 189, 248, 0.55);
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
+  transition: all 0.2s ease;
+  animation: opticBreathing 2.8s ease-in-out infinite;
 }
 
-#robotBeacon.typing-active {
-  animation: beaconTyping 0.5s ease-in-out infinite alternate !important;
+@keyframes opticBreathing {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.22); opacity: 0.95; }
 }
 
-.robot-hand {
-  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.65));
+/* Active Typing State on Eyes */
+.optic-reticle.active .optic-core {
+  transform: scale(1.35);
+  background: #67e8f9;
+  box-shadow: 0 0 14px #67e8f9, 0 0 26px #38bdf8, 0 0 40px #0284c7;
 }
 
-/* CELEBRATION ON SUCCESS */
-@keyframes robotHappyBounce {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-7px); }
+.optic-reticle.active .optic-ring {
+  border-color: #38bdf8;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.9);
+  animation: opticTypingSpin 0.7s linear infinite;
 }
 
-.robot-mascot-wrap.celebrating .robot-head-group {
-  animation: robotHappyBounce 0.35s ease infinite alternate !important;
+@keyframes opticTypingSpin {
+  0% { transform: rotate(0deg) scale(1.25); }
+  100% { transform: rotate(360deg) scale(1.25); }
 }
 
-/* ROBOT THUMBS-UP GESTURE */
-.robot-thumbs-up {
-  transform-origin: 226px 95px;
-  animation: thumbsUpSpring 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.35) forwards;
+/* Visor Holographic Hologram / Scanning Light Cone */
+.visor-scanner-beam {
+  position: absolute;
+  left: 62.8%;
+  top: 36%;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background: radial-gradient(ellipse at top, rgba(56, 189, 248, 0.16) 0%, rgba(99, 102, 241, 0.08) 45%, transparent 75%);
+  border-bottom-left-radius: 60px;
+  border-bottom-right-radius: 60px;
 }
 
-@keyframes thumbsUpSpring {
-  0% { transform: scale(0.2) rotate(-35deg); opacity: 0; }
-  60% { transform: scale(1.15) rotate(4deg); opacity: 1; }
-  85% { transform: scale(0.96) rotate(-1deg); }
-  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+.visor-scanner-beam.active {
+  opacity: 1;
+  width: 260px;
+  height: 320px;
+  transform: translateX(-50%);
+  animation: beamPulse 1.2s ease-in-out infinite alternate;
 }
 
-@keyframes thumbProudWiggle {
-  0%, 100% { transform: rotate(0deg) translateY(0); }
-  50% { transform: rotate(3.5deg) translateY(-2px); }
+@keyframes beamPulse {
+  0% { opacity: 0.4; filter: blur(2px); }
+  100% { opacity: 0.8; filter: blur(0px); }
 }
 
-.robot-mascot-wrap.celebrating .robot-thumbs-up {
-  animation: thumbProudWiggle 0.65s ease-in-out infinite alternate !important;
+/* ROBOT HEAD ABSORPTION PULSE (WHEN RECEIVING FLYING DATA) */
+@keyframes robotHeadAbsorbPulse {
+  0% { filter: drop-shadow(0 18px 36px rgba(0, 0, 0, 0.75)); }
+  50% { filter: drop-shadow(0 0 25px rgba(56, 189, 248, 0.95)) drop-shadow(0 0 45px rgba(16, 185, 129, 0.8)) drop-shadow(0 20px 40px rgba(0, 0, 0, 0.8)); }
+  100% { filter: drop-shadow(0 18px 36px rgba(0, 0, 0, 0.75)); }
 }
 
-/* ROBOT HEAD ABSORPTION PULSE */
-@keyframes headAbsorbPulse {
-  0% { filter: drop-shadow(0 0 0 rgba(56, 189, 248, 0)); }
-  50% { filter: drop-shadow(0 0 16px rgba(56, 189, 248, 0.85)) drop-shadow(0 0 25px rgba(16, 185, 129, 0.6)); }
-  100% { filter: drop-shadow(0 0 0 rgba(56, 189, 248, 0)); }
+.robot-image-container.absorbing {
+  animation: robotHeadAbsorbPulse 0.45s ease-out;
 }
 
-.robot-head-group.absorbing {
-  animation: headAbsorbPulse 0.4s ease-out;
+/* THUMBS-UP SUCCESS POSE STYLING */
+.robot-thumbs-stage {
+  animation: thumbsStageEntry 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.25) forwards;
+}
+
+@keyframes thumbsStageEntry {
+  0% {
+    opacity: 0;
+    transform: scale(0.92) translateY(25px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.thumbs-container {
+  transform-origin: center bottom;
+  animation: thumbsProudBreathing 3.6s ease-in-out infinite alternate;
+}
+
+@keyframes thumbsProudBreathing {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(-6px) scale(1.015); }
+}
+
+.thumb-glow-aura {
+  position: absolute;
+  left: 26%;
+  top: 24%;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(52, 211, 153, 0.65) 0%, rgba(16, 185, 129, 0.25) 45%, transparent 75%);
+  filter: blur(14px);
+  pointer-events: none;
+  animation: thumbAuraGlow 1.8s ease-in-out infinite alternate;
+}
+
+@keyframes thumbAuraGlow {
+  0% { transform: scale(0.85); opacity: 0.6; }
+  100% { transform: scale(1.35); opacity: 1; }
+}
+
+.thumb-sparkle-stars {
+  position: absolute;
+  left: 23%;
+  top: 17%;
+  width: 90px;
+  height: 90px;
+  pointer-events: none;
+}
+
+.sparkle-star {
+  position: absolute;
+  color: #34d399;
+  font-size: 16px;
+  filter: drop-shadow(0 0 6px #34d399);
+  animation: sparkleTwinkle 1.4s ease-in-out infinite alternate;
+}
+
+.sparkle-star.s1 { top: 0px; left: 12px; animation-delay: 0s; font-size: 18px; }
+.sparkle-star.s2 { top: 16px; left: 58px; animation-delay: 0.35s; font-size: 22px; }
+.sparkle-star.s3 { top: 52px; left: 2px; animation-delay: 0.7s; font-size: 16px; }
+.sparkle-star.s4 { top: 62px; left: 52px; animation-delay: 1.05s; font-size: 20px; }
+
+@keyframes sparkleTwinkle {
+  0% { transform: scale(0.6) rotate(0deg); opacity: 0.4; }
+  100% { transform: scale(1.35) rotate(35deg); opacity: 1; }
 }
 
 /* FLYING DATA PARTICLES OVERLAY */
@@ -662,13 +778,9 @@ a {
     padding: 20px 0 40px;
   }
 
-  .robot-svg {
-    width: 215px;
-    height: 118px;
-  }
-
-  .robot-mascot-wrap {
-    margin-bottom: -15px;
+  .robot-companion-wrap {
+    max-width: 100%;
+    margin-bottom: -22px;
   }
 
   .form-wrapper-card {
