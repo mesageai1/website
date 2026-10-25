@@ -64,8 +64,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Only mobile number is required
     if (!phone || phone.length < 7) {
-      showFieldError("mobileNumber", "Please enter a valid mobile number with country code");
+      showFieldError("mobileNumber", "Please enter a valid mobile number to continue.");
       hasError = true;
+      document.getElementById("mobileNumber").focus();
     }
 
     // Email is optional, but validate format if entered
@@ -75,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (hasError) {
-      showAlert("Please enter a valid mobile number to continue.", "error");
+      
       return;
     }
 
