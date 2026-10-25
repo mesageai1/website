@@ -157,19 +157,21 @@ function launchPaperPlane({ planeEl, fromEl, toEl, direction = 'forward', durati
     fill: 'forwards'
   });
 
-  animation.onfinish = () => {
+  let isDone = false;
+  const finishFlight = () => {
+    if (isDone) return;
+    isDone = true;
     planeEl.style.opacity = '0';
-    if (onComplete) onComplete();
-  };
-  // Fallback timer to guarantee execution even in background/headless tabs
-  setTimeout(() => {
-    planeEl.style.opacity = '0';
-    if (onComplete) {
+    if (typeof onComplete === 'function') {
       const cb = onComplete;
       onComplete = null;
       cb();
     }
-  }, duration + 50);
+  };
+
+  animation.onfinish = finishFlight;
+  // Fallback timer to guarantee single execution even in background/headless tabs
+  setTimeout(finishFlight, duration + 50);
 }
 
 // 1. Green Paper Plane: Customer WhatsApp -> AI or Live Agent
@@ -245,9 +247,9 @@ function fireWhiteBackwardSignal(callback) {
   });
 }
 
-// Typing Indicator
+// Typing Indicator (Clean WhatsApp business typing status)
 function showTyping(senderName) {
-  if (typingSender) typingSender.textContent = senderName;
+  if (typingSender) typingSender.textContent = 'MeSage Concierge';
   if (waTypingBox) waTypingBox.style.display = 'block';
   scrollWaCanvas();
 }
@@ -356,8 +358,19 @@ function addWaUserMessage(text, time = '14:15') {
   scrollWaCanvas();
 }
 
+let lastBotMessageText = '';
+let lastBotMessageTime = 0;
+
 function addWaBotMessage(text, time = '14:15') {
   if (!waChatStream) return;
+  const now = Date.now();
+  if (text === lastBotMessageText && (now - lastBotMessageTime < 1500)) {
+    console.warn('Prevented duplicate bot message');
+    return;
+  }
+  lastBotMessageText = text;
+  lastBotMessageTime = now;
+
   const item = document.createElement('div');
   item.className = 'wa-msg-row wa-bot';
   item.innerHTML = `
@@ -409,13 +422,9 @@ function addWaBrochureMessage(text, fileTitle, fileSize, promptText, time = '14:
 function addWaAgentMessage(text, time = '14:19') {
   if (!waChatStream) return;
   const item = document.createElement('div');
-  item.className = 'wa-msg-row wa-bot wa-agent-override';
+  item.className = 'wa-msg-row wa-bot';
   item.innerHTML = `
-    <div class="wa-agent-sender-tag">
-      <span class="agent-avatar-mini">S</span>
-      <span>Sarah Mitchell • Senior Property Advisor</span>
-    </div>
-    <div class="wa-bubble agent-bubble">
+    <div class="wa-bubble bot-bubble">
       <div class="wa-bubble-content">${formatMarkdown(text)}</div>
       <div class="wa-meta-time">
         <span>${time}</span>
@@ -428,12 +437,7 @@ function addWaAgentMessage(text, time = '14:19') {
 }
 
 function addWaHandoffBanner(html) {
-  if (!waChatStream) return;
-  const item = document.createElement('div');
-  item.className = 'wa-system-banner';
-  item.innerHTML = `<span>${html}</span>`;
-  waChatStream.appendChild(item);
-  scrollWaCanvas();
+  // Completely disabled: no agent joined banner or tag anywhere in WhatsApp
 }
 
 // Scheduling timer helper
@@ -483,11 +487,11 @@ function respondToInquiry(rawText, time) {
 
     scrollCrmCanvas();
 
-    showTyping('Sarah Mitchell');
+    showTyping('MeSage AI');
     scheduleNextForUser(() => {
       fireWhiteBackwardSignal(() => {
         hideTyping();
-        const priceMsg = "Hello! **Sarah Mitchell** here from the Sales Office. 👋<br><br>Our luxury 3 BHK residences start at **₹2.45 Cr all-inclusive** (approx. ₹13,500/sq.ft) for spacious 1,650 sq.ft layouts with private sundecks.<br><br>We also have exclusive festive payment schemes available. Would you like to review payment plans or schedule a site visit?";
+        const priceMsg = "Our luxury 3 BHK residences start at **₹2.45 Cr all-inclusive** (approx. ₹13,500/sq.ft) for spacious 1,650 sq.ft layouts with private sundecks.<br><br>We also have exclusive festive payment schemes available. Would you like to review payment plans or schedule a site visit?";
         addWaAgentMessage(priceMsg, time);
       });
     }, 1000);
@@ -503,7 +507,7 @@ function respondToInquiry(rawText, time) {
 
     scrollCrmCanvas();
 
-    showTyping('Sarah Mitchell');
+    showTyping('MeSage AI');
     scheduleNextForUser(() => {
       fireWhiteBackwardSignal(() => {
         hideTyping();
@@ -536,7 +540,7 @@ function respondToInquiry(rawText, time) {
     scheduleNextForUser(() => {
       fireIndigoBackwardSignal(() => {
         hideTyping();
-        const confirmMsg = `🎉 **Your VIP Site Visit is Confirmed!**<br><br>🗓️ **Schedule:** ${schedule}<br>📍 **Location:** Prime Residency Experience Center, Tower A<br>👤 **Host:** Sarah Mitchell will personally welcome you and guide your private model apartment tour.<br><br>A location pin, gate pass QR code, and confirmation details have been sent to your WhatsApp. We look forward to hosting you!`;
+        const confirmMsg = `🎉 **Your VIP Site Visit is Confirmed!**<br><br>🗓️ **Schedule:** ${schedule}<br>📍 **Location:** Prime Residency Experience Center, Tower A<br>👤 **Host:** Dedicated Relationship Manager will personally welcome you and guide your private model apartment tour.<br><br>A location pin, gate pass QR code, and confirmation details have been sent to your WhatsApp. We look forward to hosting you!`;
         addWaBotMessage(confirmMsg, time);
 
         const activeBadge = document.querySelector('.crm-active-badge');
@@ -629,11 +633,11 @@ function respondToInquiry(rawText, time) {
     if (colAgentInbetween) colAgentInbetween.classList.add('active-inbetween');
     if (agentPanelTitle) agentPanelTitle.textContent = "LIVE AGENT (ACTIVE)";
 
-    showTyping('Sarah Mitchell');
+    showTyping('MeSage AI');
     scheduleNextForUser(() => {
       fireWhiteBackwardSignal(() => {
         hideTyping();
-        addWaAgentMessage("Hello! **Sarah Mitchell** here from the Sales Office. 👋<br><br>I am happy to assist you personally with pricing quotes, festive payment schemes, and private model apartment tours. What can I help you with today?", time);
+        addWaAgentMessage("Our senior sales advisory team is available to assist you with bespoke pricing quotes, festive payment schemes, and private tours. What would you like to explore?", time);
       });
     }, 900);
     return;
@@ -690,7 +694,17 @@ window.handleUserSubmit = handleUserSubmit;
 // ==========================================================================
 // AUTONOMOUS SIMULATION (Plays natural dialogue without any clickable buttons!)
 // ==========================================================================
+let lastStage = -1;
+let lastStageTime = 0;
+
 function executeStage(stageNumber) {
+  const now = Date.now();
+  if (stageNumber === lastStage && (now - lastStageTime < 1000)) {
+    console.warn(`Prevented duplicate execution of stage ${stageNumber}`);
+    return;
+  }
+  lastStage = stageNumber;
+  lastStageTime = now;
   currentStage = stageNumber;
 
   switch (stageNumber) {
@@ -797,15 +811,15 @@ function executeStage(stageNumber) {
     }
 
     // -------------------------------------------------------------
-    // STAGE 7: Sarah Mitchell handles THING 1 (Exact Price Quote)
+    // STAGE 7: Live Agent Handles THING 1 (Exact Price Quote)
     // -------------------------------------------------------------
     case 7: {
-      showTyping('Sarah Mitchell');
+      showTyping('MeSage AI');
       // White Paper Plane flies from Agent to WhatsApp Customer
       fireWhiteBackwardSignal(() => {
         hideTyping();
         addWaAgentMessage(
-          "Hello Alex! **Sarah Mitchell** here from the Sales Office. 👋<br><br>Our luxury 3 BHK residences start at **₹2.45 Cr all-inclusive** (approx. ₹13,500/sq.ft) for spacious 1,650 sq.ft layouts with panoramic corner sundecks.<br><br>Would you like to review our flexible payment plans or schedule a site visit?",
+          "Our luxury 3 BHK residences start at **₹2.45 Cr all-inclusive** (approx. ₹13,500/sq.ft) for spacious 1,650 sq.ft layouts with panoramic corner sundecks.<br><br>Would you like to review our flexible payment plans or schedule a site visit?",
           "14:19"
         );
 
@@ -833,15 +847,15 @@ function executeStage(stageNumber) {
     }
 
     // -------------------------------------------------------------
-    // STAGE 9: Sarah Mitchell handles THING 2 (Payment Plans & Schemes)
+    // STAGE 9: Live Agent Handles THING 2 (Payment Plans & Schemes)
     // -------------------------------------------------------------
     case 9: {
-      showTyping('Sarah Mitchell');
+      showTyping('MeSage AI');
       // White Paper Plane flies from Agent to WhatsApp Customer
       fireWhiteBackwardSignal(() => {
         hideTyping();
         addWaAgentMessage(
-          "Yes, Alex! We are currently offering an exclusive **10:90 Festive Payment Scheme**:<br>• Pay just 10% on booking<br>• Zero Pre-EMI interest until possession<br>• Remaining 90% linked to construction milestones with top banking partners.<br><br>Would you like to schedule an exclusive VIP site visit to tour our model apartment this weekend?",
+          "We are currently offering an exclusive **10:90 Festive Payment Scheme**:<br>• Pay just 10% on booking<br>• Zero Pre-EMI interest until possession<br>• Remaining 90% linked to construction milestones with top banking partners.<br><br>Would you like to schedule an exclusive VIP site visit to tour our model apartment this weekend?",
           "14:20"
         );
 
@@ -892,7 +906,7 @@ function executeStage(stageNumber) {
       }
 
       addWaBotMessage(
-        "🎉 **Your VIP Site Visit is Confirmed!**<br><br>🗓️ **Schedule:** This Saturday at 11:00 AM<br>📍 **Location:** Prime Residency Experience Center, Tower A<br>👤 **Host:** Sarah Mitchell will personally welcome you and guide your private model apartment tour.<br><br>A location pin, gate pass QR code, and confirmation details have been sent to your WhatsApp. We look forward to hosting you!",
+        "🎉 **Your VIP Site Visit is Confirmed!**<br><br>🗓️ **Schedule:** This Saturday at 11:00 AM<br>📍 **Location:** Prime Residency Experience Center, Tower A<br>👤 **Host:** Dedicated Relationship Manager will personally welcome you and guide your private model apartment tour.<br><br>A location pin, gate pass QR code, and confirmation details have been sent to your WhatsApp. We look forward to hosting you!",
         "14:21"
       );
 
@@ -910,6 +924,8 @@ function restartSimulation() {
   clearTimeout(actionTimeout);
   isAutoPlaying = true;
   currentStage = 0;
+  lastStage = -1;
+  lastBotMessageText = '';
 
   // Clear chat
   if (waChatStream) waChatStream.innerHTML = '';
@@ -954,8 +970,11 @@ function restartSimulation() {
 }
 window.restartSimulation = restartSimulation;
 
-// Initialize on page load (handles both loading and already complete)
+// Initialize on page load (guaranteed single execution)
+let isDemoInitialized = false;
 function initDemo() {
+  if (isDemoInitialized) return;
+  isDemoInitialized = true;
   setTimeout(() => {
     executeStage(1);
   }, 600);

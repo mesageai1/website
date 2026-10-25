@@ -559,43 +559,11 @@ h1, h2, h3, p { margin-top: 0; }
   margin-left: auto;
 }
 
-/* 2. Bot Message: EXPLICITLY ON THE LEFT (RECEIVED SIDE - #202c33) */
+/* 2. Bot & Inbound Message: EXPLICITLY ON THE LEFT (RECEIVED SIDE - #202c33) */
 .wa-bubble.bot-bubble {
   background: #202c33;
   color: #e9edef;
   border-radius: 2px 12px 12px 12px;
-  max-width: 86%;
-  padding: 6px 9px 5px 9px;
-  margin-right: auto;
-}
-
-/* 3. Live Agent Override Message (#202c33 + #34d399 Accent Border) */
-.wa-agent-sender-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 9.5px;
-  font-weight: 700;
-  color: #34d399;
-  margin-bottom: 2px;
-  padding-left: 4px;
-}
-.agent-avatar-mini {
-  width: 13px;
-  height: 13px;
-  border-radius: 50%;
-  background: #34d399;
-  color: #0b141a;
-  font-size: 7.5px;
-  font-weight: 800;
-  display: inline-grid;
-  place-items: center;
-}
-.wa-bubble.agent-bubble {
-  background: #202c33;
-  color: #e9edef;
-  border-radius: 2px 12px 12px 12px;
-  border-left: 3px solid #34d399;
   max-width: 86%;
   padding: 6px 9px 5px 9px;
   margin-right: auto;
