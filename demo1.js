@@ -481,8 +481,6 @@ function respondToInquiry(rawText, time) {
     if (colAgentInbetween) colAgentInbetween.classList.add('active-inbetween');
     if (agentPanelTitle) agentPanelTitle.textContent = "LIVE AGENT (ACTIVE)";
 
-    addWaHandoffBanner("🤝 <strong>Senior Property Advisor Sarah Mitchell</strong> joined the chat to consult on pricing.");
-    if (waStatusText) waStatusText.textContent = "Chatting with Sarah Mitchell (Property Advisor)";
     scrollCrmCanvas();
 
     showTyping('Sarah Mitchell');
@@ -503,8 +501,6 @@ function respondToInquiry(rawText, time) {
     if (colAgentInbetween) colAgentInbetween.classList.add('active-inbetween');
     if (agentPanelTitle) agentPanelTitle.textContent = "LIVE AGENT (ACTIVE)";
 
-    addWaHandoffBanner("🤝 <strong>Senior Property Advisor Sarah Mitchell</strong> is consulting on payment schemes.");
-    if (waStatusText) waStatusText.textContent = "Chatting with Sarah Mitchell (Property Advisor)";
     scrollCrmCanvas();
 
     showTyping('Sarah Mitchell');
@@ -526,8 +522,6 @@ function respondToInquiry(rawText, time) {
     if (colAgentInbetween && colAgentInbetween.classList.contains('active-inbetween')) {
       colAgentInbetween.classList.remove('active-inbetween');
       if (agentPanelTitle) agentPanelTitle.textContent = "LIVE AGENT";
-      addWaHandoffBanner("⚡ <strong>Sarah Mitchell</strong> completed price &amp; payment consultation &amp; stepped out. <strong>Autonomous AI Concierge</strong> resumes the chat to confirm your appointment.");
-      if (waStatusText) waStatusText.textContent = "online";
     }
 
     let schedule = "This Saturday at 11:00 AM";
@@ -634,9 +628,6 @@ function respondToInquiry(rawText, time) {
   if (/(agent|human|person|call|phone|talk|representative|sales\s*rep)/i.test(text)) {
     if (colAgentInbetween) colAgentInbetween.classList.add('active-inbetween');
     if (agentPanelTitle) agentPanelTitle.textContent = "LIVE AGENT (ACTIVE)";
-
-    addWaHandoffBanner("🤝 <strong>Senior Property Advisor Sarah Mitchell</strong> joined the chat in-between.");
-    if (waStatusText) waStatusText.textContent = "Chatting with Sarah Mitchell (Property Advisor)";
 
     showTyping('Sarah Mitchell');
     scheduleNextForUser(() => {
@@ -758,28 +749,21 @@ function executeStage(stageNumber) {
     }
 
     // -------------------------------------------------------------
-    // STAGE 4: AI sends 3 BHK Specs + PDF Brochure Card
+    // STAGE 4: AI sends 3 BHK Specs + PDF Brochure Card (Single clean reply)
     // -------------------------------------------------------------
     case 4: {
-      addWaBotMessage(
-        "Our **3 BHK Premium Residences** range from **1,450 to 1,850 sq.ft** with panoramic skyline views, private sundecks, Italian marble flooring, and smart home automation.<br><br>📍 **Location:** Central Business District, Sector 48 (5 mins from Metro &amp; Express Highway).",
+      addWaBrochureMessage(
+        "Our **3 BHK Premium Residences** range from **1,450 to 1,850 sq.ft** with panoramic skyline views, private sundecks, Italian marble flooring, and smart home automation.<br><br>📍 **Location:** Central Business District, Sector 48 (5 mins from Metro &amp; Express Highway).<br><br>Here is our official project brochure &amp; floor plans:",
+        "Prime_Residency_3BHK_Brochure.pdf",
+        "4.2 MB • Verified PDF Brochure",
+        "Feel free to ask about pricing, payment plans, or booking a private site visit.",
         "14:16"
       );
 
+      // Auto advance to Thing 1: Price inquiry
       scheduleNext(() => {
-        addWaBrochureMessage(
-          "Here is our complete project brochure with 3 BHK floor plans, master layout, and 40+ world-class club amenities:",
-          "Prime_Residency_3BHK_Brochure.pdf",
-          "4.2 MB • Verified PDF Brochure",
-          "Feel free to ask about pricing, payment plans, or booking a private site visit.",
-          "14:17"
-        );
-
-        // Auto advance to Thing 1: Price inquiry
-        scheduleNext(() => {
-          executeStage(5);
-        }, 3800);
-      }, 800);
+        executeStage(5);
+      }, 4200);
       break;
     }
 
@@ -804,14 +788,11 @@ function executeStage(stageNumber) {
     case 6: {
       if (colAgentInbetween) colAgentInbetween.classList.add('active-inbetween');
       if (agentPanelTitle) agentPanelTitle.textContent = "LIVE AGENT (ACTIVE)";
-
-      addWaHandoffBanner("🤝 <strong>Senior Property Advisor Sarah Mitchell</strong> joined the chat in-between.");
-      if (waStatusText) waStatusText.textContent = "Chatting with Sarah Mitchell (Property Advisor)";
       scrollCrmCanvas();
 
       scheduleNext(() => {
         executeStage(7);
-      }, 1000);
+      }, 900);
       break;
     }
 
@@ -882,9 +863,6 @@ function executeStage(stageNumber) {
       // AGENT STEPS OUT SMOOTHLY (Panel space returns to blank, 0px shift!)
       if (colAgentInbetween) colAgentInbetween.classList.remove('active-inbetween');
       if (agentPanelTitle) agentPanelTitle.textContent = "LIVE AGENT";
-
-      addWaHandoffBanner("⚡ <strong>Sarah Mitchell</strong> completed pricing &amp; payment consultation &amp; stepped out. <strong>Autonomous AI Concierge</strong> resumes the chat to confirm your appointment.");
-      if (waStatusText) waStatusText.textContent = "online";
 
       scheduleNext(() => {
         // Green Paper Plane flies from Customer all the way across to AI Bot!
