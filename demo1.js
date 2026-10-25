@@ -161,6 +161,15 @@ function launchPaperPlane({ planeEl, fromEl, toEl, direction = 'forward', durati
     planeEl.style.opacity = '0';
     if (onComplete) onComplete();
   };
+  // Fallback timer to guarantee execution even in background/headless tabs
+  setTimeout(() => {
+    planeEl.style.opacity = '0';
+    if (onComplete) {
+      const cb = onComplete;
+      onComplete = null;
+      cb();
+    }
+  }, duration + 50);
 }
 
 // 1. Green Paper Plane: Customer WhatsApp -> AI or Live Agent
@@ -240,13 +249,11 @@ function fireWhiteBackwardSignal(callback) {
 function showTyping(senderName) {
   if (typingSender) typingSender.textContent = senderName;
   if (waTypingBox) waTypingBox.style.display = 'block';
-  updateSignalLevel(true);
   scrollWaCanvas();
 }
 
 function hideTyping() {
   if (waTypingBox) waTypingBox.style.display = 'none';
-  updateSignalLevel(true);
 }
 
 function formatMarkdown(text) {
@@ -427,7 +434,6 @@ function addWaHandoffBanner(html) {
   item.innerHTML = `<span>${html}</span>`;
   waChatStream.appendChild(item);
   scrollWaCanvas();
-  updateSignalLevel(true);
 }
 
 // Scheduling timer helper
@@ -452,7 +458,7 @@ function processCustomInquiry(rawText) {
   // 1. Add user message to WhatsApp & CRM
   addWaUserMessage(rawText, time);
 
-  // 2. Fire Green Forward Signal to AI / Agent
+  // 2. Fire Green Forward Paper Plane to AI / Agent
   fireGreenForwardSignal(() => {
     scheduleNextForUser(() => {
       respondToInquiry(rawText, time);
@@ -469,40 +475,58 @@ function respondToInquiry(rawText, time) {
   const text = rawText.toLowerCase().trim();
 
   // -------------------------------------------------------------
-  // 1. INTENT: PRICE / PAYMENT PLAN / COST / DISCOUNT / OFFERS
-  // Handled by LIVE HUMAN AGENT Sarah Mitchell stepping in!
+  // 1. INTENT: PRICE / COST / QUOTE (Human Agent Thing 1)
   // -------------------------------------------------------------
-  if (/(price|cost|how much|rate|payment|scheme|discount|offer|budget|cr|lakh|inr|₹|emi|downpayment|quote|pricing|deal)/i.test(text)) {
-    // Sarah Mitchell steps in without moving Customer or AI panel!
+  if (/(price|cost|how much|rate|quote|pricing|budget|cr|lakh|inr|₹)/i.test(text)) {
     if (colAgentInbetween) colAgentInbetween.classList.add('active-inbetween');
     if (agentPanelTitle) agentPanelTitle.textContent = "LIVE AGENT (ACTIVE)";
 
-    addWaHandoffBanner("🤝 <strong>Senior Property Advisor Sarah Mitchell</strong> joined the chat in-between.");
+    addWaHandoffBanner("🤝 <strong>Senior Property Advisor Sarah Mitchell</strong> joined the chat to consult on pricing.");
     if (waStatusText) waStatusText.textContent = "Chatting with Sarah Mitchell (Property Advisor)";
-    updateSignalLevel(true);
     scrollCrmCanvas();
 
     showTyping('Sarah Mitchell');
     scheduleNextForUser(() => {
       fireWhiteBackwardSignal(() => {
         hideTyping();
-        const priceMsg = "Hello! **Sarah Mitchell** here from the Sales Office. 👋<br><br>Our luxury 3 BHK residences start at **₹2.45 Cr all-inclusive** (approx. ₹13,500/sq.ft) with an exclusive **10:90 festive payment scheme** (pay 10% on booking, zero pre-EMI until possession).<br><br>When would you like to come in for an exclusive VIP site visit and private model apartment tour?";
+        const priceMsg = "Hello! **Sarah Mitchell** here from the Sales Office. 👋<br><br>Our luxury 3 BHK residences start at **₹2.45 Cr all-inclusive** (approx. ₹13,500/sq.ft) for spacious 1,650 sq.ft layouts with private sundecks.<br><br>We also have exclusive festive payment schemes available. Would you like to review payment plans or schedule a site visit?";
         addWaAgentMessage(priceMsg, time);
       });
-    }, 1100);
+    }, 1000);
     return;
   }
 
   // -------------------------------------------------------------
-  // 2. INTENT: APPOINTMENT / SITE VISIT / BOOKING / SCHEDULE / SLOTS
-  // Handled by AUTONOMOUS AI CONCIERGE taking over!
+  // 2. INTENT: PAYMENT PLANS / SCHEMES / EMI (Human Agent Thing 2)
+  // -------------------------------------------------------------
+  if (/(payment|scheme|plan|subvention|emi|downpayment|financing|10:90|discount|offer|deal)/i.test(text)) {
+    if (colAgentInbetween) colAgentInbetween.classList.add('active-inbetween');
+    if (agentPanelTitle) agentPanelTitle.textContent = "LIVE AGENT (ACTIVE)";
+
+    addWaHandoffBanner("🤝 <strong>Senior Property Advisor Sarah Mitchell</strong> is consulting on payment schemes.");
+    if (waStatusText) waStatusText.textContent = "Chatting with Sarah Mitchell (Property Advisor)";
+    scrollCrmCanvas();
+
+    showTyping('Sarah Mitchell');
+    scheduleNextForUser(() => {
+      fireWhiteBackwardSignal(() => {
+        hideTyping();
+        const planMsg = "Yes, absolutely! We currently offer an exclusive **10:90 Festive Payment Scheme**:<br>• Pay just 10% on booking<br>• Zero Pre-EMI interest until possession<br>• Remaining 90% linked to construction milestones with top banking partners.<br><br>When would you like to schedule an exclusive VIP site visit and private model apartment tour?";
+        addWaAgentMessage(planMsg, time);
+      });
+    }, 1000);
+    return;
+  }
+
+  // -------------------------------------------------------------
+  // 3. INTENT: APPOINTMENT / SITE VISIT / BOOKING -> RESTART WITH AI REPLIES!
   // -------------------------------------------------------------
   if (/(book|appointment|visit|tour|schedule|slot|time|date|tomorrow|saturday|sunday|weekend|monday|tuesday|wednesday|thursday|friday|come|coming)/i.test(text)) {
-    // If agent was active, agent steps out gracefully, AI confirms
+    // If agent was active, agent steps out gracefully, AI confirms!
     if (colAgentInbetween && colAgentInbetween.classList.contains('active-inbetween')) {
       colAgentInbetween.classList.remove('active-inbetween');
       if (agentPanelTitle) agentPanelTitle.textContent = "LIVE AGENT";
-      addWaHandoffBanner("⚡ <strong>Sarah Mitchell</strong> completed pricing consultation &amp; stepped out. <strong>Autonomous AI Concierge</strong> takes over to confirm your booking.");
+      addWaHandoffBanner("⚡ <strong>Sarah Mitchell</strong> completed price &amp; payment consultation &amp; stepped out. <strong>Autonomous AI Concierge</strong> resumes the chat to confirm your appointment.");
       if (waStatusText) waStatusText.textContent = "online";
     }
 
@@ -533,7 +557,7 @@ function respondToInquiry(rawText, time) {
   }
 
   // -------------------------------------------------------------
-  // 3. INTENT: BROCHURE / FLOOR PLANS / CATALOG / PDF / LAYOUT
+  // 4. INTENT: BROCHURE / FLOOR PLANS / CATALOG / PDF / LAYOUT
   // -------------------------------------------------------------
   if (/(brochure|floor\s*plan|plan|pdf|catalog|layout|master\s*plan|document)/i.test(text)) {
     showTyping('MeSage AI');
@@ -553,7 +577,7 @@ function respondToInquiry(rawText, time) {
   }
 
   // -------------------------------------------------------------
-  // 4. INTENT: CONFIGURATIONS / 2 BHK / 3 BHK / 4 BHK / PENTHOUSE
+  // 5. INTENT: CONFIGURATIONS / 2 BHK / 3 BHK / 4 BHK / PENTHOUSE
   // -------------------------------------------------------------
   if (/(2\s*bhk|3\s*bhk|4\s*bhk|penthouse|bhk|bedroom|sqft|sq\.ft|size|area|config)/i.test(text)) {
     showTyping('MeSage AI');
@@ -575,7 +599,7 @@ function respondToInquiry(rawText, time) {
   }
 
   // -------------------------------------------------------------
-  // 5. INTENT: LOCATION / WHERE / SECTOR / METRO / HIGHWAY
+  // 6. INTENT: LOCATION / WHERE / SECTOR / METRO / HIGHWAY
   // -------------------------------------------------------------
   if (/(where|location|address|sector|metro|highway|airport|distance|situated|map)/i.test(text)) {
     showTyping('MeSage AI');
@@ -590,7 +614,7 @@ function respondToInquiry(rawText, time) {
   }
 
   // -------------------------------------------------------------
-  // 6. INTENT: AMENITIES / CLUBHOUSE / POOL / GYM / SECURITY
+  // 7. INTENT: AMENITIES / CLUBHOUSE / POOL / GYM / SECURITY
   // -------------------------------------------------------------
   if (/(amenit|facilit|pool|gym|club|garden|security|park|sports|tennis|squash)/i.test(text)) {
     showTyping('MeSage AI');
@@ -605,7 +629,7 @@ function respondToInquiry(rawText, time) {
   }
 
   // -------------------------------------------------------------
-  // 7. INTENT: TALK TO HUMAN / AGENT / CALL
+  // 8. INTENT: TALK TO HUMAN / AGENT / CALL
   // -------------------------------------------------------------
   if (/(agent|human|person|call|phone|talk|representative|sales\s*rep)/i.test(text)) {
     if (colAgentInbetween) colAgentInbetween.classList.add('active-inbetween');
@@ -613,20 +637,19 @@ function respondToInquiry(rawText, time) {
 
     addWaHandoffBanner("🤝 <strong>Senior Property Advisor Sarah Mitchell</strong> joined the chat in-between.");
     if (waStatusText) waStatusText.textContent = "Chatting with Sarah Mitchell (Property Advisor)";
-    updateSignalLevel(true);
 
     showTyping('Sarah Mitchell');
     scheduleNextForUser(() => {
       fireWhiteBackwardSignal(() => {
         hideTyping();
-        addWaAgentMessage("Hello! **Sarah Mitchell** here from the Sales Office. 👋<br><br>I am happy to assist you personally with customized floor plans, festive pricing schemes, and private tours. What can I help you with today?", time);
+        addWaAgentMessage("Hello! **Sarah Mitchell** here from the Sales Office. 👋<br><br>I am happy to assist you personally with pricing quotes, festive payment schemes, and private model apartment tours. What can I help you with today?", time);
       });
     }, 900);
     return;
   }
 
   // -------------------------------------------------------------
-  // 8. INTENT: REPLAY / RESET / RESTART
+  // 9. INTENT: REPLAY / RESET / RESTART
   // -------------------------------------------------------------
   if (/(replay|reset|restart|start\s*over)/i.test(text)) {
     restartSimulation();
@@ -634,7 +657,7 @@ function respondToInquiry(rawText, time) {
   }
 
   // -------------------------------------------------------------
-  // 9. INTENT: GREETINGS / HELLO / HI
+  // 10. INTENT: GREETINGS / HELLO / HI
   // -------------------------------------------------------------
   if (/(hi|hello|hey|good\s*(morning|afternoon|evening))/i.test(text)) {
     showTyping('MeSage AI');
@@ -649,13 +672,13 @@ function respondToInquiry(rawText, time) {
   }
 
   // -------------------------------------------------------------
-  // 10. DEFAULT CONTEXTUAL ASSISTANT REPLY
+  // 11. DEFAULT CONTEXTUAL ASSISTANT REPLY
   // -------------------------------------------------------------
   showTyping('MeSage AI');
   scheduleNextForUser(() => {
     fireIndigoBackwardSignal(() => {
       hideTyping();
-      const resp = "Thank you for asking! Prime Residency offers world-class luxury residences in Sector 48 with panoramic views and smart home automation.<br><br>You can ask me anything about:<br>• **Configurations:** 2 BHK, 3 BHK, and 4 BHK Penthouses<br>• **Brochure:** Instant PDF download with floor plans<br>• **Pricing &amp; Offers:** Live agent consultation<br>• **Site Visit Booking:** Select your preferred date &amp; time";
+      const resp = "Thank you for asking! Prime Residency offers world-class luxury residences in Sector 48 with panoramic views and smart home automation.<br><br>You can ask me anything about:<br>• **Configurations:** 2 BHK, 3 BHK, and 4 BHK Penthouses<br>• **Brochure:** Instant PDF download with floor plans<br>• **Pricing &amp; Payment Plans:** Live agent consultation<br>• **Site Visit Booking:** Select your preferred date &amp; time";
       addWaBotMessage(resp, time);
     });
   }, 800);
@@ -686,7 +709,8 @@ function executeStage(stageNumber) {
     case 1: {
       addWaUserMessage("Hi, I am looking for a luxury apartment in Prime Residency. What configurations are available?", "14:15");
 
-      fireGreenForwardSignal(() => {
+      // Green Paper Plane flies from WhatsApp Phone all the way to AI Bot!
+      fireGreenForwardSignal(colAiBot, () => {
         scheduleNext(() => {
           showTyping('MeSage AI');
           fireIndigoBackwardSignal(() => {
@@ -720,7 +744,8 @@ function executeStage(stageNumber) {
     case 3: {
       addWaUserMessage("Tell me more about the 3 BHK floor plans and brochure.", "14:16");
 
-      fireGreenForwardSignal(() => {
+      // Green Paper Plane flies from WhatsApp Phone all the way to AI Bot!
+      fireGreenForwardSignal(colAiBot, () => {
         scheduleNext(() => {
           showTyping('MeSage AI');
           fireIndigoBackwardSignal(() => {
@@ -750,7 +775,7 @@ function executeStage(stageNumber) {
           "14:17"
         );
 
-        // Auto advance to price inquiry
+        // Auto advance to Thing 1: Price inquiry
         scheduleNext(() => {
           executeStage(5);
         }, 3800);
@@ -759,16 +784,16 @@ function executeStage(stageNumber) {
     }
 
     // -------------------------------------------------------------
-    // STAGE 5: Buyer asks PRICE -> HANDLED BY LIVE AGENT!
+    // STAGE 5: HUMAN AGENT THING 1 — Buyer asks PRICE
     // -------------------------------------------------------------
     case 5: {
-      addWaUserMessage("What is the exact price and available payment schemes?", "14:18");
+      addWaUserMessage("What is the exact price for the 3 BHK luxury residences?", "14:18");
 
-      fireGreenForwardSignal(() => {
-        // AGENT COMES IN-BETWEEN!
+      // Green Paper Plane flies to Agent panel
+      fireGreenForwardSignal(colAgentInbetween, () => {
         scheduleNext(() => {
           executeStage(6);
-        }, 900);
+        }, 800);
       });
       break;
     }
@@ -782,57 +807,94 @@ function executeStage(stageNumber) {
 
       addWaHandoffBanner("🤝 <strong>Senior Property Advisor Sarah Mitchell</strong> joined the chat in-between.");
       if (waStatusText) waStatusText.textContent = "Chatting with Sarah Mitchell (Property Advisor)";
-
-      updateSignalLevel(true);
       scrollCrmCanvas();
 
       scheduleNext(() => {
         executeStage(7);
-      }, 1100);
+      }, 1000);
       break;
     }
 
     // -------------------------------------------------------------
-    // STAGE 7: Sarah Mitchell quotes price via Solid White Ball
+    // STAGE 7: Sarah Mitchell handles THING 1 (Exact Price Quote)
     // -------------------------------------------------------------
     case 7: {
       showTyping('Sarah Mitchell');
+      // White Paper Plane flies from Agent to WhatsApp Customer
       fireWhiteBackwardSignal(() => {
         hideTyping();
         addWaAgentMessage(
-          "Hello Alex! **Sarah Mitchell** here from the Sales Office. 👋<br><br>Our 3 BHK luxury residences start at **₹2.45 Cr all-inclusive** with an exclusive **10:90 festive payment scheme** and zero pre-EMI until possession.<br><br>Would you like to schedule an exclusive VIP site visit and private model apartment tour?",
+          "Hello Alex! **Sarah Mitchell** here from the Sales Office. 👋<br><br>Our luxury 3 BHK residences start at **₹2.45 Cr all-inclusive** (approx. ₹13,500/sq.ft) for spacious 1,650 sq.ft layouts with panoramic corner sundecks.<br><br>Would you like to review our flexible payment plans or schedule a site visit?",
           "14:19"
         );
 
-        // Auto-advance naturally (Customer books appointment)
+        // Auto-advance to THING 2: Payment Plans inquiry
         scheduleNext(() => {
           executeStage(8);
-        }, 4000);
+        }, 4200);
       });
       break;
     }
 
     // -------------------------------------------------------------
-    // STAGE 8: Customer wants appointment -> AGENT DROPS OUT, AI TAKES OVER!
+    // STAGE 8: HUMAN AGENT THING 2 — Customer asks PAYMENT PLANS
     // -------------------------------------------------------------
     case 8: {
-      addWaUserMessage("I want to book an appointment for a site visit this Saturday at 11:00 AM.", "14:20");
+      addWaUserMessage("Are there any flexible payment plans or festive schemes available?", "14:20");
 
-      // AGENT DROPS OUT SMOOTHLY (Customer & AI panel never move!)
+      // Green Paper Plane flies to Agent panel
+      fireGreenForwardSignal(colAgentInbetween, () => {
+        scheduleNext(() => {
+          executeStage(9);
+        }, 700);
+      });
+      break;
+    }
+
+    // -------------------------------------------------------------
+    // STAGE 9: Sarah Mitchell handles THING 2 (Payment Plans & Schemes)
+    // -------------------------------------------------------------
+    case 9: {
+      showTyping('Sarah Mitchell');
+      // White Paper Plane flies from Agent to WhatsApp Customer
+      fireWhiteBackwardSignal(() => {
+        hideTyping();
+        addWaAgentMessage(
+          "Yes, Alex! We are currently offering an exclusive **10:90 Festive Payment Scheme**:<br>• Pay just 10% on booking<br>• Zero Pre-EMI interest until possession<br>• Remaining 90% linked to construction milestones with top banking partners.<br><br>Would you like to schedule an exclusive VIP site visit to tour our model apartment this weekend?",
+          "14:20"
+        );
+
+        // Auto-advance to AI RESTART: Customer books appointment
+        scheduleNext(() => {
+          executeStage(10);
+        }, 4500);
+      });
+      break;
+    }
+
+    // -------------------------------------------------------------
+    // STAGE 10: RESTART WITH AI REPLIES — Customer books appointment!
+    // Agent steps out gracefully; AI Concierge takes over!
+    // -------------------------------------------------------------
+    case 10: {
+      addWaUserMessage("That sounds great! Can I book an appointment for a VIP site visit this Saturday at 11:00 AM?", "14:21");
+
+      // AGENT STEPS OUT SMOOTHLY (Panel space returns to blank, 0px shift!)
       if (colAgentInbetween) colAgentInbetween.classList.remove('active-inbetween');
       if (agentPanelTitle) agentPanelTitle.textContent = "LIVE AGENT";
 
-      addWaHandoffBanner("⚡ <strong>Sarah Mitchell</strong> completed pricing consultation &amp; stepped out. <strong>Autonomous AI Concierge</strong> takes over to confirm your booking.");
+      addWaHandoffBanner("⚡ <strong>Sarah Mitchell</strong> completed pricing &amp; payment consultation &amp; stepped out. <strong>Autonomous AI Concierge</strong> resumes the chat to confirm your appointment.");
       if (waStatusText) waStatusText.textContent = "online";
 
       scheduleNext(() => {
-        updateSignalLevel(true);
-        fireGreenForwardSignal(() => {
+        // Green Paper Plane flies from Customer all the way across to AI Bot!
+        fireGreenForwardSignal(colAiBot, () => {
           scheduleNext(() => {
             showTyping('MeSage AI');
+            // Indigo Paper Plane flies all the way across from AI Bot to Customer!
             fireIndigoBackwardSignal(() => {
               hideTyping();
-              executeStage(9);
+              executeStage(11);
             });
           }, 700);
         });
@@ -841,9 +903,9 @@ function executeStage(stageNumber) {
     }
 
     // -------------------------------------------------------------
-    // STAGE 9: AI Confirms Site Visit Booking! (NO BUTTONS!)
+    // STAGE 11: Autonomous AI Confirms Site Visit Booking!
     // -------------------------------------------------------------
-    case 9: {
+    case 11: {
       const activeBadge = document.querySelector('.crm-active-badge');
       if (activeBadge) {
         activeBadge.textContent = "Visit Booked";
@@ -852,14 +914,14 @@ function executeStage(stageNumber) {
       }
 
       addWaBotMessage(
-        "🎉 **Your VIP Site Visit is Confirmed!**<br><br>🗓️ **Schedule:** This Saturday at 11:00 AM<br>📍 **Location:** Prime Residency Experience Center, Tower A<br>👤 **Host:** Sarah Mitchell will personally welcome you and guide your model apartment tour.<br><br>A location pin, gate pass QR code, and confirmation details have been sent to your WhatsApp. We look forward to hosting you!",
+        "🎉 **Your VIP Site Visit is Confirmed!**<br><br>🗓️ **Schedule:** This Saturday at 11:00 AM<br>📍 **Location:** Prime Residency Experience Center, Tower A<br>👤 **Host:** Sarah Mitchell will personally welcome you and guide your private model apartment tour.<br><br>A location pin, gate pass QR code, and confirmation details have been sent to your WhatsApp. We look forward to hosting you!",
         "14:21"
       );
 
-      // Auto replay after 12s in a continuous loop for visitors watching
+      // Auto replay after 14s in a continuous loop for visitors watching
       scheduleNext(() => {
         restartSimulation();
-      }, 12000);
+      }, 14000);
       break;
     }
   }
@@ -883,11 +945,15 @@ function restartSimulation() {
   if (colAgentInbetween) colAgentInbetween.classList.remove('active-inbetween');
   if (agentPanelTitle) agentPanelTitle.textContent = "LIVE AGENT";
 
-  // Reset Signal Orbs
-  if (orbGreenForward) orbGreenForward.classList.remove('shooting-right');
-  if (orbIndigoBackward) orbIndigoBackward.classList.remove('shooting-left');
-  if (orbWhiteBackward) orbWhiteBackward.classList.remove('shooting-left');
-  if (connectorTrackHolder) connectorTrackHolder.style.top = '95px';
+  // Reset Paper Planes
+  [planeGreen, planeIndigo, planeWhite].forEach(plane => {
+    if (plane) {
+      if (plane.getAnimations) {
+        plane.getAnimations().forEach(anim => anim.cancel());
+      }
+      plane.style.opacity = '0';
+    }
+  });
 
   // Reset AI Robot Stage
   if (robotFaceCore) robotFaceCore.style.transform = 'scale(1)';
@@ -910,9 +976,15 @@ function restartSimulation() {
 }
 window.restartSimulation = restartSimulation;
 
-// Initialize on DOM load
-window.addEventListener('DOMContentLoaded', () => {
+// Initialize on page load (handles both loading and already complete)
+function initDemo() {
   setTimeout(() => {
     executeStage(1);
   }, 600);
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initDemo);
+} else {
+  initDemo();
+}
