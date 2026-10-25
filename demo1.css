@@ -549,48 +549,24 @@ h1, h2, h3, p { margin-top: 0; }
   color: #ffffff;
 }
 
-/* 1. Customer User Message: EXPLICITLY ON THE RIGHT (SENT SIDE - #005c4b) */
+/* 1. Customer User Message: EXPLICITLY ON THE RIGHT (SENT SIDE - #005c4b, Clean Crisp Corners - No Corrupted Tails) */
 .wa-bubble.customer-bubble {
   background: #005c4b;
   color: #e9edef;
-  border-radius: 8px 8px 0px 8px;
+  border-radius: 12px 12px 2px 12px;
   max-width: 82%;
   padding: 6px 9px 5px 9px;
   margin-left: auto;
-}
-/* Authentic WhatsApp Outgoing Tail on Top-Right */
-.wa-bubble.customer-bubble::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: -8px;
-  width: 8px;
-  height: 13px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 13' width='8' height='13'%3E%3Cpath fill='%23005c4b' d='M5.188 1H0v11.193l6.467-8.625C7.526 2.412 6.958 1 5.188 1z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-size: 8px 13px;
 }
 
 /* 2. Bot Message: EXPLICITLY ON THE LEFT (RECEIVED SIDE - #202c33) */
 .wa-bubble.bot-bubble {
   background: #202c33;
   color: #e9edef;
-  border-radius: 0px 8px 8px 8px;
+  border-radius: 2px 12px 12px 12px;
   max-width: 86%;
   padding: 6px 9px 5px 9px;
   margin-right: auto;
-}
-/* Authentic WhatsApp Incoming Tail on Top-Left */
-.wa-bubble.bot-bubble::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -8px;
-  width: 8px;
-  height: 13px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 13' width='8' height='13'%3E%3Cpath fill='%23202c33' d='M2.812 1H8v11.193L1.533 3.568C.474 2.412 1.042 1 2.812 1z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-size: 8px 13px;
 }
 
 /* 3. Live Agent Override Message (#202c33 + #34d399 Accent Border) */
@@ -618,22 +594,11 @@ h1, h2, h3, p { margin-top: 0; }
 .wa-bubble.agent-bubble {
   background: #202c33;
   color: #e9edef;
-  border-radius: 0px 8px 8px 8px;
+  border-radius: 2px 12px 12px 12px;
   border-left: 3px solid #34d399;
   max-width: 86%;
   padding: 6px 9px 5px 9px;
   margin-right: auto;
-}
-.wa-bubble.agent-bubble::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -8px;
-  width: 8px;
-  height: 13px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 13' width='8' height='13'%3E%3Cpath fill='%23202c33' d='M2.812 1H8v11.193L1.533 3.568C.474 2.412 1.042 1 2.812 1z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-size: 8px 13px;
 }
 
 /* Timestamp & Blue Double Checkmarks */
@@ -881,21 +846,6 @@ h1, h2, h3, p { margin-top: 0; }
   background: rgba(99, 102, 241, 0.35);
   color: #ffffff;
   transform: translateY(-1px);
-}
-.phone-type-hint {
-  text-align: center;
-  font-size: 11.5px;
-  color: #94a3b8;
-  margin-top: 10px;
-}
-.phone-type-hint span {
-  color: var(--green-light);
-  font-weight: 700;
-}
-.phone-type-hint em {
-  color: #e2e8f0;
-  font-style: normal;
-  font-weight: 600;
 }
 
 /* ==========================================================================
