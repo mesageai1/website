@@ -285,35 +285,45 @@ a {
 
 /* ROBOT THUMBS-UP GESTURE */
 .robot-thumbs-up {
-  transform-origin: 226px 95px;
-  animation: thumbsUpSpring 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.35) forwards;
+  transform-origin: 233px 92px;
+  animation: thumbsUpEntranceAndWiggle 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-@keyframes thumbsUpSpring {
-  0% { transform: scale(0.2) rotate(-35deg); opacity: 0; }
-  60% { transform: scale(1.15) rotate(4deg); opacity: 1; }
-  85% { transform: scale(0.96) rotate(-1deg); }
-  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+@keyframes thumbsUpEntranceAndWiggle {
+  0% { transform: scale(0.2) rotate(-30deg) translateY(20px); opacity: 0; }
+  50% { transform: scale(1.12) rotate(4deg) translateY(-4px); opacity: 1; }
+  75% { transform: scale(0.97) rotate(-2deg) translateY(0); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg) translateY(0); opacity: 1; }
 }
 
 @keyframes thumbProudWiggle {
   0%, 100% { transform: rotate(0deg) translateY(0); }
-  50% { transform: rotate(3.5deg) translateY(-2px); }
+  50% { transform: rotate(2.5deg) translateY(-2px); }
 }
 
-.robot-mascot-wrap.celebrating .robot-thumbs-up {
-  animation: thumbProudWiggle 0.65s ease-in-out infinite alternate !important;
+.robot-mascot-wrap.celebrating .robot-thumbs-up.wiggling {
+  animation: thumbProudWiggle 1.4s ease-in-out infinite alternate !important;
 }
 
-/* ROBOT BRAIN ABSORPTION PULSE (WHEN RECEIVING FLYING DATA) */
+/* ROBOT BRAIN ABSORPTION PULSE (WHEN RECEIVING FLYING DATA AT TOP OF HEAD) */
 @keyframes headAbsorbPulse {
   0% { filter: drop-shadow(0 0 0 rgba(56, 189, 248, 0)); }
-  50% { filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.95)) drop-shadow(0 0 35px rgba(16, 185, 129, 0.75)); }
+  50% { filter: drop-shadow(0 -12px 25px rgba(56, 189, 248, 0.95)) drop-shadow(0 -18px 40px rgba(16, 185, 129, 0.85)); }
   100% { filter: drop-shadow(0 0 0 rgba(56, 189, 248, 0)); }
 }
 
 .robot-head-group.absorbing {
   animation: headAbsorbPulse 0.4s ease-out;
+}
+
+@keyframes beaconGlowFlash {
+  0% { transform: scale(1); fill: #38bdf8; filter: drop-shadow(0 -2px 6px #38bdf8); }
+  50% { transform: scale(2.2); fill: #34d399; filter: drop-shadow(0 -6px 18px #34d399) drop-shadow(0 0 25px #38bdf8); }
+  100% { transform: scale(1); fill: #10b981; filter: drop-shadow(0 -2px 6px #10b981); }
+}
+
+#robotBeacon.beacon-flash {
+  animation: beaconGlowFlash 0.35s ease-out !important;
 }
 
 /* FLYING DATA PARTICLES OVERLAY */

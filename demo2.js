@@ -319,16 +319,19 @@ document.addEventListener("DOMContentLoaded", () => {
   // ==========================================
   async function animateFormDetailsFlyingToRobot() {
     const overlay = document.getElementById("flyingDataOverlay");
-    const targetEl = robotBeacon || robotHead;
-    if (!overlay || !targetEl) return;
+    const robotSvg = document.querySelector(".robot-svg") || robotHead;
+    if (!overlay || !robotSvg) return;
 
     overlay.innerHTML = "";
 
-    // Target coordinates: center of robot's brain dome beacon relative to overlay
-    const targetRect = targetEl.getBoundingClientRect();
+    // Target coordinates: TOP of the robot's head / brain dome (NOT the center of the head/eyes!)
+    // In SVG viewBox 0 0 280 160:
+    // - Center X is at 50% width
+    // - Brain dome beacon top is at ~10% height from the top of the SVG (far above the eyes at 46%)
+    const svgRect = robotSvg.getBoundingClientRect();
     const overlayRect = overlay.getBoundingClientRect();
-    const targetX = targetRect.left + targetRect.width / 2 - overlayRect.left;
-    const targetY = targetRect.top + targetRect.height / 2 - overlayRect.top;
+    const targetX = (svgRect.left + svgRect.width * 0.50) - overlayRect.left;
+    const targetY = (svgRect.top + svgRect.height * 0.10) - overlayRect.top;
 
     // Fields to gather data from
     const fieldItems = [
@@ -386,7 +389,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       }
 
-      // Delta to target brain dome
+      // Delta to target brain dome at top of head
       const deltaX = targetX - startX;
       const deltaY = targetY - startY;
       const delay = index * 110; // Staggered launch
@@ -412,22 +415,28 @@ document.addEventListener("DOMContentLoaded", () => {
         fill: "forwards"
       });
 
-      // Robot eyes track each flying packet as it approaches
+      // Robot eyes look UP towards the brain dome as data arrives into the head
       setTimeout(() => {
         if (pupilLeft && pupilRight) {
-          pupilLeft.style.transform = `translate(${((index % 2 === 0 ? -1 : 1) * 3)}px, 2px)`;
-          pupilRight.style.transform = `translate(${((index % 2 === 0 ? -1 : 1) * 3)}px, 2px)`;
+          const sideShift = (index % 2 === 0 ? -1.5 : 1.5);
+          pupilLeft.style.transform = `translate(${sideShift}px, -5px)`;
+          pupilRight.style.transform = `translate(${sideShift}px, -5px)`;
         }
-      }, delay + 180);
+      }, delay + 160);
 
-      // When packet reaches robot brain: trigger neural absorption pulse
+      // When packet reaches robot brain dome: trigger neural absorption pulse & beacon flash
       setTimeout(() => {
         if (robotHead) {
           robotHead.classList.remove("absorbing");
           void robotHead.offsetWidth; // re-flow
           robotHead.classList.add("absorbing");
         }
-      }, delay + 650);
+        if (robotBeacon) {
+          robotBeacon.classList.remove("beacon-flash");
+          void robotBeacon.offsetWidth;
+          robotBeacon.classList.add("beacon-flash");
+        }
+      }, delay + 630);
 
       const promise = new Promise((resolve) => {
         anim.onfinish = () => {
@@ -460,7 +469,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Hide gripping right hand and SHOW THUMBS-UP HAND!
     if (handRight) handRight.style.display = "none";
-    if (handRightThumbsUp) handRightThumbsUp.style.display = "block";
+    if (handRightThumbsUp) {
+      handRightThumbsUp.style.display = "block";
+      handRightThumbsUp.classList.remove("wiggling");
+      setTimeout(() => {
+        handRightThumbsUp.classList.add("wiggling");
+      }, 700);
+    }
 
     // Mascot celebration bounce
     if (robotWrap) robotWrap.classList.add("celebrating");
