@@ -66,7 +66,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!phone || phone.length < 7) {
       showFieldError("mobileNumber", "Please enter a valid mobile number with country code");
       hasError = true;
-      triggerBotPointingAtMobile();
     }
 
     // Email is optional, but validate format if entered
@@ -140,33 +139,8 @@ document.addEventListener("DOMContentLoaded", () => {
     btnReset.addEventListener("click", () => {
       form.reset();
       form.style.display = "flex";
-      if (formHeader) formHeader.style.display = "block";
       successCard.style.display = "none";
       hideAlert();
-
-      isFormSuccess = false;
-      dismissBotPointing();
-
-      if (pupilLeft) pupilLeft.style.display = "block";
-      if (pupilRight) pupilRight.style.display = "block";
-      if (happyEyes) happyEyes.style.display = "none";
-      if (handRightThumbsUp) handRightThumbsUp.style.display = "none";
-      if (handRight) {
-        handRight.style.display = "block";
-        handRight.classList.remove("returning");
-      }
-      if (robotReachArmSvg) {
-        robotReachArmSvg.style.display = "none";
-        robotReachArmSvg.classList.remove("retracting");
-        robotReachArmSvg.innerHTML = "";
-      }
-      if (handLeft) {
-        handLeft.style.display = "block";
-        handLeft.classList.remove("returning");
-      }
-      if (robotWrap) robotWrap.classList.remove("celebrating");
-      resetRobotGaze();
-
       window.scrollTo({ top: formWrapper.offsetTop - 80, behavior: "smooth" });
     });
   }
@@ -234,294 +208,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const happyEyes = document.getElementById("happyEyes");
   const robotWrap = document.getElementById("robotMascotWrap");
   const eyelids = document.querySelectorAll(".robot-eyelid");
-  const handLeft = document.getElementById("handLeft");
-  const robotReachArmSvg = document.getElementById("robotReachArmSvg");
   const handRight = document.getElementById("handRight");
   const handRightThumbsUp = document.getElementById("handRightThumbsUp");
-  const mobileInput = document.getElementById("mobileNumber");
-  const groupPhone = document.getElementById("groupPhone");
 
   let typingTimer = null;
   let isFormSuccess = false;
-  let isPointingAtMobile = false;
-  let pointingTimeout = null;
 
   // Turn on natural blinking
   eyelids.forEach((lid) => lid.classList.add("auto-blink"));
 
-  // Render Articulated Cybernetic Arm Reaching All the Way Down to Mobile Field
-  function renderReachingArm(startX, startY, targetX, targetY, formColWidth, formColHeight) {
-    if (!robotReachArmSvg) return;
-
-    robotReachArmSvg.setAttribute("viewBox", `0 0 ${formColWidth} ${formColHeight}`);
-    robotReachArmSvg.setAttribute("width", `${formColWidth}`);
-    robotReachArmSvg.setAttribute("height", `${formColHeight}`);
-
-    // Direction vector of the index finger aiming down-right into the mobile input container:
-    // Target is right next to the phone icon 📱
-    const fingerLen = 22;
-    const palmLen = 20;
-    const angle = 28 * (Math.PI / 180); // ~28 degrees down-right
-    const uX = Math.cos(angle);
-    const uY = Math.sin(angle);
-
-    const knuckleX = targetX - fingerLen * uX;
-    const knuckleY = targetY - fingerLen * uY;
-
-    const wristX = knuckleX - palmLen * uX;
-    const wristY = knuckleY - palmLen * uY;
-
-    // Elbow bent outward along the left flank:
-    const midX = (startX + wristX) / 2;
-    const midY = (startY + wristY) / 2;
-    const elbowX = Math.min(startX, wristX) - 20;
-    const elbowY = midY - 6;
-
-    robotReachArmSvg.innerHTML = `
-      <defs>
-        <linearGradient id="reachCeramic" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#ffffff"/>
-          <stop offset="35%" stop-color="#f8fafc"/>
-          <stop offset="70%" stop-color="#cbd5e1"/>
-          <stop offset="100%" stop-color="#94a3b8"/>
-        </linearGradient>
-        <linearGradient id="reachCeramicPlate" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stop-color="#ffffff"/>
-          <stop offset="50%" stop-color="#e2e8f0"/>
-          <stop offset="100%" stop-color="#94a3b8"/>
-        </linearGradient>
-        <linearGradient id="reachChrome" x1="0%" y1="0%" x2="100%" y2="50%">
-          <stop offset="0%" stop-color="#ffffff"/>
-          <stop offset="30%" stop-color="#cbd5e1"/>
-          <stop offset="60%" stop-color="#64748b"/>
-          <stop offset="100%" stop-color="#334155"/>
-        </linearGradient>
-        <linearGradient id="reachCarbon" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#1e2438"/>
-          <stop offset="60%" stop-color="#0f1322"/>
-          <stop offset="100%" stop-color="#080a14"/>
-        </linearGradient>
-        <filter id="reachGlow" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur stdDeviation="3" result="blur"/>
-          <feMerge>
-            <feMergeNode in="blur"/>
-            <feMergeNode in="SourceGraphic"/>
-          </feMerge>
-        </filter>
-      </defs>
-
-      <g id="reachArmMain" class="reach-arm-assembly">
-        <!-- SHOULDER BALL SOCKET OVER LIFTED HAND POSITION -->
-        <g id="reachShoulderGroup">
-          <circle cx="${startX.toFixed(1)}" cy="${startY.toFixed(1)}" r="11" fill="url(#reachChrome)" stroke="#0f172a" stroke-width="1.5"/>
-          <circle cx="${startX.toFixed(1)}" cy="${startY.toFixed(1)}" r="7" fill="url(#reachCarbon)"/>
-          <circle cx="${startX.toFixed(1)}" cy="${startY.toFixed(1)}" r="3.2" fill="#38bdf8" filter="url(#reachGlow)"/>
-        </g>
-
-        <!-- UPPER ARM (CYBERNETIC BICEP & HYDRAULIC STRUT) -->
-        <g id="reachUpperArm">
-          <!-- Hydraulic Chrome Piston Core -->
-          <line x1="${startX.toFixed(1)}" y1="${startY.toFixed(1)}" x2="${elbowX.toFixed(1)}" y2="${elbowY.toFixed(1)}" stroke="url(#reachChrome)" stroke-width="7" stroke-linecap="round"/>
-          <line x1="${(startX - 2).toFixed(1)}" y1="${startY.toFixed(1)}" x2="${(elbowX - 2).toFixed(1)}" y2="${elbowY.toFixed(1)}" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" opacity="0.9"/>
-          
-          <!-- Ceramic Outer Bicep Armor Shell -->
-          <path d="M ${(startX - 6).toFixed(1)} ${(startY + 3).toFixed(1)} Q ${(midX - 16).toFixed(1)} ${(midY - 14).toFixed(1)} ${(elbowX - 4).toFixed(1)} ${(elbowY - 4).toFixed(1)} L ${(elbowX + 4).toFixed(1)} ${(elbowY + 4).toFixed(1)} Q ${(midX + 2).toFixed(1)} ${(midY + 4).toFixed(1)} ${(startX + 6).toFixed(1)} ${(startY + 5).toFixed(1)} Z" 
-                fill="url(#reachCeramic)" stroke="#94a3b8" stroke-width="1.2"/>
-          
-          <!-- Neon Telemetry Conduit Line on Bicep -->
-          <path d="M ${(startX - 1).toFixed(1)} ${(startY + 6).toFixed(1)} Q ${(midX - 8).toFixed(1)} ${(midY - 6).toFixed(1)} ${elbowX.toFixed(1)} ${(elbowY - 1).toFixed(1)}" 
-                stroke="#38bdf8" stroke-width="1.2" fill="none" opacity="0.85"/>
-        </g>
-
-        <!-- ELBOW ARTICULATED ROTARY JOINT -->
-        <g id="reachElbowGroup">
-          <circle cx="${elbowX.toFixed(1)}" cy="${elbowY.toFixed(1)}" r="9" fill="url(#reachCarbon)" stroke="url(#reachChrome)" stroke-width="1.8"/>
-          <circle cx="${elbowX.toFixed(1)}" cy="${elbowY.toFixed(1)}" r="5.5" fill="url(#reachChrome)"/>
-          <circle cx="${elbowX.toFixed(1)}" cy="${elbowY.toFixed(1)}" r="2.5" fill="#38bdf8" filter="url(#reachGlow)"/>
-        </g>
-
-        <!-- FOREARM & HAND GROUP (TAPS TOWARDS MOBILE FIELD) -->
-        <g id="reachForearmAndHand" class="reach-forearm-hand-tap">
-          <!-- FOREARM CHASSIS (ELBOW TO WRIST) -->
-          <g id="reachForearm">
-            <!-- Forearm Hydraulic Piston Core -->
-            <line x1="${elbowX.toFixed(1)}" y1="${elbowY.toFixed(1)}" x2="${wristX.toFixed(1)}" y2="${wristY.toFixed(1)}" stroke="url(#reachChrome)" stroke-width="6.5" stroke-linecap="round"/>
-            <line x1="${(elbowX - 1.5).toFixed(1)}" y1="${elbowY.toFixed(1)}" x2="${(wristX - 1.5).toFixed(1)}" y2="${wristY.toFixed(1)}" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" opacity="0.9"/>
-
-            <!-- Sleek Ceramic Forearm Armor Shell -->
-            <path d="M ${(elbowX - 5).toFixed(1)} ${(elbowY - 2).toFixed(1)} Q ${(((elbowX + wristX)/2) - 10).toFixed(1)} ${(((elbowY + wristY)/2) - 4).toFixed(1)} ${(wristX - 5).toFixed(1)} ${(wristY - 3).toFixed(1)} L ${(wristX + 5).toFixed(1)} ${(wristY + 5).toFixed(1)} Q ${(((elbowX + wristX)/2) + 4).toFixed(1)} ${(((elbowY + wristY)/2) + 4).toFixed(1)} ${(elbowX + 5).toFixed(1)} ${(elbowY + 4).toFixed(1)} Z" 
-                  fill="url(#reachCeramic)" stroke="#94a3b8" stroke-width="1.2"/>
-
-            <!-- Glowing Forearm Telemetry Conduit -->
-            <line x1="${elbowX.toFixed(1)}" y1="${elbowY.toFixed(1)}" x2="${wristX.toFixed(1)}" y2="${wristY.toFixed(1)}" stroke="#38bdf8" stroke-width="1.4" stroke-dasharray="4 2" opacity="0.95"/>
-          </g>
-
-          <!-- WRIST SWIVEL JOINT -->
-          <g id="reachWristGroup">
-            <circle cx="${wristX.toFixed(1)}" cy="${wristY.toFixed(1)}" r="7.5" fill="url(#reachCarbon)" stroke="url(#reachChrome)" stroke-width="1.5"/>
-            <circle cx="${wristX.toFixed(1)}" cy="${wristY.toFixed(1)}" r="4.2" fill="url(#reachChrome)"/>
-            <circle cx="${wristX.toFixed(1)}" cy="${wristY.toFixed(1)}" r="2" fill="#38bdf8"/>
-          </g>
-
-          <!-- SCULPTED HAND & EXTENDED POINTING FINGER -->
-          <g id="reachHandGroup">
-            <!-- Ceramic Knuckle / Dorsal Plate of Fist -->
-            <path d="M ${(wristX - 3).toFixed(1)} ${(wristY - 5).toFixed(1)} 
-                     L ${(knuckleX - 1).toFixed(1)} ${(knuckleY - 7).toFixed(1)} 
-                     C ${(knuckleX + 5).toFixed(1)} ${(knuckleY - 6).toFixed(1)} ${(knuckleX + 8).toFixed(1)} ${(knuckleY + 6).toFixed(1)} ${(knuckleX + 4).toFixed(1)} ${(knuckleY + 8).toFixed(1)} 
-                     L ${(wristX + 4).toFixed(1)} ${(wristY + 6).toFixed(1)} Z" 
-                  fill="url(#reachCeramic)" stroke="#94a3b8" stroke-width="1.2"/>
-
-            <!-- Folded Thumb (Braced Against Fist) -->
-            <ellipse cx="${(wristX + 1).toFixed(1)}" cy="${(wristY + 4).toFixed(1)}" rx="5.5" ry="3.5" fill="url(#reachCeramicPlate)" stroke="#64748b" stroke-width="1" transform="rotate(30 ${(wristX + 1).toFixed(1)} ${(wristY + 4).toFixed(1)})"/>
-            <circle cx="${(wristX + 3).toFixed(1)}" cy="${(wristY + 5).toFixed(1)}" r="1" fill="#38bdf8"/>
-
-            <!-- Folded Middle, Ring & Pinky Fingers (Tucked into Fist) -->
-            <rect x="${(knuckleX - 2).toFixed(1)}" y="${(knuckleY + 1).toFixed(1)}" width="7.5" height="4.5" rx="2.2" fill="url(#reachCarbon)" stroke="url(#reachChrome)" stroke-width="0.9" transform="rotate(28 ${knuckleX.toFixed(1)} ${(knuckleY + 3).toFixed(1)})"/>
-            <rect x="${(knuckleX - 4).toFixed(1)}" y="${(knuckleY + 5).toFixed(1)}" width="7" height="4" rx="2" fill="url(#reachCarbon)" stroke="url(#reachChrome)" stroke-width="0.9" transform="rotate(28 ${(knuckleX - 2).toFixed(1)} ${(knuckleY + 7).toFixed(1)})"/>
-
-            <!-- EXTENDED POINTING INDEX FINGER (REACHING EXACTLY TO TARGET MOBILE FIELD) -->
-            <!-- Proximal Phalanx -->
-            <path d="M ${(knuckleX + 1).toFixed(1)} ${(knuckleY - 4).toFixed(1)} 
-                     L ${(((knuckleX + targetX)/2) + 1).toFixed(1)} ${(((knuckleY + targetY)/2) - 3).toFixed(1)} 
-                     L ${(((knuckleX + targetX)/2) + 2).toFixed(1)} ${(((knuckleY + targetY)/2) + 3).toFixed(1)} 
-                     L ${(knuckleX + 3).toFixed(1)} ${(knuckleY + 3).toFixed(1)} Z" 
-                  fill="url(#reachCeramic)" stroke="#94a3b8" stroke-width="1.1"/>
-            
-            <!-- Intermediate Chrome Knuckle Hinge -->
-            <circle cx="${(((knuckleX + targetX)/2) + 1).toFixed(1)}" cy="${((knuckleY + targetY)/2).toFixed(1)}" r="3" fill="url(#reachChrome)"/>
-
-            <!-- Distal Phalanx & Tapered Fingertip Pointing Right at Mobile Field -->
-            <path d="M ${(((knuckleX + targetX)/2) + 1).toFixed(1)} ${(((knuckleY + targetY)/2) - 2.5).toFixed(1)} 
-                     L ${targetX.toFixed(1)} ${targetY.toFixed(1)} 
-                     L ${(((knuckleX + targetX)/2) + 2).toFixed(1)} ${(((knuckleY + targetY)/2) + 2.5).toFixed(1)} Z" 
-                  fill="url(#reachCeramicPlate)" stroke="#ffffff" stroke-width="1.2"/>
-            
-            <line x1="${(((knuckleX + targetX)/2) + 1).toFixed(1)}" y1="${((knuckleY + targetY)/2).toFixed(1)}" x2="${targetX.toFixed(1)}" y2="${targetY.toFixed(1)}" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round"/>
-
-            <!-- HIGH-TECH LED TARGETING EMITTER ON FINGERTIP -->
-            <circle cx="${targetX.toFixed(1)}" cy="${targetY.toFixed(1)}" r="3.5" fill="#38bdf8" filter="url(#reachGlow)"/>
-            <circle cx="${targetX.toFixed(1)}" cy="${targetY.toFixed(1)}" r="1.8" fill="#ffffff"/>
-
-            <!-- RADAR / TARGETING SONAR RINGS PULSING DIRECTLY ON MOBILE FIELD -->
-            <circle cx="${targetX.toFixed(1)}" cy="${targetY.toFixed(1)}" r="6" fill="none" stroke="#38bdf8" stroke-width="1.2" class="reach-target-ring"/>
-            <circle cx="${targetX.toFixed(1)}" cy="${targetY.toFixed(1)}" r="11" fill="none" stroke="#38bdf8" stroke-width="0.8" class="reach-target-ring ring-2"/>
-          </g>
-        </g>
-      </g>
-    `;
-  }
-
-  function updateBotReachArmPosition() {
-    if (!isPointingAtMobile || !robotReachArmSvg) return;
-
-    const formCol = document.getElementById("formWrapper");
-    const mobileEl = document.getElementById("mobileNumber");
-    const handLeftEl = document.getElementById("handLeft");
-    if (!formCol || !mobileEl || !handLeftEl) return;
-
-    const formColRect = formCol.getBoundingClientRect();
-    const hRect = handLeftEl.getBoundingClientRect();
-    const inputCont = mobileEl.closest(".input-container") || mobileEl;
-    const tRect = inputCont.getBoundingClientRect();
-
-    const startX = (hRect.left + hRect.width * 0.35) - formColRect.left;
-    const startY = (hRect.top + hRect.height * 0.3) - formColRect.top;
-
-    // The index finger lands right next to the phone icon 📱 at the left of the input container
-    const targetX = (tRect.left - formColRect.left) + 4;
-    const targetY = (tRect.top + tRect.height * 0.5) - formColRect.top;
-
-    renderReachingArm(startX, startY, targetX, targetY, formColRect.width, formColRect.height);
-  }
-
-  function triggerBotPointingAtMobile() {
-    if (isFormSuccess) return;
-    isPointingAtMobile = true;
-
-    // 1. Hide left gripping hand and deploy the articulated reaching arm directly to mobile field
-    if (handLeft) handLeft.style.display = "none";
-    if (robotReachArmSvg) {
-      updateBotReachArmPosition();
-      robotReachArmSvg.style.display = "block";
-      robotReachArmSvg.classList.remove("retracting");
-    }
-
-    // 2. Robot head and eyes lock gaze directly onto the mobile field
-    const mobileEl = document.getElementById("mobileNumber");
-    if (mobileEl && robotFace && pupilLeft && pupilRight) {
-      const faceRect = robotFace.getBoundingClientRect();
-      const mRect = mobileEl.getBoundingClientRect();
-      const dx = (mRect.left + 30) - (faceRect.left + faceRect.width / 2);
-      const dy = (mRect.top + mRect.height / 2) - (faceRect.top + faceRect.height / 2);
-
-      const normX = Math.max(-1, Math.min(1, dx / 220));
-      const normY = Math.max(0.4, Math.min(1, dy / 360));
-      const pupilX = normX * 4.8;
-      const pupilY = normY * 8.5;
-
-      pupilLeft.style.transform = `translate(${pupilX.toFixed(2)}px, ${pupilY.toFixed(2)}px)`;
-      pupilRight.style.transform = `translate(${pupilX.toFixed(2)}px, ${pupilY.toFixed(2)}px)`;
-
-      if (robotHead) {
-        robotHead.style.transform = `rotate(${(normX * 4.2).toFixed(2)}deg) translateY(${(normY * 3.5).toFixed(2)}px)`;
-      }
-    }
-
-    // 3. Highlight mobile field and set focus
-    if (groupPhone) {
-      groupPhone.classList.add("bot-pointing-target");
-    }
-    if (mobileInput) {
-      mobileInput.focus();
-    }
-
-    // 4. Auto-dismiss after 8 seconds if no interaction
-    clearTimeout(pointingTimeout);
-    pointingTimeout = setTimeout(() => {
-      dismissBotPointing();
-    }, 8000);
-  }
-
-  function dismissBotPointing() {
-    if (!isPointingAtMobile) return;
-    isPointingAtMobile = false;
-    clearTimeout(pointingTimeout);
-
-    if (groupPhone) {
-      groupPhone.classList.remove("bot-pointing-target");
-    }
-
-    if (robotReachArmSvg && robotReachArmSvg.style.display !== "none") {
-      robotReachArmSvg.classList.add("retracting");
-      setTimeout(() => {
-        robotReachArmSvg.style.display = "none";
-        robotReachArmSvg.classList.remove("retracting");
-        robotReachArmSvg.innerHTML = "";
-        if (handLeft) {
-          handLeft.style.display = "block";
-          handLeft.classList.remove("returning");
-          void handLeft.offsetWidth;
-          handLeft.classList.add("returning");
-        }
-      }, 300);
-    } else if (handLeft) {
-      handLeft.style.display = "block";
-    }
-
-    if (!isFormSuccess) {
-      resetRobotGaze();
-    }
-  }
-
-  window.addEventListener("resize", () => {
-    if (isPointingAtMobile) {
-      updateBotReachArmPosition();
-    }
-  });
-
   function trackElement(el, isTyping = false) {
-    if (!el || !robotFace || !pupilLeft || !pupilRight || isFormSuccess || isPointingAtMobile) return;
+    if (!el || !robotFace || !pupilLeft || !pupilRight || isFormSuccess) return;
 
     const faceRect = robotFace.getBoundingClientRect();
     const targetRect = el.getBoundingClientRect();
@@ -569,20 +266,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function resetRobotGaze() {
-    if (isFormSuccess || isPointingAtMobile) return;
+    if (isFormSuccess) return;
     if (pupilLeft) pupilLeft.style.transform = "translate(0, 0)";
     if (pupilRight) pupilRight.style.transform = "translate(0, 0)";
     if (robotHead) robotHead.style.transform = "rotate(0deg) translateY(0px)";
     if (robotBeacon) robotBeacon.classList.remove("typing-active");
-  }
-
-  // If user starts typing in mobile field while bot is pointing, dismiss pointing
-  if (mobileInput) {
-    mobileInput.addEventListener("input", () => {
-      if (isPointingAtMobile && mobileInput.value.trim().length > 0) {
-        dismissBotPointing();
-      }
-    });
   }
 
   // Attach focus and input listeners to form elements
