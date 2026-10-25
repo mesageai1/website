@@ -537,7 +537,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (handRight) handRight.style.display = "none";
     if (handRightThumbsUp) {
       handRightThumbsUp.style.display = "block";
-      handRightThumbsUp.classList.remove("wiggling");
+      handRightThumbsUp.classList.remove("wiggling", "retracting");
       setTimeout(() => {
         handRightThumbsUp.classList.add("wiggling");
       }, 700);
@@ -548,6 +548,26 @@ document.addEventListener("DOMContentLoaded", () => {
     if (robotHead) {
       robotHead.style.transform = "rotate(0deg) translateY(0px)";
     }
+
+    // After showing thumb for 4 seconds, keep hand again on the submitted panel
+    setTimeout(() => {
+      if (handRightThumbsUp) {
+        handRightThumbsUp.classList.remove("wiggling");
+        handRightThumbsUp.classList.add("retracting");
+        setTimeout(() => {
+          handRightThumbsUp.style.display = "none";
+          handRightThumbsUp.classList.remove("retracting");
+          if (handRight) {
+            handRight.style.display = "block";
+            handRight.classList.remove("returning");
+            void handRight.offsetWidth; // force re-flow
+            handRight.classList.add("returning");
+          }
+        }, 320);
+      } else if (handRight) {
+        handRight.style.display = "block";
+      }
+    }, 4000);
   }
 
   function saveLeadLocally(lead) {
