@@ -549,11 +549,6 @@ document.addEventListener("DOMContentLoaded", () => {
         void robotHead.offsetWidth;
         robotHead.classList.add("absorbing");
       }
-      if (robotBeacon) {
-        robotBeacon.classList.remove("beacon-flash");
-        void robotBeacon.offsetWidth;
-        robotBeacon.classList.add("beacon-flash");
-      }
     }, 500);
 
     await new Promise((resolve) => {

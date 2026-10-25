@@ -287,9 +287,8 @@ a {
 
 /* SIDE NEURAL INTAKE NODE FLASH */
 @keyframes sideIntakeFlash {
-  0% { r: 2.2; fill: #38bdf8; filter: drop-shadow(0 0 2px #38bdf8); }
-  50% { r: 4.8; fill: #34d399; filter: drop-shadow(0 0 12px #34d399); }
-  100% { r: 2.2; fill: #38bdf8; filter: drop-shadow(0 0 2px #38bdf8); }
+  0%, 100% { fill: #38bdf8; filter: drop-shadow(0 0 2px #38bdf8); }
+  50% { fill: #7dd3fc; filter: drop-shadow(0 0 8px #38bdf8); }
 }
 
 .intake-active {
@@ -351,9 +350,8 @@ a {
 }
 
 @keyframes beaconGlowFlash {
-  0% { transform: scale(1); fill: #38bdf8; filter: drop-shadow(0 -2px 6px #38bdf8); }
-  50% { transform: scale(2.2); fill: #34d399; filter: drop-shadow(0 -6px 18px #34d399) drop-shadow(0 0 25px #38bdf8); }
-  100% { transform: scale(1); fill: #10b981; filter: drop-shadow(0 -2px 6px #10b981); }
+  0%, 100% { fill: #10b981; filter: drop-shadow(0 0 3px #10b981); }
+  50% { fill: #38bdf8; filter: drop-shadow(0 0 10px #38bdf8); }
 }
 
 #robotBeacon.beacon-flash {
@@ -427,9 +425,9 @@ a {
   font-weight: 800;
   font-family: 'Plus Jakarta Sans', sans-serif;
   color: #ffffff;
-  background: linear-gradient(135deg, #4f46e5, #0ea5e9, #10b981);
-  border: 1.5px solid #a5f3fc;
-  box-shadow: 0 0 25px rgba(56, 189, 248, 0.95), 0 0 45px rgba(16, 185, 129, 0.8), 0 6px 20px rgba(0, 0, 0, 0.6);
+  background: linear-gradient(135deg, #4f46e5, #0ea5e9, #38bdf8);
+  border: 1.5px solid #7dd3fc;
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.95), 0 4px 16px rgba(0, 0, 0, 0.5);
   pointer-events: none;
   white-space: nowrap;
   will-change: transform, opacity;
