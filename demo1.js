@@ -386,10 +386,11 @@ function addWaBotMessage(text, time = '14:15') {
   scrollWaCanvas();
 }
 
-function addWaBrochureMessage(text, fileTitle, fileSize, promptText, time = '14:17') {
+function addWaBrochureMessage(text, fileTitle, fileSize, promptText = '', time = '14:17') {
   if (!waChatStream) return;
   const item = document.createElement('div');
   item.className = 'wa-msg-row wa-bot';
+  const promptHtml = promptText ? `<div class="wa-bubble-content" style="margin-top:6px; font-size:11px">${formatMarkdown(promptText)}</div>` : '';
   item.innerHTML = `
     <div class="wa-bubble bot-bubble wa-media-bubble">
       <div class="wa-bubble-content">${formatMarkdown(text)}</div>
@@ -407,7 +408,7 @@ function addWaBrochureMessage(text, fileTitle, fileSize, promptText, time = '14:
         </div>
       </div>
 
-      <div class="wa-bubble-content" style="margin-top:6px; font-size:11px">${formatMarkdown(promptText)}</div>
+      ${promptHtml}
 
       <div class="wa-meta-time">
         <span>${time}</span>
@@ -491,7 +492,7 @@ function respondToInquiry(rawText, time) {
     scheduleNextForUser(() => {
       fireWhiteBackwardSignal(() => {
         hideTyping();
-        const priceMsg = "Our luxury 3 BHK residences start at **₹2.45 Cr all-inclusive** (approx. ₹13,500/sq.ft) for spacious 1,650 sq.ft layouts with private sundecks.<br><br>We also have exclusive festive payment schemes available. Would you like to review payment plans or schedule a site visit?";
+        const priceMsg = "Our 3 BHK starts at **₹2.45 Cr** for the 1,650 sq.ft layout.<br><br>We also have flexible payment options if you'd like to check them out.";
         addWaAgentMessage(priceMsg, time);
       });
     }, 1000);
@@ -511,7 +512,7 @@ function respondToInquiry(rawText, time) {
     scheduleNextForUser(() => {
       fireWhiteBackwardSignal(() => {
         hideTyping();
-        const planMsg = "Yes, absolutely! We currently offer an exclusive **10:90 Festive Payment Scheme**:<br>• Pay just 10% on booking<br>• Zero Pre-EMI interest until possession<br>• Remaining 90% linked to construction milestones with top banking partners.<br><br>When would you like to schedule an exclusive VIP site visit and private model apartment tour?";
+        const planMsg = "We have a 10:90 plan right now—you pay 10% on booking and the rest upon possession.<br><br>Would you like to come by and see the sample flat this weekend?";
         addWaAgentMessage(planMsg, time);
       });
     }, 1000);
@@ -540,7 +541,7 @@ function respondToInquiry(rawText, time) {
     scheduleNextForUser(() => {
       fireIndigoBackwardSignal(() => {
         hideTyping();
-        const confirmMsg = `🎉 **Your VIP Site Visit is Confirmed!**<br><br>🗓️ **Schedule:** ${schedule}<br>📍 **Location:** Prime Residency Experience Center, Tower A<br>👤 **Host:** Dedicated Relationship Manager will personally welcome you and guide your private model apartment tour.<br><br>A location pin, gate pass QR code, and confirmation details have been sent to your WhatsApp. We look forward to hosting you!`;
+        const confirmMsg = `You're all set for ${schedule}! 👍<br><br>We'll have someone meet you at the Tower A reception to show you around. Looking forward to seeing you!`;
         addWaBotMessage(confirmMsg, time);
 
         const activeBadge = document.querySelector('.crm-active-badge');
@@ -563,10 +564,10 @@ function respondToInquiry(rawText, time) {
       fireIndigoBackwardSignal(() => {
         hideTyping();
         addWaBrochureMessage(
-          "Here is the official project brochure with comprehensive 2 BHK, 3 BHK & Penthouse floor plans, master layout, and 40+ world-class club amenities:",
-          "Prime_Residency_Luxury_Brochure.pdf",
-          "4.2 MB • Verified PDF Brochure",
-          "Feel free to ask about pricing, payment schemes, or scheduling a private site visit.",
+          "Here is our brochure with floor plans and specifications:",
+          "Prime_Residency_Brochure.pdf",
+          "4.2 MB • PDF Brochure",
+          "",
           time
         );
       });
@@ -584,11 +585,11 @@ function respondToInquiry(rawText, time) {
         hideTyping();
         let resp = "";
         if (/2\s*bhk/i.test(text)) {
-          resp = "Our **2 BHK Residences** range from **850 to 1,150 sq.ft** with contemporary open-plan layouts, modular German kitchens, and spacious sundeck balconies.<br><br>Starting from **₹1.65 Cr** with flexible payment options. Would you like to download the floor plan brochure or check pricing?";
+          resp = "Our 2 BHK units range from 850 to 1,150 sq.ft, starting around **₹1.65 Cr**.<br><br>Would you like to see the floor plan or visit the site?";
         } else if (/4\s*bhk|penthouse/i.test(text)) {
-          resp = "Our **4 BHK Sky Penthouses** offer **2,400+ sq.ft** with double-height living ceilings, private rooftop plunge pool, landscaped terrace garden, and 360° panoramic skyline views.<br><br>Starting from **₹3.85 Cr**. Would you like to schedule an exclusive VIP model tour?";
+          resp = "Our 4 BHK penthouses are 2,400+ sq.ft with private terrace space, starting at **₹3.85 Cr**.<br><br>Would you like to see the layout or arrange a visit?";
         } else {
-          resp = "Our **3 BHK Premium Residences** range from **1,450 to 1,850 sq.ft** with panoramic skyline views, private sundecks, Italian marble flooring, and smart home automation.<br><br>📍 **Location:** Central Business District, Sector 48 (5 mins from Metro &amp; Express Highway).<br><br>You can ask for the brochure, pricing, or book a private site visit!";
+          resp = "Our 3 BHK homes are 1,450 to 1,850 sq.ft with spacious balconies, starting at **₹2.45 Cr**.<br><br>Would you like the brochure or visit details?";
         }
         addWaBotMessage(resp, time);
       });
@@ -604,7 +605,7 @@ function respondToInquiry(rawText, time) {
     scheduleNextForUser(() => {
       fireIndigoBackwardSignal(() => {
         hideTyping();
-        const resp = "📍 **Prime Residency Location &amp; Connectivity:**<br><br>Located in the heart of **Sector 48, Central Business District**.<br>• 🚇 5 mins to Sector 48 Metro Station<br>• 🚗 2 mins to Express Highway &amp; Golf Course Ext.<br>• ✈️ 20 mins to International Airport<br>• Top international schools &amp; multispecialty hospitals within 3 km.<br><br>Would you like to book a site visit or ask about pricing?";
+        const resp = "We're located in **Sector 48**, just 5 minutes from the Sector 48 Metro Station and 2 minutes from the Express Highway.<br><br>Would you like directions or to schedule a visit?";
         addWaBotMessage(resp, time);
       });
     }, 800);
@@ -619,7 +620,7 @@ function respondToInquiry(rawText, time) {
     scheduleNextForUser(() => {
       fireIndigoBackwardSignal(() => {
         hideTyping();
-        const resp = "🏛️ **40+ World-Class Amenities at Prime Residency:**<br><br>• 🏊 Rooftop Infinity Swimming Pool &amp; Sky Lounge<br>• 🏋️ 25,000 sq.ft Luxury Clubhouse with Technogym setup<br>• 🎾 Tennis &amp; Indoor Squash Courts<br>• 🌳 80% Green Open Spaces with Reflexology Park<br>• 🛡️ 3-Tier Biometric &amp; Smart IoT Security 24/7.<br><br>Would you like to download our brochure or schedule a visit?";
+        const resp = "We have a clubhouse, rooftop pool, gym, tennis court, and landscaped parks across the property.<br><br>Would you like to see the brochure with pictures or come take a look in person?";
         addWaBotMessage(resp, time);
       });
     }, 800);
@@ -637,7 +638,7 @@ function respondToInquiry(rawText, time) {
     scheduleNextForUser(() => {
       fireWhiteBackwardSignal(() => {
         hideTyping();
-        addWaAgentMessage("Our senior sales advisory team is available to assist you with bespoke pricing quotes, festive payment schemes, and private tours. What would you like to explore?", time);
+        addWaAgentMessage("Our team is right here. We can help with pricing, floor plans, or site visits. What can we help you with?", time);
       });
     }, 900);
     return;
@@ -659,7 +660,7 @@ function respondToInquiry(rawText, time) {
     scheduleNextForUser(() => {
       fireIndigoBackwardSignal(() => {
         hideTyping();
-        const resp = "Hello! 👋 Welcome to **Prime Residency Concierge** powered by MeSage AI.<br><br>I can answer any questions about our luxury residences, share floor plans and brochures, get you pricing from our sales team, or schedule your VIP site visit.<br><br>What would you like to explore?";
+        const resp = "Hi there! How can I help you today? Feel free to ask about our 2 &amp; 3 BHK layouts, pricing, or scheduling a visit.";
         addWaBotMessage(resp, time);
       });
     }, 700);
@@ -673,7 +674,7 @@ function respondToInquiry(rawText, time) {
   scheduleNextForUser(() => {
     fireIndigoBackwardSignal(() => {
       hideTyping();
-      const resp = "Thank you for asking! Prime Residency offers world-class luxury residences in Sector 48 with panoramic views and smart home automation.<br><br>You can ask me anything about:<br>• **Configurations:** 2 BHK, 3 BHK, and 4 BHK Penthouses<br>• **Brochure:** Instant PDF download with floor plans<br>• **Pricing &amp; Payment Plans:** Live agent consultation<br>• **Site Visit Booking:** Select your preferred date &amp; time";
+      const resp = "We offer 2 BHK, 3 BHK, and 4 BHK homes at Prime Residency.<br><br>Let me know if you'd like to check floor plans, pricing, or come visit the sample flat!";
       addWaBotMessage(resp, time);
     });
   }, 800);
@@ -709,10 +710,10 @@ function executeStage(stageNumber) {
 
   switch (stageNumber) {
     // -------------------------------------------------------------
-    // STAGE 1: Buyer Inquires about Apartment Configurations
+    // STAGE 1: Buyer Inquires about Available Configurations
     // -------------------------------------------------------------
     case 1: {
-      addWaUserMessage("Hi, I am looking for a luxury apartment in Prime Residency. What configurations are available?", "14:15");
+      addWaUserMessage("Hi, what configurations do you have available at Prime Residency?", "14:15");
 
       // Green Paper Plane flies from WhatsApp Phone all the way to AI Bot!
       fireGreenForwardSignal(colAiBot, () => {
@@ -728,18 +729,18 @@ function executeStage(stageNumber) {
     }
 
     // -------------------------------------------------------------
-    // STAGE 2: AI answers with BHK configurations (NO BUTTONS!)
+    // STAGE 2: AI answers naturally (Short, warm, human)
     // -------------------------------------------------------------
     case 2: {
       addWaBotMessage(
-        "Hello! 👋 Welcome to **Prime Residency Concierge** powered by MeSage AI.<br><br>We offer premium **2 BHK** (850 - 1,150 sq.ft), **3 BHK** (1,450 - 1,850 sq.ft), and **4 BHK Penthouse** (2,400+ sq.ft) residences with contemporary architecture.<br><br>Feel free to ask me anything about configurations, floor plans, location, or pricing!",
+        "Hi there! We have 2 BHK, 3 BHK, and 4 BHK penthouses available.<br><br>Are you looking for a specific size or layout?",
         "14:15"
       );
 
       // Auto-advance naturally (Customer asks about 3 BHK)
       scheduleNext(() => {
         executeStage(3);
-      }, 3600);
+      }, 3400);
       break;
     }
 
@@ -747,7 +748,7 @@ function executeStage(stageNumber) {
     // STAGE 3: Customer naturally asks for 3 BHK floor plans & brochure
     // -------------------------------------------------------------
     case 3: {
-      addWaUserMessage("Tell me more about the 3 BHK floor plans and brochure.", "14:16");
+      addWaUserMessage("I'm looking for a 3 BHK. Could you share the floor plan and brochure?", "14:16");
 
       // Green Paper Plane flies from WhatsApp Phone all the way to AI Bot!
       fireGreenForwardSignal(colAiBot, () => {
@@ -763,21 +764,21 @@ function executeStage(stageNumber) {
     }
 
     // -------------------------------------------------------------
-    // STAGE 4: AI sends 3 BHK Specs + PDF Brochure Card (Single clean reply)
+    // STAGE 4: AI sends 3 BHK Specs + PDF Brochure Card (Clean, human)
     // -------------------------------------------------------------
     case 4: {
       addWaBrochureMessage(
-        "Our **3 BHK Premium Residences** range from **1,450 to 1,850 sq.ft** with panoramic skyline views, private sundecks, Italian marble flooring, and smart home automation.<br><br>📍 **Location:** Central Business District, Sector 48 (5 mins from Metro &amp; Express Highway).<br><br>Here is our official project brochure &amp; floor plans:",
+        "Here is our 3 BHK brochure with detailed floor plans (1,450 – 1,850 sq.ft):",
         "Prime_Residency_3BHK_Brochure.pdf",
-        "4.2 MB • Verified PDF Brochure",
-        "Feel free to ask about pricing, payment plans, or booking a private site visit.",
+        "4.2 MB • PDF Brochure",
+        "",
         "14:16"
       );
 
       // Auto advance to Thing 1: Price inquiry
       scheduleNext(() => {
         executeStage(5);
-      }, 4200);
+      }, 3800);
       break;
     }
 
@@ -785,7 +786,7 @@ function executeStage(stageNumber) {
     // STAGE 5: HUMAN AGENT THING 1 — Buyer asks PRICE
     // -------------------------------------------------------------
     case 5: {
-      addWaUserMessage("What is the exact price for the 3 BHK luxury residences?", "14:18");
+      addWaUserMessage("What is the starting price for a 3 BHK?", "14:18");
 
       // Green Paper Plane flies to Agent panel
       fireGreenForwardSignal(colAgentInbetween, () => {
@@ -819,14 +820,14 @@ function executeStage(stageNumber) {
       fireWhiteBackwardSignal(() => {
         hideTyping();
         addWaAgentMessage(
-          "Our luxury 3 BHK residences start at **₹2.45 Cr all-inclusive** (approx. ₹13,500/sq.ft) for spacious 1,650 sq.ft layouts with panoramic corner sundecks.<br><br>Would you like to review our flexible payment plans or schedule a site visit?",
+          "Our 3 BHK starts at **₹2.45 Cr** for the 1,650 sq.ft layout.<br><br>We also have flexible payment options if you'd like to check them out.",
           "14:19"
         );
 
         // Auto-advance to THING 2: Payment Plans inquiry
         scheduleNext(() => {
           executeStage(8);
-        }, 4200);
+        }, 3800);
       });
       break;
     }
@@ -835,7 +836,7 @@ function executeStage(stageNumber) {
     // STAGE 8: HUMAN AGENT THING 2 — Customer asks PAYMENT PLANS
     // -------------------------------------------------------------
     case 8: {
-      addWaUserMessage("Are there any flexible payment plans or festive schemes available?", "14:20");
+      addWaUserMessage("Yes, what payment plans do you have?", "14:20");
 
       // Green Paper Plane flies to Agent panel
       fireGreenForwardSignal(colAgentInbetween, () => {
@@ -847,7 +848,7 @@ function executeStage(stageNumber) {
     }
 
     // -------------------------------------------------------------
-    // STAGE 9: Live Agent Handles THING 2 (Payment Plans & Schemes)
+    // STAGE 9: Live Agent Handles THING 2 (Payment Plans)
     // -------------------------------------------------------------
     case 9: {
       showTyping('MeSage AI');
@@ -855,24 +856,24 @@ function executeStage(stageNumber) {
       fireWhiteBackwardSignal(() => {
         hideTyping();
         addWaAgentMessage(
-          "We are currently offering an exclusive **10:90 Festive Payment Scheme**:<br>• Pay just 10% on booking<br>• Zero Pre-EMI interest until possession<br>• Remaining 90% linked to construction milestones with top banking partners.<br><br>Would you like to schedule an exclusive VIP site visit to tour our model apartment this weekend?",
+          "We have a 10:90 plan right now—you pay 10% on booking and the rest upon possession.<br><br>Would you like to come by and see the sample flat this weekend?",
           "14:20"
         );
 
-        // Auto-advance to AI RESTART: Customer books appointment
+        // Auto-advance to AI RESTART: Customer books visit
         scheduleNext(() => {
           executeStage(10);
-        }, 4500);
+        }, 4000);
       });
       break;
     }
 
     // -------------------------------------------------------------
-    // STAGE 10: RESTART WITH AI REPLIES — Customer books appointment!
+    // STAGE 10: RESTART WITH AI REPLIES — Customer books visit
     // Agent steps out gracefully; AI Concierge takes over!
     // -------------------------------------------------------------
     case 10: {
-      addWaUserMessage("That sounds great! Can I book an appointment for a VIP site visit this Saturday at 11:00 AM?", "14:21");
+      addWaUserMessage("Sounds great! Can I visit this Saturday around 11 AM?", "14:21");
 
       // AGENT STEPS OUT SMOOTHLY (Panel space returns to blank, 0px shift!)
       if (colAgentInbetween) colAgentInbetween.classList.remove('active-inbetween');
@@ -895,7 +896,7 @@ function executeStage(stageNumber) {
     }
 
     // -------------------------------------------------------------
-    // STAGE 11: Autonomous AI Confirms Site Visit Booking!
+    // STAGE 11: Autonomous AI Confirms Visit Booking (Simple & Human)
     // -------------------------------------------------------------
     case 11: {
       const activeBadge = document.querySelector('.crm-active-badge');
@@ -906,7 +907,7 @@ function executeStage(stageNumber) {
       }
 
       addWaBotMessage(
-        "🎉 **Your VIP Site Visit is Confirmed!**<br><br>🗓️ **Schedule:** This Saturday at 11:00 AM<br>📍 **Location:** Prime Residency Experience Center, Tower A<br>👤 **Host:** Dedicated Relationship Manager will personally welcome you and guide your private model apartment tour.<br><br>A location pin, gate pass QR code, and confirmation details have been sent to your WhatsApp. We look forward to hosting you!",
+        "You're all set for Saturday at 11:00 AM! 👍<br><br>We'll have someone meet you at the Tower A reception to show you around. Looking forward to seeing you!",
         "14:21"
       );
 
