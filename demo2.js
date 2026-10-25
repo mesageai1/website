@@ -316,9 +316,10 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // ==========================================
-  // FLYING DATA PARTICLES TO ROBOT BRAIN (FEED IN FROM SIDES)
-  // On form submit, details lift off and arc wide around the outside flanks,
-  // funnelling directly into the sides of the robot's brain dome (NEVER crossing the eyes)
+  // FLYING DATA PARTICLES TO ROBOT BRAIN (CONVERGE AT 1 PLACE FIRST, THEN 1 GO TO BRAIN IN 1 SEC)
+  // On form submit, details gather at 1 central point on the form first (0-360ms),
+  // fuse into 1 unified data orb, and then shoot in 1 go up the side into the brain dome (420-950ms).
+  // Entire sequence finishes in 1 second!
   // ==========================================
   async function animateFormDetailsFlyingToRobot() {
     const overlay = document.getElementById("flyingDataOverlay");
@@ -330,31 +331,37 @@ document.addEventListener("DOMContentLoaded", () => {
     const svgRect = robotSvg.getBoundingClientRect();
     const overlayRect = overlay.getBoundingClientRect();
 
-    // Side Brain Dome Target Coordinates (Entering from Left & Right temple rim into brain dome):
-    // In SVG viewBox 0 0 280 160:
-    // - Left temple intake: X = 122 (43.5% of width), Y = 22 (13.7% of height)
-    // - Right temple intake: X = 158 (56.5% of width), Y = 22 (13.7% of height)
-    const targetLeft = {
+    // Central Gathering Point on Form Card (1 place on form)
+    const formCard = document.querySelector(".form-wrapper-card");
+    const cardRect = formCard ? formCard.getBoundingClientRect() : overlayRect;
+    const gatherX = cardRect.left + (cardRect.width / 2) - overlayRect.left;
+    const gatherY = cardRect.top + (cardRect.height * 0.44) - overlayRect.top;
+
+    // Brain Dome Side Intake Target (Left temple intake port)
+    const targetBrain = {
       x: svgRect.left + (svgRect.width * 0.435) - overlayRect.left,
       y: svgRect.top + (svgRect.height * 0.137) - overlayRect.top
     };
-    const targetRight = {
-      x: svgRect.left + (svgRect.width * 0.565) - overlayRect.left,
-      y: svgRect.top + (svgRect.height * 0.137) - overlayRect.top
-    };
 
-    // Fields to gather data from, explicitly routing left fields to left side of brain, right to right
+    // Fields to gather data from
     const fieldItems = [
-      { id: "fullName", icon: "👤", label: "Name", side: "left" },
-      { id: "workEmail", icon: "✉️", label: "Email", side: "right" },
-      { id: "mobileNumber", icon: "📱", label: "Mobile", side: "left" },
-      { id: "companyName", icon: "🏢", label: "Company", side: "right" },
-      { id: "description", icon: "📄", label: "Details", side: "left" }
+      { id: "fullName", icon: "👤", label: "Name" },
+      { id: "workEmail", icon: "✉️", label: "Email" },
+      { id: "mobileNumber", icon: "📱", label: "Mobile" },
+      { id: "companyName", icon: "🏢", label: "Company" },
+      { id: "description", icon: "📄", label: "Details" }
     ];
 
-    const animationPromises = [];
+    // Robot eyes look down at the gathering point on the form
+    if (pupilLeft && pupilRight) {
+      pupilLeft.style.transform = "translate(0px, 7px)";
+      pupilRight.style.transform = "translate(0px, 7px)";
+    }
 
-    fieldItems.forEach((item, index) => {
+    // PHASE 1: ALL DETAILS CONVERGE TO 1 PLACE ON FORM (0ms to 360ms)
+    const gatherPromises = [];
+
+    fieldItems.forEach((item) => {
       const inputEl = document.getElementById(item.id);
       if (!inputEl) return;
 
@@ -362,14 +369,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const val = rawVal.length > 0 ? rawVal : item.label;
       const inputRect = inputEl.getBoundingClientRect();
 
-      // Start coordinate relative to overlay
       const startX = inputRect.left + inputRect.width / 2 - overlayRect.left;
       const startY = inputRect.top + inputRect.height / 2 - overlayRect.top;
 
-      const isLeft = item.side === "left";
-      const target = isLeft ? targetLeft : targetRight;
-
-      // Create glowing data capsule
       const chip = document.createElement("div");
       chip.className = "flying-data-chip";
       chip.innerHTML = `<span class="chip-icon">${item.icon}</span><span class="chip-text">${val}</span>`;
@@ -378,143 +380,189 @@ document.addEventListener("DOMContentLoaded", () => {
       chip.style.transform = "translate(-50%, -50%) scale(1)";
       overlay.appendChild(chip);
 
-      // Trajectory Waypoints that SWEEP OUT TO THE SIDES completely avoiding the eyes:
-      // P1: Wide lateral flare out to card margin
-      // P2: Ascending high up on the outer flank outside the ear (well above eye level)
-      // P3: Arcing inward over the top temple curve into the brain dome from the side
-      let p1X, p1Y, p2X, p2Y, p3X, p3Y;
+      const dx = gatherX - startX;
+      const dy = gatherY - startY;
 
-      if (isLeft) {
-        // Left side flight path: sweeps outside left flank
-        p1X = Math.min(startX - 70, svgRect.left - overlayRect.left - 40);
-        p1Y = startY - (startY - target.y) * 0.35;
-        p2X = svgRect.left - overlayRect.left - 30; // 30px outside the entire left edge of the robot!
-        p2Y = target.y + (svgRect.height * 0.20);   // Above eye level
-        p3X = target.x - 30;                        // Swoop in from top-left
-        p3Y = target.y - 10;
-      } else {
-        // Right side flight path: sweeps outside right flank
-        p1X = Math.max(startX + 70, svgRect.left + svgRect.width - overlayRect.left + 40);
-        p1Y = startY - (startY - target.y) * 0.35;
-        p2X = svgRect.left + svgRect.width - overlayRect.left + 30; // 30px outside the entire right edge!
-        p2Y = target.y + (svgRect.height * 0.20);                   // Above eye level
-        p3X = target.x + 30;                                        // Swoop in from top-right
-        p3Y = target.y - 10;
-      }
-
-      // Delta coordinates for Web Animations API
-      const d1X = p1X - startX;
-      const d1Y = p1Y - startY;
-      const d2X = p2X - startX;
-      const d2Y = p2Y - startY;
-      const d3X = p3X - startX;
-      const d3Y = p3Y - startY;
-      const d4X = target.x - startX;
-      const d4Y = target.y - startY;
-
-      const delay = index * 120; // Staggered launch
-
-      // Create accompanying cyber sparks following the side path
-      for (let s = 0; s < 4; s++) {
+      // Small sparks converging
+      for (let s = 0; s < 2; s++) {
         const spark = document.createElement("div");
         spark.className = "cyber-spark";
-        spark.style.left = `${startX + (Math.random() * 20 - 10)}px`;
-        spark.style.top = `${startY + (Math.random() * 10 - 5)}px`;
+        spark.style.left = `${startX + (Math.random() * 16 - 8)}px`;
+        spark.style.top = `${startY + (Math.random() * 8 - 4)}px`;
         overlay.appendChild(spark);
-
-        const sJitter1 = (Math.random() * 24 - 12);
-        const sJitter2 = (Math.random() * 24 - 12);
-        const sparkDelay = delay + s * 35;
 
         spark.animate([
           { transform: "translate(0, 0) scale(1)", opacity: 1 },
-          { transform: `translate(${d1X + sJitter1}px, ${d1Y + sJitter1}px) scale(1.3)`, opacity: 0.95, offset: 0.3 },
-          { transform: `translate(${d2X + sJitter2}px, ${d2Y + sJitter2}px) scale(1.1)`, opacity: 0.9, offset: 0.65 },
-          { transform: `translate(${d4X}px, ${d4Y}px) scale(0)`, opacity: 0, offset: 1 }
+          { transform: `translate(${dx}px, ${dy}px) scale(0)`, opacity: 0 }
         ], {
-          duration: 680 + Math.random() * 120,
-          delay: sparkDelay,
-          easing: "cubic-bezier(0.16, 1, 0.3, 1)",
+          duration: 340,
+          easing: "cubic-bezier(0.2, 0.8, 0.25, 1)",
           fill: "forwards"
         });
       }
 
-      // Main Data Chip Side Arc Animation
       const anim = chip.animate([
         {
           transform: "translate(-50%, -50%) scale(1)",
           opacity: 1
         },
         {
-          transform: `translate(calc(-50% + ${d1X}px), calc(-50% + ${d1Y}px)) scale(1.06)`,
-          opacity: 1,
-          offset: 0.28
-        },
-        {
-          transform: `translate(calc(-50% + ${d2X}px), calc(-50% + ${d2Y}px)) scale(0.95)`,
+          transform: `translate(calc(-50% + ${dx * 0.55}px), calc(-50% + ${dy * 0.55}px)) scale(1.05)`,
           opacity: 0.95,
-          offset: 0.65
+          offset: 0.55
         },
         {
-          transform: `translate(calc(-50% + ${d3X}px), calc(-50% + ${d3Y}px)) scale(0.65)`,
-          opacity: 0.85,
-          offset: 0.86
-        },
-        {
-          transform: `translate(calc(-50% + ${d4X}px), calc(-50% + ${d4Y}px)) scale(0.08)`,
-          opacity: 0,
+          transform: `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px)) scale(0.3)`,
+          opacity: 0.3,
           offset: 1
         }
       ], {
-        duration: 760,
-        delay: delay,
-        easing: "cubic-bezier(0.18, 0.9, 0.3, 1)",
+        duration: 360,
+        easing: "cubic-bezier(0.25, 1, 0.5, 1)",
         fill: "forwards"
       });
 
-      // Robot eyes track the packet curving around the side and up into the brain
-      setTimeout(() => {
-        if (pupilLeft && pupilRight) {
-          const glanceX = isLeft ? -3.5 : 3.5;
-          pupilLeft.style.transform = `translate(${glanceX}px, -4px)`;
-          pupilRight.style.transform = `translate(${glanceX}px, -4px)`;
-        }
-      }, delay + 160);
-
-      // When packet reaches the side of the brain dome: trigger absorption pulse & side intake flash
-      setTimeout(() => {
-        // Flash corresponding side intake node
-        const intakeNode = isLeft ? brainIntakeLeft : brainIntakeRight;
-        if (intakeNode) {
-          intakeNode.classList.remove("intake-active");
-          void intakeNode.offsetWidth; // force re-flow
-          intakeNode.classList.add("intake-active");
-        }
-
-        if (robotHead) {
-          robotHead.classList.remove("absorbing");
-          void robotHead.offsetWidth;
-          robotHead.classList.add("absorbing");
-        }
-
-        if (robotBeacon) {
-          robotBeacon.classList.remove("beacon-flash");
-          void robotBeacon.offsetWidth;
-          robotBeacon.classList.add("beacon-flash");
-        }
-      }, delay + 680);
-
-      const promise = new Promise((resolve) => {
+      gatherPromises.push(new Promise((resolve) => {
         anim.onfinish = () => {
           chip.remove();
           resolve();
         };
-      });
-      animationPromises.push(promise);
+      }));
     });
 
-    // Wait for all chips to reach the robot brain
-    await Promise.all(animationPromises);
+    // Wait for all details to converge at the central gathering spot on the form (~360ms)
+    await Promise.all(gatherPromises);
+
+    // Expand fusion shockwave at gathering point
+    const wave = document.createElement("div");
+    wave.className = "gather-shockwave";
+    wave.style.left = `${gatherX}px`;
+    wave.style.top = `${gatherY}px`;
+    overlay.appendChild(wave);
+    setTimeout(() => wave.remove(), 350);
+
+    // PHASE 2: IN 1 GO, SEND THE CONSOLIDATED DATA ORB TO BRAIN (380ms to 960ms)
+    const fusedOrb = document.createElement("div");
+    fusedOrb.className = "fused-data-orb";
+    fusedOrb.innerHTML = `<span>⚡</span><span>Demo Details Captured</span>`;
+    fusedOrb.style.left = `${gatherX}px`;
+    fusedOrb.style.top = `${gatherY}px`;
+    fusedOrb.style.transform = "translate(-50%, -50%) scale(0.4)";
+    overlay.appendChild(fusedOrb);
+
+    // Trajectory Waypoints from Gather Point to Brain Dome (sweeping wide along side flank):
+    const p1X = svgRect.left - overlayRect.left - 40;            // Wide lateral sweep outside left flank
+    const p1Y = gatherY - (gatherY - targetBrain.y) * 0.35;
+    const p2X = svgRect.left - overlayRect.left - 25;            // High up on the flank outside the ear (well above eye level)
+    const p2Y = targetBrain.y + (svgRect.height * 0.20);
+    const p3X = targetBrain.x - 25;                              // Swooping into top-left temple
+    const p3Y = targetBrain.y - 10;
+    const p4X = targetBrain.x;                                   // Fused into brain dome intake
+    const p4Y = targetBrain.y;
+
+    const d1X = p1X - gatherX;
+    const d1Y = p1Y - gatherY;
+    const d2X = p2X - gatherX;
+    const d2Y = p2Y - gatherY;
+    const d3X = p3X - gatherX;
+    const d3Y = p3Y - gatherY;
+    const d4X = p4X - gatherX;
+    const d4Y = p4Y - gatherY;
+
+    // Accompanying sparks surging along the side trajectory in 1 go
+    for (let s = 0; s < 5; s++) {
+      const spark = document.createElement("div");
+      spark.className = "cyber-spark";
+      spark.style.left = `${gatherX + (Math.random() * 20 - 10)}px`;
+      spark.style.top = `${gatherY + (Math.random() * 10 - 5)}px`;
+      overlay.appendChild(spark);
+
+      const sJitter = (Math.random() * 20 - 10);
+      spark.animate([
+        { transform: "translate(0, 0) scale(1)", opacity: 1 },
+        { transform: `translate(${d1X + sJitter}px, ${d1Y + sJitter}px) scale(1.4)`, opacity: 0.95, offset: 0.3 },
+        { transform: `translate(${d2X + sJitter}px, ${d2Y + sJitter}px) scale(1.1)`, opacity: 0.9, offset: 0.65 },
+        { transform: `translate(${d4X}px, ${d4Y}px) scale(0)`, opacity: 0, offset: 1 }
+      ], {
+        duration: 540 + Math.random() * 60,
+        delay: s * 25,
+        easing: "cubic-bezier(0.16, 1, 0.3, 1)",
+        fill: "forwards"
+      });
+    }
+
+    // Robot eyes track the surge curving up the side into its brain dome
+    setTimeout(() => {
+      if (pupilLeft && pupilRight) {
+        pupilLeft.style.transform = "translate(-3.5px, -4.5px)";
+        pupilRight.style.transform = "translate(-3.5px, -4.5px)";
+      }
+    }, 120);
+
+    // Orb animation in 1 go
+    const sendAnim = fusedOrb.animate([
+      {
+        transform: "translate(-50%, -50%) scale(0.4)",
+        opacity: 0.8,
+        offset: 0
+      },
+      {
+        transform: "translate(-50%, -50%) scale(1.15)",
+        opacity: 1,
+        offset: 0.12
+      },
+      {
+        transform: `translate(calc(-50% + ${d1X}px), calc(-50% + ${d1Y}px)) scale(1.08)`,
+        opacity: 1,
+        offset: 0.38
+      },
+      {
+        transform: `translate(calc(-50% + ${d2X}px), calc(-50% + ${d2Y}px)) scale(0.95)`,
+        opacity: 0.95,
+        offset: 0.68
+      },
+      {
+        transform: `translate(calc(-50% + ${d3X}px), calc(-50% + ${d3Y}px)) scale(0.65)`,
+        opacity: 0.85,
+        offset: 0.88
+      },
+      {
+        transform: `translate(calc(-50% + ${d4X}px), calc(-50% + ${d4Y}px)) scale(0.08)`,
+        opacity: 0,
+        offset: 1
+      }
+    ], {
+      duration: 560,
+      easing: "cubic-bezier(0.18, 0.9, 0.3, 1)",
+      fill: "forwards"
+    });
+
+    // When the orb hits the brain dome intake (~920ms mark): trigger neural absorption
+    setTimeout(() => {
+      if (brainIntakeLeft) {
+        brainIntakeLeft.classList.remove("intake-active");
+        void brainIntakeLeft.offsetWidth;
+        brainIntakeLeft.classList.add("intake-active");
+      }
+      if (robotHead) {
+        robotHead.classList.remove("absorbing");
+        void robotHead.offsetWidth;
+        robotHead.classList.add("absorbing");
+      }
+      if (robotBeacon) {
+        robotBeacon.classList.remove("beacon-flash");
+        void robotBeacon.offsetWidth;
+        robotBeacon.classList.add("beacon-flash");
+      }
+    }, 500);
+
+    await new Promise((resolve) => {
+      sendAnim.onfinish = () => {
+        fusedOrb.remove();
+        resolve();
+      };
+    });
+
     overlay.innerHTML = "";
   }
 
