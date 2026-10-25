@@ -273,14 +273,27 @@ a {
   filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.65));
 }
 
-/* CELEBRATION ON SUCCESS */
-@keyframes robotHappyBounce {
+/* CELEBRATION ON SUCCESS: NO CONTINUOUS SHAKING OR BOUNCING */
+@keyframes robotProudNodOnce {
   0% { transform: translateY(0); }
-  100% { transform: translateY(-7px); }
+  35% { transform: translateY(2.5px); }
+  70% { transform: translateY(-1px); }
+  100% { transform: translateY(0); }
 }
 
 .robot-mascot-wrap.celebrating .robot-head-group {
-  animation: robotHappyBounce 0.35s ease infinite alternate !important;
+  animation: robotProudNodOnce 0.65s ease-out 1 forwards !important;
+}
+
+/* SIDE NEURAL INTAKE NODE FLASH */
+@keyframes sideIntakeFlash {
+  0% { r: 2.2; fill: #38bdf8; filter: drop-shadow(0 0 2px #38bdf8); }
+  50% { r: 4.8; fill: #34d399; filter: drop-shadow(0 0 12px #34d399); }
+  100% { r: 2.2; fill: #38bdf8; filter: drop-shadow(0 0 2px #38bdf8); }
+}
+
+.intake-active {
+  animation: sideIntakeFlash 0.35s ease-out !important;
 }
 
 /* ROBOT THUMBS-UP GESTURE */
