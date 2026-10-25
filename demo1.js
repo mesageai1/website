@@ -4,6 +4,8 @@
 // ==========================================================================
 
 // DOM Elements
+const stageDynamicContainer = document.getElementById('stageDynamicContainer');
+const flightTransitOverlay = document.getElementById('flightTransitOverlay');
 const waChatStream = document.getElementById('waChatStream');
 const waChatCanvas = document.getElementById('waChatCanvas');
 const waTypingBox = document.getElementById('waTypingBox');
@@ -14,15 +16,14 @@ const waUserInput = document.getElementById('waUserInput');
 const waSendBtn = document.getElementById('waSendBtn');
 const waChatForm = document.getElementById('waChatForm');
 
-// Connector 1 Elements (Signal Transit Zone & Glowing Solid Balls)
-const colConn1 = document.getElementById('colConn1');
-const connectorTrackHolder = document.getElementById('connectorTrackHolder');
-const orbGreenForward = document.getElementById('orbGreenForward');
-const orbIndigoBackward = document.getElementById('orbIndigoBackward');
-const orbWhiteBackward = document.getElementById('orbWhiteBackward');
+// Full-Span Paper Plane Flight Elements (Green, Indigo, White)
+const planeGreen = document.getElementById('planeGreen');
+const planeIndigo = document.getElementById('planeIndigo');
+const planeWhite = document.getElementById('planeWhite');
 
-// In-Between Agent Elements (Slides in between on Price)
+// In-Between Agent Elements (Distance Kept Blank Till Agent Enters!)
 const colAgentInbetween = document.getElementById('colAgentInbetween');
+const colConn1 = document.getElementById('colConn1');
 const colConn2 = document.getElementById('colConn2');
 const crmChatCanvas = document.getElementById('crmChatCanvas');
 const crmChatStream = document.getElementById('crmChatStream');
@@ -66,9 +67,7 @@ function scrollCrmCanvas() {
   }
 }
 
-// ==========================================================================
-// Dynamic Exact Horizontal Signal Alignment (ZERO vertical drift)
-// ==========================================================================
+// Helper: Get vertical Y position of active chat bubble
 function getActiveBubbleCenterY() {
   if (waTypingBox && waTypingBox.style.display !== 'none') {
     const rect = waTypingBox.getBoundingClientRect();
@@ -81,81 +80,160 @@ function getActiveBubbleCenterY() {
   return null;
 }
 
-function updateSignalLevel(immediate = true) {
-  if (!connectorTrackHolder || !colConn1) return;
+// ==========================================================================
+// FULL-SPAN PAPER PLANE FLIGHT ENGINE (DYNAMIC HORIZONTAL & AERODYNAMIC)
+// Glides completely from panel to panel across the stage (never short!)
+// ==========================================================================
+function launchPaperPlane({ planeEl, fromEl, toEl, direction = 'forward', duration = 720, onComplete }) {
+  if (!planeEl || !stageDynamicContainer || !fromEl || !toEl) {
+    if (onComplete) onComplete();
+    return;
+  }
 
-  const targetCenterY = getActiveBubbleCenterY();
-  const connRect = colConn1.getBoundingClientRect();
+  const stageRect = stageDynamicContainer.getBoundingClientRect();
+  const fromRect = fromEl.getBoundingClientRect();
+  const toRect = toEl.getBoundingClientRect();
 
-  if (targetCenterY !== null && connRect.height > 0) {
-    const exactTop = targetCenterY - connRect.top - 7;
-    const clampedY = Math.max(15, Math.min(exactTop, connRect.height - 30));
+  const isForward = direction === 'forward'; // Left to Right
 
-    if (immediate) {
-      connectorTrackHolder.style.transition = 'none';
-      connectorTrackHolder.style.top = `${clampedY}px`;
-      void connectorTrackHolder.offsetHeight;
-    } else {
-      connectorTrackHolder.style.transition = 'top 0.2s ease';
-      connectorTrackHolder.style.top = `${clampedY}px`;
-    }
+  let startX, endX;
+  if (isForward) {
+    // Left edge of transit: starts right at the sending panel's right border
+    startX = fromRect.right - stageRect.left - 6;
+    // Right edge of transit: flies completely to the receiving panel's left border
+    endX = toRect.left - stageRect.left + 14;
   } else {
-    connectorTrackHolder.style.top = '95px';
-  }
-}
-
-// 1. Solid Green Ball: WhatsApp (Left) -> AI / Human Agent (Right)
-function fireGreenForwardSignal(callback) {
-  updateSignalLevel(true);
-
-  if (orbGreenForward) {
-    orbGreenForward.classList.remove('shooting-right');
-    void orbGreenForward.offsetWidth;
-    orbGreenForward.classList.add('shooting-right');
+    // Flying Right to Left: starts at sending panel's left border
+    startX = fromRect.left - stageRect.left + 6;
+    // Flies completely to the receiving panel's right border
+    endX = toRect.right - stageRect.left - 14;
   }
 
-  setTimeout(() => {
-    if (orbGreenForward) orbGreenForward.classList.remove('shooting-right');
-    if (robotFaceCore) {
-      robotFaceCore.style.transform = 'scale(1.12)';
-      setTimeout(() => {
-        if (robotFaceCore) robotFaceCore.style.transform = 'scale(1)';
-      }, 350);
+  // Calculate dynamic vertical flight altitude aligned with active bubble
+  let targetY = 160;
+  const bubbleCenterY = getActiveBubbleCenterY();
+  if (bubbleCenterY !== null && stageRect.height > 0) {
+    targetY = bubbleCenterY - stageRect.top - 11;
+  }
+  targetY = Math.max(30, Math.min(targetY, 440));
+
+  const scaleFlip = isForward ? 'scaleX(1)' : 'scaleX(-1)';
+  const midX = startX + (endX - startX) * 0.5;
+  const midY = targetY - 10; // gentle mid-air lift
+
+  if (planeEl.getAnimations) {
+    planeEl.getAnimations().forEach(anim => anim.cancel());
+  }
+
+  planeEl.style.opacity = '0';
+
+  const animation = planeEl.animate([
+    {
+      transform: `translate3d(${startX}px, ${targetY + 4}px, 0) ${scaleFlip} scale(0.6) rotate(${isForward ? -4 : 4}deg)`,
+      opacity: 0
+    },
+    {
+      transform: `translate3d(${startX + (endX - startX) * 0.12}px, ${targetY}px, 0) ${scaleFlip} scale(1.12) rotate(${isForward ? 2 : -2}deg)`,
+      opacity: 1,
+      offset: 0.12
+    },
+    {
+      transform: `translate3d(${midX}px, ${midY}px, 0) ${scaleFlip} scale(1.22) rotate(0deg)`,
+      opacity: 1,
+      offset: 0.5
+    },
+    {
+      transform: `translate3d(${startX + (endX - startX) * 0.88}px, ${targetY}px, 0) ${scaleFlip} scale(1.12) rotate(${isForward ? -2 : 2}deg)`,
+      opacity: 1,
+      offset: 0.88
+    },
+    {
+      transform: `translate3d(${endX}px, ${targetY}px, 0) ${scaleFlip} scale(0.6) rotate(0deg)`,
+      opacity: 0
     }
-    if (callback) callback();
-  }, 650);
+  ], {
+    duration: duration,
+    easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
+    fill: 'forwards'
+  });
+
+  animation.onfinish = () => {
+    planeEl.style.opacity = '0';
+    if (onComplete) onComplete();
+  };
 }
 
-// 2. Solid Indigo Ball: AI (Right) -> WhatsApp User (Left)
+// 1. Green Paper Plane: Customer WhatsApp -> AI or Live Agent
+function fireGreenForwardSignal(targetElOrCallback, maybeCallback) {
+  let targetEl = colAiBot;
+  let callback = null;
+
+  if (typeof targetElOrCallback === 'function') {
+    callback = targetElOrCallback;
+    if (colAgentInbetween && colAgentInbetween.classList.contains('active-inbetween')) {
+      targetEl = colAgentInbetween;
+    } else {
+      targetEl = colAiBot;
+    }
+  } else if (targetElOrCallback && targetElOrCallback.nodeType) {
+    targetEl = targetElOrCallback;
+    callback = maybeCallback;
+  } else {
+    callback = maybeCallback;
+  }
+
+  launchPaperPlane({
+    planeEl: planeGreen,
+    fromEl: phoneFrame,
+    toEl: targetEl,
+    direction: 'forward',
+    duration: 720,
+    onComplete: () => {
+      if (targetEl === colAiBot && robotFaceCore) {
+        robotFaceCore.style.transform = 'scale(1.14)';
+        setTimeout(() => {
+          if (robotFaceCore) robotFaceCore.style.transform = 'scale(1)';
+        }, 320);
+      } else if (targetEl === colAgentInbetween) {
+        const inboxCard = document.getElementById('agentInboxCard');
+        if (inboxCard) {
+          inboxCard.style.boxShadow = '0 0 35px rgba(99, 102, 241, 0.6)';
+          setTimeout(() => {
+            if (inboxCard) inboxCard.style.boxShadow = '';
+          }, 350);
+        }
+      }
+      if (callback) callback();
+    }
+  });
+}
+
+// 2. Indigo Paper Plane: AI -> Customer WhatsApp
 function fireIndigoBackwardSignal(callback) {
-  updateSignalLevel(true);
-
-  if (orbIndigoBackward) {
-    orbIndigoBackward.classList.remove('shooting-left');
-    void orbIndigoBackward.offsetWidth;
-    orbIndigoBackward.classList.add('shooting-left');
-  }
-
-  setTimeout(() => {
-    if (orbIndigoBackward) orbIndigoBackward.classList.remove('shooting-left');
-    if (callback) callback();
-  }, 650);
+  launchPaperPlane({
+    planeEl: planeIndigo,
+    fromEl: colAiBot,
+    toEl: phoneFrame,
+    direction: 'backward',
+    duration: 720,
+    onComplete: () => {
+      if (callback) callback();
+    }
+  });
 }
 
-// 3. Solid White Ball: Live Agent (Right) -> WhatsApp User (Left)
+// 3. White Paper Plane: Live Agent -> Customer WhatsApp
 function fireWhiteBackwardSignal(callback) {
-  updateSignalLevel(true);
-
-  if (orbWhiteBackward) {
-    orbWhiteBackward.classList.remove('shooting-left');
-    void orbWhiteBackward.offsetWidth;
-    orbWhiteBackward.classList.add('shooting-left');
-  }
-
-  setTimeout(() => {
-    if (orbWhiteBackward) orbWhiteBackward.classList.remove('shooting-left');
-    if (callback) callback();
-  }, 650);
+  launchPaperPlane({
+    planeEl: planeWhite,
+    fromEl: colAgentInbetween,
+    toEl: phoneFrame,
+    direction: 'backward',
+    duration: 720,
+    onComplete: () => {
+      if (callback) callback();
+    }
+  });
 }
 
 // Typing Indicator

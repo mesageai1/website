@@ -723,15 +723,6 @@ h1, h2, h3, p { margin-top: 0; }
 .wa-system-banner span strong {
   color: #ffffff;
 }
-  border: 1px solid rgba(16, 185, 129, 0.4);
-  border-radius: 6px;
-  padding: 4px 8px;
-  font-size: 8.5px;
-  color: var(--green-light);
-  text-align: center;
-  margin: 3px 0;
-  animation: bubblePop 0.25s ease;
-}
 
 .wa-typing-box { display: flex; align-items: center; }
 .typing-bubble {
@@ -899,82 +890,96 @@ h1, h2, h3, p { margin-top: 0; }
   font-weight: 600;
 }
 
-/* 2. OPEN SIGNAL TRANSIT CHANNELS (FIXED PERMANENT DISTANCE - NO SHIFTING!) */
+/* ==========================================================================
+   FULL-SPAN PAPER PLANE TRANSIT SIGNALS (GREEN, INDIGO, WHITE)
+   Glides across panels from source to destination without stopping short!
+   ========================================================================== */
+.flight-transit-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 50;
+}
+
+.paper-plane {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  display: inline-flex;
+  align-items: center;
+  pointer-events: none;
+  transform-origin: center center;
+  will-change: transform, opacity;
+  z-index: 60;
+}
+
+.paper-plane-svg {
+  width: 36px;
+  height: 22px;
+  display: block;
+  overflow: visible;
+}
+
+/* Aerodynamic Contrail Vapor Trail Behind Plane */
+.plane-contrail {
+  width: 32px;
+  height: 2px;
+  border-radius: 2px;
+  opacity: 0.85;
+  margin-right: -2px;
+  flex-shrink: 0;
+}
+
+/* 1. Green Paper Plane: Customer (WhatsApp) -> AI / Live Agent */
+.plane-green .wing-top { fill: #25d366; }
+.plane-green .wing-bottom { fill: #128c7e; }
+.plane-green .wing-keel { fill: #075e54; }
+.plane-green .plane-contrail {
+  background: linear-gradient(to right, transparent, #25d366);
+  box-shadow: 0 0 8px #25d366;
+}
+.plane-green .paper-plane-svg {
+  filter: drop-shadow(0 0 6px #25d366) drop-shadow(0 0 16px rgba(37, 211, 102, 0.85));
+}
+
+/* 2. Indigo Paper Plane: AI -> Customer (WhatsApp) */
+.plane-indigo .wing-top { fill: #818cf8; }
+.plane-indigo .wing-bottom { fill: #6366f1; }
+.plane-indigo .wing-keel { fill: #4338ca; }
+.plane-indigo .plane-contrail {
+  background: linear-gradient(to right, transparent, #6366f1);
+  box-shadow: 0 0 8px #818cf8;
+}
+.plane-indigo .paper-plane-svg {
+  filter: drop-shadow(0 0 6px #818cf8) drop-shadow(0 0 16px rgba(99, 102, 241, 0.9));
+}
+
+/* 3. White Paper Plane: Live Human Agent -> Customer (WhatsApp) */
+.plane-white .wing-top { fill: #ffffff; }
+.plane-white .wing-bottom { fill: #e2e8f0; }
+.plane-white .wing-keel { fill: #cbd5e1; }
+.plane-white .plane-contrail {
+  background: linear-gradient(to right, transparent, #ffffff);
+  box-shadow: 0 0 8px #ffffff;
+}
+.plane-white .paper-plane-svg {
+  filter: drop-shadow(0 0 6px #ffffff) drop-shadow(0 0 18px rgba(255, 255, 255, 0.95));
+}
+
+/* 2. DISTANCE SPACING CONNECTORS (FIXED PERMANENT DISTANCE - NO SHIFTING!) */
 .col-connector-1 {
   flex-shrink: 0;
   width: 50px;
   min-width: 50px;
   max-width: 50px;
   height: 485px;
-  margin-top: 75px; /* offset top avatar ring */
+  margin-top: 75px;
   position: relative;
-}
-
-.signal-transit-lane {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  top: 95px; /* dynamically updated to exact message level */
-  height: 14px;
-  pointer-events: none;
-  z-index: 25;
-}
-
-/* Glowing Dynamic Signal Balls (Green, Indigo, White) */
-.signal-orb {
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  opacity: 0;
-  top: 0; /* exactly 0 to guarantee perfect horizontal alignment */
-  pointer-events: none;
-}
-
-/* 1. Green Ball: EXACT SOLID GREEN (#25d366) */
-.signal-orb.green-orb {
-  background: #25d366;
-  border: 1.5px solid #ffffff;
-  box-shadow: 0 0 16px #25d366, 0 0 26px rgba(37, 211, 102, 0.75);
-}
-
-/* 2. Indigo Ball: EXACT SOLID INDIGO (#6366f1) */
-.signal-orb.indigo-orb {
-  background: #6366f1;
-  border: 1.5px solid #ffffff;
-  box-shadow: 0 0 16px #818cf8, 0 0 26px rgba(99, 102, 241, 0.75);
-}
-
-/* 3. White Ball: EXACT SOLID WHITE (#ffffff) */
-.signal-orb.white-orb {
-  background: #ffffff;
-  border: 1.5px solid rgba(255, 255, 255, 0.95);
-  box-shadow: 0 0 18px #ffffff, 0 0 30px rgba(255, 255, 255, 0.9);
-}
-
-/* Ball Animation: Forward (WhatsApp -> AI/Agent) */
-.signal-orb.shooting-right {
-  animation: flyOrbRight 0.65s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-}
-
-/* Ball Animation: Backward (AI/Agent -> WhatsApp) */
-.signal-orb.shooting-left {
-  animation: flyOrbLeft 0.65s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-}
-
-/* Pure Horizontal Flight - ZERO vertical drift */
-@keyframes flyOrbRight {
-  0% { left: 0px; opacity: 0; transform: scale(0.6); }
-  20% { opacity: 1; transform: scale(1.25); }
-  80% { opacity: 1; transform: scale(1.25); }
-  100% { left: calc(100% - 14px); opacity: 0; transform: scale(0.6); }
-}
-
-@keyframes flyOrbLeft {
-  0% { left: calc(100% - 14px); opacity: 0; transform: scale(0.6); }
-  20% { opacity: 1; transform: scale(1.25); }
-  80% { opacity: 1; transform: scale(1.25); }
-  100% { left: 0px; opacity: 0; transform: scale(0.6); }
 }
 
 /* 3. IN-BETWEEN: Human Agent Column (RESERVED DISTANCE - KEPT BLANK TILL HE ENTERS!) */

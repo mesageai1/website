@@ -71,6 +71,40 @@
 
       <div class="stage-dynamic-container" id="stageDynamicContainer">
 
+        <!-- Full-Span Paper Plane Flight Overlay -->
+        <div class="flight-transit-overlay" id="flightTransitOverlay" aria-hidden="true">
+          <!-- 1. Green Paper Plane: Customer (WhatsApp) -> AI / Human Agent -->
+          <div class="paper-plane plane-green" id="planeGreen">
+            <div class="plane-contrail"></div>
+            <svg viewBox="0 0 40 24" class="paper-plane-svg">
+              <polygon points="38,12 2,2 14,12" class="wing-top" />
+              <polygon points="38,12 14,12 2,22" class="wing-bottom" />
+              <polygon points="14,12 38,12 24,18" class="wing-keel" />
+              <line x1="2" y1="2" x2="38" y2="12" stroke="rgba(255,255,255,0.5)" stroke-width="0.8" />
+            </svg>
+          </div>
+          <!-- 2. Indigo Paper Plane: AI -> Customer (WhatsApp) -->
+          <div class="paper-plane plane-indigo" id="planeIndigo">
+            <div class="plane-contrail"></div>
+            <svg viewBox="0 0 40 24" class="paper-plane-svg">
+              <polygon points="38,12 2,2 14,12" class="wing-top" />
+              <polygon points="38,12 14,12 2,22" class="wing-bottom" />
+              <polygon points="14,12 38,12 24,18" class="wing-keel" />
+              <line x1="2" y1="2" x2="38" y2="12" stroke="rgba(255,255,255,0.5)" stroke-width="0.8" />
+            </svg>
+          </div>
+          <!-- 3. White Paper Plane: Live Agent -> Customer (WhatsApp) -->
+          <div class="paper-plane plane-white" id="planeWhite">
+            <div class="plane-contrail"></div>
+            <svg viewBox="0 0 40 24" class="paper-plane-svg">
+              <polygon points="38,12 2,2 14,12" class="wing-top" />
+              <polygon points="38,12 14,12 2,22" class="wing-bottom" />
+              <polygon points="14,12 38,12 24,18" class="wing-keel" />
+              <line x1="2" y1="2" x2="38" y2="12" stroke="rgba(0,0,0,0.15)" stroke-width="0.8" />
+            </svg>
+          </div>
+        </div>
+
         <!-- 1. LEFT: Customer WhatsApp Phone -->
         <div class="col-stage col-phone" id="colPhone">
           <div class="panel-top-header customer-hdr">
@@ -181,17 +215,8 @@
           </div>
         </div>
 
-        <!-- CONNECTOR 1: Open signal transit zone with glowing Green, Indigo, and White balls -->
-        <div class="col-stage col-connector-1" id="colConn1">
-          <div class="signal-transit-lane" id="connectorTrackHolder">
-            <!-- 1. Green Ball: Customer (WhatsApp) -> AI / Human Agent -->
-            <div class="signal-orb green-orb" id="orbGreenForward"></div>
-            <!-- 2. Indigo Ball: AI -> Customer (WhatsApp) -->
-            <div class="signal-orb indigo-orb" id="orbIndigoBackward"></div>
-            <!-- 3. White Ball: Live Agent -> Customer (WhatsApp) -->
-            <div class="signal-orb white-orb" id="orbWhiteBackward"></div>
-          </div>
-        </div>
+        <!-- CONNECTOR 1: Distance spacing between Customer and Agent -->
+        <div class="col-stage col-connector-1" id="colConn1"></div>
 
         <!-- 2. IN-BETWEEN: Human Agent Space (Distance Kept Blank Until Agent Enters!) -->
         <div class="col-stage col-agent-inbetween" id="colAgentInbetween">
@@ -336,12 +361,8 @@
           </div>
         </div>
 
-        <!-- CONNECTOR 2: Open signal transit zone between Agent and AI Robot -->
-        <div class="col-stage col-connector-2" id="colConn2">
-          <div class="signal-transit-lane">
-            <div class="signal-orb amber-orb" id="orbHandoff"></div>
-          </div>
-        </div>
+        <!-- CONNECTOR 2: Distance spacing between Agent and AI Robot -->
+        <div class="col-stage col-connector-2" id="colConn2"></div>
 
         <!-- 3. RIGHT: Autonomous AI Robot Face & Soundwave Equalizer (No bubbles, authentic robot face!) -->
         <div class="col-stage col-ai-bot" id="colAiBot">
