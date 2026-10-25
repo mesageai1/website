@@ -1,0 +1,851 @@
+/* your-experience.css */
+:root {
+  --bg: #08091a;
+  --bg-gradient: radial-gradient(circle at 50% -10%, #161a3f 0%, #08091a 60%);
+  --panel: #0d0f28;
+  --panel-card: rgba(17, 21, 44, 0.75);
+  --panel-card-hover: rgba(25, 30, 60, 0.88);
+  --border: rgba(99, 102, 241, 0.22);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(99, 102, 241, 0.45);
+  --text: #f8fafc;
+  --text-muted: #94a3b8;
+  --indigo: #6366f1;
+  --indigo-light: #818cf8;
+  --cyan: #38bdf8;
+  --cyan-light: #7dd3fc;
+  --emerald: #10b981;
+  --emerald-light: #34d399;
+  --amber: #f59e0b;
+  --amber-light: #fbbf24;
+  --rose: #f43f5e;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  background-image: var(--bg-gradient);
+  background-attachment: fixed;
+  color: var(--text);
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================================
+   TOP BAR & NAVIGATION
+   ============================================================ */
+.ye-topbar {
+  width: 100%;
+  border-bottom: 1px solid var(--border-subtle);
+  background: rgba(8, 9, 26, 0.85);
+  backdrop-filter: blur(16px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.ye-topbar-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.ye-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: -0.5px;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.ye-brand:hover {
+  opacity: 0.92;
+}
+
+.ye-logo-img {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.ye-brand-ai {
+  color: var(--indigo-light);
+}
+
+/* Central Perspective Switcher (1 - For My Business | 2 - For My Customers) */
+.ye-experience-nav {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  border-radius: 40px;
+  padding: 3px;
+  gap: 4px;
+}
+
+.ye-nav-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 16px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--text-muted);
+  transition: all 0.25s ease;
+}
+
+.ye-nav-pill:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.ye-nav-pill.active {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.28), rgba(56, 189, 248, 0.22));
+  border: 1px solid rgba(99, 102, 241, 0.45);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.2);
+}
+
+.ye-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 10px var(--cyan);
+  animation: pulseCyan 2s infinite ease-in-out;
+}
+
+@keyframes pulseCyan {
+  0%, 100% { opacity: 0.5; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 14px var(--cyan); }
+}
+
+/* Right Nav Controls */
+.ye-topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ye-nav-link {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.ye-nav-link:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.ye-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 20px;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
+}
+
+.ye-cta-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.45);
+  filter: brightness(1.08);
+}
+
+/* ============================================================
+   MAIN WRAPPER
+   ============================================================ */
+.ye-main {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 32px 24px 80px;
+}
+
+/* ============================================================
+   PAGE HEADING AREA ("How It Works") & MODE SWITCHER
+   ============================================================ */
+.ye-heading-block {
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.ye-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.ye-main-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(32px, 4.5vw, 44px);
+  font-weight: 700;
+  letter-spacing: -1px;
+  line-height: 1.15;
+  color: #ffffff;
+  text-align: center;
+}
+
+.ye-intro-desc {
+  font-size: 15px;
+  color: var(--text-muted);
+  max-width: 680px;
+  margin: 12px auto 0;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* MODE SWITCHER BUTTONS (1 - For My Business | 2 - For My Customers) */
+.ye-mode-switcher-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 22px auto 0;
+}
+
+.ye-mode-switcher {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  padding: 5px;
+  gap: 6px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+}
+
+.ye-mode-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 24px;
+  border-radius: 40px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--text-muted);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid transparent;
+}
+
+.ye-mode-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.ye-mode-btn.active {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.35), rgba(56, 189, 248, 0.25));
+  border: 1px solid rgba(99, 102, 241, 0.5);
+  color: #ffffff;
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.28);
+}
+
+.ye-mode-btn .mode-icon {
+  font-size: 16px;
+}
+
+/* ============================================================
+   STICKY FEATURE JUMP TABS
+   ============================================================ */
+.ye-jump-nav-wrap {
+  position: sticky;
+  top: 67px;
+  z-index: 80;
+  margin: 0 auto 36px;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.ye-jump-nav {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(13, 15, 40, 0.92);
+  border: 1px solid var(--border);
+  padding: 6px;
+  border-radius: 40px;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.ye-jump-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 22px;
+  border-radius: 30px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.25s ease;
+}
+
+.ye-jump-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.ye-jump-btn.active {
+  background: linear-gradient(135deg, #6366f1, #38bdf8);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
+}
+
+/* ============================================================
+   FEATURE SHOWCASE SECTIONS
+   ============================================================ */
+.ye-features-container {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+.ye-feature-section {
+  scroll-margin-top: 140px;
+  background: var(--panel-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 28px;
+  padding: 40px 40px 44px;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s ease;
+}
+
+.ye-feature-section:hover {
+  border-color: var(--border);
+}
+
+/* Ambient glow orb behind section */
+.ye-section-glow {
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(80px);
+  opacity: 0.15;
+}
+
+.glow-indigo { background: #6366f1; }
+.glow-cyan   { background: #38bdf8; }
+.glow-emerald{ background: #10b981; }
+.glow-amber  { background: #f59e0b; }
+
+/* Header of Feature Section */
+.ye-section-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 26px;
+  flex-wrap: wrap;
+}
+
+.ye-feature-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 24px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.badge-inbox {
+  background: rgba(99, 102, 241, 0.14);
+  border: 1px solid rgba(99, 102, 241, 0.35);
+  color: var(--indigo-light);
+}
+
+.badge-contacts {
+  background: rgba(16, 185, 129, 0.14);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: var(--emerald-light);
+}
+
+.badge-labels {
+  background: rgba(245, 158, 11, 0.14);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: var(--amber-light);
+}
+
+/* Feature Two-Column Content Grid */
+.ye-feature-content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 36px;
+  align-items: center;
+}
+
+.ye-feature-info {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.ye-feature-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(24px, 2.8vw, 30px);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.6px;
+  color: #ffffff;
+}
+
+.ye-feature-desc {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+/* Feature Capability Highlights Grid */
+.ye-feature-points {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.ye-point-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 12px 14px;
+  transition: all 0.25s ease;
+}
+
+.ye-point-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(99, 102, 241, 0.25);
+  transform: translateX(3px);
+}
+
+.ye-point-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.p-icon-indigo { background: rgba(99, 102, 241, 0.15); color: #818cf8; }
+.p-icon-cyan   { background: rgba(56, 189, 248, 0.15); color: #38bdf8; }
+.p-icon-emerald{ background: rgba(16, 185, 129, 0.15); color: #34d399; }
+.p-icon-amber  { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
+
+.ye-point-text b {
+  display: block;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 1px;
+}
+
+.ye-point-text p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* ============================================================
+   BROWSER MOCKUP FRAME (CLEAN ON PAGE, OPENS IN BIG BOX)
+   ============================================================ */
+.ye-mockup-frame {
+  background: #0f1226;
+  border: 1px solid rgba(99, 102, 241, 0.28);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+  transition: all 0.35s ease;
+  position: relative;
+  cursor: pointer;
+}
+
+.ye-mockup-frame:hover {
+  border-color: rgba(99, 102, 241, 0.55);
+  box-shadow: 0 20px 56px rgba(99, 102, 241, 0.25);
+  transform: translateY(-2px);
+}
+
+/* Browser Window Header - Clean with dots & action badge */
+.ye-mockup-header {
+  background: #141834;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.ye-window-dots {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.ye-window-dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-red    { background: #ef4444; }
+.dot-yellow { background: #f59e0b; }
+.dot-green  { background: #10b981; }
+
+.ye-mockup-action {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Header circular plus button */
+.ye-plus-btn-top {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(99, 102, 241, 0.18);
+  border: 1px solid rgba(99, 102, 241, 0.45);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  transition: all 0.2s ease;
+}
+
+.ye-plus-btn-top:hover {
+  background: linear-gradient(135deg, #6366f1, #38bdf8);
+  border-color: #ffffff;
+  transform: scale(1.18);
+  box-shadow: 0 0 14px rgba(99, 102, 241, 0.7);
+}
+
+/* Image Container */
+.ye-img-container {
+  position: relative;
+  background: #08091a;
+  overflow: hidden;
+  display: block;
+}
+
+.ye-screenshot-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  transition: transform 0.4s ease;
+}
+
+.ye-mockup-frame:hover .ye-screenshot-img {
+  transform: scale(1.015);
+}
+
+/* Image Hover Zoom Overlay with circular plus button */
+.ye-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 9, 26, 0.45);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.ye-mockup-frame:hover .ye-img-overlay {
+  opacity: 1;
+}
+
+/* Center circular + button on image overlay */
+.ye-plus-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(13, 16, 40, 0.92);
+  border: 1.5px solid rgba(99, 102, 241, 0.65);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: 700;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(99, 102, 241, 0.4);
+  transform: scale(0.9);
+  transition: all 0.22s ease;
+}
+
+.ye-mockup-frame:hover .ye-plus-btn {
+  transform: scale(1);
+}
+
+.ye-plus-btn:hover {
+  background: linear-gradient(135deg, #6366f1, #38bdf8);
+  border-color: #ffffff;
+  transform: scale(1.15) !important;
+  box-shadow: 0 12px 36px rgba(99, 102, 241, 0.7);
+}
+
+/* ============================================================
+   LIGHTBOX MODAL (COMPLETELY WEB PAGE LEVEL / FULLSCREEN)
+   ============================================================ */
+.ye-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(3, 5, 15, 0.98);
+  backdrop-filter: blur(24px);
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  opacity: 0;
+  transition: opacity 0.22s ease;
+  overflow: hidden;
+}
+
+.ye-modal.open {
+  display: flex;
+  flex-direction: column;
+  opacity: 1;
+}
+
+.ye-modal-container {
+  width: 100vw;
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #040612;
+  border: none;
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: none;
+  transform: none;
+}
+
+.ye-modal.open .ye-modal-container {
+  transform: none;
+}
+
+.ye-modal-bar {
+  background: #0d1026;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  padding: 10px 24px;
+  height: 52px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  z-index: 100;
+}
+
+.ye-modal-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ye-modal-controls {
+  display: flex;
+  align-items: center;
+}
+
+.ye-modal-close-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ye-modal-close-btn:hover {
+  background: rgba(239, 68, 68, 0.85);
+  border-color: #ef4444;
+  transform: rotate(90deg);
+}
+
+.ye-modal-body {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  height: calc(100vh - 52px);
+  overflow: auto;
+  padding: 12px;
+  background: #040612;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.ye-modal-body img {
+  width: auto;
+  height: auto;
+  max-width: 98vw;
+  max-height: calc(100vh - 76px);
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 16px 60px rgba(0, 0, 0, 0.85);
+  transition: opacity 0.18s ease;
+  user-select: none;
+}
+
+/* Single Toggle Arrow Button: ONLY ONCE, ONLY FOR 1ST SECTION */
+.ye-single-next-btn {
+  position: fixed;
+  right: 28px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(13, 16, 40, 0.9);
+  border: 1.5px solid rgba(99, 102, 241, 0.65);
+  color: #ffffff;
+  display: none; /* Managed by JS - shown only in section 1 */
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  font-weight: 700;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.65), 0 0 24px rgba(99, 102, 241, 0.4);
+  backdrop-filter: blur(12px);
+  transition: all 0.22s ease;
+  line-height: 1;
+}
+
+.ye-single-next-btn:hover {
+  background: linear-gradient(135deg, #6366f1, #38bdf8);
+  border-color: #ffffff;
+  transform: translateY(-50%) scale(1.12);
+  box-shadow: 0 14px 40px rgba(99, 102, 241, 0.7);
+}
+
+/* ============================================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================================ */
+@media (max-width: 1080px) {
+  .ye-feature-content-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ye-topbar-inner {
+    padding: 12px 16px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .ye-experience-nav {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    margin-top: 8px;
+  }
+  .ye-main {
+    padding: 20px 14px 60px;
+  }
+  .ye-feature-section {
+    padding: 24px 16px 28px;
+    border-radius: 20px;
+  }
+  .ye-jump-nav-wrap {
+    top: 120px;
+    margin-bottom: 24px;
+  }
+  .ye-modal {
+    padding: 10px;
+  }
+  .ye-modal-bar, .ye-modal-footer {
+    padding: 10px 14px;
+  }
+  .ye-modal-nav-btn {
+    padding: 5px 10px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ye-jump-btn {
+    padding: 6px 14px;
+    font-size: 12.5px;
+  }
+}

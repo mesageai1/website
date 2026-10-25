@@ -65,20 +65,24 @@ document.querySelectorAll('.typing i').forEach((el, i) => {
   el.style.animation = `blink 1.2s ease-in-out ${i * 0.2}s infinite`;
 });
 
-// Feature list scroll animation
-const foItems = document.querySelectorAll('.fo-item');
+// Feature cards scroll animation
+const featItems = document.querySelectorAll('.feature-box, .fo-item');
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.style.opacity = '1';
-      entry.target.style.transform = 'translateX(0)';
+      entry.target.style.transform = 'translateY(0)';
+      setTimeout(() => {
+        entry.target.style.transform = '';
+      }, 500);
+      observer.unobserve(entry.target);
     }
   });
 }, { threshold: 0.08 });
-foItems.forEach((item, i) => {
+featItems.forEach((item, i) => {
   item.style.opacity = '0';
-  item.style.transform = 'translateX(-20px)';
-  item.style.transition = `opacity 0.4s ease ${i * 0.04}s, transform 0.4s ease ${i * 0.04}s`;
+  item.style.transform = 'translateY(24px)';
+  item.style.transition = `opacity 0.45s ease ${(i % 3) * 0.08}s, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1) ${(i % 3) * 0.08}s`;
   observer.observe(item);
 });
 
@@ -332,7 +336,7 @@ function runWAFlow(key) {
       // Show agent join banner
       const banner = document.createElement('div');
       banner.className = 'wa-agent-banner';
-      banner.innerHTML = '🧑‍💼 <strong>Agent Priya</strong> has joined the conversation';
+      banner.innerHTML = '🧑‍💼 <strong>Agent Sarah</strong> has joined the conversation';
       waMsgs.appendChild(banner);
       scrollWA();
       setTimeout(() => {

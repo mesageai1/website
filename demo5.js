@@ -52,10 +52,10 @@ function initAiHandoverToggle() {
       if (isCloserActive) {
         toggleBtn.textContent = 'Switch Back to AI';
         toggleBtn.style.background = '#6366f1';
-        statusBadge.textContent = '🟢 Closer Priya Sharma entered chat';
+        statusBadge.textContent = '🟢 Closer Sarah Mitchell entered chat';
         statusBadge.style.color = '#34d399';
         statusBadge.style.borderColor = 'rgba(16, 185, 129, 0.4)';
-        chatBubble.innerHTML = '<strong>Priya (Closer):</strong> "Hi Rahul, I saw you were asking about payment plans. I can offer an exclusive 10:90 festival booking scheme today. Shall we do a quick 2-min call?"';
+        chatBubble.innerHTML = '<strong>Sarah (Closer):</strong> "Hi Rahul, I saw you were asking about payment plans. I can offer an exclusive 10:90 festival booking scheme today. Shall we do a quick 2-min call?"';
         chatBubble.style.borderColor = 'rgba(16, 185, 129, 0.5)';
       } else {
         toggleBtn.textContent = 'Simulate Human Closer Takeover';

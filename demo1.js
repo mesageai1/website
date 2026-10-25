@@ -970,6 +970,7 @@ function restartSimulation() {
   }, 500);
 }
 window.restartSimulation = restartSimulation;
+window.resetDemoStages = restartSimulation;
 
 // Initialize on page load (guaranteed single execution)
 let isDemoInitialized = false;

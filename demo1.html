@@ -6,10 +6,12 @@
   <meta name="theme-color" content="#070913">
   <meta name="description" content="MeSage AI — Real-time WhatsApp Automation: Autonomous AI Bot & Seamless Live Agent Transfer Anytime.">
   <title>Live Demo — MeSage AI WhatsApp Bot &amp; Live Agent Transfer</title>
+  <link rel="icon" href="assets/logoimg.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="demo1.css?v=20261025_08">
+  <link rel="stylesheet" href="demo1.css">
+  <link rel="stylesheet" href="header.css">
 </head>
 <body>
 
@@ -20,29 +22,26 @@
         <span class="live-beacon"></span>
         <span><strong>LIVE INTERACTIVE WORKFLOW:</strong> Inbound Lead Capture, Autonomous AI &amp; Live Agent Takeover</span>
       </div>
-      <div class="topbar-right">
-        <a href="demo2.html" class="topbar-link">📅 Demo 2: Schedule</a>
-        <a href="demo3.html" class="topbar-link" style="color:#fbbf24">★ Demo 3: Capabilities</a>
-        <a href="demo4.html" class="topbar-link" style="color:#34d399">✦ Demo 4: Problems We Solve</a>
-        <a href="index.html" class="back-link">← Main Website</a>
-      </div>
     </div>
   </aside>
 
   <!-- Navbar -->
-  <header class="demo-header">
-    <div class="container header-inner">
-      <a href="index.html" class="brand">
-        <img src="assets/logoimg.png" alt="MeSage AI" class="brand-logo" onerror="this.style.display='none'">
+  <header class="nav-wrap">
+    <nav class="nav container">
+      <a class="brand" href="home.html" aria-label="MeSage AI home">
+        <img src="assets/logoimg.png" alt="MeSage AI logo" class="brand-logo" onerror="this.src='assets/logogif.gif'">
         <span>MeSage<span class="brand-ai"> AI</span></span>
       </a>
-      <div class="header-badges">
-        <a href="demo3.html" class="hbadge" style="color:#fbbf24;text-decoration:none">★ Demo 3: Workspace</a>
-        <a href="demo4.html" class="hbadge" style="color:#34d399;text-decoration:none">✦ Demo 4: Problem Solver</a>
-        <span class="hbadge green">📥 Inbound Lead Capture &amp; Live Agent Takeover</span>
+      <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      <div class="nav-links">
+        <a href="home.html">Home</a>
+        <a href="how-it-works.html">How It works</a>
+        <a href="demo4.html">What we solve</a>
+        <a href="demo3.html">Know More</a>
+        <a href="about.html">About us</a>
+        <a href="demo2.html" class="nav-contact-btn">Contact</a>
       </div>
-      <a href="demo2.html" class="btn btn-primary">Book a Demo <span>↗</span></a>
-    </div>
+    </nav>
   </header>
 
   <main class="demo-main">
@@ -455,6 +454,7 @@
 
   </main>
 
-  <script src="demo1.js?v=20261025_08"></script>
+  <script src="header.js"></script>
+  <script src="demo1.js"></script>
 </body>
 </html>

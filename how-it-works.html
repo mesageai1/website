@@ -1,0 +1,686 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#070913">
+  <meta name="description" content="MeSage AI — Real-time WhatsApp Automation: Flow-Based Journeys, Autonomous AI Bot & Seamless Live Agent Transfer Anytime.">
+  <title>How It Works — MeSage AI</title>
+  <link rel="icon" href="assets/logoimg.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="demo1.css">
+  <link rel="stylesheet" href="customer-experience.css">
+  <link rel="stylesheet" href="header.css">
+  <style>
+    /* Clean, spacious layout for stacked sections */
+    .ce-main {
+      padding: 40px 0 80px;
+    }
+    .demo-wrapper {
+      margin-bottom: 40px;
+    }
+    .demo-wrapper:last-child {
+      margin-bottom: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <aside class="demo-topbar">
+    <div class="container topbar-content">
+      <div class="topbar-left">
+        <span class="live-beacon"></span>
+        <span><strong>LIVE INTERACTIVE WORKFLOW:</strong> Inbound Lead Capture, Autonomous AI &amp; Live Agent Takeover</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Navbar -->
+  <header class="nav-wrap">
+    <nav class="nav container">
+      <a class="brand" href="home.html" aria-label="MeSage AI home">
+        <img src="assets/logoimg.png" alt="MeSage AI logo" class="brand-logo" onerror="this.src='assets/logogif.gif'">
+        <span>MeSage<span class="brand-ai"> AI</span></span>
+      </a>
+      <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      <div class="nav-links">
+        <a href="home.html">Home</a>
+        <a href="how-it-works.html" class="active">How It works</a>
+        <a href="demo4.html">What we solve</a>
+        <a href="demo3.html">Know More</a>
+        <a href="about.html">About us</a>
+        <a href="demo2.html" class="nav-contact-btn">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="ce-main">
+
+    <!-- Page Title Header -->
+    <div class="ce-heading-block">
+      <div class="ce-title-row">
+        <h1 class="ce-main-title">How It Works</h1>
+      </div>
+      <p class="ce-intro-desc">Explore the end-to-end journey from structured conversation flows to 24/7 autonomous GPT intelligence and seamless live agent handoffs.</p>
+    </div>
+
+    <!-- ==========================================
+         SECTION 1: FLOW BASED BOT
+         ========================================== -->
+    <section class="demo-wrapper" id="flow-bot" aria-label="Interactive WhatsApp Flow Bot Simulation">
+      <div class="ce-split-layout">
+
+        <!-- LEFT SIDE: Header -->
+        <div class="ce-side-header">
+          <div class="ce-item-badge ce-flow-badge">
+            <span class="badge-icon flow-icon-badge" title="Flow Based Workflow">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="6" height="6" rx="1.5"></rect>
+                <rect x="15" y="15" width="6" height="6" rx="1.5"></rect>
+                <rect x="15" y="3" width="6" height="6" rx="1.5"></rect>
+                <path d="M6 9v9a3 3 0 0 0 3 3h6"></path>
+                <path d="M9 6h6"></path>
+              </svg>
+            </span>
+            <h2 class="badge-name">Flow Based</h2>
+          </div>
+          <p class="ce-header-subtext">Automates journeys using predefined, structured flows.</p>
+          <button type="button" class="ce-btn-replay-header" onclick="resetWADemo()" title="Replay Flow Simulation">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="1 4 1 10 7 10"></polyline>
+              <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+            </svg>
+            <span>Replay Demo</span>
+          </button>
+        </div>
+
+        <!-- VERTICAL DIVIDER LINE (|) -->
+        <div class="ce-side-divider" aria-hidden="true"></div>
+
+        <!-- RIGHT SIDE: Simulation (Customer Phone on Left + Flow Steps on Right) -->
+        <div class="ce-side-content">
+          <div class="flow-sim-grid">
+
+            <!-- LEFT: Authentic WhatsApp Chat Simulator (Customer Mobile) -->
+            <div class="wa-phone-wrap">
+              <div class="panel-top-header customer-hdr">
+                <div class="avatar-face-ring customer-ring">
+                  <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=120&h=120&q=80" alt="Customer" class="real-face-img" onerror="this.style.display='none'">
+                  <span class="face-fallback">👤</span>
+                  <span class="live-status-dot green-dot"></span>
+                </div>
+                <span class="panel-title-text">CUSTOMER</span>
+              </div>
+              <div class="phone-device-bezel">
+                <div class="phone-screen">
+                  <!-- WhatsApp Topbar -->
+                  <div class="wa-topbar">
+                    <div class="wa-topbar-left">
+                      <span class="wa-back-arrow">←</span>
+                      <div class="wa-profile-avatar">
+                        <img src="assets/plane-logo.png" alt="MeSage AI" onerror="this.src='assets/logoimg.png'">
+                        <span class="wa-online-dot"></span>
+                      </div>
+                      <div class="wa-profile-info">
+                        <span class="wa-contact-name">MeSage AI</span>
+                        <span class="wa-contact-status" id="waStatus">online</span>
+                      </div>
+                    </div>
+                    <div class="wa-topbar-icons">
+                      <span>📹</span>
+                      <span>📞</span>
+                      <span>⋮</span>
+                    </div>
+                  </div>
+
+                  <!-- Chat Canvas -->
+                  <div class="wa-chat-canvas" id="waChatBg">
+                    <div class="wa-encryption-badge">
+                      <span>🔒 Messages are end-to-end encrypted. No one outside of this chat can read them.</span>
+                    </div>
+                    <div class="wa-chat-stream" id="waMsgs">
+                      <!-- Dynamically populated by customer-experience.js -->
+                    </div>
+                    <div class="wa-typing-pill" id="waTyping" style="display: none;">
+                      <span class="typing-dot"></span>
+                      <span class="typing-dot"></span>
+                      <span class="typing-dot"></span>
+                      <span class="typing-label">MeSage AI is typing...</span>
+                    </div>
+                  </div>
+
+                  <!-- List Menu Overlay Sheet -->
+                  <div class="wa-list-sheet" id="waListSheet">
+                    <div class="wa-list-sheet-header">
+                      <span class="wa-list-sheet-title" id="waListSheetTitle">Select Option</span>
+                      <button type="button" class="wa-list-sheet-close" id="waListClose" onclick="closeListSheet()">✕</button>
+                    </div>
+                    <div class="wa-list-sheet-section-title" id="waListSecTitle">Available Options</div>
+                    <div class="wa-list-sheet-items" id="waListItemsContainer">
+                      <!-- Injected dynamically -->
+                    </div>
+                  </div>
+                  <div class="wa-list-backdrop" id="waListBackdrop" onclick="closeListSheet()"></div>
+
+                  <!-- WhatsApp Input Bar -->
+                  <div class="wa-input-bottom-bar">
+                    <span class="wa-input-icon">😊</span>
+                    <input type="text" class="wa-input-field" id="waInputField" placeholder="Type a message or click buttons above..." autocomplete="off">
+                    <span class="wa-input-icon">📎</span>
+                    <button type="button" class="wa-send-mic-btn" id="waFlowSendBtn" onclick="handleCustomerSend()">
+                      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- RIGHT: Connected Flow Steps -->
+            <div class="flow-steps-panel">
+              <div class="panel-top-header flow-hdr">
+                <div class="flow-icon-circle">⚡</div>
+                <span class="panel-title-text">REAL-TIME FLOW EXECUTION</span>
+              </div>
+              <div class="flow-steps-scroll">
+                
+                <div class="flow-step-card active" id="fs1">
+                  <div class="fs-num-badge">1</div>
+                  <div class="fs-body">
+                    <div class="fs-badge-row">
+                      <span class="fs-tag flow-trigger">Customer Input</span>
+                      <span class="fs-time">Instant</span>
+                    </div>
+                    <h4 class="fs-title">Customer sends a message</h4>
+                    <p class="fs-desc">User types "Hi" or clicks a quick reply</p>
+                  </div>
+                </div>
+
+                <div class="flow-step-card" id="fs2">
+                  <div class="fs-num-badge">2</div>
+                  <div class="fs-body">
+                    <div class="fs-badge-row">
+                      <span class="fs-tag flow-action">Intent Engine</span>
+                      <span class="fs-time">1 sec</span>
+                    </div>
+                    <h4 class="fs-title">AI understands intent</h4>
+                    <p class="fs-desc">NLP detects: Appointment / Support / Inquiry</p>
+                  </div>
+                </div>
+
+                <div class="flow-step-card" id="fs3">
+                  <div class="fs-num-badge">3</div>
+                  <div class="fs-body">
+                    <div class="fs-badge-row">
+                      <span class="fs-tag flow-branch">Data Collection</span>
+                      <span class="fs-time">Interactive</span>
+                    </div>
+                    <h4 class="fs-title">Bot collects details</h4>
+                    <p class="fs-desc">Name, date, time — via interactive buttons</p>
+                  </div>
+                </div>
+
+                <div class="flow-step-card" id="fs4">
+                  <div class="fs-num-badge">4</div>
+                  <div class="fs-body">
+                    <div class="fs-badge-row">
+                      <span class="fs-tag flow-qual">Confirmed</span>
+                      <span class="fs-time">Sync</span>
+                    </div>
+                    <h4 class="fs-title">Appointment confirmed</h4>
+                    <p class="fs-desc">CRM updated • Reminder scheduled • Agent notified</p>
+                  </div>
+                </div>
+
+                <div class="flow-step-card" id="fs5">
+                  <div class="fs-num-badge">5</div>
+                  <div class="fs-body">
+                    <div class="fs-badge-row">
+                      <span class="fs-tag flow-done">Live Takeover</span>
+                      <span class="fs-time">Real-time</span>
+                    </div>
+                    <h4 class="fs-title">Human agent can join anytime</h4>
+                    <p class="fs-desc">One-click takeover from the MeSage AI inbox</p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 2: GPT POWERED AI + HUMAN AGENT
+         ========================================== -->
+            <section class="demo-wrapper ce-stage-frame" id="gpt-bot" aria-label="Autonomous AI Bot and Human Agent Takeover Simulation" style="margin-top: 36px;">
+
+      <!-- Section 2 Header (Top Centered Badge & Subtitle) -->
+      <div class="ce-section-top-header">
+        <div class="ce-item-badge ce-ai-badge">
+          <span class="badge-icon ai-icon-badge" title="GPT Powered AI Engine">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M12 2v3m0 14v3M2 12h3m14 0h3"></path>
+              <path d="M4.93 4.93l2.12 2.12m9.9 9.9l2.12 2.12M4.93 19.07l2.12-2.12m9.9-9.9l2.12-2.12"></path>
+            </svg>
+          </span>
+          <h2 class="badge-name">GPT powered</h2>
+        </div>
+        <p class="ce-header-subtext">Converses naturally with fluid, human-like intelligence. Human agent steps in anytime.</p>
+        <button type="button" class="ce-btn-replay-header" onclick="restartSimulation()" title="Replay AI Simulation">
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="1 4 1 10 7 10"></polyline>
+            <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+          </svg>
+          <span>Replay Demo</span>
+        </button>
+      </div>
+
+      <!-- Live Interactive Stage (Exact Original from Demo 1) -->
+      <div class="stage-dynamic-container" id="stageDynamicContainer">
+
+        <!-- Full-Span Paper Plane Flight Overlay -->
+        <div class="flight-transit-overlay" id="flightTransitOverlay" aria-hidden="true">
+          <!-- 1. Green Paper Plane: Customer (WhatsApp) -> AI / Human Agent -->
+          <div class="paper-plane plane-green" id="planeGreen">
+            <div class="plane-contrail"></div>
+            <svg viewBox="0 0 40 24" class="paper-plane-svg">
+              <polygon points="38,12 2,2 14,12" class="wing-top" />
+              <polygon points="38,12 14,12 2,22" class="wing-bottom" />
+              <polygon points="14,12 38,12 24,18" class="wing-keel" />
+              <line x1="2" y1="2" x2="38" y2="12" stroke="rgba(255,255,255,0.5)" stroke-width="0.8" />
+            </svg>
+          </div>
+          <!-- 2. Indigo Paper Plane: AI -> Customer (WhatsApp) -->
+          <div class="paper-plane plane-indigo" id="planeIndigo">
+            <div class="plane-contrail"></div>
+            <svg viewBox="0 0 40 24" class="paper-plane-svg">
+              <polygon points="38,12 2,2 14,12" class="wing-top" />
+              <polygon points="38,12 14,12 2,22" class="wing-bottom" />
+              <polygon points="14,12 38,12 24,18" class="wing-keel" />
+              <line x1="2" y1="2" x2="38" y2="12" stroke="rgba(255,255,255,0.5)" stroke-width="0.8" />
+            </svg>
+          </div>
+          <!-- 3. White Paper Plane: Live Agent -> Customer (WhatsApp) -->
+          <div class="paper-plane plane-white" id="planeWhite">
+            <div class="plane-contrail"></div>
+            <svg viewBox="0 0 40 24" class="paper-plane-svg">
+              <polygon points="38,12 2,2 14,12" class="wing-top" />
+              <polygon points="38,12 14,12 2,22" class="wing-bottom" />
+              <polygon points="14,12 38,12 24,18" class="wing-keel" />
+              <line x1="2" y1="2" x2="38" y2="12" stroke="rgba(0,0,0,0.15)" stroke-width="0.8" />
+            </svg>
+          </div>
+        </div>
+
+        <!-- 1. LEFT: Customer WhatsApp Phone -->
+        <div class="col-stage col-phone" id="colPhone">
+          <div class="panel-top-header customer-hdr">
+            <div class="avatar-face-ring customer-ring">
+              <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=120&h=120&q=80" alt="Customer" class="real-face-img" onerror="this.style.display='none'">
+              <span class="face-fallback">👤</span>
+              <span class="live-status-dot green-dot"></span>
+            </div>
+            <span class="panel-title-text">CUSTOMER</span>
+          </div>
+          
+          <div class="phone-frame" id="phoneFrame">
+            <!-- Top Smartphone Status Bar (Time, WiFi, Battery) -->
+            <div class="phone-status-bar">
+              <span class="status-bar-time">9:41</span>
+              <div class="phone-notch-pill"></div>
+              <div class="status-bar-icons">
+                <!-- Cell Signal SVG -->
+                <svg viewBox="0 0 24 24" width="12" height="12" fill="#aebac1"><path d="M2 22h20V2z"/></svg>
+                <!-- Wi-Fi SVG -->
+                <svg viewBox="0 0 24 24" width="12" height="12" fill="#aebac1"><path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98C20.93 5.9 16.69 4 12 4z"/></svg>
+                <!-- Battery SVG -->
+                <svg viewBox="0 0 24 24" width="13" height="13" fill="#aebac1"><path d="M17 5v14c0 .55-.45 1-1 1H8c-.55 0-1-.45-1-1V5c0-.55.45-1 1-1h1V2h6v2h1c.55 0 1 .45 1 1z"/></svg>
+              </div>
+            </div>
+
+            <!-- WhatsApp Header (Authentic Dark Mode #1f2c34 with SVG Icons) -->
+            <div class="wa-header">
+              <div class="wa-header-left">
+                <!-- Back Arrow SVG -->
+                <div class="wa-back-btn" title="Back">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="#aebac1"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+                </div>
+                <div class="wa-avatar-box">
+                  <img src="assets/plane-logo.png" alt="MeSage Concierge" class="wa-avatar-pic">
+                  <span class="online-dot"></span>
+                </div>
+                <div class="wa-header-meta">
+                  <div class="wa-name-row">
+                    <strong>MeSage Concierge</strong>
+                    <!-- WhatsApp Official Verified Green Badge SVG -->
+                    <svg viewBox="0 0 18 18" width="13" height="13" class="wa-verified-svg" title="Verified Business"><circle cx="9" cy="9" r="8" fill="#00a884"/><path d="M6 9.2l2.1 2.1 4.2-4.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                  <small id="waStatusText">online</small>
+                </div>
+              </div>
+              <div class="wa-header-icons">
+                <!-- Video Call SVG -->
+                <button type="button" class="wa-icon-btn" title="Video Call">
+                  <svg viewBox="0 0 24 24" width="19" height="19" fill="#aebac1"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg>
+                </button>
+                <!-- Voice Call SVG -->
+                <button type="button" class="wa-icon-btn" title="Voice Call">
+                  <svg viewBox="0 0 24 24" width="17" height="17" fill="#aebac1"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.35-5.43-3.9-6.8-6.8l1.97-1.57c.28-.28.37-.69.25-1.02A11.36 11.36 0 0 1 8.76 4c0-.55-.45-1-1-1H4.16c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.62c0-.55-.45-1-.99-1z"/></svg>
+                </button>
+                <!-- Kebab Menu SVG -->
+                <button type="button" class="wa-icon-btn" title="More Options">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="#aebac1"><circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Chat Canvas (WhatsApp Authentic Doodle Wallpaper, Zero Scrollbar) -->
+            <div class="wa-chat-canvas" id="waChatCanvas">
+              <!-- Encryption Shield Notice with Lock SVG -->
+              <div class="wa-security-note">
+                <svg viewBox="0 0 24 24" width="11" height="11" fill="#ffd279" class="wa-lock-svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+                Messages and calls are end-to-end encrypted. No one outside of this chat, not even WhatsApp, can read or listen to them.
+              </div>
+
+              <!-- Today Pill -->
+              <div class="wa-date-pill">TODAY</div>
+
+              <!-- Message Stream -->
+              <div id="waChatStream"></div>
+
+              <!-- Typing Indicator -->
+              <div class="wa-typing-box" id="waTypingBox" style="display:none">
+                <div class="typing-bubble">
+                  <span id="typingSender">MeSage AI</span> is typing
+                  <i></i><i></i><i></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- Real Interactive WhatsApp Input Bar (Type Anything, Press Enter / Send) -->
+            <form id="waChatForm" class="wa-footer-bar" onsubmit="event.preventDefault(); window.handleUserSubmit();">
+              <div class="wa-input-pill-wrap">
+                <!-- Emoji Smiley SVG -->
+                <button type="button" class="wa-input-icon-btn" title="Emoji">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="#8696a0"><path d="M12 2C6.47 2 2 6.48 2 12s4.47 10 10 10 10-4.48 10-10S17.53 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-3.5-9c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm7 0c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/></svg>
+                </button>
+                <input type="text" id="waUserInput" class="wa-real-input" placeholder="Type a message..." autocomplete="off">
+                <!-- Paperclip Attachment SVG -->
+                <button type="button" class="wa-input-icon-btn wa-clip-btn" title="Attach">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="#8696a0"><path d="M16.5 6v11.5c0 2.21-1.79 4-4 4s-4-1.79-4-4V5c0-1.38 1.12-2.5 2.5-2.5s2.5 1.12 2.5 2.5v10.5c0 .55-.45 1-1 1s-1-.45-1-1V6H10v9.5c0 1.38 1.12 2.5 2.5 2.5s2.5-1.12 2.5-2.5V5c0-2.21-1.79-4-4-4S7 2.79 7 5v12.5c0 3.04 2.46 5.5 5.5 5.5s5.5-2.46 5.5-5.5V6h-1.5z"/></svg>
+                </button>
+              </div>
+              <!-- Send Button -->
+              <button type="submit" class="wa-send-btn" id="waSendBtn" title="Send message">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="#ffffff" id="waSendSvg"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- CONNECTOR 1: Distance spacing between Customer and Agent -->
+        <div class="col-stage col-connector-1" id="colConn1"></div>
+
+        <!-- 2. IN-BETWEEN: Human Agent Space (Distance Kept Blank Until Agent Enters!) -->
+        <div class="col-stage col-agent-inbetween" id="colAgentInbetween">
+          <div class="panel-top-header agent-hdr" id="agentTopHeader">
+            <div class="avatar-face-ring agent-ring">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=120&h=120&q=80" alt="Live Agent" class="real-face-img" onerror="this.style.display='none'">
+              <span class="face-fallback">🧑‍💼</span>
+              <span class="live-status-dot pink-dot"></span>
+            </div>
+            <span class="panel-title-text" id="agentPanelTitle">LIVE AGENT</span>
+          </div>
+
+          <div class="agent-inbox-card" id="agentInboxCard">
+            <!-- 1. Top Bar: Prospect Profile & CRM Utilities -->
+            <div class="crm-top-bar">
+              <div class="crm-user-profile">
+                <div class="crm-avatar-circle" id="crmUserAvatar">
+                  <span>A</span>
+                </div>
+                <div class="crm-user-meta">
+                  <div class="crm-name-row">
+                    <strong id="crmUserName">Alex Turner</strong>
+                    <span class="crm-active-badge">active</span>
+                    <span class="crm-lead-badge" style="display:inline-flex;align-items:center;gap:3px;font-size:9.5px;font-weight:700;padding:1px 6px;border-radius:4px;background:rgba(16,185,129,0.18);color:#34d399;border:1px solid rgba(16,185,129,0.3);margin-left:6px">⚡ Lead Captured</span>
+                  </div>
+                  <small class="crm-phone-text" id="crmUserPhone">+91 91789 051XX</small>
+                </div>
+              </div>
+              <div class="crm-top-icons">
+                <button type="button" class="crm-icon-btn" title="Download">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                </button>
+                <button type="button" class="crm-icon-btn" title="Theme">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                </button>
+                <button type="button" class="crm-icon-btn" title="Language">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                </button>
+                <button type="button" class="crm-icon-btn" title="Company">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><line x1="9" y1="22" x2="9" y2="22.01"/><line x1="15" y1="22" x2="15" y2="22.01"/><line x1="9" y1="6" x2="9" y2="6.01"/><line x1="15" y1="6" x2="15" y2="6.01"/></svg>
+                </button>
+                <button type="button" class="crm-icon-btn" title="Notifications">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                </button>
+                <div class="crm-agent-badge-circle" title="Sarah Mitchell (Sales Closer)">
+                  <span>S</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2. Row 2: Action Icons Bar -->
+            <div class="crm-action-icons-bar">
+              <div class="crm-action-group-left">
+                <button type="button" class="crm-mini-icon-btn" title="Bot Flow">
+                  <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M6 9v6"/><path d="M18 15v-3a3 3 0 0 0-3-3H6"/></svg>
+                </button>
+                <button type="button" class="crm-mini-icon-btn" title="Tags">
+                  <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+                </button>
+                <button type="button" class="crm-mini-icon-btn" title="Deals / Pricing">
+                  <span class="crm-currency-symbol">₹</span>
+                </button>
+                <button type="button" class="crm-mini-icon-btn" title="Schedule Appointment">
+                  <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                </button>
+                <button type="button" class="crm-mini-icon-btn" title="Customer Notes">
+                  <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                </button>
+                <button type="button" class="crm-mini-icon-btn" title="Search History">
+                  <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                </button>
+                <button type="button" class="crm-mini-icon-btn" title="Export">
+                  <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                </button>
+              </div>
+              <div class="crm-action-divider"></div>
+              <div class="crm-action-group-right">
+                <button type="button" class="crm-phone-call-btn active-call" title="Click to Call (VoIP)">
+                  <svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.35-5.43-3.9-6.8-6.8l1.97-1.57c.28-.28.37-.69.25-1.02A11.36 11.36 0 0 1 8.76 4c0-.55-.45-1-1-1H4.16c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.62c0-.55-.45-1-.99-1z"/></svg>
+                </button>
+                <button type="button" class="crm-phone-call-btn muted-call" title="Secondary Line">
+                  <svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.35-5.43-3.9-6.8-6.8l1.97-1.57c.28-.28.37-.69.25-1.02A11.36 11.36 0 0 1 8.76 4c0-.55-.45-1-1-1H4.16c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.62c0-.55-.45-1-.99-1z"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- 3. Row 3: AI Engine Toggles (Indigo Theme) -->
+            <div class="crm-ai-toggles-bar">
+              <div class="crm-toggle-pill off">
+                <span class="pill-dot gray-dot"></span>
+                <span>🤖 Chat AI</span>
+                <strong>OFF</strong>
+              </div>
+              <div class="crm-toggle-pill on-indigo">
+                <span class="pill-dot indigo-dot"></span>
+                <span>🔀 Bot Flow</span>
+                <strong>ON</strong>
+              </div>
+              <div class="crm-toggle-pill off">
+                <span class="pill-dot gray-dot"></span>
+                <span>📞 Call AI</span>
+                <strong>OFF</strong>
+              </div>
+            </div>
+
+            <!-- 4. Row 4: Action Tools & Indigo Resolve Button -->
+            <div class="crm-action-tools-bar">
+              <div class="crm-tools-scroll">
+                <button type="button" class="crm-tool-chip">▤ Template</button>
+                <button type="button" class="crm-tool-chip">💬 Preset</button>
+                <button type="button" class="crm-tool-chip">👤+ Assign</button>
+                <button type="button" class="crm-tool-chip">🧾 Invoice</button>
+                <button type="button" class="crm-tool-chip">✨ Summary</button>
+              </div>
+              <button type="button" class="crm-resolve-btn" id="crmResolveBtn">Resolve</button>
+            </div>
+
+            <!-- 5. Row 5: Live Dotted Grid Chat Stream (Synced with WhatsApp!) -->
+            <div class="crm-chat-canvas" id="crmChatCanvas">
+              <div class="crm-chat-stream" id="crmChatStream">
+                <!-- Real-time synced messages populated dynamically by demo1.js -->
+              </div>
+            </div>
+
+            <!-- 6. Row 6: CRM Composer & Quick Replies -->
+            <div class="crm-footer-composer">
+              <div class="crm-input-box">
+                <span class="crm-input-placeholder">Type a message... ( / for quick replies )</span>
+              </div>
+              <div class="crm-composer-toolbar">
+                <div class="crm-composer-icons-left">
+                  <button type="button" class="crm-comp-icon" title="Attachment">📎</button>
+                  <button type="button" class="crm-comp-icon" title="AI Polish">✨</button>
+                  <button type="button" class="crm-comp-icon" title="Emoji">😊</button>
+                  <button type="button" class="crm-comp-icon" title="Stickers / Snippets">📄</button>
+                  <button type="button" class="crm-comp-icon" title="Calendar">📅</button>
+                  <button type="button" class="crm-comp-icon" title="Voice">🎤</button>
+                </div>
+                <button type="button" class="crm-help-fab" title="Help &amp; Support">?</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CONNECTOR 2: Distance spacing between Agent and AI Robot -->
+        <div class="col-stage col-connector-2" id="colConn2"></div>
+
+        <!-- 3. RIGHT: Autonomous AI Robot Face & Soundwave Equalizer (No bubbles, authentic robot face!) -->
+        <div class="col-stage col-ai-bot" id="colAiBot">
+          <div class="panel-top-header ai-hdr">
+            <div class="avatar-face-ring ai-ring" title="MeSage AI Autonomous Engine">
+              <img src="assets/plane-logo.png" alt="MeSage AI" class="header-plane-logo">
+              <span class="live-status-dot indigo-dot"></span>
+            </div>
+            <span class="panel-title-text">AI AUTOMATION</span>
+          </div>
+          
+          <div class="robot-face-stage" id="robotFaceStage">
+            <!-- Glowing Futuristic AI Robot Face Showcase -->
+            <div class="robot-face-stage-core" id="robotFaceCore">
+              <div class="robot-halo-glow"></div>
+              <div class="robot-face-orb">
+                <svg viewBox="0 0 100 100" class="ai-robot-face-svg" width="84" height="84">
+                  <defs>
+                    <filter id="robotGlow" x="-20%" y="-20%" width="140%" height="140%">
+                      <feGaussianBlur stdDeviation="3" result="blur" />
+                      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                    </filter>
+                    <linearGradient id="robotMetalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#1e1b4b" />
+                      <stop offset="50%" stop-color="#0f172a" />
+                      <stop offset="100%" stop-color="#1e293b" />
+                    </linearGradient>
+                  </defs>
+
+                  <!-- Top Antenna & Pulsing Node -->
+                  <line x1="50" y1="21" x2="50" y2="11" stroke="#818cf8" stroke-width="2.5" stroke-linecap="round" />
+                  <circle cx="50" cy="9" r="4.5" fill="#38bdf8" filter="url(#robotGlow)" class="antenna-node" />
+
+                  <!-- Robot Head Chassis / Shell -->
+                  <rect x="20" y="21" width="60" height="57" rx="16" fill="url(#robotMetalGrad)" stroke="#6366f1" stroke-width="2.5" />
+
+                  <!-- Side Audio Ears / Hardware Sensors -->
+                  <rect x="14" y="38" width="6" height="22" rx="3" fill="#4338ca" stroke="#818cf8" stroke-width="1.5" />
+                  <rect x="80" y="38" width="6" height="22" rx="3" fill="#4338ca" stroke="#818cf8" stroke-width="1.5" />
+
+                  <!-- Visor Screen -->
+                  <rect x="27" y="33" width="46" height="25" rx="8" fill="#080c1e" stroke="#38bdf8" stroke-width="1.5" />
+
+                  <!-- Expressive Glowing Cyan Eyes -->
+                  <g class="robot-eyes-group">
+                    <ellipse cx="39" cy="45" rx="6.5" ry="5.5" fill="#38bdf8" filter="url(#robotGlow)" class="robot-eye" />
+                    <circle cx="41" cy="43.5" r="1.8" fill="#ffffff" />
+                    <ellipse cx="61" cy="45" rx="6.5" ry="5.5" fill="#38bdf8" filter="url(#robotGlow)" class="robot-eye" />
+                    <circle cx="63" cy="43.5" r="1.8" fill="#ffffff" />
+                  </g>
+
+                  <!-- Cheek Tech Circuit Lines -->
+                  <circle cx="28" cy="65" r="1.5" fill="#818cf8" />
+                  <line x1="28" y1="65" x2="35" y2="65" stroke="#818cf8" stroke-width="1.2" stroke-linecap="round" />
+                  <circle cx="72" cy="65" r="1.5" fill="#818cf8" />
+                  <line x1="65" y1="65" x2="72" y2="65" stroke="#818cf8" stroke-width="1.2" stroke-linecap="round" />
+
+                  <!-- Robot Mouth (Clean smile, frequency bars removed) -->
+                  <path d="M 42 66 Q 50 70 58 66" stroke="#38bdf8" stroke-width="2.2" stroke-linecap="round" fill="none" opacity="0.85" filter="url(#robotGlow)" />
+                </svg>
+              </div>
+            </div>
+
+            <!-- Soundwave Equalizer Frequencies (KEPT!) -->
+            <div class="freq-soundwave-wrap" id="aiWaveform">
+              <span class="freq-bar b1"></span>
+              <span class="freq-bar b2"></span>
+              <span class="freq-bar b3"></span>
+              <span class="freq-bar b4"></span>
+              <span class="freq-bar b5"></span>
+              <span class="freq-bar b6"></span>
+              <span class="freq-bar b7"></span>
+              <span class="freq-bar b8"></span>
+              <span class="freq-bar b9"></span>
+              <span class="freq-bar b10"></span>
+              <span class="freq-bar b11"></span>
+              <span class="freq-bar b12"></span>
+            </div>
+
+            <!-- Status Tag -->
+            <div class="robot-engine-badge">
+              <span class="engine-pulse-dot"></span>
+              <span>24/7 GPT Powered AI</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. RIGHT BOTTOM: Small Replay Button after Automation Panel -->
+        <div class="col-stage col-replay-side" id="colReplaySide">
+          <button type="button" class="btn-replay-small" onclick="restartSimulation()" title="Replay Demo Flow">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="1 4 1 10 7 10"></polyline>
+              <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+            </svg>
+            <span>Replay Demo</span>
+          </button>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <script src="header.js"></script>
+  <script src="customer-experience.js"></script>
+  <script src="demo1.js"></script>
+</body>
+</html>

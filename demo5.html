@@ -11,24 +11,29 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="demo5.css">
+  <link rel="stylesheet" href="header.css">
 </head>
 <body>
 
   <!-- ==========================================================================
        HEADER
        ========================================================================== -->
-  <header class="demo-header">
-    <div class="container header-inner">
-      <a href="index.html" class="brand" aria-label="MeSage AI home">
-        <img src="assets/logoimg.png" alt="MeSage AI" class="brand-logo" onerror="this.src='assets/logogif.gif'">
+  <header class="nav-wrap">
+    <nav class="nav container">
+      <a class="brand" href="home.html" aria-label="MeSage AI home">
+        <img src="assets/logoimg.png" alt="MeSage AI logo" class="brand-logo" onerror="this.src='assets/logogif.gif'">
         <span>MeSage<span class="brand-ai"> AI</span></span>
       </a>
-
-      <div class="header-badge-tag">
-        <span class="pulse-dot"></span>
-        <span>CLIENT CAPABILITIES</span>
+      <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      <div class="nav-links">
+        <a href="home.html">Home</a>
+        <a href="how-it-works.html">How It works</a>
+        <a href="demo4.html">What we solve</a>
+        <a href="demo3.html">Know More</a>
+        <a href="about.html">About us</a>
+        <a href="demo2.html" class="nav-contact-btn">Contact</a>
       </div>
-    </div>
+    </nav>
   </header>
 
   <main>
@@ -352,7 +357,7 @@
                       <div class="thread-text-sub">"Sent reel: Looking for commercial showroom"</div>
                     </div>
                   </div>
-                  <span class="thread-agent-pill">Assigned: Priya</span>
+                  <span class="thread-agent-pill">Assigned: Sarah</span>
                 </div>
                 <div class="inbox-thread-item" data-channel="web">
                   <div class="thread-user-meta">
@@ -956,6 +961,7 @@
     </div>
   </footer>
 
+  <script src="header.js"></script>
   <script src="demo5.js"></script>
 </body>
 </html>

@@ -6,7 +6,53 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   initProblemFilters();
+  initDashboardInteractions();
 });
+
+function initDashboardInteractions() {
+  const pwaBtn = document.getElementById('pwaDemoBtn');
+  if (pwaBtn) {
+    pwaBtn.addEventListener('click', () => {
+      showToast('📲 MeSage AI Mobile App: Panel pinned to home screen! Real-time sound & push notifications activated for upcoming appointments and due reminders.');
+    });
+  }
+}
+
+function showToast(message) {
+  let toast = document.getElementById('demoToast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'demoToast';
+    toast.style.position = 'fixed';
+    toast.style.bottom = '24px';
+    toast.style.right = '24px';
+    toast.style.zIndex = '9999';
+    toast.style.maxWidth = '420px';
+    toast.style.padding = '14px 20px';
+    toast.style.background = 'linear-gradient(135deg, #1e1b4b, #0f172a)';
+    toast.style.border = '1px solid rgba(99, 102, 241, 0.4)';
+    toast.style.borderRadius = '12px';
+    toast.style.color = '#fff';
+    toast.style.fontFamily = "'Plus Jakarta Sans', sans-serif";
+    toast.style.fontSize = '13.5px';
+    toast.style.lineHeight = '1.5';
+    toast.style.boxShadow = '0 20px 40px rgba(0,0,0,0.6), 0 0 30px rgba(99, 102, 241, 0.25)';
+    toast.style.transition = 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)';
+    toast.style.transform = 'translateY(100px)';
+    toast.style.opacity = '0';
+    document.body.appendChild(toast);
+  }
+
+  toast.textContent = message;
+  toast.style.transform = 'translateY(0)';
+  toast.style.opacity = '1';
+
+  clearTimeout(toast._timeout);
+  toast._timeout = setTimeout(() => {
+    toast.style.transform = 'translateY(100px)';
+    toast.style.opacity = '0';
+  }, 4000);
+}
 
 function initProblemFilters() {
   const searchInput = document.getElementById('problemsSearch');

@@ -3,7 +3,17 @@
 A responsive one-page marketing website for MeSage AI.
 
 ## Files
-- `index.html` — website structure and page content
+- `home.html` — main website structure and page content
+- `index.html` — entry point / redirect to `home.html`
+- `how-it-works.html` — How It works (unified Customer & Business experiences)
+- `customer-experience.html` — redirect to `how-it-works.html#customer`
+- `your-experience.html` — redirect to `how-it-works.html#business`
+- `demo4.html` — What we solve (problem-solution breakdown)
+- `demo3.html` — Know More (workspace & platform capabilities tour)
+- `about.html` — About us (mission, vision & core pillars)
+- `demo2.html` — Contact (demo booking & schedule contact form)
+- `header.css` — unified header styles across all pages
+- `header.js` — unified responsive mobile menu script
 - `styles.css` — responsive dark/futuristic styling
 - `script.js` — mobile navigation and current year
 - `assets/logoimg.png` — place your logo image here
@@ -17,7 +27,7 @@ Your original paths are local to your Windows computer and are not accessible to
 The static logo is already referenced in the header and footer. To use the animated logo instead, change the header/footer image source from `assets/logoimg.png` to `assets/logogif.gif` in `index.html`.
 
 ## Preview locally
-Open `index.html` in Chrome. An internet connection is needed for the Google Fonts import; the page otherwise works as a static site.
+Open `home.html` (or `index.html`) in Chrome. An internet connection is needed for the Google Fonts import; the page otherwise works as a static site.
 
 ## Publish
 Upload the project files to your hosting's public web root (often `public_html`), keeping the `assets` folder alongside `index.html`.

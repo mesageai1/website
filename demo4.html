@@ -4,13 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#070913">
-  <meta name="description" content="What Problems Does MeSage AI Solve? — Real-world business struggles, our automated solutions, and measurable financial ROI for growing businesses.">
-  <title>MeSage AI — What Problems Do We Solve? Real-World Solutions &amp; ROI</title>
+  <meta name="description" content="Explore the business problems MeSage AI solves: 24/7 automated replies, instant lead capture, shared team inbox, and WhatsApp broadcasts.">
+  <title>MeSage AI — What We Solve | WhatsApp Automation</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="demo4.css">
+  <link rel="stylesheet" href="header.css">
 </head>
 <body>
 
@@ -21,14 +22,13 @@
     <div class="container topbar-content">
       <div class="topbar-left">
         <span class="pulse-dot"></span>
-        <span class="topbar-badge">PROBLEM SOLVER TOUR</span>
-        <span><strong>Real-World Impact:</strong> How MeSage AI fixes the most painful daily struggles in customer communication</span>
+        <span class="topbar-badge">OVERVIEW</span>
+        <span><strong>Business Solutions:</strong> Automated WhatsApp replies, instant lead capture, and team collaboration.</span>
       </div>
       <div class="topbar-right">
-        <a href="demo1.html" class="topbar-link">⚡ Demo 1: WhatsApp Bot Simulation</a>
-        <a href="demo2.html" class="topbar-link">📅 Demo 2: Schedule a Demo</a>
-        <a href="demo3.html" class="topbar-link">★ Demo 3: All Capabilities</a>
-        <a href="index.html" class="topbar-link">← Main Website</a>
+        <a href="how-it-works.html" class="topbar-link">⚡ Interactive Simulation</a>
+        <a href="demo3.html" class="topbar-link">★ Workspace Tour</a>
+        <a href="demo2.html" class="topbar-link">📅 Schedule Demo</a>
       </div>
     </div>
   </aside>
@@ -36,56 +36,52 @@
   <!-- ==========================================================================
        NAVIGATION HEADER
        ========================================================================== -->
-  <header class="demo-header">
-    <div class="container header-inner">
-      <a href="index.html" class="brand" aria-label="MeSage AI home">
+  <header class="nav-wrap">
+    <nav class="nav container">
+      <a class="brand" href="home.html" aria-label="MeSage AI home">
         <img src="assets/logoimg.png" alt="MeSage AI logo" class="brand-logo" onerror="this.src='assets/logogif.gif'">
         <span>MeSage<span class="brand-ai"> AI</span></span>
       </a>
-
-      <nav class="nav-tabs" aria-label="Demo Navigation">
-        <a href="index.html" class="nav-tab">Home</a>
-        <a href="demo1.html" class="nav-tab">Demo 1 (Live Flow)</a>
-        <a href="demo2.html" class="nav-tab">Demo 2 (Schedule Demo)</a>
-        <a href="demo3.html" class="nav-tab">Demo 3 (Workspace Guide)</a>
-        <a href="demo4.html" class="nav-tab active">Demo 4 (Problems We Solve)</a>
-      </nav>
-
-      <div class="header-actions">
-        <a href="demo3.html" class="btn btn-ghost">View Capabilities <span>★</span></a>
-        <a href="demo2.html" class="btn btn-primary">Schedule Demo <span>↗</span></a>
+      <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      <div class="nav-links">
+        <a href="home.html">Home</a>
+        <a href="how-it-works.html">How It works</a>
+        <a href="demo4.html" class="active">What we solve</a>
+        <a href="demo3.html">Know More</a>
+        <a href="about.html">About us</a>
+        <a href="demo2.html" class="nav-contact-btn">Contact</a>
       </div>
-    </div>
+    </nav>
   </header>
 
   <main>
 
     <!-- ==========================================================================
-         HERO SECTION: CLIENT-FRIENDLY & HIGH-IMPACT
+         HERO SECTION
          ========================================================================== -->
     <section class="hero-section container">
       <div class="hero-pill-row">
-        <span>★</span> WHY BUSINESSES CHOOSE MESAGE AI
+        <span>★</span> BUILT FOR MODERN BUSINESSES
       </div>
 
       <h1 class="hero-title">
-        Every painful customer chat problem.<br>
-        <span class="gradient-text">Solved in seconds with real business ROI.</span>
+        Never miss a customer on WhatsApp.<br>
+        <span class="gradient-text">Automate replies, capture leads, and close deals faster.</span>
       </h1>
 
       <p class="hero-sub">
-        Every growing business faces the exact same costly struggles: lost late-night inquiries, chaotic personal phones, silent cold leads, and skyrocketing ad bills. Here is how MeSage AI replaces manual chaos with automated revenue.
+        Automate customer chats 24/7, connect your sales team to one shared number, and turn incoming inquiries into revenue without extra staff.
       </p>
 
-      <!-- Connected Channels Ribbon with Real Brand Colors & Logos -->
+      <!-- Connected Channels Ribbon -->
       <div class="hero-channels-ribbon">
         <div class="channel-pill-item wa-pill">
           <svg class="ch-svg" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          <span>WhatsApp Cloud API</span>
+          <span>Official WhatsApp</span>
         </div>
         <div class="channel-pill-item ig-pill">
           <svg class="ch-svg" viewBox="0 0 24 24"><defs><linearGradient id="igH4" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f09433"/><stop offset="50%" stop-color="#dc2743"/><stop offset="100%" stop-color="#bc1888"/></linearGradient></defs><path fill="url(#igH4)" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-          <span>Instagram Auto DMs</span>
+          <span>Instagram DMs</span>
         </div>
         <div class="channel-pill-item fb-pill">
           <svg class="ch-svg" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
@@ -93,7 +89,7 @@
         </div>
         <div class="channel-pill-item web-pill">
           <svg class="ch-svg" viewBox="0 0 24 24" fill="#818CF8"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-          <span>Website Live Chat Widget</span>
+          <span>Website Live Chat</span>
         </div>
         <div class="channel-pill-item tg-pill">
           <svg class="ch-svg" viewBox="0 0 24 24" fill="#29B6F6"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
@@ -107,79 +103,87 @@
     </section>
 
     <!-- ==========================================================================
-         EXECUTIVE COMPARISON: OLD MANUAL WAY VS THE MESAGE AI WAY
+         COMPARISON: MANUAL METHOD VS MESAGE AI
          ========================================================================== -->
     <section class="container" style="margin-bottom: 40px;">
       <div class="vs-comparison-board">
         <div class="vs-header">
-          <span class="section-badge">★ EXECUTIVE COMPARISON</span>
-          <h2 class="section-h2" style="font-size: clamp(22px, 2.8vw, 32px); margin-bottom: 8px;">The Cost of Doing Nothing vs. The MeSage AI Edge</h2>
+          <span class="section-badge">COMPARISON</span>
+          <h2 class="section-h2" style="font-size: clamp(22px, 2.8vw, 32px); margin-bottom: 8px;">Manual Messaging vs. MeSage AI Automation</h2>
           <p class="section-desc" style="margin: 0 auto; max-width: 680px;">
-            Here is the clear difference between running customer chats manually on personal phones versus deploying an intelligent, automated WhatsApp workspace.
+            A clear comparison between managing customer chats manually and using an automated WhatsApp system.
           </p>
         </div>
 
         <div class="vs-grid">
-          <!-- The Old Manual Way -->
+          <!-- The Manual Method -->
           <div class="vs-col old-way-col">
-            <div class="vs-badge-tag old-tag">❌ THE OLD MANUAL WAY</div>
-            <h3 class="vs-col-title">Manual Chaos &amp; Lost Revenue</h3>
+            <div class="vs-badge-tag old-tag">❌ MANUAL METHOD</div>
+            <h3 class="vs-col-title">Manual &amp; Disconnected</h3>
             <ul class="vs-point-list">
               <li>
-                <span class="vs-icon-cross">✗</span>
-                <div><strong>Delayed Lead Capture:</strong> Facebook &amp; Instagram ad leads sit in CSV files for 24 hours. By the time reps call, 75% of buyers are cold.</div>
+                <span class="vs-icon-cross">❌</span>
+                <div><strong>Delayed Lead Response:</strong> Ad leads sit in spreadsheets for hours. Most buyers look elsewhere before reps call.</div>
               </li>
               <li>
-                <span class="vs-icon-cross">✗</span>
-                <div><strong>Hours of Delay:</strong> Weekend &amp; late-night messages wait until Monday morning. 60% of buyers go to competitors.</div>
+                <span class="vs-icon-cross">❌</span>
+                <div><strong>Missed Off-Hours Chats:</strong> Night and weekend messages wait until the next morning, losing impatient customers.</div>
               </li>
               <li>
-                <span class="vs-icon-cross">✗</span>
-                <div><strong>Lost Customer Data:</strong> Sales reps chat on personal phones. When an employee leaves, your client database vanishes.</div>
+                <span class="vs-icon-cross">❌</span>
+                <div><strong>Scattered Customer Data:</strong> Staff chat on personal phones. When reps leave, valuable client contacts are lost.</div>
               </li>
               <li>
-                <span class="vs-icon-cross">✗</span>
-                <div><strong>Ignored Cold Inquiries:</strong> 70% of prospects say "I'll think about it" and are never contacted again because reps are busy.</div>
+                <span class="vs-icon-cross">❌</span>
+                <div><strong>Forgotten Follow-ups:</strong> Interested buyers go silent and reps forget to check back regularly.</div>
               </li>
               <li>
-                <span class="vs-icon-cross">✗</span>
-                <div><strong>Low-Reach Marketing:</strong> Emails land in Spam folders (12% open rate) and SMS texts are blocked as unwanted spam.</div>
+                <span class="vs-icon-cross">❌</span>
+                <div><strong>Low Email &amp; SMS Reach:</strong> Promotional emails go to spam and text messages are ignored.</div>
               </li>
               <li>
-                <span class="vs-icon-cross">✗</span>
-                <div><strong>Huge Calling Payroll:</strong> Telecallers spend 6 hours dialing cold numbers with only 15% pickup rates and high burnout.</div>
+                <span class="vs-icon-cross">❌</span>
+                <div><strong>High Calling Costs:</strong> Telecallers spend hours dialing unanswered calls with low conversion.</div>
+              </li>
+              <li>
+                <span class="vs-icon-cross">❌</span>
+                <div><strong>No Daily Action Center:</strong> Reps lack a daily overview of due reminders, appointments, or unread priority chats, forcing staff to scroll endlessly through messy inbox lists.</div>
               </li>
             </ul>
           </div>
 
           <!-- The MeSage AI Way -->
           <div class="vs-col new-way-col">
-            <div class="vs-badge-tag new-tag">✦ THE MESAGE AI WAY</div>
-            <h3 class="vs-col-title">Automated Speed &amp; 3x Growth</h3>
+            <div class="vs-badge-tag new-tag">✅ WITH MESAGE AI</div>
+            <h3 class="vs-col-title">Automated &amp; Centralized</h3>
             <ul class="vs-point-list">
               <li>
-                <span class="vs-icon-check">✓</span>
-                <div><strong>Instant 2-Sec Lead Capture:</strong> Meta Lead Ads, Instagram comments, web widgets &amp; QR codes instantly captured into WhatsApp &amp; CRM.</div>
+                <span class="vs-icon-check">✅</span>
+                <div><strong>Instant 2-Sec Reply:</strong> Every ad lead, comment, and website inquiry gets an immediate WhatsApp catalog.</div>
               </li>
               <li>
-                <span class="vs-icon-check">✓</span>
-                <div><strong>Instant 2-Second Answers:</strong> 24/7 AI chatbot shares product catalogs &amp; info, answers pricing, and qualifies leads even at 2 AM.</div>
+                <span class="vs-icon-check">✅</span>
+                <div><strong>24/7 AI Availability:</strong> Shares pricing, answers product questions, and qualifies buyers anytime.</div>
               </li>
               <li>
-                <span class="vs-icon-check">✓</span>
-                <div><strong>100% Owned Business Data:</strong> 1 official WhatsApp number shared by your team. All chats and contacts auto-sync to CRM.</div>
+                <span class="vs-icon-check">✅</span>
+                <div><strong>One Shared Team Number:</strong> Multiple agents manage chats from desktop or mobile while company owns all data.</div>
               </li>
               <li>
-                <span class="vs-icon-check">✓</span>
-                <div><strong>Automated Follow-up Drips:</strong> Day 1, Day 3 &amp; Day 7 smart WhatsApp check-ins automatically revive 35% of cold leads.</div>
+                <span class="vs-icon-check">✅</span>
+                <div><strong>Automated Follow-ups:</strong> Scheduled drip messages re-engage silent prospects on Day 1, 3, and 7.</div>
               </li>
               <li>
-                <span class="vs-icon-check">✓</span>
-                <div><strong>98% Open Rate Broadcasts:</strong> Official Meta-verified WhatsApp campaigns with 1-tap interactive buttons and delivery proof.</div>
+                <span class="vs-icon-check">✅</span>
+                <div><strong>98% Open Rate Broadcasts:</strong> Official WhatsApp campaigns with product images, videos, and quick-reply buttons.</div>
               </li>
               <li>
-                <span class="vs-icon-check">✓</span>
-                <div><strong>Bulk Real-Time AI Calling:</strong> AI voice agent calls 500 prospects in native Indian languages, qualifying buyers automatically.</div>
+                <span class="vs-icon-check">✅</span>
+                <div><strong>AI Voice Calling:</strong> Automatically dials and qualifies leads, routing hot buyers directly to your closers.</div>
+              </li>
+              <li>
+                <span class="vs-icon-check">✅</span>
+                <div><strong>Live Action Dashboard:</strong> Real-time "Today at a Glance" metrics, due reminder alerts, upcoming appointment queues, and mobile PWA push notifications.</div>
               </li>
             </ul>
           </div>
@@ -188,126 +192,366 @@
     </section>
 
     <!-- ==========================================================================
-         LEAD CAPTURE SHOWCASE: CAPTURE LEADS FROM EVERYWHERE (GUIDE CH. 15, 20 & 21)
+         LEAD CAPTURE SHOWCASE
          ========================================================================== -->
     <section class="container" style="margin-bottom: 45px;" id="leadCapture">
       <div class="lead-capture-showcase-box">
         <div class="section-head center" style="margin-bottom: 24px;">
           <div class="section-badge" style="background: rgba(16, 185, 129, 0.15); border-color: rgba(16, 185, 129, 0.35); color: var(--green-light);">
-            ★ OMNI-CHANNEL LEAD CAPTURE (GUIDE CH. 15, 20 &amp; 21)
+            ⚡ LEAD CAPTURE
           </div>
-          <h2 class="section-h2" style="font-size: clamp(22px, 3vw, 34px);">Capture Qualified Leads From Everywhere — 24/7 on Autopilot</h2>
+          <h2 class="section-h2" style="font-size: clamp(22px, 3vw, 34px);">Capture Leads from Every Channel Instantly</h2>
           <p class="section-desc" style="max-width: 720px; margin: 0 auto;">
-            Never let an interested prospect slip away. Whether a customer clicks a Facebook Ad, comments on your Instagram Reel, visits your website, or scans an offline flyer QR code — MeSage captures their verified mobile number in under 2 seconds.
+            Connect with prospective buyers in seconds across paid ads, Instagram, your website, and offline QR codes.
           </p>
         </div>
 
         <div class="lead-capture-grid">
-          <!-- 1. Facebook & Instagram Lead Ads -->
+          <!-- 1. Meta Lead Ads -->
           <div class="lc-card">
             <div>
               <div class="lc-icon-wrap" style="background: rgba(24, 119, 242, 0.15); color: #60a5fa;">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
               </div>
-              <div class="lc-tag">INSTANT 2-SEC PING</div>
-              <h3 class="lc-title">Facebook &amp; Instagram Lead Ads</h3>
+              <div class="lc-tag">INSTANT LEAD REPLY</div>
+              <h3 class="lc-title">Meta Lead Ads</h3>
               <p class="lc-desc">
-                When someone submits a Meta Lead Ad, MeSage sends an immediate personalized WhatsApp message within 2 seconds. <strong>Zero waiting for manual CSV downloads.</strong>
+                Send instant WhatsApp catalogs and pricing the second an ad lead form is submitted.
               </p>
             </div>
             <div class="lc-stat-pill">
               <span class="lc-stat-num">85%</span>
-              <span class="lc-stat-lbl">Instant Contact Rate (vs. 15% traditional)</span>
+              <span class="lc-stat-lbl">Contact Rate within 5 Minutes</span>
             </div>
           </div>
 
-          <!-- 2. Instagram Comment-to-DM & Story Replies -->
+          <!-- 2. Instagram Automation -->
           <div class="lc-card">
             <div>
               <div class="lc-icon-wrap" style="background: rgba(220, 39, 67, 0.15);">
                 <svg width="22" height="22" viewBox="0 0 24 24"><defs><linearGradient id="igLC" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f09433"/><stop offset="50%" stop-color="#dc2743"/><stop offset="100%" stop-color="#bc1888"/></linearGradient></defs><path fill="url(#igLC)" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
               </div>
-              <div class="lc-tag" style="background: rgba(220, 39, 67, 0.15); color: #f472b6;">COMMENT-TO-DM</div>
-              <h3 class="lc-title">Instagram Reel &amp; Story Lead Capture</h3>
+              <div class="lc-tag" style="background: rgba(220, 39, 67, 0.15); color: #f472b6;">COMMENT TO CHAT</div>
+              <h3 class="lc-title">Instagram Automation</h3>
               <p class="lc-desc">
-                Followers comment "PRICE" or "INFO" on your Reels. AI sends an instant private DM with your catalog link and captures their phone number into CRM.
+                Automatically reply to post and Reel comments with direct product links and WhatsApp invites.
               </p>
             </div>
             <div class="lc-stat-pill">
               <span class="lc-stat-num">10x</span>
-              <span class="lc-stat-lbl">More Inquiries From Existing Followers</span>
+              <span class="lc-stat-lbl">More Conversations from Posts</span>
             </div>
           </div>
 
-          <!-- 3. Website WhatsApp Chat Widget -->
+          <!-- 3. Website WhatsApp Button -->
           <div class="lc-card">
             <div>
               <div class="lc-icon-wrap" style="background: rgba(129, 140, 248, 0.15); color: var(--indigo-light);">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="#818CF8"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
               </div>
               <div class="lc-tag" style="background: rgba(129, 140, 248, 0.15); color: var(--indigo-light);">WEBSITE WIDGET</div>
-              <h3 class="lc-title">1-Click Website WhatsApp Widget</h3>
+              <h3 class="lc-title">1-Click Website Chat</h3>
               <p class="lc-desc">
-                Replaces boring contact forms that 96% of visitors ignore. One click opens WhatsApp on their phone, capturing their verified mobile number automatically.
+                Replace long contact forms with a single click that opens WhatsApp on the visitor's device.
               </p>
             </div>
             <div class="lc-stat-pill">
               <span class="lc-stat-num">4x</span>
-              <span class="lc-stat-lbl">Higher Conversion Than Website Forms</span>
+              <span class="lc-stat-lbl">Higher Inbound Inquiries</span>
             </div>
           </div>
 
-          <!-- 4. 228 Ready-Made Lead Gen Form Templates -->
+          <!-- 4. Ready-Made Requirement Forms -->
           <div class="lc-card">
             <div>
               <div class="lc-icon-wrap" style="background: rgba(16, 185, 129, 0.15); color: var(--green-light);">
                 <span style="font-size:22px">📋</span>
               </div>
-              <div class="lc-tag" style="background: rgba(16, 185, 129, 0.15); color: var(--green-light);">228 FORM TEMPLATES</div>
-              <h3 class="lc-title">Interactive Lead Gen Forms (228 Ready)</h3>
+              <div class="lc-tag" style="background: rgba(16, 185, 129, 0.15); color: var(--green-light);">CHAT FORMS</div>
+              <h3 class="lc-title">Requirement Collection</h3>
               <p class="lc-desc">
-                Ready-made mobile lead forms for Real Estate, Doctors, Coaches, and Retail. Collect requirements, budget, and location with auto-tagging.
+                Collect customer requirements, budget, and location directly inside WhatsApp chat.
               </p>
             </div>
             <div class="lc-stat-pill">
               <span class="lc-stat-num">100%</span>
-              <span class="lc-stat-lbl">Auto-Tagged &amp; Assigned in CRM</span>
+              <span class="lc-stat-lbl">Auto-Saved to Customer Profile</span>
             </div>
           </div>
 
-          <!-- 5. Click-to-WhatsApp (CTWA) Ads -->
+          <!-- 5. Click-to-WhatsApp Ads -->
           <div class="lc-card">
             <div>
               <div class="lc-icon-wrap" style="background: rgba(37, 211, 102, 0.15); color: var(--wa-green);">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
               </div>
-              <div class="lc-tag wa-tag">CTWA DIRECT ADS</div>
-              <h3 class="lc-title">Click-to-WhatsApp (CTWA) Ads</h3>
+              <div class="lc-tag wa-tag">DIRECT-TO-CHAT ADS</div>
+              <h3 class="lc-title">Click-to-WhatsApp Ads</h3>
               <p class="lc-desc">
-                Buyers click your Facebook or Instagram ad and land directly in a WhatsApp conversation. The bot auto-qualifies budget before a sales agent joins.
+                Direct ad traffic straight into chat, where AI qualifies buyers before routing to sales.
               </p>
             </div>
             <div class="lc-stat-pill">
               <span class="lc-stat-num">-35%</span>
-              <span class="lc-stat-lbl">Lower Cost-Per-Qualified Lead</span>
+              <span class="lc-stat-lbl">Lower Cost per Qualified Lead</span>
             </div>
           </div>
 
-          <!-- 6. Tracked QR Codes & Missed Call Auto-Capture -->
+          <!-- 6. Smart QR Codes -->
           <div class="lc-card">
             <div>
               <div class="lc-icon-wrap" style="background: rgba(245, 158, 11, 0.15); color: var(--amber);">
                 <span style="font-size:22px">📱</span>
               </div>
-              <div class="lc-tag" style="background: rgba(245, 158, 11, 0.15); color: var(--amber);">OFFLINE &amp; CALLS</div>
-              <h3 class="lc-title">Tracked QR Codes &amp; Missed Call Capture</h3>
+              <div class="lc-tag" style="background: rgba(245, 158, 11, 0.15); color: var(--amber);">OFFLINE CONVERSION</div>
+              <h3 class="lc-title">Smart QR Codes</h3>
               <p class="lc-desc">
-                Printable QR codes for packaging, store counters, and flyers. If a customer calls and disconnects, MeSage auto-sends a WhatsApp catalog instantly.
+                Place QR codes on packaging, store counters, and flyers for free inbound chats with zero Meta fees.
               </p>
             </div>
             <div class="lc-stat-pill">
               <span class="lc-stat-num">Zero</span>
-              <span class="lc-stat-lbl">Missed Calls or Offline Inquiries Lost</span>
+              <span class="lc-stat-lbl">Missed Inbound Inquiries</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         PAGE 3 SHOWCASE: LIVE ACTION DASHBOARD (TODAY AT A GLANCE & ACTION-NEEDED QUEUE)
+         ========================================================================== -->
+    <section class="container" style="margin-bottom: 45px;" id="dashboardShowcase">
+      <div class="action-dashboard-showcase-box">
+        <div class="dash-showcase-head">
+          <div class="dash-head-meta">
+            <span class="dash-badge-glow">
+              <span class="pulse-dot-green"></span> CHAPTER 01 • LIVE DASHBOARD
+            </span>
+            <span class="dash-page-tag">From Page 3 of Customer Panel Guide</span>
+          </div>
+          <h2 class="dash-showcase-title">
+            Real-Time Daily Operations: <span class="gradient-text">Today at a Glance &amp; Action Needed</span>
+          </h2>
+          <p class="dash-showcase-desc">
+            While historical analytics (Page 4) analyze past delivery and read percentages, the <strong>MeSage Dashboard (Page 3)</strong> is your real-time daily command center. It instantly surfaces what is happening <em>today</em> and what requires immediate action so urgent appointments and customer callbacks are never missed.
+          </p>
+        </div>
+
+        <!-- The Interactive Dashboard Window Mockup -->
+        <div class="dash-window-card">
+          <!-- Window Header Bar -->
+          <div class="dash-window-topbar">
+            <div class="dash-win-left">
+              <div class="dash-win-dots">
+                <span class="dash-dot dot-red"></span>
+                <span class="dash-dot dot-yellow"></span>
+                <span class="dash-dot dot-green"></span>
+              </div>
+              <div class="dash-status-pill">
+                <span class="wa-status-beacon"></span>
+                <strong>WhatsApp Connected</strong>
+                <span class="dash-tier-badge">Official Cloud API</span>
+              </div>
+            </div>
+
+            <div class="dash-win-right">
+              <div class="dash-wallet-chip" title="Prepaid messaging wallet balance">
+                <span class="wallet-icon">💳</span>
+                <span>Wallet: <strong>₹0.20</strong></span>
+              </div>
+              <button class="pwa-install-btn" id="pwaDemoBtn" title="Install to Phone Home Screen">
+                <span class="pwa-icon">📲</span>
+                <span class="pwa-text">Install App (PWA)</span>
+                <span class="pwa-badge">Push Alerts Active</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- PWA Mobile Home Screen Banner -->
+          <div class="dash-pwa-banner">
+            <div class="pwa-banner-left">
+              <span class="pwa-bell-icon">🔔</span>
+              <div>
+                <strong>Mobile PWA Installation &amp; Real-Time Push Notifications:</strong>
+                <span>Add the panel directly to your phone's home screen. Receive instant push notifications for due reminders, incoming WhatsApp chats, and upcoming customer meetings.</span>
+              </div>
+            </div>
+            <span class="pwa-tag-pill">Page 3 Key Feature</span>
+          </div>
+
+          <!-- Section 1: Today at a Glance (Live Real-Time Counters) -->
+          <div class="dash-inner-section">
+            <div class="dash-section-label">
+              <span class="dash-label-icon">⚡</span>
+              <span>TODAY AT A GLANCE (LIVE REAL-TIME COUNTERS)</span>
+            </div>
+            <div class="today-glance-grid">
+              <div class="glance-stat-card card-sent">
+                <div class="glance-card-top">
+                  <span class="glance-icon">↗</span>
+                  <span class="glance-title">Today Sent</span>
+                </div>
+                <div class="glance-number">13</div>
+                <div class="glance-sub">Live outgoing messages pushed today</div>
+              </div>
+
+              <div class="glance-stat-card card-received">
+                <div class="glance-card-top">
+                  <span class="glance-icon">↙</span>
+                  <span class="glance-title">Today Received</span>
+                </div>
+                <div class="glance-number">13</div>
+                <div class="glance-sub">Incoming chats received today</div>
+              </div>
+
+              <div class="glance-stat-card card-unread">
+                <div class="glance-card-top">
+                  <span class="glance-icon">🔔</span>
+                  <span class="glance-title">Unread Messages</span>
+                </div>
+                <div class="glance-number glance-highlight">1,595</div>
+                <div class="glance-sub">Chats awaiting team or bot response</div>
+              </div>
+
+              <div class="glance-stat-card card-contacts">
+                <div class="glance-card-top">
+                  <span class="glance-icon">👥</span>
+                  <span class="glance-title">New Contacts Today</span>
+                </div>
+                <div class="glance-number">1,980</div>
+                <div class="glance-sub">New leads captured across all channels</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 2: Action Needed Today (Operational Priority Queue) -->
+          <div class="dash-inner-section">
+            <div class="dash-section-label">
+              <span class="dash-label-icon">🔥</span>
+              <span>ACTION NEEDED TODAY (OPERATIONAL PRIORITY QUEUE)</span>
+              <span class="dash-badge-exclusive">PAGE 3 HIGHLIGHT</span>
+            </div>
+
+            <div class="action-cards-grid">
+              <!-- Card 1: Upcoming Appointments -->
+              <div class="action-card card-appointments">
+                <div class="action-card-header">
+                  <div class="action-card-title-group">
+                    <span class="action-icon">📅</span>
+                    <span class="action-heading">Upcoming Appointments</span>
+                  </div>
+                  <a href="demo2.html" class="action-link-btn">View All ↗</a>
+                </div>
+                <div class="action-card-body">
+                  <div class="action-item-row">
+                    <div class="action-item-info">
+                      <strong>Client Meeting: SafeTech Business</strong>
+                      <span class="action-time">8 Dec • 10:00 AM</span>
+                    </div>
+                    <span class="status-badge-chip chip-confirmed">Confirmed</span>
+                  </div>
+                  <div class="action-item-row">
+                    <div class="action-item-info">
+                      <strong>Product Demo: Make Venture</strong>
+                      <span class="action-time">Today • 04:30 PM</span>
+                    </div>
+                    <span class="status-badge-chip chip-bot">Booked via Bot</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 2: Due Reminders -->
+              <div class="action-card card-reminders">
+                <div class="action-card-header">
+                  <div class="action-card-title-group">
+                    <span class="action-icon">⏰</span>
+                    <span class="action-heading">Due Reminders</span>
+                  </div>
+                  <a href="demo3.html#inbox-section" class="action-link-btn">Open Inbox ↗</a>
+                </div>
+                <div class="action-card-body">
+                  <div class="action-item-row">
+                    <div class="action-item-info">
+                      <strong>Ashish Yadav</strong>
+                      <span class="action-time">Call after 1 hr • Price negotiation</span>
+                    </div>
+                    <span class="status-badge-chip chip-urgent">Urgent</span>
+                  </div>
+                  <div class="action-item-row">
+                    <div class="action-item-info">
+                      <strong>Kumar Exports</strong>
+                      <span class="action-time">Follow up on pending proposal</span>
+                    </div>
+                    <span class="status-badge-chip chip-due">Due Now</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 3: AI Follow-ups -->
+              <div class="action-card card-ai-followups">
+                <div class="action-card-header">
+                  <div class="action-card-title-group">
+                    <span class="action-icon">🤖</span>
+                    <span class="action-heading">AI Follow-ups</span>
+                  </div>
+                  <span class="action-link-btn" style="cursor:default;">Check Leads</span>
+                </div>
+                <div class="action-card-body">
+                  <div class="action-item-row">
+                    <div class="action-item-info">
+                      <strong>6 Silent Leads Scored Hot/Warm</strong>
+                      <span class="action-time">AI drafted personalized re-engagement messages</span>
+                    </div>
+                    <span class="status-badge-chip chip-ai">Ready to Review</span>
+                  </div>
+                  <div class="ai-followup-preview-bubble">
+                    <em>"Hi Vikram, saw you were reviewing our enterprise plan. Would you like a quick 10-minute demo today?"</em>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 4: Active Chats & Bot Flows -->
+              <div class="action-card card-active-flows">
+                <div class="action-card-header">
+                  <div class="action-card-title-group">
+                    <span class="action-icon">💬</span>
+                    <span class="action-heading">Live Chat &amp; Bot Operations</span>
+                  </div>
+                  <span class="status-badge-chip chip-active">Running 24/7</span>
+                </div>
+                <div class="action-card-body">
+                  <div class="flow-stat-columns">
+                    <div class="flow-stat-box">
+                      <span class="flow-stat-num">3,143</span>
+                      <span class="flow-stat-lbl">Active Chats</span>
+                    </div>
+                    <div class="flow-stat-box">
+                      <span class="flow-stat-num">1</span>
+                      <span class="flow-stat-lbl">Active Bot Flow</span>
+                    </div>
+                    <div class="flow-stat-box">
+                      <span class="flow-stat-num">100%</span>
+                      <span class="flow-stat-lbl">Live Uptime</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Comparison Banner: Page 3 vs Page 4 -->
+          <div class="dash-comparison-bar">
+            <div class="dash-comp-col comp-p3">
+              <span class="comp-col-tag">PAGE 3 CORE POINT</span>
+              <h4>Real-Time Daily Execution (Dashboard)</h4>
+              <p>Focuses on <strong>what needs immediate action today</strong>: live message counters, due reminders, upcoming appointments, hot AI follow-up drafts, and mobile push notifications.</p>
+            </div>
+            <div class="dash-comp-divider">VS</div>
+            <div class="dash-comp-col comp-p4">
+              <span class="comp-col-tag p4-tag">PAGE 4 CORE POINT</span>
+              <h4>Historical Trend Analytics (Analytics)</h4>
+              <p>Focuses on <strong>evaluating past performance</strong>: delivery %, read rates, failure codes, 7/30/90-day volume charts, busiest hours, and CSV export for reporting.</p>
             </div>
           </div>
         </div>
@@ -320,10 +564,10 @@
     <section class="section-wrapper container" id="problemsExplorer">
 
       <div class="section-head center">
-        <div class="section-badge">★ DEEP DIVE: 13 BUSINESS PROBLEMS WE SOLVE</div>
-        <h2 class="section-h2">The Real-World Business Problems We Fix</h2>
+        <div class="section-badge">★ SOLUTIONS MATRIX</div>
+        <h2 class="section-h2">14 Business Problems Solved by MeSage AI</h2>
         <p class="section-desc">
-          Click any category or search below to see the exact real-world struggle, how MeSage AI automates the solution, and the measurable business result.
+          Select a category or search below to see the problem, the automated fix, and the business impact.
         </p>
       </div>
 
@@ -336,29 +580,29 @@
               type="text" 
               id="problemsSearch" 
               class="features-search-input" 
-              placeholder="Search problem (e.g., late leads, reps personal phone, cold leads, high costs, appointments, calling, support)..."
+              placeholder="Search by topic (e.g., dashboard, action needed, appointments, due reminders, off-hours, payments)..."
               aria-label="Search business problems">
             <button id="clearSearchBtn" class="search-clear-btn" style="display:none;" title="Clear search">✕</button>
           </div>
 
           <div class="counter-badge" id="problemCountBadge">
-            Showing <strong id="activeProblemCount">13</strong> of <strong>13</strong> Solutions
+            Showing <strong id="activeProblemCount">14</strong> of <strong>14</strong> Solutions
           </div>
         </div>
 
         <!-- Problem Category Filter Pills -->
         <div class="filter-pills-row" role="tablist" aria-label="Filter problems by category">
           <button class="filter-pill active" data-category="all" role="tab" aria-selected="true">
-            <span>✨</span> All 13 Problems
+            <span>✨</span> All 14 Problems
           </button>
           <button class="filter-pill" data-category="leads" role="tab" aria-selected="false">
             <span>🌙</span> Lead Capture &amp; Speed
           </button>
           <button class="filter-pill" data-category="team" role="tab" aria-selected="false">
-            <span>👥</span> Team Chaos &amp; CRM
+            <span>👥</span> Team &amp; CRM
           </button>
           <button class="filter-pill" data-category="marketing" role="tab" aria-selected="false">
-            <span>📢</span> Broadcasts &amp; Cost
+            <span>📢</span> Broadcasts &amp; Costs
           </button>
           <button class="filter-pill" data-category="commerce" role="tab" aria-selected="false">
             <span>🛍️</span> Sales, Bookings &amp; Support
@@ -367,20 +611,20 @@
       </div>
 
       <!-- ==========================================================================
-           THE 12 BUSINESS PROBLEM CARDS (PROBLEM -> SOLUTION -> RESULT SHOWCASE)
+           THE 13 BUSINESS PROBLEM CARDS
            ========================================================================== -->
       <div class="solve-showcase-wrap" id="problemCardsContainer">
 
-        <!-- 1. The Night & Weekend Problem -->
-        <div class="solve-card" data-category="leads" data-keywords="night weekend late after hours 24/7 instant reply brochure pricing competitors lost leads auto reply">
+        <!-- 1. Off-Hours Inquiries -->
+        <div class="solve-card" data-category="leads" data-keywords="night weekend late after hours 24/7 instant reply brochure pricing competitors lost leads auto reply catalog">
           <div class="solve-card-top-title">
             <div class="solve-title-left">
               <span class="solve-icon-badge">🌙</span>
-              <h3 class="solve-main-h3">Problem 1: Late-Night &amp; Weekend Customers Leave For Competitors</h3>
+              <h3 class="solve-main-h3">Problem 1: Off-Hours Inquiries Missed When Office is Closed</h3>
             </div>
             <div class="channel-brand-badge wa-theme">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-              <span>WHATSAPP AUTOMATION (CH. 10 &amp; 12)</span>
+              <span>24/7 WHATSAPP REPLIES</span>
             </div>
           </div>
 
@@ -388,38 +632,38 @@
             <!-- 1. The Issue -->
             <div class="solve-col issue-col">
               <div>
-                <span class="col-tag-hdr issue-tag">⚠️ THE DAILY STRUGGLE</span>
-                <h4 class="col-story-title">Office Closed = Lost High-Ticket Buyers</h4>
+                <span class="col-tag-hdr issue-tag">THE PROBLEM</span>
+                <h4 class="col-story-title">Slow Responses Lose Customers</h4>
                 <p class="col-story-p">
-                  A high-budget customer messages your WhatsApp at 10:30 PM on a Saturday asking: <em>"Can you share your brochure and pricing packages?"</em>.
+                  Customers messaging late at night or over weekends wait hours for answers, often buying from faster competitors.
                 </p>
               </div>
               <div class="col-mini-warning-box">
-                ❌ <strong>Old Way:</strong> No one replies until Monday morning (36 hours later). The customer already contacted 3 competitors and booked with them.
+                ❌ Unanswered off-hours inquiries lead directly to lost sales opportunities.
               </div>
             </div>
 
             <!-- 2. The Solution -->
             <div class="solve-col solution-col">
               <div>
-                <span class="col-tag-hdr solution-tag">✦ HOW MESAGE FIXES IT</span>
-                <h4 class="col-story-title">Instant 2-Second WhatsApp Answer</h4>
+                <span class="col-tag-hdr solution-tag">THE SOLUTION</span>
+                <h4 class="col-story-title">Instant 24/7 Catalog &amp; Pricing Replies</h4>
                 <p class="col-story-p">
-                  MeSage AI greets the customer instantly, shares your PDF catalog, answers pricing questions, and asks for their requirements.
+                  MeSage AI greets customers immediately, shares your catalog, answers questions, and records requirements.
                 </p>
               </div>
               <div class="col-visual-flow-box">
                 <div class="solve-step-row">
                   <span class="step-num-dot">1</span>
-                  <span class="step-text-bubble">10:30 PM: Customer messages on WhatsApp</span>
+                  <span class="step-text-bubble">Customer messages on WhatsApp after office hours</span>
                 </div>
                 <div class="solve-step-row">
                   <span class="step-num-dot green-step">2</span>
-                  <span class="step-text-bubble">10:30 PM: Bot delivers PDF brochure &amp; answers FAQs</span>
+                  <span class="step-text-bubble">AI bot immediately shares catalog and pricing details</span>
                 </div>
                 <div class="solve-step-row">
                   <span class="step-num-dot green-step">3</span>
-                  <span class="step-text-bubble">10:31 PM: Lead phone number &amp; budget saved to CRM</span>
+                  <span class="step-text-bubble">Contact details and requirements are saved for your team</span>
                 </div>
               </div>
             </div>
@@ -427,29 +671,29 @@
             <!-- 3. The Result -->
             <div class="solve-col result-col">
               <div>
-                <span class="col-tag-hdr result-tag">📈 THE BUSINESS RESULT</span>
+                <span class="col-tag-hdr result-tag">THE RESULT</span>
                 <div class="metric-hero-pill">
                   <span class="metric-big-num">+40%</span>
-                  <span class="metric-sub-label">More Leads Captured Every Month</span>
+                  <span class="metric-sub-label">More Qualified Inquiries</span>
                 </div>
               </div>
               <p class="result-takeaway-p">
-                Zero missed inquiries. Customers get instant answers when their buying intent is highest, locking them in before competitors even wake up.
+                Every prospect gets an instant response, capturing buyers before competitors can open.
               </p>
             </div>
           </div>
         </div>
 
-        <!-- 2. The Meta Lead Ad Lag & CSV Chaos Problem -->
-        <div class="solve-card" data-category="leads" data-keywords="lead capture meta lead ads facebook ads instagram lead gen forms csv delay instant whatsapp 2 second ping ad spend">
+        <!-- 2. Ad Leads in Spreadsheets -->
+        <div class="solve-card" data-category="leads" data-keywords="lead capture meta lead ads facebook ads instagram lead gen forms csv delay instant whatsapp 2 second ping ad spend excel calling spreadsheet">
           <div class="solve-card-top-title">
             <div class="solve-title-left">
-              <span class="solve-icon-badge">🎯</span>
-              <h3 class="solve-main-h3">Problem 2: Facebook &amp; Instagram Ad Leads Sit in CSVs for 24 Hours</h3>
+              <span class="solve-icon-badge">⚡</span>
+              <h3 class="solve-main-h3">Problem 2: Meta Ad Leads Waiting in Spreadsheets</h3>
             </div>
             <div class="channel-brand-badge fb-theme">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-              <span>META LEAD ADS CAPTURE (CH. 15 &amp; 21)</span>
+              <span>INSTANT AD CAPTURE</span>
             </div>
           </div>
 
@@ -457,38 +701,38 @@
             <!-- 1. The Issue -->
             <div class="solve-col issue-col">
               <div>
-                <span class="col-tag-hdr issue-tag">⚠️ THE DAILY STRUGGLE</span>
-                <h4 class="col-story-title">Ad Leads Go Cold Before Reps Call</h4>
+                <span class="col-tag-hdr issue-tag">THE PROBLEM</span>
+                <h4 class="col-story-title">Delayed Outreach Wastes Ad Spend</h4>
                 <p class="col-story-p">
-                  You spend ₹50,000+ on Meta Lead Ads. Leads sit in Ads Manager until someone manually downloads the CSV spreadsheet next day.
+                  Facebook and Instagram ad leads sit in export files for hours. By the time reps call, buyer interest has cooled.
                 </p>
               </div>
               <div class="col-mini-warning-box">
-                ❌ <strong>Old Way:</strong> When reps finally call 18 hours later, 75% of prospects say: <em>"Who are you? I don't remember"</em> or have bought elsewhere.
+                ❌ Calling leads hours later drops contact rates by more than 70%.
               </div>
             </div>
 
             <!-- 2. The Solution -->
             <div class="solve-col solution-col">
               <div>
-                <span class="col-tag-hdr solution-tag">✦ HOW MESAGE FIXES IT</span>
-                <h4 class="col-story-title">Instant 2-Second WhatsApp Message</h4>
+                <span class="col-tag-hdr solution-tag">THE SOLUTION</span>
+                <h4 class="col-story-title">Instant WhatsApp Ping in 2 Seconds</h4>
                 <p class="col-story-p">
-                  The microsecond a prospect hits Submit on Facebook or Instagram, MeSage fires a personalized WhatsApp message with your PDF brochure &amp; pricing.
+                  The instant a user submits an ad form, MeSage delivers a personalized WhatsApp message with your catalog.
                 </p>
               </div>
               <div class="col-visual-flow-box">
                 <div class="solve-step-row">
                   <span class="step-num-dot">1</span>
-                  <span class="step-text-bubble">User submits Meta Lead Form on Instagram</span>
+                  <span class="step-text-bubble">Customer submits an ad form on Facebook or Instagram</span>
                 </div>
                 <div class="solve-step-row">
                   <span class="step-num-dot green-step">2</span>
-                  <span class="step-text-bubble">In 2 seconds: WhatsApp brochure arrives on buyer phone</span>
+                  <span class="step-text-bubble">MeSage delivers WhatsApp catalog and pricing in 2 seconds</span>
                 </div>
                 <div class="solve-step-row">
                   <span class="step-num-dot green-step">3</span>
-                  <span class="step-text-bubble">Lead details auto-routed to sales rep's phone &amp; CRM</span>
+                  <span class="step-text-bubble">Customer replies immediately while interest is high</span>
                 </div>
               </div>
             </div>
@@ -496,28 +740,29 @@
             <!-- 3. The Result -->
             <div class="solve-col result-col">
               <div>
-                <span class="col-tag-hdr result-tag">📈 THE BUSINESS RESULT</span>
+                <span class="col-tag-hdr result-tag">THE RESULT</span>
                 <div class="metric-hero-pill">
-                  <span class="metric-big-num">85% Contact</span>
-                  <span class="metric-sub-label">Rate Within 60 Seconds of Ad Click</span>
+                  <span class="metric-big-num">85%</span>
+                  <span class="metric-sub-label">Contact Rate within 5 Minutes</span>
                 </div>
               </div>
               <p class="result-takeaway-p">
-                Connects with buyers while their interest is at peak. Eliminates CSV spreadsheets and delivers a 3x higher return on your advertising budget.
+                Connect with buyers immediately, delivering up to 3x better return on your ad spend.
               </p>
             </div>
           </div>
         </div>
 
-        <!-- 3. The Personal Phone & Team Chaos Problem -->
-        <div class="solve-card" data-category="team" data-keywords="multiple phones personal phone staff employee leaves shared inbox team chaos whatsapp web qr lost chats">
+        <!-- 3. Personal Phones & Lost Contacts -->
+        <div class="solve-card" data-category="team" data-keywords="personal phones staff stolen contacts lost data employees quitting 1 number multi-agent team inbox round robin chat history sales rep">
           <div class="solve-card-top-title">
             <div class="solve-title-left">
               <span class="solve-icon-badge">📱</span>
-              <h3 class="solve-main-h3">Problem 3: 4 Sales Reps Using 4 Personal Phones = Chaos &amp; Lost Chats</h3>
+              <h3 class="solve-main-h3">Problem 3: Sales Reps Using Personal WhatsApp Numbers</h3>
             </div>
-            <div class="channel-brand-badge inbox-theme">
-              <span>SHARED TEAM INBOX (CH. 3, 4 &amp; 19)</span>
+            <div class="channel-brand-badge wa-theme">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              <span>SHARED TEAM INBOX</span>
             </div>
           </div>
 
@@ -525,38 +770,38 @@
             <!-- 1. The Issue -->
             <div class="solve-col issue-col">
               <div>
-                <span class="col-tag-hdr issue-tag">⚠️ THE DAILY STRUGGLE</span>
-                <h4 class="col-story-title">No Visibility &amp; Stolen Client Contacts</h4>
+                <span class="col-tag-hdr issue-tag">THE PROBLEM</span>
+                <h4 class="col-story-title">No Visibility and Lost Client Contacts</h4>
                 <p class="col-story-p">
-                  Customers message sales reps on personal mobile phones. The business owner has no idea what reps are saying, how fast they reply, or why deals are lost.
+                  Reps chatting on personal phones leave management with no oversight. When staff depart, customer contacts leave too.
                 </p>
               </div>
               <div class="col-mini-warning-box">
-                ❌ <strong>Old Way:</strong> When a sales rep resigns, they walk away with your customer phone numbers and relationships on their phone.
+                ❌ Customer databases and conversation histories are lost when reps leave.
               </div>
             </div>
 
             <!-- 2. The Solution -->
             <div class="solve-col solution-col">
               <div>
-                <span class="col-tag-hdr solution-tag">✦ HOW MESAGE FIXES IT</span>
-                <h4 class="col-story-title">1 Official Number Shared by 10+ Reps</h4>
+                <span class="col-tag-hdr solution-tag">THE SOLUTION</span>
+                <h4 class="col-story-title">One Official Number for the Entire Team</h4>
                 <p class="col-story-p">
-                  Your whole sales team logs into one clean dashboard. Chats are auto-assigned via round-robin, and reps add private internal notes.
+                  Your entire team logs into one dashboard to manage conversations, with automatic chat assignment and manager oversight.
                 </p>
               </div>
               <div class="col-visual-flow-box">
                 <div class="solve-step-row">
                   <span class="step-num-dot">1</span>
-                  <span class="step-text-bubble">Customer messages your 1 official WhatsApp number</span>
+                  <span class="step-text-bubble">All customer inquiries route to one official business number</span>
                 </div>
                 <div class="solve-step-row">
                   <span class="step-num-dot green-step">2</span>
-                  <span class="step-text-bubble">Auto-routed to Agent Rahul based on workload</span>
+                  <span class="step-text-bubble">Chats are automatically assigned to available sales reps</span>
                 </div>
                 <div class="solve-step-row">
                   <span class="step-num-dot green-step">3</span>
-                  <span class="step-text-bubble">Manager monitors live chat and reply speeds</span>
+                  <span class="step-text-bubble">All customer numbers and records stay inside your company</span>
                 </div>
               </div>
             </div>
@@ -564,28 +809,29 @@
             <!-- 3. The Result -->
             <div class="solve-col result-col">
               <div>
-                <span class="col-tag-hdr result-tag">📈 THE BUSINESS RESULT</span>
+                <span class="col-tag-hdr result-tag">THE RESULT</span>
                 <div class="metric-hero-pill">
-                  <span class="metric-big-num">15 Hours</span>
-                  <span class="metric-sub-label">Saved Per Week &amp; Zero Lost Contacts</span>
+                  <span class="metric-big-num">100%</span>
+                  <span class="metric-sub-label">Company-Owned Customer Data</span>
                 </div>
               </div>
               <p class="result-takeaway-p">
-                Your business retains 100% of customer phone numbers and chat history forever. Reps never need to expose their personal mobile devices.
+                Maintain complete control of your client database and review past conversations anytime.
               </p>
             </div>
           </div>
         </div>
 
-        <!-- 4. The Dumb Chatbot Problem -->
-        <div class="solve-card" data-category="leads" data-keywords="dumb bot robotic menu press 1 press 2 live agent takeover sound alert human agent close deal">
+        <!-- 4. Rigid Chatbots Irritating Buyers -->
+        <div class="solve-card" data-category="team" data-keywords="dumb bot rigid chatbot robot frustrated buyers high-ticket close live agent sound alert 1-click takeover discount negotiation bulk">
           <div class="solve-card-top-title">
             <div class="solve-title-left">
-              <span class="solve-icon-badge">🤝</span>
-              <h3 class="solve-main-h3">Problem 4: Dumb Chatbots Frustrate Serious Buyers &amp; Kill Deals</h3>
+              <span class="solve-icon-badge">🤖</span>
+              <h3 class="solve-main-h3">Problem 4: Rigid Bot Menus Frustrating Serious Buyers</h3>
             </div>
-            <div class="channel-brand-badge takeover-theme">
-              <span>LIVE AGENT TAKEOVER (CH. 4, 11 &amp; 12)</span>
+            <div class="channel-brand-badge wa-theme">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              <span>SMART AI + HUMAN TAKEOVER</span>
             </div>
           </div>
 
@@ -593,38 +839,38 @@
             <!-- 1. The Issue -->
             <div class="solve-col issue-col">
               <div>
-                <span class="col-tag-hdr issue-tag">⚠️ THE DAILY STRUGGLE</span>
-                <h4 class="col-story-title">Customers Trapped in Rigid Robotic Menus</h4>
+                <span class="col-tag-hdr issue-tag">THE PROBLEM</span>
+                <h4 class="col-story-title">Menu Loops Turn Buyers Away</h4>
                 <p class="col-story-p">
-                  A high-intent buyer says: <em>"I want 50 units for my company, can you give me 10% discount?"</em>. A dumb chatbot replies: <em>"Sorry, I did not understand. Press 1 for Sales."</em>
+                  Basic rule-based chatbots fail on complex queries, trapping high-intent buyers in repetitive menus.
                 </p>
               </div>
               <div class="col-mini-warning-box">
-                ❌ <strong>Old Way:</strong> The customer gets irritated by the robotic loop, closes WhatsApp, and goes to a human vendor.
+                ❌ Frustrated buyers abandon chats when they cannot reach a real person.
               </div>
             </div>
 
             <!-- 2. The Solution -->
             <div class="solve-col solution-col">
               <div>
-                <span class="col-tag-hdr solution-tag">✦ HOW MESAGE FIXES IT</span>
-                <h4 class="col-story-title">Instant Sound Alert &amp; 1-Click Takeover</h4>
+                <span class="col-tag-hdr solution-tag">THE SOLUTION</span>
+                <h4 class="col-story-title">AI Answers FAQs, Alerts Team for Deals</h4>
                 <p class="col-story-p">
-                  MeSage AI answers everyday questions, but when a buyer mentions price negotiation or high quantity, it instantly alerts your sales rep.
+                  AI handles common queries and instantly alerts a sales rep with a notification when high intent or bulk pricing is detected.
                 </p>
               </div>
               <div class="col-visual-flow-box">
                 <div class="solve-step-row">
                   <span class="step-num-dot">1</span>
-                  <span class="step-text-bubble">Customer asks for discount &amp; bulk custom quote</span>
+                  <span class="step-text-bubble">Buyer asks a specific pricing or custom order question</span>
                 </div>
                 <div class="solve-step-row">
                   <span class="step-num-dot green-step">2</span>
-                  <span class="step-text-bubble">Audio ding sounds on Senior Closer's computer</span>
+                  <span class="step-text-bubble">System detects buying intent and alerts a sales rep</span>
                 </div>
                 <div class="solve-step-row">
                   <span class="step-num-dot green-step">3</span>
-                  <span class="step-text-bubble">Agent clicks "Take Over" and chats live to close</span>
+                  <span class="step-text-bubble">Rep takes over the chat with one click to close the deal</span>
                 </div>
               </div>
             </div>
@@ -632,28 +878,29 @@
             <!-- 3. The Result -->
             <div class="solve-col result-col">
               <div>
-                <span class="col-tag-hdr result-tag">📈 THE BUSINESS RESULT</span>
+                <span class="col-tag-hdr result-tag">THE RESULT</span>
                 <div class="metric-hero-pill">
-                  <span class="metric-big-num">3x Higher</span>
-                  <span class="metric-sub-label">Deal Close Rate on High-Ticket Inquiries</span>
+                  <span class="metric-big-num">3x</span>
+                  <span class="metric-sub-label">Higher Close Rate on High-Value Leads</span>
                 </div>
               </div>
               <p class="result-takeaway-p">
-                The perfect hybrid: AI handles 80% of repetitive FAQs, while your top human closers step in at the exact psychological moment of purchase.
+                AI saves time on routine inquiries while your closers step in at the right moment.
               </p>
             </div>
           </div>
         </div>
 
-        <!-- 5. The Silent Cold Leads Problem -->
-        <div class="solve-card" data-category="leads" data-keywords="cold leads silent inquiries follow up drip sequence day 1 day 3 day 7 nurturing revive leads">
+        <!-- 5. Silent Leads After Pricing -->
+        <div class="solve-card" data-category="leads" data-keywords="cold leads follow-up vanishing silence drip sequences nurture 24h 48h 7-day automated reminders brochure sent price ghosting">
           <div class="solve-card-top-title">
             <div class="solve-title-left">
               <span class="solve-icon-badge">⏳</span>
-              <h3 class="solve-main-h3">Problem 5: 70% of Interested Buyers Go Cold and Never Reply Again</h3>
+              <h3 class="solve-main-h3">Problem 5: Interested Prospects Going Silent After Pricing</h3>
             </div>
-            <div class="channel-brand-badge followup-theme">
-              <span>SMART DRIP SEQUENCES (CH. 8, 10 &amp; 12)</span>
+            <div class="channel-brand-badge wa-theme">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              <span>AUTOMATED FOLLOW-UPS</span>
             </div>
           </div>
 
@@ -661,38 +908,38 @@
             <!-- 1. The Issue -->
             <div class="solve-col issue-col">
               <div>
-                <span class="col-tag-hdr issue-tag">⚠️ THE DAILY STRUGGLE</span>
-                <h4 class="col-story-title">Leads Vanish After Receiving the Price</h4>
+                <span class="col-tag-hdr issue-tag">THE PROBLEM</span>
+                <h4 class="col-story-title">Leads Go Cold Without Follow-up</h4>
                 <p class="col-story-p">
-                  A prospect asks for prices, says <em>"Thanks, I will discuss with my partner"</em>, and then goes completely silent.
+                  Prospects ask for pricing, say they will think about it, and busy sales reps forget to check back.
                 </p>
               </div>
               <div class="col-mini-warning-box">
-                ❌ <strong>Old Way:</strong> Sales reps forget to follow up because they are overwhelmed with new chats. That expensive ad lead is wasted.
+                ❌ Up to 70% of potential sales are lost simply due to lack of follow-up.
               </div>
             </div>
 
             <!-- 2. The Solution -->
             <div class="solve-col solution-col">
               <div>
-                <span class="col-tag-hdr solution-tag">✦ HOW MESAGE FIXES IT</span>
-                <h4 class="col-story-title">Automated 24h, 48h &amp; 7-Day Nurturing</h4>
+                <span class="col-tag-hdr solution-tag">THE SOLUTION</span>
+                <h4 class="col-story-title">Automated Follow-ups on Day 1, 3, and 7</h4>
                 <p class="col-story-p">
-                  MeSage AI schedules polite, value-driven WhatsApp check-ins automatically without your sales reps lifting a finger.
+                  MeSage sends friendly, automated WhatsApp check-ins on schedule without requiring manual reminders.
                 </p>
               </div>
               <div class="col-visual-flow-box">
                 <div class="solve-step-row">
                   <span class="step-num-dot">1</span>
-                  <span class="step-text-bubble">Day 1: "Hi Amit, did you review the brochure?"</span>
+                  <span class="step-text-bubble">Day 1: Friendly check-in to see if they have any questions</span>
                 </div>
                 <div class="solve-step-row">
                   <span class="step-num-dot green-step">2</span>
-                  <span class="step-text-bubble">Day 3: Video walkthrough + customer testimonial</span>
+                  <span class="step-text-bubble">Day 3: Share customer reviews, photos, or recent work</span>
                 </div>
                 <div class="solve-step-row">
                   <span class="step-num-dot green-step">3</span>
-                  <span class="step-text-bubble">Day 7: Limited-time 10% discount voucher offer</span>
+                  <span class="step-text-bubble">Day 7: Limited-time incentive to finalize their decision</span>
                 </div>
               </div>
             </div>
@@ -700,28 +947,29 @@
             <!-- 3. The Result -->
             <div class="solve-col result-col">
               <div>
-                <span class="col-tag-hdr result-tag">📈 THE BUSINESS RESULT</span>
+                <span class="col-tag-hdr result-tag">THE RESULT</span>
                 <div class="metric-hero-pill">
                   <span class="metric-big-num">35%</span>
-                  <span class="metric-sub-label">Cold Leads Revived Into Paying Customers</span>
+                  <span class="metric-sub-label">Silent Leads Re-Engaged</span>
                 </div>
               </div>
               <p class="result-takeaway-p">
-                Turns forgotten inquiries into fresh sales pipeline automatically, squeezing maximum revenue out of your existing advertising spend.
+                Revive forgotten inquiries automatically and win more sales from your existing leads.
               </p>
             </div>
           </div>
         </div>
 
-        <!-- 6. Email in Spam & Ignored SMS Problem -->
-        <div class="solve-card" data-category="marketing" data-keywords="broadcast email spam sms ignored 98% open rate official meta templates festival offers">
+        <!-- 6. Ignored Marketing Emails & SMS -->
+        <div class="solve-card" data-category="marketing" data-keywords="broadcasts marketing email spam sms blocked whatsapp open rate 98% interactive buttons diwali festival offers campaigns">
           <div class="solve-card-top-title">
             <div class="solve-title-left">
               <span class="solve-icon-badge">📢</span>
-              <h3 class="solve-main-h3">Problem 6: Marketing Emails Go to Spam &amp; SMS Gets Ignored</h3>
+              <h3 class="solve-main-h3">Problem 6: Marketing Emails and SMS Getting Ignored</h3>
             </div>
-            <div class="channel-brand-badge campaign-theme">
-              <span>META VERIFIED BROADCASTS (CH. 6, 7 &amp; 22)</span>
+            <div class="channel-brand-badge wa-theme">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              <span>WHATSAPP BROADCASTS</span>
             </div>
           </div>
 
@@ -729,38 +977,38 @@
             <!-- 1. The Issue -->
             <div class="solve-col issue-col">
               <div>
-                <span class="col-tag-hdr issue-tag">⚠️ THE DAILY STRUGGLE</span>
-                <h4 class="col-story-title">Spending Thousands on Low-Open Channels</h4>
+                <span class="col-tag-hdr issue-tag">THE PROBLEM</span>
+                <h4 class="col-story-title">Low Engagement on Traditional Channels</h4>
                 <p class="col-story-p">
-                  You spend huge money on email newsletters and SMS blasts for Diwali or Black Friday, but 88% of emails sit unopened in Spam or Promotions folders.
+                  Promotional emails end up in spam folders and SMS messages are frequently ignored as junk.
                 </p>
               </div>
               <div class="col-mini-warning-box">
-                ❌ <strong>Old Way:</strong> SMS text messages look like spam, have 1% click rates, and users block your sender ID.
+                ❌ Traditional SMS and email blasts rarely produce direct sales conversations.
               </div>
             </div>
 
             <!-- 2. The Solution -->
             <div class="solve-col solution-col">
               <div>
-                <span class="col-tag-hdr solution-tag">✦ HOW MESAGE FIXES IT</span>
-                <h4 class="col-story-title">Official WhatsApp Broadcasts (98% Open Rate)</h4>
+                <span class="col-tag-hdr solution-tag">THE SOLUTION</span>
+                <h4 class="col-story-title">Verified WhatsApp Broadcasts with 98% Open Rate</h4>
                 <p class="col-story-p">
-                  Send personalized WhatsApp messages with high-res photos, videos, and 1-tap quick action buttons that reach the customer's phone instantly.
+                  Send visual WhatsApp messages with photos, videos, and clickable action buttons directly to customer devices.
                 </p>
               </div>
               <div class="col-visual-flow-box">
                 <div class="solve-step-row">
                   <span class="step-num-dot">1</span>
-                  <span class="step-text-bubble">Upload customer list or target segmented VIP buyers</span>
+                  <span class="step-text-bubble">Select target customer list based on past purchases or tags</span>
                 </div>
                 <div class="solve-step-row">
                   <span class="step-num-dot green-step">2</span>
-                  <span class="step-text-bubble">Select pre-approved festival template with buttons</span>
+                  <span class="step-text-bubble">Send official WhatsApp broadcast with media and buttons</span>
                 </div>
                 <div class="solve-step-row">
                   <span class="step-num-dot green-step">3</span>
-                  <span class="step-text-bubble">Speed-controlled broadcast sent with live delivery proof</span>
+                  <span class="step-text-bubble">Customers tap buttons to order or chat immediately</span>
                 </div>
               </div>
             </div>
@@ -768,28 +1016,29 @@
             <!-- 3. The Result -->
             <div class="solve-col result-col">
               <div>
-                <span class="col-tag-hdr result-tag">📈 THE BUSINESS RESULT</span>
+                <span class="col-tag-hdr result-tag">THE RESULT</span>
                 <div class="metric-hero-pill">
-                  <span class="metric-big-num">8x Higher</span>
-                  <span class="metric-sub-label">Customer Engagement vs. Traditional Email</span>
+                  <span class="metric-big-num">98%</span>
+                  <span class="metric-sub-label">Message Open Rate</span>
                 </div>
               </div>
               <p class="result-takeaway-p">
-                Nearly every customer reads WhatsApp within 5 minutes. Click-through rates jump from 2% to over 30% with interactive WhatsApp buttons.
+                Reach customers where they are active, boosting reply rates significantly over email and SMS.
               </p>
             </div>
           </div>
         </div>
 
-        <!-- 7. Excel & CRM Sync Problem -->
-        <div class="solve-card" data-category="team" data-keywords="excel crm manual data entry reps forget lost numbers hubspot sheets zoho kanban pipeline">
+        <!-- 7. Inconsistent Manual CRM Entry -->
+        <div class="solve-card" data-category="team" data-keywords="crm sync manual typing excel forgot contacts lost leads data entry reps forget automated sync google sheets">
           <div class="solve-card-top-title">
             <div class="solve-title-left">
-              <span class="solve-icon-badge">🔗</span>
-              <h3 class="solve-main-h3">Problem 7: Sales Reps Forget to Type Customer Numbers in Excel/CRM</h3>
+              <span class="solve-icon-badge">📊</span>
+              <h3 class="solve-main-h3">Problem 7: Inconsistent Manual CRM Data Entry</h3>
             </div>
             <div class="channel-brand-badge crm-theme">
-              <span>AUTOMATIC DATA LOGGING (CH. 5, 14 &amp; 20)</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#3B82F6"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+              <span>AUTOMATIC CRM SYNC</span>
             </div>
           </div>
 
@@ -797,38 +1046,38 @@
             <!-- 1. The Issue -->
             <div class="solve-col issue-col">
               <div>
-                <span class="col-tag-hdr issue-tag">⚠️ THE DAILY STRUGGLE</span>
-                <h4 class="col-story-title">Leads Trapped in Staff Personal Chat Windows</h4>
+                <span class="col-tag-hdr issue-tag">THE PROBLEM</span>
+                <h4 class="col-story-title">Customer Data Trapped in Rep Chats</h4>
                 <p class="col-story-p">
-                  Sales reps chat with customers, but forget to type their name, budget, or notes into Excel. When a rep quits, customer contacts vanish with them.
+                  Sales reps handling dozens of chats forget to update spreadsheets or CRM, creating incomplete records.
                 </p>
               </div>
               <div class="col-mini-warning-box">
-                ❌ <strong>Old Way:</strong> Your company loses ownership of high-value client numbers, and no one knows who called or what was promised.
+                ❌ Management loses visibility into pipeline volume and team performance.
               </div>
             </div>
 
             <!-- 2. The Solution -->
             <div class="solve-col solution-col">
               <div>
-                <span class="col-tag-hdr solution-tag">✦ HOW MESAGE FIXES IT</span>
-                <h4 class="col-story-title">Automatic Contact &amp; Chat Sync</h4>
+                <span class="col-tag-hdr solution-tag">THE SOLUTION</span>
+                <h4 class="col-story-title">Automatic Contact and Pipeline Logging</h4>
                 <p class="col-story-p">
-                  Every phone number, customer name, budget interest, and chat transcript is automatically synced to your CRM or Google Sheets in real time.
+                  Every customer who chats is automatically logged with contact details, tags, and conversation history.
                 </p>
               </div>
               <div class="col-visual-flow-box">
                 <div class="solve-step-row">
                   <span class="step-num-dot">1</span>
-                  <span class="step-text-bubble">Customer initiates chat on any connected channel</span>
+                  <span class="step-text-bubble">Customer inquires via WhatsApp, Instagram, or Web</span>
                 </div>
                 <div class="solve-step-row">
                   <span class="step-num-dot green-step">2</span>
-                  <span class="step-text-bubble">Phone number &amp; requirement automatically captured</span>
+                  <span class="step-text-bubble">Contact details and requirements are auto-saved</span>
                 </div>
                 <div class="solve-step-row">
                   <span class="step-num-dot green-step">3</span>
-                  <span class="step-text-bubble">Auto-logged to Salesforce/HubSpot/Google Sheets</span>
+                  <span class="step-text-bubble">Data syncs in real time to Google Sheets or CRM</span>
                 </div>
               </div>
             </div>
@@ -836,28 +1085,29 @@
             <!-- 3. The Result -->
             <div class="solve-col result-col">
               <div>
-                <span class="col-tag-hdr result-tag">📈 THE BUSINESS RESULT</span>
+                <span class="col-tag-hdr result-tag">THE RESULT</span>
                 <div class="metric-hero-pill">
-                  <span class="metric-big-num">100% Owned</span>
-                  <span class="metric-sub-label">Company Owns Every Single Lead Forever</span>
+                  <span class="metric-big-num">2 Hours</span>
+                  <span class="metric-sub-label">Saved Daily per Sales Rep</span>
                 </div>
               </div>
               <p class="result-takeaway-p">
-                Zero manual typing for your sales team. Complete business security — all customer records stay safe in your company database.
+                Ensure 100% accurate customer records without requiring tedious manual data entry.
               </p>
             </div>
           </div>
         </div>
 
-        <!-- 8. High Meta Message Bills Problem (From Guide Ch. 9) -->
-        <div class="solve-card" data-category="marketing" data-keywords="high meta bills save money hub utility templates qr web campaigns cut costs marketing fee zero meta fee">
+        <!-- 8. High Meta Conversation Fees -->
+        <div class="solve-card" data-category="marketing" data-keywords="meta charges conversation fees expensive marketing utility templates cost reduction qr web save money zero fees billing">
           <div class="solve-card-top-title">
             <div class="solve-title-left">
               <span class="solve-icon-badge">💰</span>
-              <h3 class="solve-main-h3">Problem 8: Skyrocketing Meta Message Charges Eating Business Margins</h3>
+              <h3 class="solve-main-h3">Problem 8: High WhatsApp Conversation Fees</h3>
             </div>
-            <div class="channel-brand-badge" style="background:rgba(245, 158, 11, 0.12); border:1px solid rgba(245, 158, 11, 0.28); color:#fbbf24;">
-              <span>SAVE MONEY HUB (CH. 9 &amp; 23)</span>
+            <div class="channel-brand-badge meta-theme">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#0668E1"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+              <span>COST OPTIMIZATION</span>
             </div>
           </div>
 
@@ -865,38 +1115,38 @@
             <!-- 1. The Issue -->
             <div class="solve-col issue-col">
               <div>
-                <span class="col-tag-hdr issue-tag">⚠️ THE DAILY STRUGGLE</span>
-                <h4 class="col-story-title">Expensive Marketing Conversation Fees</h4>
+                <span class="col-tag-hdr issue-tag">THE PROBLEM</span>
+                <h4 class="col-story-title">Outbound Messaging Fees Hurt Margins</h4>
                 <p class="col-story-p">
-                  Sending thousands of marketing messages every month racks up hefty Meta per-conversation charges, eating up advertising margins.
+                  Sending untargeted marketing broadcasts through expensive agencies leads to high monthly Meta conversation fees.
                 </p>
               </div>
               <div class="col-mini-warning-box">
-                ❌ <strong>Old Way:</strong> Businesses pay full marketing rates for routine updates, running up message bills of ₹25,000 to ₹1,00,000+ monthly.
+                ❌ Using incorrect message categories drives up operational expenses.
               </div>
             </div>
 
             <!-- 2. The Solution -->
             <div class="solve-col solution-col">
               <div>
-                <span class="col-tag-hdr solution-tag">✦ HOW MESAGE FIXES IT</span>
-                <h4 class="col-story-title">Utility Presets &amp; 0 Meta-Fee QR Campaigns</h4>
+                <span class="col-tag-hdr solution-tag">THE SOLUTION</span>
+                <h4 class="col-story-title">Low-Cost Utility Templates &amp; Free QR Campaigns</h4>
                 <p class="col-story-p">
-                  MeSage provides pre-approved utility templates priced up to 80% cheaper, plus QR Web WhatsApp campaigns with ZERO per-message Meta fees.
+                  Use low-cost utility templates for routine alerts and free QR codes for user-initiated chats.
                 </p>
               </div>
               <div class="col-visual-flow-box">
                 <div class="solve-step-row">
                   <span class="step-num-dot">1</span>
-                  <span class="step-text-bubble">Switch promotional text to pre-approved Utility Presets</span>
+                  <span class="step-text-bubble">Switch routine status updates to lower-cost utility templates</span>
                 </div>
                 <div class="solve-step-row">
                   <span class="step-num-dot green-step">2</span>
-                  <span class="step-text-bubble">Route internal updates via QR Web (₹0 per-message fee)</span>
+                  <span class="step-text-bubble">Place QR codes on packaging and bills for free incoming chats</span>
                 </div>
                 <div class="solve-step-row">
                   <span class="step-num-dot green-step">3</span>
-                  <span class="step-text-bubble">Smart batch pacing protects phone quality rating</span>
+                  <span class="step-text-bubble">Manage costs with transparent prepaid wallet and tax invoices</span>
                 </div>
               </div>
             </div>
@@ -904,28 +1154,29 @@
             <!-- 3. The Result -->
             <div class="solve-col result-col">
               <div>
-                <span class="col-tag-hdr result-tag">📈 THE BUSINESS RESULT</span>
+                <span class="col-tag-hdr result-tag">THE RESULT</span>
                 <div class="metric-hero-pill">
-                  <span class="metric-big-num">60% - 80%</span>
-                  <span class="metric-sub-label">Reduction in Monthly Messaging Expense</span>
+                  <span class="metric-big-num">60%-80%</span>
+                  <span class="metric-sub-label">Lower Messaging Expenses</span>
                 </div>
               </div>
               <p class="result-takeaway-p">
-                Keep sending high-volume messages to your audience while cutting your software and Meta bill down to a fraction of traditional agency costs.
+                Maintain continuous customer reach while significantly reducing monthly platform charges.
               </p>
             </div>
           </div>
         </div>
 
-        <!-- 9. Appointment No-Shows Problem (From Guide Ch. 13 & 17) -->
-        <div class="solve-card" data-category="commerce" data-keywords="appointments no-shows missed meetings doctor clinic real estate calendar reminder ai voice call">
+        <!-- 9. Appointment No-Shows -->
+        <div class="solve-card" data-category="commerce" data-keywords="appointments bookings no-shows site visits clinic doctors consultations reminder calls google calendar real estate demo">
           <div class="solve-card-top-title">
             <div class="solve-title-left">
               <span class="solve-icon-badge">📅</span>
-              <h3 class="solve-main-h3">Problem 9: Costly Customer No-Shows for Consultations &amp; Site Visits</h3>
+              <h3 class="solve-main-h3">Problem 9: Missed Appointments and Site Visit No-Shows</h3>
             </div>
-            <div class="channel-brand-badge" style="background:rgba(129, 140, 248, 0.12); border:1px solid rgba(129, 140, 248, 0.28); color:var(--indigo-light);">
-              <span>IN-CHAT BOOKING &amp; REMINDERS (CH. 13 &amp; 17)</span>
+            <div class="channel-brand-badge cal-theme">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#10B981"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/></svg>
+              <span>BOOKINGS &amp; REMINDERS</span>
             </div>
           </div>
 
@@ -933,38 +1184,38 @@
             <!-- 1. The Issue -->
             <div class="solve-col issue-col">
               <div>
-                <span class="col-tag-hdr issue-tag">⚠️ THE DAILY STRUGGLE</span>
-                <h4 class="col-story-title">Clients Book &amp; Forget, Wasting Hours</h4>
+                <span class="col-tag-hdr issue-tag">THE PROBLEM</span>
+                <h4 class="col-story-title">Clients Forget Scheduled Visits</h4>
                 <p class="col-story-p">
-                  Clients schedule clinic consultations, real-estate site visits, or coaching demos, but simply forget. Doctors, agents, and experts sit idle.
+                  Customers book clinic visits, real estate tours, or consultations and fail to show up, leaving staff waiting.
                 </p>
               </div>
               <div class="col-mini-warning-box">
-                ❌ <strong>Old Way:</strong> 30% to 50% of booked appointments end in no-shows because no one had time to manually call and confirm beforehand.
+                ❌ Up to 40% of scheduled appointments result in costly no-shows.
               </div>
             </div>
 
             <!-- 2. The Solution -->
             <div class="solve-col solution-col">
               <div>
-                <span class="col-tag-hdr solution-tag">✦ HOW MESAGE FIXES IT</span>
-                <h4 class="col-story-title">In-Chat Booking + Auto AI Reminder Calls</h4>
+                <span class="col-tag-hdr solution-tag">THE SOLUTION</span>
+                <h4 class="col-story-title">In-Chat Booking &amp; Automated Location Reminders</h4>
                 <p class="col-story-p">
-                  Customers select time slots directly inside WhatsApp with Google Calendar sync. System sends auto-reminders and an automated AI phone call.
+                  Clients pick available time slots directly in WhatsApp, receiving Google Maps links and reminder alerts.
                 </p>
               </div>
               <div class="col-visual-flow-box">
                 <div class="solve-step-row">
                   <span class="step-num-dot">1</span>
-                  <span class="step-text-bubble">Customer chooses available slot inside WhatsApp bot</span>
+                  <span class="step-text-bubble">Client selects an available time slot directly in WhatsApp</span>
                 </div>
                 <div class="solve-step-row">
                   <span class="step-num-dot green-step">2</span>
-                  <span class="step-text-bubble">Google Calendar auto-blocked + WhatsApp confirmation</span>
+                  <span class="step-text-bubble">Instant confirmation is sent with Google Maps directions</span>
                 </div>
                 <div class="solve-step-row">
                   <span class="step-num-dot green-step">3</span>
-                  <span class="step-text-bubble">AI calls customer 2 hours prior to reconfirm presence</span>
+                  <span class="step-text-bubble">Automated reminder allows 1-tap confirmation or rescheduling</span>
                 </div>
               </div>
             </div>
@@ -972,28 +1223,29 @@
             <!-- 3. The Result -->
             <div class="solve-col result-col">
               <div>
-                <span class="col-tag-hdr result-tag">📈 THE BUSINESS RESULT</span>
+                <span class="col-tag-hdr result-tag">THE RESULT</span>
                 <div class="metric-hero-pill">
-                  <span class="metric-big-num">50% Fewer</span>
-                  <span class="metric-sub-label">Missed Appointments &amp; Empty Time Slots</span>
+                  <span class="metric-big-num">50%</span>
+                  <span class="metric-sub-label">Fewer Missed Appointments</span>
                 </div>
               </div>
               <p class="result-takeaway-p">
-                Eliminates no-shows and maximizes your billable hours. If a customer cannot make it, they can reschedule with 1 tap right inside WhatsApp.
+                Reduce empty calendar slots by making it simple for customers to confirm or reschedule in one tap.
               </p>
             </div>
           </div>
         </div>
 
-        <!-- 10. Website Bounce & High Ad Costs (From Guide Ch. 15 & 20) -->
-        <div class="solve-card" data-category="leads" data-keywords="website bounce ad spend waste chat widget lead gen form 228 templates capture phone number google ads">
+        <!-- 10. Website Visitors Leaving Without Converting -->
+        <div class="solve-card" data-category="commerce" data-keywords="website bounce dropoff paid traffic google ads facebook ads floating widget captured number live chat">
           <div class="solve-card-top-title">
             <div class="solve-title-left">
               <span class="solve-icon-badge">🌐</span>
-              <h3 class="solve-main-h3">Problem 10: Expensive Website Visitors Bouncing Without Leaving Contact</h3>
+              <h3 class="solve-main-h3">Problem 10: Paid Website Visitors Leaving Without Inquiring</h3>
             </div>
             <div class="channel-brand-badge web-theme">
-              <span>WHATSAPP WIDGET &amp; FORMS (CH. 15 &amp; 20)</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#818CF8"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+              <span>WEBSITE TO WHATSAPP</span>
             </div>
           </div>
 
@@ -1001,38 +1253,38 @@
             <!-- 1. The Issue -->
             <div class="solve-col issue-col">
               <div>
-                <span class="col-tag-hdr issue-tag">⚠️ THE DAILY STRUGGLE</span>
-                <h4 class="col-story-title">96% of Paid Traffic Leaves Forever</h4>
+                <span class="col-tag-hdr issue-tag">THE PROBLEM</span>
+                <h4 class="col-story-title">High Bounce Rates on Contact Forms</h4>
                 <p class="col-story-p">
-                  You spend ₹50 to ₹300 per click on Google or Meta Ads. Visitors land on your website, find long contact forms boring, and bounce without contacting.
+                  Paid visitors arrive from Google and Meta ads, see multi-field forms, and leave without submitting contact info.
                 </p>
               </div>
               <div class="col-mini-warning-box">
-                ❌ <strong>Old Way:</strong> Ad money disappears with no phone number captured, leaving you zero ability to re-engage the interested visitor.
+                ❌ Ad spend is wasted when visitors exit without leaving a phone number.
               </div>
             </div>
 
             <!-- 2. The Solution -->
             <div class="solve-col solution-col">
               <div>
-                <span class="col-tag-hdr solution-tag">✦ HOW MESAGE FIXES IT</span>
-                <h4 class="col-story-title">1-Click WhatsApp Floating Widget</h4>
+                <span class="col-tag-hdr solution-tag">THE SOLUTION</span>
+                <h4 class="col-story-title">1-Click Floating WhatsApp Button</h4>
                 <p class="col-story-p">
-                  A modern floating WhatsApp button greets website visitors. When they click, they open chat on their phone, instantly sharing verified mobile number.
+                  A floating WhatsApp button opens a pre-typed chat immediately, capturing the user's verified phone number.
                 </p>
               </div>
               <div class="col-visual-flow-box">
                 <div class="solve-step-row">
                   <span class="step-num-dot">1</span>
-                  <span class="step-text-bubble">Visitor clicks floating WhatsApp button on website</span>
+                  <span class="step-text-bubble">Visitor taps the floating WhatsApp widget on your website</span>
                 </div>
                 <div class="solve-step-row">
                   <span class="step-num-dot green-step">2</span>
-                  <span class="step-text-bubble">WhatsApp opens with pre-typed inquiry message</span>
+                  <span class="step-text-bubble">WhatsApp opens with a pre-filled product inquiry message</span>
                 </div>
                 <div class="solve-step-row">
                   <span class="step-num-dot green-step">3</span>
-                  <span class="step-text-bubble">Verified phone number is captured in your CRM forever</span>
+                  <span class="step-text-bubble">Your sales team receives their verified phone number instantly</span>
                 </div>
               </div>
             </div>
@@ -1040,28 +1292,29 @@
             <!-- 3. The Result -->
             <div class="solve-col result-col">
               <div>
-                <span class="col-tag-hdr result-tag">📈 THE BUSINESS RESULT</span>
+                <span class="col-tag-hdr result-tag">THE RESULT</span>
                 <div class="metric-hero-pill">
-                  <span class="metric-big-num">4x Inquiries</span>
-                  <span class="metric-sub-label">From the Exact Same Website Ad Budget</span>
+                  <span class="metric-big-num">4x</span>
+                  <span class="metric-sub-label">Higher Inbound Inquiries</span>
                 </div>
               </div>
               <p class="result-takeaway-p">
-                Turns anonymous website visitors into real, high-value WhatsApp conversations that your sales team can follow up with anytime.
+                Convert anonymous website visitors into direct WhatsApp conversations your team can follow up with.
               </p>
             </div>
           </div>
         </div>
 
-        <!-- 11. E-commerce Cart Abandonment (From Guide Ch. 16) -->
-        <div class="solve-card" data-category="commerce" data-keywords="cart abandonment product catalog upi payment razorpay sell inside whatsapp order checkout">
+        <!-- 11. Complex External Checkout -->
+        <div class="solve-card" data-category="commerce" data-keywords="cart abandonment upi payment checkout catalog orders razorpay gpay phonepe paytm prepaid ecommerce">
           <div class="solve-card-top-title">
             <div class="solve-title-left">
               <span class="solve-icon-badge">🛒</span>
-              <h3 class="solve-main-h3">Problem 11: Abandoned Shopping Carts &amp; Slow External Checkout</h3>
+              <h3 class="solve-main-h3">Problem 11: Complicated Checkout Causes Abandoned Purchases</h3>
             </div>
-            <div class="channel-brand-badge wa-theme">
-              <span>IN-CHAT CATALOG &amp; UPI PAY (CH. 16)</span>
+            <div class="channel-brand-badge cart-theme">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#F59E0B"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+              <span>IN-CHAT CATALOG &amp; PAYMENTS</span>
             </div>
           </div>
 
@@ -1069,38 +1322,38 @@
             <!-- 1. The Issue -->
             <div class="solve-col issue-col">
               <div>
-                <span class="col-tag-hdr issue-tag">⚠️ THE DAILY STRUGGLE</span>
-                <h4 class="col-story-title">70% Cart Drop-off on External Sites</h4>
+                <span class="col-tag-hdr issue-tag">THE PROBLEM</span>
+                <h4 class="col-story-title">External Checkout Links Cause Drop-Off</h4>
                 <p class="col-story-p">
-                  Customers chatting on WhatsApp ask to buy. Sending them to a slow external website checkout requires account creation and causes 70% to drop off.
+                  Directing WhatsApp shoppers to an external website introduces friction, passwords, and cart abandonment.
                 </p>
               </div>
               <div class="col-mini-warning-box">
-                ❌ <strong>Old Way:</strong> High drop-off at payment gateways. Uncompleted orders require manual payment chasing.
+                ❌ Over 60% of interested buyers drop off when redirected to external checkouts.
               </div>
             </div>
 
             <!-- 2. The Solution -->
             <div class="solve-col solution-col">
               <div>
-                <span class="col-tag-hdr solution-tag">✦ HOW MESAGE FIXES IT</span>
-                <h4 class="col-story-title">Browse &amp; Pay via UPI Inside WhatsApp</h4>
+                <span class="col-tag-hdr solution-tag">THE SOLUTION</span>
+                <h4 class="col-story-title">Browse Catalogs and Pay via UPI in WhatsApp</h4>
                 <p class="col-story-p">
-                  Customers view your complete product catalog, select size/variant, and pay seamlessly via UPI, Google Pay, or Razorpay in 2 taps without leaving chat.
+                  Shoppers view items, select quantities, enter addresses, and complete UPI payments in two taps inside chat.
                 </p>
               </div>
               <div class="col-visual-flow-box">
                 <div class="solve-step-row">
                   <span class="step-num-dot">1</span>
-                  <span class="step-text-bubble">Customer views WhatsApp Product Catalog &amp; adds to cart</span>
+                  <span class="step-text-bubble">Customer views product catalog with images and prices in chat</span>
                 </div>
                 <div class="solve-step-row">
                   <span class="step-num-dot green-step">2</span>
-                  <span class="step-text-bubble">1-tap UPI payment link generated in the chat window</span>
+                  <span class="step-text-bubble">Selects items, provides delivery info, and taps 'Pay via UPI'</span>
                 </div>
                 <div class="solve-step-row">
                   <span class="step-num-dot green-step">3</span>
-                  <span class="step-text-bubble">Order confirmed instantly with auto GST invoice PDF</span>
+                  <span class="step-text-bubble">Completes payment via Google Pay, PhonePe, or Paytm instantly</span>
                 </div>
               </div>
             </div>
@@ -1108,28 +1361,29 @@
             <!-- 3. The Result -->
             <div class="solve-col result-col">
               <div>
-                <span class="col-tag-hdr result-tag">📈 THE BUSINESS RESULT</span>
+                <span class="col-tag-hdr result-tag">THE RESULT</span>
                 <div class="metric-hero-pill">
-                  <span class="metric-big-num">65% Higher</span>
-                  <span class="metric-sub-label">Checkout Completion &amp; Instant Prepaid Orders</span>
+                  <span class="metric-big-num">65%</span>
+                  <span class="metric-sub-label">Increase in Completed Orders</span>
                 </div>
               </div>
               <p class="result-takeaway-p">
-                Zero friction shopping. Customers buy while excitement is fresh, eliminating abandoned carts and boosting prepaid revenue.
+                Deliver a seamless buying experience that secures payments while buyer enthusiasm is high.
               </p>
             </div>
           </div>
         </div>
 
-        <!-- 12. Exhausted Cold Calling Teams (From Guide Ch. 13 & 14) -->
-        <div class="solve-card" data-category="team" data-keywords="telecalling cold calling bulk ai calls voice agent hindi english regional qualification salary cost">
+        <!-- 12. Manual Cold Calling Inefficiencies -->
+        <div class="solve-card" data-category="commerce" data-keywords="telecalling cold calling call center burnout salaries voice ai ai caller automated phone hindi english outreach">
           <div class="solve-card-top-title">
             <div class="solve-title-left">
               <span class="solve-icon-badge">📞</span>
-              <h3 class="solve-main-h3">Problem 12: Exhausted Telecalling Teams Dialing 200 Numbers with Low Reach</h3>
+              <h3 class="solve-main-h3">Problem 12: Calling Staff Spending Hours on Unanswered Calls</h3>
             </div>
-            <div class="channel-brand-badge voice-theme">
-              <span>BULK AI VOICE CALLS (CH. 13 &amp; 14)</span>
+            <div class="channel-brand-badge call-theme">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#0EA5E9"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+              <span>AI VOICE OUTREACH</span>
             </div>
           </div>
 
@@ -1137,38 +1391,38 @@
             <!-- 1. The Issue -->
             <div class="solve-col issue-col">
               <div>
-                <span class="col-tag-hdr issue-tag">⚠️ THE DAILY STRUGGLE</span>
-                <h4 class="col-story-title">High Salaries &amp; Constant Telecaller Burnout</h4>
+                <span class="col-tag-hdr issue-tag">THE PROBLEM</span>
+                <h4 class="col-story-title">Manual Dialing Yields Low Pickup Rates</h4>
                 <p class="col-story-p">
-                  Hiring call center telecallers who spend 80% of their workday listening to dial tones, reaching wrong numbers, or getting hung up on by frustrated prospects.
+                  Telecallers spend most of their day listening to ringing tones and disconnected lines rather than talking to buyers.
                 </p>
               </div>
               <div class="col-mini-warning-box">
-                ❌ <strong>Old Way:</strong> High monthly payroll overhead, high staff turnover, and days taken to contact a list of just 500 leads.
+                ❌ High calling payroll with low conversation rates causes staff fatigue.
               </div>
             </div>
 
             <!-- 2. The Solution -->
             <div class="solve-col solution-col">
               <div>
-                <span class="col-tag-hdr solution-tag">✦ HOW MESAGE FIXES IT</span>
-                <h4 class="col-story-title">AI Voice Agent Calls 500 Leads Concurrently</h4>
+                <span class="col-tag-hdr solution-tag">THE SOLUTION</span>
+                <h4 class="col-story-title">AI Voice Caller Dials Hundreds of Leads Simultaneously</h4>
                 <p class="col-story-p">
-                  Our Real-Time Voice AI dials leads simultaneously, speaks natural Hindi or English, pitches your offer, qualifies budget, and logs call recordings.
+                  AI voice caller dials lists concurrently in natural Hindi or English, filtering out uninterested numbers.
                 </p>
               </div>
               <div class="col-visual-flow-box">
                 <div class="solve-step-row">
                   <span class="step-num-dot">1</span>
-                  <span class="step-text-bubble">Upload phone list with custom script and goals</span>
+                  <span class="step-text-bubble">Upload your lead list to the calling campaign manager</span>
                 </div>
                 <div class="solve-step-row">
                   <span class="step-num-dot green-step">2</span>
-                  <span class="step-text-bubble">AI calls 500 prospects concurrently in natural voice</span>
+                  <span class="step-text-bubble">AI places simultaneous calls in natural Hindi or English</span>
                 </div>
                 <div class="solve-step-row">
                   <span class="step-num-dot green-step">3</span>
-                  <span class="step-text-bubble">Hot interested leads instantly transferred to sales reps</span>
+                  <span class="step-text-bubble">When a lead expresses interest, AI connects a live sales rep</span>
                 </div>
               </div>
             </div>
@@ -1176,28 +1430,29 @@
             <!-- 3. The Result -->
             <div class="solve-col result-col">
               <div>
-                <span class="col-tag-hdr result-tag">📈 THE BUSINESS RESULT</span>
+                <span class="col-tag-hdr result-tag">THE RESULT</span>
                 <div class="metric-hero-pill">
-                  <span class="metric-big-num">90% Less</span>
-                  <span class="metric-sub-label">Manual Calling Payroll &amp; 10x Faster Reach</span>
+                  <span class="metric-big-num">10x</span>
+                  <span class="metric-sub-label">Faster Outreach Speed</span>
                 </div>
               </div>
               <p class="result-takeaway-p">
-                Your human sales reps only talk to hot, pre-qualified buyers who actually want to purchase, boosting morale and multiplying closed revenue.
+                Your sales team speaks only with warm, interested prospects who are ready to evaluate your offer.
               </p>
             </div>
           </div>
         </div>
 
-        <!-- 13. Support Complaints Lost in Chats (From Guide Ch. 18 & 19) -->
-        <div class="solve-card" data-category="commerce" data-keywords="customer complaints support tickets sla timers quick replies canned messages 1 star review resolution">
+        <!-- 13. Customer Complaints Lost in Chat Volume -->
+        <div class="solve-card" data-category="commerce" data-keywords="customer service complaints angry review lost tickets support response time sla refund delivery issue">
           <div class="solve-card-top-title">
             <div class="solve-title-left">
-              <span class="solve-icon-badge">🎫</span>
-              <h3 class="solve-main-h3">Problem 13: Customer Complaints &amp; Support Requests Lost in Chat Feeds</h3>
+              <span class="solve-icon-badge">🛡️</span>
+              <h3 class="solve-main-h3">Problem 13: Customer Complaints Lost in Busy Chat Streams</h3>
             </div>
-            <div class="channel-brand-badge" style="background:rgba(239, 68, 68, 0.12); border:1px solid rgba(239, 68, 68, 0.28); color:#f87171;">
-              <span>SUPPORT TICKETS &amp; SLA (CH. 18 &amp; 19)</span>
+            <div class="channel-brand-badge support-theme">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#EC4899"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+              <span>SUPPORT TICKETING</span>
             </div>
           </div>
 
@@ -1205,38 +1460,38 @@
             <!-- 1. The Issue -->
             <div class="solve-col issue-col">
               <div>
-                <span class="col-tag-hdr issue-tag">⚠️ THE DAILY STRUGGLE</span>
-                <h4 class="col-story-title">Complaints Buried Under Inquiries</h4>
+                <span class="col-tag-hdr issue-tag">THE PROBLEM</span>
+                <h4 class="col-story-title">Unresolved Complaints Cause Public Reviews</h4>
                 <p class="col-story-p">
-                  An existing customer messages with a broken item or delivery issue. The chat gets pushed down by 40 new sales inquiries and sits unaddressed for days.
+                  Existing customer complaints get buried under dozens of new sales messages, remaining unaddressed for days.
                 </p>
               </div>
               <div class="col-mini-warning-box">
-                ❌ <strong>Old Way:</strong> The customer gets furious, writes a 1-star Google review, and cancels their contract with your company.
+                ❌ Unanswered complaints can lead to negative public reviews and brand harm.
               </div>
             </div>
 
             <!-- 2. The Solution -->
             <div class="solve-col solution-col">
               <div>
-                <span class="col-tag-hdr solution-tag">✦ HOW MESAGE FIXES IT</span>
-                <h4 class="col-story-title">1-Click Ticket with Countdown SLA Timer</h4>
+                <span class="col-tag-hdr solution-tag">THE SOLUTION</span>
+                <h4 class="col-story-title">1-Click Support Tickets with Resolution Timers</h4>
                 <p class="col-story-p">
-                  Turn any customer message into an official support ticket. Set SLA countdown timers (e.g. 2-hour resolution), assign to support staff, and use `/` shortcuts.
+                  Convert any customer complaint into a tracked ticket with an SLA deadline, assigned owner, and status alerts.
                 </p>
               </div>
               <div class="col-visual-flow-box">
                 <div class="solve-step-row">
                   <span class="step-num-dot">1</span>
-                  <span class="step-text-bubble">Customer reports issue → Agent clicks "Create Ticket"</span>
+                  <span class="step-text-bubble">Customer messages regarding an issue or service request</span>
                 </div>
                 <div class="solve-step-row">
                   <span class="step-num-dot green-step">2</span>
-                  <span class="step-text-bubble">Priority marked Urgent + 60-min SLA countdown timer</span>
+                  <span class="step-text-bubble">Message is converted into a support ticket with a target timer</span>
                 </div>
                 <div class="solve-step-row">
                   <span class="step-num-dot green-step">3</span>
-                  <span class="step-text-bubble">Agent uses quick '/' shortcut to resolve &amp; send update</span>
+                  <span class="step-text-bubble">Assigned agent resolves the issue while customer receives updates</span>
                 </div>
               </div>
             </div>
@@ -1244,14 +1499,82 @@
             <!-- 3. The Result -->
             <div class="solve-col result-col">
               <div>
-                <span class="col-tag-hdr result-tag">📈 THE BUSINESS RESULT</span>
+                <span class="col-tag-hdr result-tag">THE RESULT</span>
                 <div class="metric-hero-pill">
-                  <span class="metric-big-num">100% On-Time</span>
-                  <span class="metric-sub-label">Ticket Resolution &amp; 4.9★ Customer Trust</span>
+                  <span class="metric-big-num">100%</span>
+                  <span class="metric-sub-label">Tracked Issue Resolution</span>
                 </div>
               </div>
               <p class="result-takeaway-p">
-                Zero complaints fall through the cracks. Managers get audit alerts if any ticket approaches SLA expiration, guaranteeing stellar brand reputation.
+                Ensure no customer inquiry is missed, protecting your review rating and client loyalty.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 14. Daily Action Priorities & Due Reminders (Page 3 of Guide) -->
+        <div class="solve-card" data-category="team" data-keywords="dashboard action needed today at a glance appointments due reminders ai follow-ups pwa mobile push notifications unread chats urgent daily operations page 3 live operational command center">
+          <div class="solve-card-top-title">
+            <div class="solve-title-left">
+              <span class="solve-icon-badge">📋</span>
+              <h3 class="solve-main-h3">Problem 14: Teams Drowning in Past Analytics While Missing Today's Urgent Reminders &amp; Appointments</h3>
+            </div>
+            <div class="channel-brand-badge" style="background:rgba(99,102,241,0.15);color:#a5b4fc;border:1px solid rgba(99,102,241,0.3)">
+              <span>REAL-TIME ACTION CENTER</span>
+            </div>
+          </div>
+
+          <div class="solve-flow-grid">
+            <!-- 1. The Issue -->
+            <div class="solve-col issue-col">
+              <div>
+                <span class="col-tag-hdr issue-tag">THE PROBLEM</span>
+                <h4 class="col-story-title">Staring at Past Charts While Today's Deals Slip Away</h4>
+                <p class="col-story-p">
+                  Managers and sales reps often review past delivery percentages days later, while today's time-sensitive customer appointments, scheduled reminders, and hot AI follow-up drafts get forgotten in unorganized chat lists.
+                </p>
+              </div>
+              <div class="col-mini-warning-box">
+                ❌ Without a daily action queue, overdue callbacks and scheduled client meetings are missed.
+              </div>
+            </div>
+
+            <!-- 2. The Solution -->
+            <div class="solve-col solution-col">
+              <div>
+                <span class="col-tag-hdr solution-tag">THE SOLUTION</span>
+                <h4 class="col-story-title">Live Action Dashboard: Today at a Glance &amp; Priority Queue</h4>
+                <p class="col-story-p">
+                  MeSage AI puts all daily operational priorities in one command screen: real-time unread counts, scheduled appointments, due reminders, and 1-tap mobile PWA push notifications.
+                </p>
+              </div>
+              <div class="col-visual-flow-box">
+                <div class="solve-step-row">
+                  <span class="step-num-dot">1</span>
+                  <span class="step-text-bubble">Live counters show today sent/received, unread messages, and new contacts in real time</span>
+                </div>
+                <div class="solve-step-row">
+                  <span class="step-num-dot green-step">2</span>
+                  <span class="step-text-bubble">"Action Needed" cards flag upcoming appointments, due reminders, and AI follow-up drafts</span>
+                </div>
+                <div class="solve-step-row">
+                  <span class="step-num-dot green-step">3</span>
+                  <span class="step-text-bubble">Agents install the PWA app on mobile with instant push alerts for critical events</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. The Result -->
+            <div class="solve-col result-col">
+              <div>
+                <span class="col-tag-hdr result-tag">THE RESULT</span>
+                <div class="metric-hero-pill">
+                  <span class="metric-big-num">100%</span>
+                  <span class="metric-sub-label">On-Time Follow-ups &amp; Reminders</span>
+                </div>
+              </div>
+              <p class="result-takeaway-p">
+                Zero missed customer appointments or overdue callbacks. Urgent actions are executed the moment they are due.
               </p>
             </div>
           </div>
@@ -1259,206 +1582,159 @@
 
       </div>
 
-      <!-- No Results Found Banner (Hidden by default) -->
+      <!-- No Results Found Banner -->
       <div id="noProblemsMessage" class="no-results-box" style="display:none;">
         <span class="no-res-icon">🔍</span>
-        <h3>No matching business problem found</h3>
-        <p>Try searching for words like <em>late leads</em>, <em>excel</em>, <em>cost</em>, <em>drip</em>, <em>tickets</em>, or reset filters.</p>
-        <button id="resetProblemsBtn" class="btn btn-ghost" style="margin-top:14px">Reset Filters &amp; Show All 13</button>
+        <h3>No matching problem found</h3>
+        <p>Try searching for terms like <em>leads</em>, <em>team</em>, <em>costs</em>, <em>follow-up</em>, or <em>support</em>.</p>
+        <button id="resetProblemsBtn" class="btn btn-ghost" style="margin-top:14px">Reset Filters &amp; Show All 14</button>
       </div>
 
     </section>
 
     <!-- ==========================================================================
-         OFFICIAL 24-CHAPTER GUIDE ARCHITECTURE (From 3-Customer-Panel-Guide.pdf)
+         4 PLATFORM PILLARS (24 CHAPTER GUIDE)
          ========================================================================== -->
     <section class="container">
       <div class="guide-roadmap-section">
         <div class="roadmap-header">
           <div class="hero-pill-row" style="margin-bottom:12px">
-            <span>📑</span> OFFICIAL PLATFORM ARCHITECTURE
+            <span>⚡</span> 4 PLATFORM PILLARS
           </div>
-          <h2>Complete 24-Chapter Platform Breakdown</h2>
+          <h2>Complete Features in One Platform</h2>
           <p>
-            Every single feature documented in the official <strong>3-Customer-Panel-Guide.pdf</strong> is built into MeSage AI. Organised across 4 enterprise pillars, here is how the complete operating system empowers your team from day one:
+            A unified workspace to manage team messaging, automated replies, sales pipeline, and mass broadcasts.
           </p>
         </div>
 
         <div class="pillar-grid">
           <!-- Pillar 1 -->
           <div class="pillar-card">
-            <span class="pillar-badge pillar-1">Pillar 1 • Omnichannel &amp; Team Inbox</span>
-            <h3 class="pillar-title">Unified Multi-Agent Collaboration</h3>
+            <span class="pillar-badge pillar-1">Pillar 1 • Team &amp; Channels</span>
+            <h3 class="pillar-title">Team Inbox &amp; Multi-Channel Sync</h3>
             <ul class="chapter-list">
               <li class="chapter-item">
                 <span class="chapter-num">CH 01</span>
-                <span class="chapter-desc"><strong>Main Dashboard:</strong> Live KPIs, active chat counts, pending escalations, delivery rates, and agent workload gauges.</span>
+                <span class="chapter-desc"><strong>Live Action Dashboard:</strong> "Today at a Glance" metrics (sent/received, unread messages, new contacts, live WhatsApp status badge), "Action Needed Today" priority queue (upcoming appointments, due reminders, hot AI follow-ups), and mobile PWA phone home screen installation with push notifications.</span>
               </li>
               <li class="chapter-item">
                 <span class="chapter-num">CH 03</span>
-                <span class="chapter-desc"><strong>Channels Manager:</strong> Connect Official WABA WhatsApp, Instagram DM, Facebook Messenger, Web Chat, Telegram &amp; SMS in one hub.</span>
+                <span class="chapter-desc"><strong>Multi-Channel:</strong> Connect WhatsApp, Instagram, Facebook, and Web Chat in one view.</span>
               </li>
               <li class="chapter-item">
                 <span class="chapter-num">CH 04</span>
-                <span class="chapter-desc"><strong>Multi-Agent Team Inbox:</strong> Shared inbox with private agent internal notes, @mentions, canned responses, and conversation tags.</span>
+                <span class="chapter-desc"><strong>Shared Inbox:</strong> Allow multiple reps to collaborate, assign chats, and add internal notes.</span>
               </li>
               <li class="chapter-item">
                 <span class="chapter-num">CH 19</span>
-                <span class="chapter-desc"><strong>Teams, Agents &amp; Audit Log:</strong> Round-robin auto-assignment, department routing, role-based permissions (Admin/Supervisor/Agent), and tamper-proof security audit trail.</span>
+                <span class="chapter-desc"><strong>Auto-Assignment:</strong> Route incoming messages evenly across available sales representatives.</span>
               </li>
               <li class="chapter-item">
                 <span class="chapter-num">CH 20</span>
-                <span class="chapter-desc"><strong>1-Click Integrations &amp; REST API:</strong> Native connectors for Shopify, Google Sheets, Razorpay, Webhooks, and bi-directional CRM syncing.</span>
+                <span class="chapter-desc"><strong>Integrations:</strong> Connect Google Sheets, CRM, and billing systems without coding.</span>
               </li>
               <li class="chapter-item">
                 <span class="chapter-num">CH 24</span>
-                <span class="chapter-desc"><strong>Business Settings &amp; Security:</strong> Meta Business verification, Two-Factor Authentication (2FA), API credentials, and role access controls.</span>
+                <span class="chapter-desc"><strong>Security:</strong> Enterprise-grade security, official verification, and protected customer databases.</span>
               </li>
             </ul>
           </div>
 
           <!-- Pillar 2 -->
           <div class="pillar-card">
-            <span class="pillar-badge pillar-2">Pillar 2 • Intelligent AI &amp; Voice</span>
-            <h3 class="pillar-title">Autonomous 24/7 Conversational AI</h3>
+            <span class="pillar-badge pillar-2">Pillar 2 • Smart AI &amp; Voice</span>
+            <h3 class="pillar-title">Automated Replies &amp; Voice Outreach</h3>
             <ul class="chapter-list">
               <li class="chapter-item">
                 <span class="chapter-num">CH 10</span>
-                <span class="chapter-desc"><strong>Automation Hub &amp; Event Triggers:</strong> Keyword listeners, off-hours auto-responses, intent triggers, and inactivity auto-reconnects.</span>
+                <span class="chapter-desc"><strong>Instant Greetings:</strong> Send automated welcome messages, catalogs, and off-hours notices.</span>
               </li>
               <li class="chapter-item">
                 <span class="chapter-num">CH 11</span>
-                <span class="chapter-desc"><strong>Visual Bot Flow Builder:</strong> Drag-and-drop canvas with 14 modular nodes (Send Message, Buttons, Lists, Media, Condition, API Request, CRM Update, Handover, and more).</span>
+                <span class="chapter-desc"><strong>Flow Builder:</strong> Build intuitive chat paths for catalog browsing, order tracking, and support.</span>
               </li>
               <li class="chapter-item">
                 <span class="chapter-num">CH 12</span>
-                <span class="chapter-desc"><strong>Autonomous AI Chatbot &amp; Knowledge Base:</strong> RAG engine trained on PDFs, catalogs, brochures &amp; websites. Answers complex customer inquiries naturally 24/7.</span>
+                <span class="chapter-desc"><strong>Knowledge AI:</strong> Train AI on your documents and website to answer product queries accurately.</span>
               </li>
               <li class="chapter-item">
                 <span class="chapter-num">CH 13</span>
-                <span class="chapter-desc"><strong>Real-Time AI Voice Calling:</strong> Inbound &amp; outbound AI conversational phone agent for bulk appointment confirmation calls and instant inquiry call-backs.</span>
+                <span class="chapter-desc"><strong>AI Voice Calling:</strong> Conduct automated voice calls to qualify prospects and confirm visits.</span>
               </li>
               <li class="chapter-item">
                 <span class="chapter-num">CH 21</span>
-                <span class="chapter-desc"><strong>CTWA Ads &amp; Instagram Auto DM:</strong> Direct Click-to-WhatsApp Meta ads tracking with automated first response, plus Instagram Post/Reel comment-to-DM flows.</span>
+                <span class="chapter-desc"><strong>Social Automation:</strong> Automatically respond to Instagram comments and ad clicks.</span>
               </li>
             </ul>
           </div>
 
           <!-- Pillar 3 -->
           <div class="pillar-card">
-            <span class="pillar-badge pillar-3">Pillar 3 • CRM, Commerce &amp; Bookings</span>
-            <h3 class="pillar-title">Pipeline Conversion &amp; Transactions</h3>
+            <span class="pillar-badge pillar-3">Pillar 3 • Sales, Bookings &amp; Payments</span>
+            <h3 class="pillar-title">Sales Pipeline, Bookings &amp; Payments</h3>
             <ul class="chapter-list">
               <li class="chapter-item">
                 <span class="chapter-num">CH 05</span>
-                <span class="chapter-desc"><strong>Contacts &amp; Dynamic Segments:</strong> Unlimited contact database with custom fields, dynamic tags, CSV bulk import/export, and smart filters.</span>
+                <span class="chapter-desc"><strong>Contact Management:</strong> Segment customers with custom labels, stages, and purchase history.</span>
               </li>
               <li class="chapter-item">
                 <span class="chapter-num">CH 14</span>
-                <span class="chapter-desc"><strong>Lead CRM 360 &amp; Visual Kanban:</strong> Full buyer journey timeline, drag-and-drop pipeline stages (New, Qualified, Site Visit, Won), deal values, and win/loss analytics.</span>
+                <span class="chapter-desc"><strong>Sales Pipeline:</strong> Track deals visually from initial inquiry to final payment.</span>
               </li>
               <li class="chapter-item">
                 <span class="chapter-num">CH 15</span>
-                <span class="chapter-desc"><strong>Lead Generation Forms (228 Templates):</strong> Pre-built drag-and-drop forms for instant in-chat data capture, synchronized directly with Facebook Lead Ads.</span>
+                <span class="chapter-desc"><strong>Chat Forms:</strong> Collect customer details and requirements directly in conversation.</span>
               </li>
               <li class="chapter-item">
                 <span class="chapter-num">CH 16</span>
-                <span class="chapter-desc"><strong>Product Catalog &amp; WhatsApp Pay:</strong> Native in-chat product showcases, multi-item shopping carts, and 1-click UPI / payment gateway checkouts.</span>
+                <span class="chapter-desc"><strong>Catalog &amp; Payments:</strong> Display products and collect instant UPI payments inside WhatsApp.</span>
               </li>
               <li class="chapter-item">
                 <span class="chapter-num">CH 17</span>
-                <span class="chapter-desc"><strong>Interactive Appointments Booking:</strong> Automated date/time slot selection, 2-way Google/Outlook calendar sync, automatic reschedule links &amp; reminder pings.</span>
+                <span class="chapter-desc"><strong>Appointment Scheduling:</strong> Allow clients to book time slots with automated reminder alerts.</span>
               </li>
             </ul>
           </div>
 
           <!-- Pillar 4 -->
           <div class="pillar-card">
-            <span class="pillar-badge pillar-4">Pillar 4 • Campaigns &amp; Cost Control</span>
-            <h3 class="pillar-title">Broadcasts, Compliance &amp; Support</h3>
+            <span class="pillar-badge pillar-4">Pillar 4 • Broadcasts &amp; Cost Control</span>
+            <h3 class="pillar-title">Broadcast Campaigns &amp; Account Management</h3>
             <ul class="chapter-list">
               <li class="chapter-item">
                 <span class="chapter-num">CH 02</span>
-                <span class="chapter-desc"><strong>Analytics &amp; Performance Reports:</strong> Message delivery rates, read percentages, agent response speeds, peak hour heatmaps, and downloadable CSV audits.</span>
+                <span class="chapter-desc"><strong>Performance Analytics:</strong> Deep-dive campaign metrics: sent, delivered, read, and replied percentages; failure reason diagnostics; 7/30/90-day volume charts; busiest hours; agent response times; and CSV export.</span>
               </li>
               <li class="chapter-item">
                 <span class="chapter-num">CH 06</span>
-                <span class="chapter-desc"><strong>Meta Template Library:</strong> Pre-approved Utility, Marketing &amp; Authentication templates with dynamic variables, interactive CTA buttons, and quick submission.</span>
+                <span class="chapter-desc"><strong>Message Templates:</strong> Access pre-approved templates for offers, updates, and reminders.</span>
               </li>
               <li class="chapter-item">
                 <span class="chapter-num">CH 07</span>
-                <span class="chapter-desc"><strong>Smart Broadcast Engine:</strong> High-volume bulk messaging to segmented lists with anti-ban throttling, randomized delays, and opt-out compliance.</span>
+                <span class="chapter-desc"><strong>Targeted Broadcasts:</strong> Send personalized mass messages safely without risk of bans.</span>
               </li>
               <li class="chapter-item">
                 <span class="chapter-num">CH 08</span>
-                <span class="chapter-desc"><strong>Drip Sequences &amp; Nurturing Flows:</strong> Automated time-delayed message cadences triggered by user stage or inaction to warm up cold prospects.</span>
+                <span class="chapter-desc"><strong>Drip Campaigns:</strong> Schedule automated follow-up sequences for cold or inactive leads.</span>
               </li>
               <li class="chapter-item">
                 <span class="chapter-num">CH 09</span>
-                <span class="chapter-desc"><strong>"Save Money" QR Web Campaigns:</strong> Zero-cost inbound conversation initiators via printed QR codes, website floating widgets, and direct pre-filled chat links.</span>
+                <span class="chapter-desc"><strong>QR Campaigns:</strong> Create branded QR codes for packaging and storefront displays.</span>
               </li>
               <li class="chapter-item">
                 <span class="chapter-num">CH 18</span>
-                <span class="chapter-desc"><strong>SLA Support Tickets &amp; Quick Replies:</strong> Ticket numbering, Priority tiering (P1/P2/P3), escalation countdown timers, and automated customer CSAT ratings.</span>
+                <span class="chapter-desc"><strong>Support Tickets:</strong> Track and resolve customer issues within clear turnaround targets.</span>
               </li>
               <li class="chapter-item">
                 <span class="chapter-num">CH 22</span>
-                <span class="chapter-desc"><strong>Central Cloud Media Library:</strong> High-speed cloud hosting for property brochures, video walk-throughs, floor plans, rate cards, and audio notes.</span>
+                <span class="chapter-desc"><strong>Media Library:</strong> Store and share catalogs, PDFs, and product videos in one tap.</span>
               </li>
               <li class="chapter-item">
                 <span class="chapter-num">CH 23</span>
-                <span class="chapter-desc"><strong>Wallet Billing &amp; GST Invoices:</strong> Transparent pay-as-you-go Meta conversation pricing, low-balance alerts, automated recharge, and monthly GST tax invoices.</span>
+                <span class="chapter-desc"><strong>Wallet &amp; Invoicing:</strong> Transparent pay-as-you-go balance with automated tax invoices.</span>
               </li>
             </ul>
           </div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ==========================================================================
-         CALLOUT CARD LINKING TO COMPLETE CAPABILITIES IN DEMO 3
-         ========================================================================== -->
-    <section class="container" style="margin-top: 40px;">
-      <div class="demo3-cta-card" style="background: radial-gradient(at 50% 0%, rgba(99, 102, 241, 0.22) 0px, rgba(13, 17, 39, 0.95) 75%); border-color: rgba(99, 102, 241, 0.4);">
-        <div class="hero-pill-row">
-          <span>★</span> EXPLORE COMPLETE CUSTOMER PANEL WORKSPACE
-        </div>
-        <h2 class="cta-title">Want to see all 24 chapters &amp; platform modules in action?</h2>
-        <p class="cta-sub">
-          Explore <strong>Demo 3</strong> — our interactive visual tour showing every single dashboard, drag-and-drop bot flow, CRM pipeline, and campaign tool.
-        </p>
-        <div class="cta-btn-group">
-          <a href="demo3.html" class="btn btn-primary" style="font-size:15px;padding:12px 28px">
-            Explore Demo 3: Platform Workspace Tour <span>★</span>
-          </a>
-          <a href="demo1.html" class="btn btn-ghost" style="font-size:15px;padding:12px 28px">
-            Watch WhatsApp Bot Simulation (Demo 1) <span>⚡</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         CALL TO ACTION BANNER
-         ========================================================================== -->
-    <section class="container">
-      <div class="demo3-cta-card">
-        <div class="hero-pill-row">
-          <span>🚀</span> READY TO TRY IT ON YOUR NUMBER?
-        </div>
-        <h2 class="cta-title">See these 12 solutions working live on your business WhatsApp.</h2>
-        <p class="cta-sub">
-          We can connect your WhatsApp number, upload your brochure, and set up your team inbox in under 24 hours.
-        </p>
-        <div class="cta-btn-group">
-          <a href="demo2.html" class="btn btn-primary" style="font-size:15px;padding:12px 26px">
-            Schedule a 1-on-1 Walkthrough (Demo 2) <span>📅</span>
-          </a>
-          <a href="demo1.html" class="btn btn-ghost" style="font-size:15px;padding:12px 26px">
-            Watch Live WhatsApp AI Flow (Demo 1) <span>⚡</span>
-          </a>
         </div>
       </div>
     </section>
@@ -1473,19 +1749,21 @@
       <div style="display:flex;align-items:center;gap:10px">
         <img src="assets/logoimg.png" alt="MeSage AI" style="width:24px;height:24px;border-radius:6px" onerror="this.style.display='none'">
         <strong style="color:var(--text-main);font-family:'Space Grotesk',sans-serif">MeSage AI</strong>
-        <span>— Every customer message, answered and connected.</span>
+        <span>— Scalable WhatsApp automation for modern businesses.</span>
       </div>
       <nav class="footer-nav">
-        <a href="index.html">Main Website</a>
-        <a href="demo1.html">Demo 1 (Live Flow)</a>
-        <a href="demo2.html">Demo 2 (Schedule)</a>
-        <a href="demo3.html">Demo 3 (Workspace)</a>
-        <a href="demo4.html" style="color:var(--green-light);font-weight:700">Demo 4 (Problems We Solve)</a>
+        <a href="home.html">Home</a>
+        <a href="how-it-works.html">How It works</a>
+        <a href="demo4.html" style="color:var(--green-light);font-weight:700">What we solve</a>
+        <a href="demo3.html">Know More</a>
+        <a href="about.html">About us</a>
+        <a href="demo2.html">Contact</a>
       </nav>
       <div>&copy; 2026 MeSage AI Inc. All rights reserved.</div>
     </div>
   </footer>
 
+  <script src="header.js"></script>
   <script src="demo4.js"></script>
 </body>
 </html>

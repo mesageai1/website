@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080d1b">
+  <meta name="description" content="About MeSage AI — Unifying WhatsApp, Instagram, Facebook, and Web chat into an intelligent inbox with 24/7 GPT automation and live agent transfer.">
+  <title>About Us — MeSage AI</title>
+  <link rel="icon" href="assets/logoimg.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="header.css">
+  <style>
+    .about-hero {
+      padding: 80px 0 50px;
+      text-align: center;
+      position: relative;
+    }
+    .about-hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 999px;
+      background: rgba(99, 102, 241, 0.12);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      color: #a5b4fc;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .about-title {
+      font-size: clamp(36px, 5vw, 56px);
+      line-height: 1.15;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      letter-spacing: -1.5px;
+      max-width: 860px;
+      margin: 0 auto 20px;
+      color: #ffffff;
+    }
+    .about-sub {
+      font-size: 17px;
+      color: #94a3b8;
+      max-width: 680px;
+      margin: 0 auto 36px;
+      line-height: 1.6;
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin: 60px 0;
+    }
+    .about-card {
+      background: #0f1130;
+      border: 1px solid rgba(99, 102, 241, 0.18);
+      border-radius: 16px;
+      padding: 32px 28px;
+      transition: all 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .about-card:hover {
+      border-color: rgba(99, 102, 241, 0.45);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    }
+    .about-card-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      background: rgba(99, 102, 241, 0.15);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .about-card h3 {
+      font-size: 20px;
+      font-family: 'Space Grotesk', sans-serif;
+      margin: 0 0 12px;
+      color: #ffffff;
+    }
+    .about-card p {
+      font-size: 14.5px;
+      color: #94a3b8;
+      margin: 0;
+      line-height: 1.6;
+    }
+    .about-stats {
+      background: linear-gradient(180deg, rgba(15, 17, 48, 0.8), rgba(10, 11, 26, 0.95));
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      border-radius: 20px;
+      padding: 44px 32px;
+      margin: 40px 0 80px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      text-align: center;
+    }
+    .stat-number {
+      font-size: 38px;
+      font-weight: 700;
+      font-family: 'Space Grotesk', sans-serif;
+      color: #ffffff;
+      margin-bottom: 6px;
+      background: linear-gradient(135deg, #ffffff 40%, #818cf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .stat-label {
+      font-size: 13.5px;
+      color: #94a3b8;
+      font-weight: 500;
+    }
+    .about-cta-box {
+      text-align: center;
+      background: radial-gradient(circle at center, rgba(99, 102, 241, 0.18), transparent 70%), #0f1130;
+      border: 1px solid rgba(99, 102, 241, 0.25);
+      border-radius: 24px;
+      padding: 60px 30px;
+      margin-bottom: 80px;
+    }
+    .about-cta-box h2 {
+      font-size: 32px;
+      font-family: 'Space Grotesk', sans-serif;
+      margin: 0 0 16px;
+      color: #ffffff;
+    }
+    .about-cta-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      margin-top: 28px;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Announcement Bar -->
+  <div class="announcement">
+    <span class="pulse"></span> <strong>MeSage AI:</strong> Every conversation, intelligently connected.
+  </div>
+
+  <!-- Unified Navigation Header -->
+  <header class="nav-wrap">
+    <nav class="nav container">
+      <a class="brand" href="home.html" aria-label="MeSage AI home">
+        <img src="assets/logoimg.png" alt="MeSage AI logo" class="brand-logo" onerror="this.src='assets/logogif.gif'">
+        <span>MeSage<span class="brand-ai"> AI</span></span>
+      </a>
+      <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      <div class="nav-links">
+        <a href="home.html">Home</a>
+        <a href="how-it-works.html">How It works</a>
+        <a href="demo4.html">What we solve</a>
+        <a href="demo3.html">Know More</a>
+        <a href="about.html" class="active">About us</a>
+        <a href="demo2.html" class="nav-contact-btn">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="about-hero container">
+      <div class="about-hero-pill">
+        <span>★</span> THE STORY BEHIND MESAGE AI
+      </div>
+      <h1 class="about-title">
+        Connecting Every Conversation with <span class="gradient-text">Intelligent Automation.</span>
+      </h1>
+      <p class="about-sub">
+        We built MeSage AI to help modern businesses eliminate scattered personal chats, lost sales inquiries, and slow response times by uniting messaging, 24/7 AI, and team workflows in one smart inbox.
+      </p>
+    </section>
+
+    <section class="container">
+      <div class="about-grid">
+        <div class="about-card">
+          <div class="about-card-icon">⚡</div>
+          <h3>Instant AI Response</h3>
+          <p>Deliver helpful, contextual answers in under 2 seconds across WhatsApp, Instagram, and web chat so leads never wait.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-card-icon">📥</div>
+          <h3>Unified Team Inbox</h3>
+          <p>Consolidate customer inquiries from multiple channels into a single screen with real-time sync, role assignments, and team chat notes.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-card-icon">🤝</div>
+          <h3>Seamless Human Takeover</h3>
+          <p>Human agents can step into any live chat instantly to close high-value deals, then hand back to autonomous AI whenever they choose.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-card-icon">🔒</div>
+          <h3>Company Asset Protection</h3>
+          <p>No more sales reps holding customer contacts on personal phones. All client conversations, tags, and pipelines remain 100% company-owned.</p>
+        </div>
+      </div>
+
+      <div class="about-stats">
+        <div>
+          <div class="stat-number">1.8s</div>
+          <div class="stat-label">Average AI Reply Time</div>
+        </div>
+        <div>
+          <div class="stat-number">86.4%</div>
+          <div class="stat-label">AI-Assisted Resolution</div>
+        </div>
+        <div>
+          <div class="stat-number">99.2%</div>
+          <div class="stat-label">Customer Satisfaction</div>
+        </div>
+        <div>
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Contact Retention on Cloud</div>
+        </div>
+      </div>
+
+      <div class="about-cta-box">
+        <h2>Experience the MeSage AI Difference</h2>
+        <p style="color: #94a3b8; max-width: 580px; margin: 0 auto; font-size: 15px;">
+          See how leading companies use MeSage AI to turn casual messaging inquiries into qualified customers.
+        </p>
+        <div class="about-cta-actions">
+          <a href="demo2.html" class="btn btn-primary" style="padding: 12px 28px; border-radius: 10px; font-weight: 700;">Schedule a Demo <span>→</span></a>
+          <a href="how-it-works.html" class="btn btn-ghost" style="padding: 12px 28px; border-radius: 10px; font-weight: 700;">Explore How It Works <span>⚡</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <a class="brand" href="home.html">
+        <img src="assets/logoimg.png" alt="MeSage AI" class="logo-gif" onerror="this.src='assets/logogif.gif'">
+        <span>MeSage<span class="brand-ai"> AI</span></span>
+      </a>
+      <p>Every conversation, intelligently connected.</p>
+      <div>
+        <a href="home.html">Home</a>
+        <a href="how-it-works.html">How It works</a>
+        <a href="demo4.html">What we solve</a>
+        <a href="demo3.html">Know More</a>
+        <a href="about.html">About us</a>
+        <a href="demo2.html">Contact</a>
+      </div>
+      <small>© <span id="year"></span> MeSage AI. All rights reserved.</small>
+    </div>
+  </footer>
+
+  <script src="header.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
