@@ -268,40 +268,43 @@ h1, h2, h3, p { margin-top: 0; }
 .agent-hdr .panel-title-text { color: #ffffff; text-shadow: 0 0 12px rgba(255, 255, 255, 0.4); }
 .ai-hdr .panel-title-text { color: #818cf8; }
 
-/* 1. LEFT: Phone Container (250px - REAL COMPACT SMARTPHONE PROPORTIONS) */
+/* 1. LEFT: Phone Container (REAL COMPACT SMARTPHONE PROPORTIONS & AUTHENTIC WHATSAPP UI) */
 .col-phone {
   flex-shrink: 0;
-  width: 250px;
+  width: 260px;
 }
 
 .phone-frame {
-  width: 250px;
-  height: 485px;
+  width: 260px;
+  height: 490px;
   box-sizing: border-box;
   background: #0b141a;
-  border-radius: 32px;
-  border: 3px solid #1a2730;
+  border-radius: 34px;
+  border: 3.5px solid #1a2730;
   box-shadow: 0 0 0 2px #25d366, 0 25px 70px rgba(0, 0, 0, 0.85), 0 0 30px rgba(37, 211, 102, 0.25);
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  letter-spacing: -0.1px;
 }
+
 /* Smartphone Top Status Bar */
 .phone-status-bar {
   height: 22px;
-  background: #1f2c34;
-  padding: 4px 12px 0;
+  background: #202c33;
+  padding: 4px 14px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 9.5px;
+  font-size: 10px;
   color: #aebac1;
   font-weight: 600;
   letter-spacing: -0.2px;
 }
 .status-bar-time {
-  font-size: 9.5px;
-  font-weight: 600;
+  font-size: 10px;
+  font-weight: 700;
   color: #e9edef;
 }
 .phone-notch-pill {
@@ -316,20 +319,22 @@ h1, h2, h3, p { margin-top: 0; }
   gap: 5px;
 }
 
-/* Authentic WhatsApp Dark Mode Header */
+/* Authentic WhatsApp Dark Mode Header (#202c33) */
 .wa-header {
-  background: #1f2c34;
-  padding: 6px 8px 7px;
+  background: #202c33;
+  padding: 7px 8px 8px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   color: white;
-  border-bottom: 1px solid rgba(134, 150, 160, 0.12);
+  border-bottom: 1px solid rgba(134, 150, 160, 0.15);
 }
 .wa-header-left {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
+  min-width: 0;
+  flex: 1;
 }
 .wa-back-btn {
   display: flex;
@@ -344,8 +349,8 @@ h1, h2, h3, p { margin-top: 0; }
 }
 /* Customer WhatsApp Avatar with Clean White BG */
 .wa-avatar-box {
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   background: #ffffff; /* CLEAN PURE WHITE BG FOR LOGO */
   border: 1.5px solid #ffffff;
@@ -358,25 +363,25 @@ h1, h2, h3, p { margin-top: 0; }
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 .wa-avatar-pic {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   object-fit: contain;
   display: block;
 }
 .wa-avatar-fallback {
   color: white;
   font-weight: 700;
-  font-size: 12px;
+  font-size: 13px;
 }
 .online-dot {
   position: absolute;
   bottom: 0;
   right: 0;
-  width: 8px;
-  height: 8px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
   background: #00a884;
-  border: 1.5px solid #1f2c34;
+  border: 2px solid #202c33;
 }
 .wa-header-meta {
   flex: 1;
@@ -386,37 +391,38 @@ h1, h2, h3, p { margin-top: 0; }
   justify-content: center;
 }
 .wa-header-meta strong {
-  font-size: 10.5px;
+  font-size: 13.5px;
   display: block;
-  line-height: 1.2;
+  line-height: 1.25;
   color: #e9edef;
   font-weight: 600;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 95px;
+  max-width: 155px;
 }
 .wa-name-row {
   display: flex;
   align-items: center;
-  gap: 3px;
+  gap: 4px;
 }
 .wa-verified-svg {
   flex-shrink: 0;
 }
 .wa-header-meta small {
-  font-size: 8px;
+  font-size: 10.5px;
   color: #8696a0;
   display: block;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 95px;
+  max-width: 155px;
+  line-height: 1.2;
 }
 .wa-header-icons {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   flex-shrink: 0;
 }
 .wa-icon-btn {
@@ -446,7 +452,7 @@ h1, h2, h3, p { margin-top: 0; }
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' opacity='0.055'%3E%3Cpath fill='%23ffffff' d='M15 12a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm30 3a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zm35 5a4 4 0 0 0-4 4v3h8v-3a4 4 0 0 0-4-4zm-60 25a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm70-4a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm-38 8a6 6 0 1 0 0 12 6 6 0 0 0 0-12zm-25 20a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm55 3a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm-20 15a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9z'/%3E%3Cpath fill='%23ffffff' d='M75 35l-4 7h8zm-50 45l5-3-5-3zm30-68l2 5 5-2-3 4 4 3-5 1 1 5-4-3-3 4 1-5-5-2 5-1zm-28 40h6v3h-6zm50 35h6v4h-6z'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 130px 130px;
-  padding: 8px;
+  padding: 8px 10px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -462,7 +468,7 @@ h1, h2, h3, p { margin-top: 0; }
   text-align: center;
   background: #182229;
   color: #ffd279;
-  font-size: 7.5px;
+  font-size: 8.5px;
   padding: 5px 8px;
   border-radius: 7px;
   margin: 0 auto 4px;
@@ -482,7 +488,7 @@ h1, h2, h3, p { margin-top: 0; }
   align-self: center;
   background: #182229;
   color: #8696a0;
-  font-size: 8px;
+  font-size: 9px;
   font-weight: 700;
   padding: 3px 9px;
   border-radius: 8px;
@@ -494,112 +500,155 @@ h1, h2, h3, p { margin-top: 0; }
 #waChatStream {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
   width: 100%;
 }
 
-.wa-chat-bubble-item {
+/* Authentic WhatsApp Message Rows */
+.wa-msg-row {
   display: flex;
-  flex-direction: column;
-  position: relative;
+  width: 100%;
   margin-bottom: 2px;
-  animation: bubblePop 0.22s ease forwards;
+  animation: waBubblePop 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
-@keyframes bubblePop {
-  from { opacity: 0; transform: translateY(4px); }
+@keyframes waBubblePop {
+  from { opacity: 0; transform: translateY(3px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* 1. Customer User Message: EXPLICITLY ON THE RIGHT (SENT SIDE) */
-.wa-chat-bubble-item.user {
-  align-self: flex-end;
-  margin-left: auto;
-  margin-right: 0;
-  max-width: 82%;
+.wa-msg-row.wa-customer {
+  justify-content: flex-end;
+}
+.wa-msg-row.wa-bot {
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-/* 2. AI Bot & Live Agent Messages: EXPLICITLY ON THE LEFT (RECEIVED SIDE) */
-.wa-chat-bubble-item.bot,
-.wa-chat-bubble-item.agent {
-  align-self: flex-start;
-  margin-left: 0;
-  margin-right: auto;
-  max-width: 85%;
-}
-
-.bubble-text-box {
-  padding: 5px 8px 4px;
-  border-radius: 8px;
-  font-size: 9px;
-  line-height: 1.38;
-  word-break: break-word;
+/* Base Bubble */
+.wa-bubble {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 11.5px;
+  line-height: 1.4;
+  letter-spacing: -0.05px;
   position: relative;
+  word-break: break-word;
+  box-shadow: 0 1px 1px rgba(11, 20, 26, 0.28);
 }
 
-/* User Message (Outgoing WhatsApp Green #005c4b + Authentic Tail on Right) */
-.wa-chat-bubble-item.user .bubble-text-box {
+.wa-bubble strong {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* 1. Customer User Message: EXPLICITLY ON THE RIGHT (SENT SIDE - #005c4b) */
+.wa-bubble.customer-bubble {
   background: #005c4b;
   color: #e9edef;
-  border-top-right-radius: 0px;
+  border-radius: 8px 8px 0px 8px;
+  max-width: 82%;
+  padding: 6px 9px 5px 9px;
+  margin-left: auto;
 }
-.wa-chat-bubble-item.user .bubble-text-box::before {
+/* Authentic WhatsApp Outgoing Tail on Top-Right */
+.wa-bubble.customer-bubble::after {
   content: '';
   position: absolute;
   top: 0;
-  right: -6px;
-  width: 0;
-  height: 0;
-  border-top: 6px solid #005c4b;
-  border-right: 6px solid transparent;
+  right: -8px;
+  width: 8px;
+  height: 13px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 13' width='8' height='13'%3E%3Cpath fill='%23005c4b' d='M5.188 1H0v11.193l6.467-8.625C7.526 2.412 6.958 1 5.188 1z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 8px 13px;
 }
 
-/* Bot Message (Incoming WhatsApp Dark Slate #202c33 + Authentic Tail on Left) */
-.wa-chat-bubble-item.bot .bubble-text-box {
+/* 2. Bot Message: EXPLICITLY ON THE LEFT (RECEIVED SIDE - #202c33) */
+.wa-bubble.bot-bubble {
   background: #202c33;
   color: #e9edef;
-  border-top-left-radius: 0px;
+  border-radius: 0px 8px 8px 8px;
+  max-width: 86%;
+  padding: 6px 9px 5px 9px;
+  margin-right: auto;
 }
-.wa-chat-bubble-item.bot .bubble-text-box::before {
+/* Authentic WhatsApp Incoming Tail on Top-Left */
+.wa-bubble.bot-bubble::after {
   content: '';
   position: absolute;
   top: 0;
-  left: -6px;
-  width: 0;
-  height: 0;
-  border-top: 6px solid #202c33;
-  border-left: 6px solid transparent;
+  left: -8px;
+  width: 8px;
+  height: 13px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 13' width='8' height='13'%3E%3Cpath fill='%23202c33' d='M2.812 1H8v11.193L1.533 3.568C.474 2.412 1.042 1 2.812 1z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 8px 13px;
 }
 
-/* Agent Message (Incoming Dark Slate #202c33 with Accent bar + Authentic Tail on Left) */
-.wa-chat-bubble-item.agent .bubble-text-box {
+/* 3. Live Agent Override Message (#202c33 + #34d399 Accent Border) */
+.wa-agent-sender-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 9.5px;
+  font-weight: 700;
+  color: #34d399;
+  margin-bottom: 2px;
+  padding-left: 4px;
+}
+.agent-avatar-mini {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #34d399;
+  color: #0b141a;
+  font-size: 7.5px;
+  font-weight: 800;
+  display: inline-grid;
+  place-items: center;
+}
+.wa-bubble.agent-bubble {
   background: #202c33;
   color: #e9edef;
-  border-top-left-radius: 0px;
+  border-radius: 0px 8px 8px 8px;
   border-left: 3px solid #34d399;
+  max-width: 86%;
+  padding: 6px 9px 5px 9px;
+  margin-right: auto;
 }
-.wa-chat-bubble-item.agent .bubble-text-box::before {
+.wa-bubble.agent-bubble::after {
   content: '';
   position: absolute;
   top: 0;
-  left: -6px;
-  width: 0;
-  height: 0;
-  border-top: 6px solid #202c33;
-  border-left: 6px solid transparent;
+  left: -8px;
+  width: 8px;
+  height: 13px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 13' width='8' height='13'%3E%3Cpath fill='%23202c33' d='M2.812 1H8v11.193L1.533 3.568C.474 2.412 1.042 1 2.812 1z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 8px 13px;
 }
 
-.bubble-footer {
+/* Timestamp & Blue Double Checkmarks */
+.wa-meta-time {
   display: flex;
   align-items: center;
   justify-content: flex-end;
   gap: 3px;
-  font-size: 8px;
-  color: #8696a0;
+  font-size: 9px;
+  color: rgba(233, 237, 239, 0.6);
+  float: right;
+  margin-left: 6px;
   margin-top: 2px;
+  user-select: none;
+}
+.wa-meta-time span {
+  line-height: 1;
 }
 .wa-double-ticks {
   vertical-align: middle;
   flex-shrink: 0;
+  width: 14px;
+  height: 10px;
 }
 
 /* Authentic WhatsApp Document Card */
@@ -608,46 +657,72 @@ h1, h2, h3, p { margin-top: 0; }
   align-items: center;
   gap: 8px;
   background: rgba(0, 0, 0, 0.28);
-  border-radius: 7px;
-  padding: 6px 9px;
-  margin: 4px 0 3px;
+  border-radius: 6px;
+  padding: 6px 8px;
+  margin: 5px 0 3px;
   border: 1px solid rgba(255, 255, 255, 0.06);
 }
-.wa-doc-icon-badge {
-  width: 28px;
-  height: 28px;
-  border-radius: 6px;
-  background: rgba(234, 67, 53, 0.15);
+.wa-doc-icon-red {
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  background: #ea4335;
   display: grid;
   place-items: center;
   flex-shrink: 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
-.wa-doc-meta {
+.wa-doc-details {
   flex: 1;
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
 }
-.wa-doc-name {
-  font-size: 8.5px;
-  font-weight: 700;
+.wa-doc-title {
+  font-size: 10.5px;
+  font-weight: 600;
   color: #ffffff;
-  display: block;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.wa-doc-sub {
-  font-size: 7.5px;
+.wa-doc-size {
+  font-size: 8.5px;
   color: #8696a0;
-  display: block;
 }
-.wa-doc-download-icon {
+.wa-doc-dl-btn {
+  color: #8696a0;
   display: flex;
   align-items: center;
-  color: #8696a0;
+  cursor: pointer;
+  padding: 2px;
+}
+.wa-doc-dl-btn:hover {
+  color: #e9edef;
 }
 
-.wa-handoff-pill-alert {
-  background: rgba(16, 185, 129, 0.16);
+/* System Handoff Pill Alert */
+.wa-system-banner {
+  display: flex;
+  justify-content: center;
+  margin: 4px 0;
+  width: 100%;
+}
+.wa-system-banner span {
+  background: #182229;
+  color: #ffd279;
+  border-radius: 7px;
+  padding: 4px 9px;
+  font-size: 8.5px;
+  line-height: 1.35;
+  text-align: center;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  max-width: 90%;
+}
+.wa-system-banner span strong {
+  color: #ffffff;
+}
   border: 1px solid rgba(16, 185, 129, 0.4);
   border-radius: 6px;
   padding: 4px 8px;
@@ -902,7 +977,7 @@ h1, h2, h3, p { margin-top: 0; }
   100% { left: 0px; opacity: 0; transform: scale(0.6); }
 }
 
-/* 3. IN-BETWEEN: Human Agent Column (PERMANENT FIXED DISTANCE - NEVER SHIFTS!) */
+/* 3. IN-BETWEEN: Human Agent Column (RESERVED DISTANCE - KEPT BLANK TILL HE ENTERS!) */
 .col-agent-inbetween {
   flex-shrink: 0;
   width: 330px;
@@ -910,112 +985,23 @@ h1, h2, h3, p { margin-top: 0; }
   max-width: 330px;
   margin: 0;
   position: relative;
+  /* Kept 100% BLANK till agent enters! */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
 }
 
-/* Standby Placeholder Slot (Permanent distance reserved; visible when agent is idle) */
-.agent-standby-slot {
-  width: 330px;
-  height: 485px;
-  box-sizing: border-box;
-  background: rgba(15, 23, 42, 0.45);
-  border: 2px dashed rgba(99, 102, 241, 0.35);
-  border-radius: 22px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px 20px;
-  text-align: center;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-  transition: opacity 0.35s ease;
-}
-.standby-slot-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-}
-.standby-pill-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(99, 102, 241, 0.15);
-  border: 1px solid rgba(99, 102, 241, 0.35);
-  padding: 3px 10px;
-  border-radius: 12px;
-  font-size: 9px;
-  font-weight: 700;
-  color: #a5b4fc;
-  letter-spacing: 0.5px;
-}
-.standby-beacon {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #818cf8;
-  box-shadow: 0 0 8px #818cf8;
-  animation: pulseBeacon 2s infinite ease-in-out;
-}
-@keyframes pulseBeacon {
-  0%, 100% { opacity: 0.4; transform: scale(0.9); }
-  50% { opacity: 1; transform: scale(1.2); }
-}
-.standby-avatar-circle {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.25) 0%, rgba(15, 23, 42, 0.8) 75%);
-  border: 2px solid rgba(129, 140, 248, 0.5);
-  display: grid;
-  place-items: center;
-  box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
-}
-.standby-avatar-emoji {
-  font-size: 28px;
-}
-.standby-role-title {
-  font-size: 14px;
-  font-weight: 700;
-  color: #f1f5f9;
-}
-.standby-role-desc {
-  font-size: 11.5px;
-  color: #94a3b8;
-  line-height: 1.5;
-  margin: 0;
-  max-width: 250px;
-}
-.standby-auto-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  background: rgba(16, 185, 129, 0.12);
-  border: 1px solid rgba(16, 185, 129, 0.3);
-  color: #34d399;
-  font-size: 10px;
-  font-weight: 700;
-  padding: 4px 10px;
-  border-radius: 12px;
-  margin-top: 4px;
-}
-.standby-bolt {
-  color: #34d399;
+/* When Agent enters: Smoothly reveal in the reserved blank space */
+.col-agent-inbetween.active-inbetween {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  animation: agentEnterFade 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Inactive State: Standby visible, Live CRM card hidden */
-.col-agent-inbetween .agent-inbox-card {
-  display: none;
-}
-
-/* Active State: Standby hidden, Live CRM card smoothly appears without moving layout */
-.col-agent-inbetween.active-inbetween .agent-standby-slot {
-  display: none;
-}
-.col-agent-inbetween.active-inbetween .agent-inbox-card {
-  display: flex;
-  animation: agentCardFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-@keyframes agentCardFadeIn {
-  from { opacity: 0; transform: scale(0.96); }
+@keyframes agentEnterFade {
+  from { opacity: 0; transform: scale(0.97); }
   to { opacity: 1; transform: scale(1); }
 }
 
@@ -1610,94 +1596,58 @@ h1, h2, h3, p { margin-top: 0; }
   animation: pulseBeacon 1.8s infinite;
 }
 
-/* 6. FAR RIGHT: Replay Demo Button Column (After AI Automation Panel) */
+/* 6. FAR RIGHT: Small Replay Button at Right Bottom (After Automation Panel) */
 .col-replay-side {
   flex-shrink: 0;
-  width: 86px;
-  min-width: 86px;
-  max-width: 86px;
-  margin-left: 12px;
+  margin-left: 14px;
+  margin-top: 512px; /* Sits cleanly at the bottom edge after automation panel */
+  width: auto;
+  min-width: auto;
+  max-width: none;
 }
-.replay-hdr {
-  margin-bottom: 12px;
-}
-.replay-hdr-spacer {
-  display: block;
-  height: 50px; /* aligns top edge with customer, agent, and AI avatar headers */
-}
-.side-replay-card-btn {
-  width: 86px;
-  height: 485px;
-  box-sizing: border-box;
-  background: rgba(15, 23, 42, 0.5);
-  border: 1.5px solid rgba(99, 102, 241, 0.3);
-  border-radius: 22px;
-  display: flex;
-  flex-direction: column;
+
+.btn-replay-small {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
-  cursor: pointer;
-  color: #e2e8f0;
-  padding: 16px 6px;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-  font-family: inherit;
-}
-.side-replay-card-btn:hover {
-  background: rgba(30, 27, 75, 0.75);
-  border-color: #818cf8;
-  box-shadow: 0 0 25px rgba(99, 102, 241, 0.35);
-  transform: translateY(-2px);
-}
-.side-replay-card-btn:active {
-  transform: translateY(1px) scale(0.98);
-}
-.side-replay-icon-halo {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: rgba(99, 102, 241, 0.2);
-  border: 1.5px solid rgba(129, 140, 248, 0.4);
-  display: grid;
-  place-items: center;
-  transition: transform 0.4s ease, border-color 0.25s, box-shadow 0.25s;
-}
-.side-replay-card-btn:hover .side-replay-icon-halo {
-  transform: rotate(-180deg);
-  border-color: #38bdf8;
-  box-shadow: 0 0 16px rgba(56, 189, 248, 0.6);
-}
-.side-replay-icon-circle {
-  color: #a5b4fc;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.side-replay-card-btn:hover .side-replay-icon-circle {
-  color: #ffffff;
-}
-.side-replay-title {
-  font-family: "Space Grotesk", sans-serif;
-  font-size: 13px;
-  font-weight: 700;
-  color: #ffffff;
-  letter-spacing: 0.3px;
-}
-.side-replay-sub {
+  gap: 6px;
+  background: rgba(30, 27, 75, 0.85);
+  border: 1px solid rgba(129, 140, 248, 0.45);
+  color: #c7d2fe;
   font-size: 11px;
   font-weight: 600;
-  color: #a5b4fc;
+  padding: 6px 13px;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+  font-family: inherit;
 }
-.side-replay-hint {
-  font-size: 8.5px;
-  color: #94a3b8;
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
-  margin-top: 6px;
-  background: rgba(255, 255, 255, 0.06);
-  padding: 2px 6px;
-  border-radius: 6px;
+.btn-replay-small:hover {
+  background: rgba(99, 102, 241, 0.35);
+  border-color: #818cf8;
+  color: #ffffff;
+  box-shadow: 0 0 16px rgba(99, 102, 241, 0.5);
+  transform: translateY(-1px);
+}
+.btn-replay-small:active {
+  transform: translateY(1px);
+}
+.btn-replay-small svg {
+  color: #a5b4fc;
+  transition: transform 0.35s ease, color 0.2s ease;
+}
+.btn-replay-small:hover svg {
+  transform: rotate(-180deg);
+  color: #ffffff;
+}
+.btn-replay-small svg {
+  color: #a5b4fc;
+  transition: transform 0.35s ease, color 0.2s ease;
+}
+.btn-replay-small:hover svg {
+  transform: rotate(-180deg);
+  color: #ffffff;
 }
 
 /* RESPONSIVE (PERFECT MOBILE EXPERIENCE) */
@@ -1713,7 +1663,6 @@ h1, h2, h3, p { margin-top: 0; }
     align-items: center;
   }
   .phone-frame,
-  .agent-standby-slot,
   .agent-inbox-card,
   .robot-face-stage {
     width: 100%;
@@ -1727,15 +1676,13 @@ h1, h2, h3, p { margin-top: 0; }
     width: 100%;
     max-width: 330px;
     margin-left: 0;
+    align-self: center;
+    display: flex;
+    justify-content: center;
   }
-  .replay-hdr-spacer {
-    display: none;
-  }
-  .side-replay-card-btn {
-    width: 100%;
-    height: 54px;
-    flex-direction: row;
-    gap: 12px;
+  .btn-replay-small {
+    padding: 8px 18px;
+    font-size: 12px;
   }
 }
 
@@ -1743,7 +1690,6 @@ h1, h2, h3, p { margin-top: 0; }
   .header-badges { display: none; }
   .demo-intro h1 { font-size: 20px; }
   .phone-frame,
-  .agent-standby-slot,
   .agent-inbox-card,
   .robot-face-stage {
     height: 440px;
