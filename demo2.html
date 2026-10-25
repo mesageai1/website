@@ -44,58 +44,249 @@
         <!-- Right Column: Demo Booking Form (with Robot Holding Top) -->
         <section class="form-col" id="formWrapper">
 
-          <!-- Photorealistic 3D Robot Mascot (Holding Top of Form) -->
-          <div class="robot-companion-wrap" id="robotMascotWrap" aria-hidden="true">
+          <!-- Interactive Professional Acting Robot (Holding Top of Form) -->
+          <div class="robot-mascot-wrap" id="robotMascotWrap" aria-hidden="true">
+            <svg class="robot-svg" viewBox="0 0 280 160" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <!-- Ceramic Armor Gradients (Professional White / Platinum) -->
+                <linearGradient id="ceramicHeadGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#ffffff"/>
+                  <stop offset="35%" stop-color="#f8fafc"/>
+                  <stop offset="70%" stop-color="#e2e8f0"/>
+                  <stop offset="100%" stop-color="#94a3b8"/>
+                </linearGradient>
 
-            <!-- Idle / Attentive Pose (Robot Gripping Form Card Top & Watching Form) -->
-            <div class="robot-pose-stage" id="robotIdleStage">
-              <div class="robot-image-container" id="robotHead">
-                <img 
-                  src="assets/robot_realistic_idle.png" 
-                  alt="MeSage AI Realistic Robot Assistant" 
-                  class="robot-realistic-img" 
-                  id="robotIdleImg"
-                  draggable="false"
-                >
-                <!-- Glowing Cyan Optical HUD Over Robot's Eyes for Real-Time Typing Tracking -->
-                <div class="robot-eyes-hud" id="robotEyesHud">
-                  <!-- Left Optical Sensor Point -->
-                  <div class="optic-reticle optic-left" id="opticLeft">
-                    <span class="optic-core" id="pupilLeft"></span>
-                    <span class="optic-ring"></span>
-                  </div>
-                  <!-- Right Optical Sensor Point -->
-                  <div class="optic-reticle optic-right" id="opticRight">
-                    <span class="optic-core" id="pupilRight"></span>
-                    <span class="optic-ring"></span>
-                  </div>
-                </div>
-                <!-- Visor Holographic Hologram / Scanning Light Cone -->
-                <div class="visor-scanner-beam" id="visorScannerBeam"></div>
-              </div>
-            </div>
+                <linearGradient id="ceramicChestGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#ffffff"/>
+                  <stop offset="40%" stop-color="#f1f5f9"/>
+                  <stop offset="100%" stop-color="#cbd5e1"/>
+                </linearGradient>
 
-            <!-- Thumbs-Up Pose (Displayed on Successful Submit) -->
-            <div class="robot-pose-stage robot-thumbs-stage" id="robotThumbsStage" style="display: none;">
-              <div class="robot-image-container thumbs-container" id="thumbsContainer">
-                <img 
-                  src="assets/robot_realistic_thumbs.png" 
-                  alt="MeSage AI Robot Thumbs Up Success" 
-                  class="robot-realistic-img robot-thumbs-img" 
-                  id="robotThumbsImg"
-                  draggable="false"
-                >
-                <!-- Celebratory Thumb Aura & Sparkles -->
-                <div class="thumb-glow-aura"></div>
-                <div class="thumb-sparkle-stars" id="thumbSparkles">
-                  <span class="sparkle-star s1">✦</span>
-                  <span class="sparkle-star s2">✨</span>
-                  <span class="sparkle-star s3">✦</span>
-                  <span class="sparkle-star s4">★</span>
-                </div>
-              </div>
-            </div>
+                <!-- Chrome & Titanium Gradients -->
+                <linearGradient id="chromeGrad" x1="0%" y1="0%" x2="100%" y2="50%">
+                  <stop offset="0%" stop-color="#ffffff"/>
+                  <stop offset="25%" stop-color="#cbd5e1"/>
+                  <stop offset="50%" stop-color="#64748b"/>
+                  <stop offset="75%" stop-color="#94a3b8"/>
+                  <stop offset="100%" stop-color="#334155"/>
+                </linearGradient>
 
+                <!-- Dark Carbon Fiber Texture & Visor -->
+                <linearGradient id="carbonGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#1e2438"/>
+                  <stop offset="50%" stop-color="#0f1322"/>
+                  <stop offset="100%" stop-color="#080a14"/>
+                </linearGradient>
+
+                <linearGradient id="visorGlassGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#0b1022"/>
+                  <stop offset="40%" stop-color="#04060f"/>
+                  <stop offset="100%" stop-color="#020308"/>
+                </linearGradient>
+
+                <!-- Translucent Brain Dome Gradient -->
+                <linearGradient id="brainDomeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.45"/>
+                  <stop offset="50%" stop-color="#0ea5e9" stop-opacity="0.2"/>
+                  <stop offset="100%" stop-color="#0369a1" stop-opacity="0.05"/>
+                </linearGradient>
+
+                <!-- Glowing Filters -->
+                <filter id="brainGlow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="3" result="blur"/>
+                  <feMerge>
+                    <feMergeNode in="blur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+
+                <filter id="eyeCyanGlow" x="-40%" y="-40%" width="180%" height="180%">
+                  <feGaussianBlur stdDeviation="2.5" result="blur"/>
+                  <feMerge>
+                    <feMergeNode in="blur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+
+                <!-- Eye Sockets Clip Paths for Pupil Movement -->
+                <clipPath id="leftSocketClip">
+                  <ellipse cx="113" cy="74" rx="14" ry="16"/>
+                </clipPath>
+                <clipPath id="rightSocketClip">
+                  <ellipse cx="167" cy="74" rx="14" ry="16"/>
+                </clipPath>
+              </defs>
+
+              <!-- Hydraulic Cyber Neck & Collar behind card -->
+              <g id="robotNeck">
+                <path d="M 108 120 L 108 138 L 172 138 L 172 120 Z" fill="url(#carbonGrad)" stroke="rgba(148,163,184,0.3)" stroke-width="1.2"/>
+                <!-- Chrome Neck Piston Struts -->
+                <line x1="118" y1="124" x2="118" y2="136" stroke="url(#chromeGrad)" stroke-width="2.5" stroke-linecap="round"/>
+                <line x1="140" y1="124" x2="140" y2="136" stroke="url(#chromeGrad)" stroke-width="3" stroke-linecap="round"/>
+                <line x1="162" y1="124" x2="162" y2="136" stroke="url(#chromeGrad)" stroke-width="2.5" stroke-linecap="round"/>
+                <line x1="122" y1="136" x2="158" y2="136" stroke="#38bdf8" stroke-width="1.2" opacity="0.7"/>
+              </g>
+
+              <!-- Robot Head Group (Tilts & Tracks Input Fields) -->
+              <g id="robotHead" class="robot-head-group">
+
+                <!-- CYBERNETIC NEURAL BRAIN DOME (At Top of Head - Captures Form Data on Submit) -->
+                <g id="robotBrainGroup">
+                  <!-- Brain Chassis Cradle -->
+                  <path d="M 116 28 C 116 16 126 10 140 10 C 154 10 164 16 164 28 Z" fill="url(#carbonGrad)" stroke="url(#chromeGrad)" stroke-width="1.2"/>
+                  <!-- Illuminated Neural Synapse Glass Dome -->
+                  <path d="M 120 28 C 120 17 128 12 140 12 C 152 12 160 17 160 28 Z" fill="url(#brainDomeGrad)" stroke="#38bdf8" stroke-width="1"/>
+                  <!-- Glowing Synapse Circuitry Tracks -->
+                  <path d="M 126 25 Q 133 17 140 19 Q 147 17 154 25 M 130 26 Q 135 21 140 22 Q 145 21 150 26" stroke="#38bdf8" stroke-width="1" fill="none" opacity="0.85"/>
+                  <circle cx="132" cy="20" r="1.2" fill="#38bdf8"/>
+                  <circle cx="148" cy="20" r="1.2" fill="#38bdf8"/>
+                  <!-- Central Quantum Brain Core Beacon -->
+                  <circle id="robotBeacon" cx="140" cy="18" r="4.5" fill="#10b981" filter="url(#brainGlow)"/>
+                  <!-- Glass Dome Specular Glare -->
+                  <path d="M 126 16 Q 140 13 154 16" stroke="rgba(255,255,255,0.7)" stroke-width="1" fill="none"/>
+                </g>
+
+                <!-- Side Cyber Audio Pods (Ears) -->
+                <g id="robotEars">
+                  <!-- Left Audio Pod -->
+                  <rect x="68" y="56" width="13" height="34" rx="6.5" fill="url(#carbonGrad)" stroke="url(#chromeGrad)" stroke-width="1.4"/>
+                  <circle cx="74.5" cy="73" r="5" fill="#080a14" stroke="#64748b" stroke-width="1"/>
+                  <circle cx="74.5" cy="73" r="2.5" fill="#38bdf8" filter="url(#eyeCyanGlow)"/>
+                  
+                  <!-- Right Audio Pod -->
+                  <rect x="199" y="56" width="13" height="34" rx="6.5" fill="url(#carbonGrad)" stroke="url(#chromeGrad)" stroke-width="1.4"/>
+                  <circle cx="205.5" cy="73" r="5" fill="#080a14" stroke="#64748b" stroke-width="1"/>
+                  <circle cx="205.5" cy="73" r="2.5" fill="#38bdf8" filter="url(#eyeCyanGlow)"/>
+                </g>
+
+                <!-- Sculpted Ceramic Armor Skull Chassis -->
+                <path d="M 86 44 C 86 26 110 20 140 20 C 170 20 194 26 194 44 L 198 96 C 198 118 172 126 140 126 C 108 126 82 118 82 96 Z" fill="url(#ceramicHeadGrad)" stroke="rgba(255,255,255,0.8)" stroke-width="1.5"/>
+                
+                <!-- Skull Top Aerodynamic Ridge Accent -->
+                <path d="M 112 22 C 122 19 135 18 140 18 C 145 18 158 19 168 22 C 160 26 150 28 140 28 C 130 28 120 26 112 22 Z" fill="url(#chromeGrad)"/>
+
+                <!-- Glossy OLED Curved Visor Faceplate -->
+                <rect x="88" y="41" width="104" height="68" rx="22" fill="url(#visorGlassGrad)" stroke="rgba(148,163,184,0.35)" stroke-width="1.6"/>
+
+                <!-- Curved Glass Horizon Glare Arc -->
+                <path d="M 94 49 Q 140 42 186 50 C 176 57 150 55 140 55 C 130 55 104 57 94 49 Z" fill="rgba(255,255,255,0.18)"/>
+                <path d="M 100 103 Q 140 107 180 103" stroke="rgba(56,189,248,0.2)" stroke-width="1.2" fill="none"/>
+
+                <!-- Interactive Face & Expressive High-Tech Camera Eyes -->
+                <g id="robotFace">
+                  <!-- Left Ocular Socket Background -->
+                  <ellipse cx="113" cy="74" rx="14.5" ry="16.5" fill="#040714" stroke="rgba(56,189,248,0.3)" stroke-width="1.2"/>
+                  <!-- Right Ocular Socket Background -->
+                  <ellipse cx="167" cy="74" rx="14.5" ry="16.5" fill="#040714" stroke="rgba(56,189,248,0.3)" stroke-width="1.2"/>
+
+                  <!-- Left Pupil (Smooth Real-time Tracking) -->
+                  <g clip-path="url(#leftSocketClip)">
+                    <g id="pupilLeft" class="robot-pupil">
+                      <ellipse cx="113" cy="74" rx="12" ry="14" fill="#0284c7" opacity="0.5" filter="url(#eyeCyanGlow)"/>
+                      <ellipse cx="113" cy="74" rx="9" ry="11" fill="#38bdf8" filter="url(#eyeCyanGlow)"/>
+                      <ellipse cx="113" cy="74" rx="6" ry="7.5" fill="#bae6fd"/>
+                      <circle cx="110.5" cy="71" r="2.8" fill="#ffffff"/>
+                      <circle cx="115.5" cy="77" r="1.5" fill="#ffffff" opacity="0.85"/>
+                    </g>
+                    <!-- Eyelid for Blinking -->
+                    <rect id="eyelidLeft" class="robot-eyelid" x="97" y="56" width="32" height="20" fill="#020308"/>
+                  </g>
+
+                  <!-- Right Pupil (Smooth Real-time Tracking) -->
+                  <g clip-path="url(#rightSocketClip)">
+                    <g id="pupilRight" class="robot-pupil">
+                      <ellipse cx="167" cy="74" rx="12" ry="14" fill="#0284c7" opacity="0.5" filter="url(#eyeCyanGlow)"/>
+                      <ellipse cx="167" cy="74" rx="9" ry="11" fill="#38bdf8" filter="url(#eyeCyanGlow)"/>
+                      <ellipse cx="167" cy="74" rx="6" ry="7.5" fill="#bae6fd"/>
+                      <circle cx="164.5" cy="71" r="2.8" fill="#ffffff"/>
+                      <circle cx="169.5" cy="77" r="1.5" fill="#ffffff" opacity="0.85"/>
+                    </g>
+                    <!-- Eyelid for Blinking -->
+                    <rect id="eyelidRight" class="robot-eyelid" x="151" y="56" width="32" height="20" fill="#020308"/>
+                  </g>
+
+                  <!-- Status HUD Dots -->
+                  <circle cx="99" cy="89" r="1.8" fill="#38bdf8" opacity="0.55"/>
+                  <circle cx="181" cy="89" r="1.8" fill="#38bdf8" opacity="0.55"/>
+
+                  <!-- Happy Eyes (Celebration on Successful Submission) -->
+                  <g id="happyEyes" class="robot-happy-eyes" style="display: none;">
+                    <path d="M 103 78 Q 113 64 123 78" stroke="#34d399" stroke-width="3.8" fill="none" stroke-linecap="round" filter="url(#eyeCyanGlow)"/>
+                    <path d="M 157 78 Q 167 64 177 78" stroke="#34d399" stroke-width="3.8" fill="none" stroke-linecap="round" filter="url(#eyeCyanGlow)"/>
+                  </g>
+
+                  <!-- High-Tech LED Smile Line -->
+                  <path id="robotMouth" d="M 134 94 Q 140 98 146 94" stroke="#38bdf8" stroke-width="2.2" fill="none" stroke-linecap="round" opacity="0.9"/>
+                </g>
+              </g>
+
+              <!-- ARTICULATED MECHANICAL HANDS GRIPPING TOP OF FORM -->
+              
+              <!-- Left Gripping Hand -->
+              <g id="handLeft" class="robot-hand">
+                <!-- Wrist Cuff (White Ceramic & Carbon) -->
+                <path d="M 56 125 Q 72 121 88 125 L 88 135 L 56 135 Z" fill="url(#carbonGrad)" stroke="url(#chromeGrad)" stroke-width="1.2"/>
+                <!-- Palm Knuckle Bar -->
+                <rect x="54" y="132" width="36" height="7.5" rx="3.5" fill="url(#ceramicChestGrad)" stroke="#94a3b8" stroke-width="1"/>
+                <!-- Finger 1 -->
+                <rect x="54" y="133" width="9.5" height="20" rx="4.7" fill="url(#ceramicHeadGrad)" stroke="#94a3b8" stroke-width="1.2"/>
+                <circle cx="58.7" cy="142" r="1.2" fill="#475569"/>
+                <line x1="56" y1="145" x2="61.5" y2="145" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round"/>
+                <!-- Finger 2 (Middle) -->
+                <rect x="67" y="131" width="10" height="22" rx="5" fill="url(#ceramicHeadGrad)" stroke="#94a3b8" stroke-width="1.2"/>
+                <circle cx="72" cy="142" r="1.2" fill="#475569"/>
+                <line x1="69" y1="146" x2="75" y2="146" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round"/>
+                <!-- Finger 3 -->
+                <rect x="80.5" y="133" width="9.5" height="20" rx="4.7" fill="url(#ceramicHeadGrad)" stroke="#94a3b8" stroke-width="1.2"/>
+                <circle cx="85.2" cy="142" r="1.2" fill="#475569"/>
+                <line x1="82.5" y1="145" x2="88" y2="145" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round"/>
+              </g>
+
+              <!-- Right Gripping Hand (Active before submit) -->
+              <g id="handRight" class="robot-hand">
+                <!-- Wrist Cuff -->
+                <path d="M 192 125 Q 208 121 224 125 L 224 135 L 192 135 Z" fill="url(#carbonGrad)" stroke="url(#chromeGrad)" stroke-width="1.2"/>
+                <!-- Palm Knuckle Bar -->
+                <rect x="190" y="132" width="36" height="7.5" rx="3.5" fill="url(#ceramicChestGrad)" stroke="#94a3b8" stroke-width="1"/>
+                <!-- Finger 1 -->
+                <rect x="190" y="133" width="9.5" height="20" rx="4.7" fill="url(#ceramicHeadGrad)" stroke="#94a3b8" stroke-width="1.2"/>
+                <circle cx="194.7" cy="142" r="1.2" fill="#475569"/>
+                <line x1="192" y1="145" x2="197.5" y2="145" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round"/>
+                <!-- Finger 2 (Middle) -->
+                <rect x="203" y="131" width="10" height="22" rx="5" fill="url(#ceramicHeadGrad)" stroke="#94a3b8" stroke-width="1.2"/>
+                <circle cx="208" cy="142" r="1.2" fill="#475569"/>
+                <line x1="205" y1="146" x2="211" y2="146" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round"/>
+                <!-- Finger 3 -->
+                <rect x="216" y="133" width="9.5" height="20" rx="4.7" fill="url(#ceramicHeadGrad)" stroke="#94a3b8" stroke-width="1.2"/>
+                <circle cx="220.7" cy="142" r="1.2" fill="#475569"/>
+                <line x1="218" y1="145" x2="223.5" y2="145" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round"/>
+              </g>
+
+              <!-- Right THUMBS-UP Hand (Raised on Successful Submit) -->
+              <g id="handRightThumbsUp" class="robot-thumbs-up" style="display: none;">
+                <!-- Articulated Arm reaching up -->
+                <path d="M 190 122 Q 216 112 226 95" stroke="url(#ceramicHeadGrad)" stroke-width="14" stroke-linecap="round" fill="none"/>
+                <path d="M 190 122 Q 216 112 226 95" stroke="url(#chromeGrad)" stroke-width="6" stroke-linecap="round" fill="none"/>
+                <!-- Metallic Wrist Cuff -->
+                <rect x="216" y="84" width="20" height="8" rx="4" fill="url(#carbonGrad)" stroke="url(#chromeGrad)" stroke-width="1.4" transform="rotate(-18 226 88)"/>
+                <!-- Clenched Metallic Fist -->
+                <rect x="215" y="63" width="26" height="28" rx="8" fill="url(#ceramicHeadGrad)" stroke="#94a3b8" stroke-width="1.6"/>
+                <!-- Curled Finger Knuckles on Fist Face -->
+                <rect x="216" y="65" width="20" height="5.2" rx="2.6" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1"/>
+                <rect x="216" y="72" width="21" height="5.2" rx="2.6" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1"/>
+                <rect x="216" y="79" width="21" height="5.2" rx="2.6" fill="#cbd5e1" stroke="#94a3b8" stroke-width="1"/>
+                <rect x="216" y="86" width="19" height="4.8" rx="2.4" fill="#94a3b8" stroke="#64748b" stroke-width="1"/>
+                <!-- Prominent Ceramic & Chrome Thumb Extended UP -->
+                <path d="M 221 66 C 221 54 223 41 231 41 C 239 41 241 54 241 68 L 241 77 Z" fill="url(#ceramicHeadGrad)" stroke="#94a3b8" stroke-width="1.8"/>
+                <!-- Glowing Emerald Thumb Knuckle Seam -->
+                <line x1="225" y1="53" x2="237" y2="53" stroke="#10b981" stroke-width="2.4" stroke-linecap="round"/>
+                <!-- Glowing Sparkle Star at Thumb Tip -->
+                <circle cx="231" cy="39" r="4" fill="#34d399" filter="url(#brainGlow)"/>
+                <path d="M 231 30 L 231 48 M 222 39 L 240 39" stroke="#34d399" stroke-width="2" stroke-linecap="round"/>
+                <circle cx="249" cy="48" r="2.5" fill="#38bdf8" filter="url(#brainGlow)"/>
+              </g>
+
+            </svg>
           </div>
 
           <!-- Dynamic Flying Data Particles Container -->
