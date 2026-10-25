@@ -264,6 +264,44 @@
                 </g>
               </g>
 
+              <!-- Left POINTING Hand (Points Finger at Mobile Field if Missing) -->
+              <g id="handLeftPoint" class="robot-hand-point" style="display: none;">
+                <!-- Forearm Angling Downward toward Form -->
+                <path d="M 46 116 C 50 126 56 138 64 148" stroke="url(#carbonGrad)" stroke-width="14" stroke-linecap="round" fill="none"/>
+                <path d="M 48 116 C 52 126 58 138 65 146" stroke="url(#ceramicHeadGrad)" stroke-width="8" stroke-linecap="round" fill="none"/>
+                <line x1="50" y1="124" x2="60" y2="140" stroke="url(#chromeGrad)" stroke-width="2.5" stroke-linecap="round"/>
+
+                <!-- Wrist Joint Sphere -->
+                <circle cx="67" cy="150" r="7.5" fill="url(#chromeGrad)"/>
+                <rect x="61" y="146" width="12" height="7.5" rx="3" fill="url(#carbonGrad)" stroke="url(#chromeGrad)" stroke-width="1" transform="rotate(25 67 150)"/>
+
+                <!-- Fist Body (Curled Fingers) -->
+                <path d="M 64 148 C 60 152 61 162 67 166 C 73 170 82 168 85 160 C 86 154 82 148 74 146 Z" fill="url(#ceramicHeadGrad)" stroke="#94a3b8" stroke-width="1.2"/>
+
+                <!-- Curled Middle & Ring Knuckles -->
+                <rect x="66" y="156" width="12" height="5.5" rx="2.7" fill="url(#ceramicChestGrad)" stroke="#64748b" stroke-width="1" transform="rotate(20 72 158)"/>
+                <circle cx="79" cy="162" r="1.3" fill="url(#chromeGrad)"/>
+                <rect x="64" y="162" width="11" height="5.2" rx="2.6" fill="url(#ceramicChestGrad)" stroke="#64748b" stroke-width="1" transform="rotate(20 69 164)"/>
+                <circle cx="76" cy="167" r="1.3" fill="url(#chromeGrad)"/>
+
+                <!-- Folded Thumb -->
+                <ellipse cx="63" cy="154" rx="4.5" ry="3.5" fill="url(#ceramicHeadGrad)" stroke="#94a3b8" stroke-width="1" transform="rotate(-15 63 154)"/>
+
+                <!-- EXTENDED POINTING INDEX FINGER (Aiming Directly Down at Mobile Field) -->
+                <!-- Proximal Phalanx -->
+                <path d="M 74 150 L 82 167 C 83 169 86 169 87 167 L 81 148 Z" fill="url(#ceramicHeadGrad)" stroke="#94a3b8" stroke-width="1.2"/>
+                <ellipse cx="83" cy="167" rx="4.2" ry="2" fill="url(#chromeGrad)" transform="rotate(62 83 167)"/>
+
+                <!-- Distal Phalanx & Tapered Pointing Tip -->
+                <path d="M 80 165 L 91 187 C 92.5 190 96 190 97 187 C 97.5 184 96 181 90 162 Z" fill="url(#ceramicChestGrad)" stroke="#ffffff" stroke-width="1.3"/>
+                <line x1="83" y1="167" x2="93" y2="187" stroke="#ffffff" stroke-width="1.3" stroke-linecap="round"/>
+
+                <!-- High-Tech LED Target Indicator on Pointing Fingertip -->
+                <circle cx="94" cy="188" r="3" fill="#38bdf8" filter="url(#eyeCyanGlow)"/>
+                <circle cx="94" cy="188" r="1.4" fill="#ffffff"/>
+                <circle cx="94" cy="188" r="6" fill="none" stroke="#38bdf8" stroke-width="1" opacity="0.65" class="pointing-beam-ring"/>
+              </g>
+
               <!-- Right Gripping Hand (Holding top of form firmly before submit) -->
               <g id="handRight" class="robot-hand">
                 <!-- Ceramic Knuckle Guard / Dorsal Plate Arching Over Edge -->

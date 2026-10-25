@@ -338,6 +338,60 @@ a {
   100% { transform: translateY(0); opacity: 1; }
 }
 
+/* ROBOT POINTING HAND GESTURE */
+.robot-hand-point {
+  transform-origin: 50px 118px;
+  animation: pointingEntrance 0.38s cubic-bezier(0.175, 0.885, 0.32, 1.25) forwards;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.65));
+}
+
+@keyframes pointingEntrance {
+  0% { transform: scale(0.3) rotate(-15deg) translateY(-12px); opacity: 0; }
+  65% { transform: scale(1.06) rotate(3deg) translateY(2px); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg) translateY(0); opacity: 1; }
+}
+
+@keyframes pointingRhythmicBounce {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(4px) rotate(1.5deg); }
+}
+
+.robot-hand-point.pointing-active {
+  animation: pointingRhythmicBounce 0.65s ease-in-out infinite alternate !important;
+}
+
+.robot-hand-point.retracting {
+  animation: pointingRetract 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards !important;
+}
+
+@keyframes pointingRetract {
+  0% { transform: scale(1) rotate(0deg) translateY(0); opacity: 1; }
+  100% { transform: scale(0.2) rotate(-15deg) translateY(-18px); opacity: 0; }
+}
+
+@keyframes beamRingPulse {
+  0% { r: 4; opacity: 0.8; stroke-width: 1.5; }
+  100% { r: 9; opacity: 0; stroke-width: 0.5; }
+}
+
+.pointing-beam-ring {
+  animation: beamRingPulse 0.9s ease-out infinite;
+}
+
+/* MOBILE FIELD ATTENTION HIGHLIGHT WHEN BOT IS POINTING */
+.form-group.bot-pointing-target .input-container {
+  animation: targetFieldPulse 0.7s ease-in-out infinite alternate;
+}
+
+@keyframes targetFieldPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(244, 63, 94, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 0 3.5px rgba(244, 63, 94, 0.3), 0 0 16px rgba(244, 63, 94, 0.35);
+  }
+}
+
 /* ROBOT BRAIN ABSORPTION PULSE (WHEN RECEIVING FLYING DATA AT TOP OF HEAD) */
 @keyframes headAbsorbPulse {
   0% { filter: drop-shadow(0 0 0 rgba(56, 189, 248, 0)); }

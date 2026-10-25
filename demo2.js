@@ -66,6 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!phone || phone.length < 7) {
       showFieldError("mobileNumber", "Please enter a valid mobile number with country code");
       hasError = true;
+      triggerBotPointingAtMobile();
     }
 
     // Email is optional, but validate format if entered
@@ -139,8 +140,29 @@ document.addEventListener("DOMContentLoaded", () => {
     btnReset.addEventListener("click", () => {
       form.reset();
       form.style.display = "flex";
+      if (formHeader) formHeader.style.display = "block";
       successCard.style.display = "none";
       hideAlert();
+
+      isFormSuccess = false;
+      dismissBotPointing();
+
+      if (pupilLeft) pupilLeft.style.display = "block";
+      if (pupilRight) pupilRight.style.display = "block";
+      if (happyEyes) happyEyes.style.display = "none";
+      if (handRightThumbsUp) handRightThumbsUp.style.display = "none";
+      if (handRight) {
+        handRight.style.display = "block";
+        handRight.classList.remove("returning");
+      }
+      if (handLeftPoint) handLeftPoint.style.display = "none";
+      if (handLeft) {
+        handLeft.style.display = "block";
+        handLeft.classList.remove("returning");
+      }
+      if (robotWrap) robotWrap.classList.remove("celebrating");
+      resetRobotGaze();
+
       window.scrollTo({ top: formWrapper.offsetTop - 80, behavior: "smooth" });
     });
   }
@@ -208,17 +230,95 @@ document.addEventListener("DOMContentLoaded", () => {
   const happyEyes = document.getElementById("happyEyes");
   const robotWrap = document.getElementById("robotMascotWrap");
   const eyelids = document.querySelectorAll(".robot-eyelid");
+  const handLeft = document.getElementById("handLeft");
+  const handLeftPoint = document.getElementById("handLeftPoint");
   const handRight = document.getElementById("handRight");
   const handRightThumbsUp = document.getElementById("handRightThumbsUp");
+  const mobileInput = document.getElementById("mobileNumber");
+  const groupPhone = document.getElementById("groupPhone");
 
   let typingTimer = null;
   let isFormSuccess = false;
+  let isPointingAtMobile = false;
+  let pointingTimeout = null;
 
   // Turn on natural blinking
   eyelids.forEach((lid) => lid.classList.add("auto-blink"));
 
+  function triggerBotPointingAtMobile() {
+    if (isFormSuccess) return;
+    isPointingAtMobile = true;
+
+    // 1. Swap left gripping hand with the pointing hand
+    if (handLeft) handLeft.style.display = "none";
+    if (handLeftPoint) {
+      handLeftPoint.style.display = "block";
+      handLeftPoint.classList.remove("retracting", "pointing-active");
+      void handLeftPoint.offsetWidth;
+      setTimeout(() => {
+        if (handLeftPoint.style.display !== "none") {
+          handLeftPoint.classList.add("pointing-active");
+        }
+      }, 380);
+    }
+
+    // 2. Head tilts and eyes point directly down at the mobile field
+    if (robotHead) {
+      robotHead.style.transform = "rotate(-4deg) translateY(4px)";
+    }
+    if (pupilLeft && pupilRight) {
+      pupilLeft.style.transform = "translate(-3px, 8px)";
+      pupilRight.style.transform = "translate(-3px, 8px)";
+    }
+
+    // 3. Highlight mobile field and set focus
+    if (groupPhone) {
+      groupPhone.classList.add("bot-pointing-target");
+    }
+    if (mobileInput) {
+      mobileInput.focus();
+    }
+
+    // 4. Auto-dismiss after 6 seconds if no interaction
+    clearTimeout(pointingTimeout);
+    pointingTimeout = setTimeout(() => {
+      dismissBotPointing();
+    }, 6000);
+  }
+
+  function dismissBotPointing() {
+    if (!isPointingAtMobile) return;
+    isPointingAtMobile = false;
+    clearTimeout(pointingTimeout);
+
+    if (groupPhone) {
+      groupPhone.classList.remove("bot-pointing-target");
+    }
+
+    if (handLeftPoint && handLeftPoint.style.display !== "none") {
+      handLeftPoint.classList.remove("pointing-active");
+      handLeftPoint.classList.add("retracting");
+      setTimeout(() => {
+        handLeftPoint.style.display = "none";
+        handLeftPoint.classList.remove("retracting");
+        if (handLeft) {
+          handLeft.style.display = "block";
+          handLeft.classList.remove("returning");
+          void handLeft.offsetWidth;
+          handLeft.classList.add("returning");
+        }
+      }, 280);
+    } else if (handLeft) {
+      handLeft.style.display = "block";
+    }
+
+    if (!isFormSuccess) {
+      resetRobotGaze();
+    }
+  }
+
   function trackElement(el, isTyping = false) {
-    if (!el || !robotFace || !pupilLeft || !pupilRight || isFormSuccess) return;
+    if (!el || !robotFace || !pupilLeft || !pupilRight || isFormSuccess || isPointingAtMobile) return;
 
     const faceRect = robotFace.getBoundingClientRect();
     const targetRect = el.getBoundingClientRect();
@@ -266,11 +366,20 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function resetRobotGaze() {
-    if (isFormSuccess) return;
+    if (isFormSuccess || isPointingAtMobile) return;
     if (pupilLeft) pupilLeft.style.transform = "translate(0, 0)";
     if (pupilRight) pupilRight.style.transform = "translate(0, 0)";
     if (robotHead) robotHead.style.transform = "rotate(0deg) translateY(0px)";
     if (robotBeacon) robotBeacon.classList.remove("typing-active");
+  }
+
+  // If user starts typing in mobile field while bot is pointing, dismiss pointing
+  if (mobileInput) {
+    mobileInput.addEventListener("input", () => {
+      if (isPointingAtMobile && mobileInput.value.trim().length > 0) {
+        dismissBotPointing();
+      }
+    });
   }
 
   // Attach focus and input listeners to form elements
